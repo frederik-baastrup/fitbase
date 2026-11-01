@@ -21,7 +21,6 @@ HTML,
 			'name'    => 'Keiser M3i',
 			'role'    => 'Bedst samlet',
 			'reviews' => [
-				[ 'Garage Gym Reviews', 'https://www.garagegymreviews.com/keiser-m3i-indoor-bike-review' ],
 				[ 'Treadmill Review Guru', 'https://www.treadmillreviewguru.com/keiser-m3i-indoor-bike-review' ],
 			],
 			'verdict' => 'Professionel spinningcykel med wattmåling, 24 modstandsniveauer og Bluetooth – kendt fra træningscentre.',
