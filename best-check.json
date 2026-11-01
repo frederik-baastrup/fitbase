@@ -1,0 +1,136 @@
+{
+    "checked": "2026-10-30 13:13:02",
+    "site": "https:\/\/frederikb7.sg-host.com\/",
+    "articles": [
+        {
+            "slug": "foldbart-loebebaand",
+            "title": "Foldbart løbebånd: Vores bud på de 3 bedste",
+            "url": "https:\/\/frederikb7.sg-host.com\/koebsguide\/foldbart-loebebaand\/",
+            "issues": [
+                {
+                    "type": "review",
+                    "nr": 1,
+                    "message": "Anmeldelseslink (Garage Gym Reviews) svarer 404: https:\/\/www.garagegymreviews.com\/sole-f63-treadmill-review"
+                }
+            ]
+        },
+        {
+            "slug": "loebebaand-med-stigning",
+            "title": "Løbebånd med stigning: Vores bud på de 3 bedste",
+            "url": "https:\/\/frederikb7.sg-host.com\/koebsguide\/loebebaand-med-stigning\/",
+            "issues": [
+                {
+                    "type": "review",
+                    "nr": 1,
+                    "message": "Anmeldelseslink (Garage Gym Reviews) svarer 404: https:\/\/www.garagegymreviews.com\/sole-f85-review"
+                },
+                {
+                    "type": "review",
+                    "nr": 2,
+                    "message": "Anmeldelseslink (Garage Gym Reviews) svarer 404: https:\/\/www.garagegymreviews.com\/nordictrack-x24-treadmill-review"
+                }
+            ]
+        },
+        {
+            "slug": "loebebaand-uden-motor",
+            "title": "Løbebånd uden motor: Vores bud – curved og manuelle løbebånd",
+            "url": "https:\/\/frederikb7.sg-host.com\/koebsguide\/loebebaand-uden-motor\/",
+            "issues": [
+                {
+                    "type": "product",
+                    "nr": 2,
+                    "role": "Manuelt løbebånd",
+                    "name": "Toorx Power Mag",
+                    "message": "Toorx Power Mag er ikke på lager",
+                    "alternatives": [
+                        {
+                            "ean": "8029975809724",
+                            "slug": "toorx-traveller-loebebaand",
+                            "name": "Toorx Traveller Løbebånd",
+                            "brand": "Toorx",
+                            "price": 14999,
+                            "shop": "fitnessshoppen",
+                            "attributes": {
+                                "foldable": true,
+                                "max_speed": 18,
+                                "0": ""
+                            },
+                            "description": "✓ Kraftfuld 2,5\/3,5 HP motor med 18 km\/t topfart✓ APP Ready 3.0 med Zwift og Kinomap kompatibilitet✓ Pladsbesparende foldbart design✓ Skånsom stødabsorbering med 8 puder"
+                        },
+                        {
+                            "ean": "8029975999852",
+                            "slug": "toorx-mirage-c60-loebebaand-foldbart-sort",
+                            "name": "Toorx Mirage C60 Løbebånd Foldbart (Sort)",
+                            "brand": "Toorx",
+                            "price": 15999,
+                            "shop": "fitnessshoppen",
+                            "attributes": {
+                                "foldable": true,
+                                "incline": true,
+                                "max_speed": 18,
+                                "0": ""
+                            },
+                            "description": "✔ Smalt, elegant sort design - foldbart og pladsbesparende✔ 3 HK motor op til 18 km\/t og 12 % stigning✔ Stor løbeflade med affjedringszoner for komfort"
+                        },
+                        {
+                            "ean": "8717842032442",
+                            "slug": "tunturi-signature-t40-foldbart-loebebaand",
+                            "name": "Tunturi Signature T40 Foldbart Løbebånd",
+                            "brand": "Tunturi",
+                            "price": 12999,
+                            "shop": "fitnessshoppen",
+                            "attributes": {
+                                "foldable": true,
+                                "max_speed": 16,
+                                "0": ""
+                            },
+                            "description": "✔ 47 programmer & 16 km\/t - perfekt til alle niveauer✔ Kompatibel med Zwift, Kinomap og Tunturi Routes✔ Diamond anti-slip løbeflade og foldbart premium-design"
+                        },
+                        {
+                            "ean": "4044163025452",
+                            "slug": "top-sport-tm-4500-foldbart-loebebaand",
+                            "name": "Top Sport TM 4500 Foldbart Løbebånd",
+                            "brand": "TopSport",
+                            "price": 11999,
+                            "shop": "fitnessshoppen",
+                            "attributes": {
+                                "foldable": true,
+                                "incline": true,
+                                "max_speed": 20,
+                                "0": ""
+                            },
+                            "description": "✔ Op til 20 km\/t og 15 hældningsniveauer for alsidig træning✔ Stor LED-skærm med app-integration og Bluetooth-højttalere✔ Foldbart design med støddæmpning og automatisk smøring"
+                        },
+                        {
+                            "ean": "8029975999647",
+                            "slug": "everfit-tfk-855-slim-loebebaand",
+                            "name": "EVERFIT TFK 855 Slim Løbebånd",
+                            "brand": "Everfit",
+                            "price": 10999,
+                            "shop": "fitnessshoppen",
+                            "attributes": {
+                                "foldable": true,
+                                "incline": true,
+                                "max_speed": 20,
+                                "0": ""
+                            },
+                            "description": "✔ Hastigheder op til 20 km\/t med 0,1 km\/t præcision✔ 12 % elektronisk stigning med 12 niveauer✔ 8 affjedringszoner og bred 51 × 140 cm løbeflade✔ App Ready 3.0 med Bluetooth og foldbart design"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "spinningcykel-med-computer",
+            "title": "Spinningcykel med computer: Vores bud på de 3 bedste",
+            "url": "https:\/\/frederikb7.sg-host.com\/koebsguide\/spinningcykel-med-computer\/",
+            "issues": [
+                {
+                    "type": "review",
+                    "nr": 1,
+                    "message": "Anmeldelseslink (Garage Gym Reviews) svarer 404: https:\/\/www.garagegymreviews.com\/keiser-m3i-indoor-bike-review"
+                }
+            ]
+        }
+    ]
+}
