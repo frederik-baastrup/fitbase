@@ -12,17 +12,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Find tømmemetode der virker
+      - name: Tjek forside og kategori (ét kald hver)
         shell: bash
         run: |
           set +e
-          U="https://fitbase.dk/traeningsmaskiner/lobebaand/gaabaand/"
           {
-            echo "start: $(date -u +%T)"
-            curl -sS -D h.txt -o /dev/null -m 120 "https://fitbase.dk/wp-json/?pf_deploy=probe-$RANDOM&pf_probe=$U"
-            grep -i "^HTTP\|x-pf-" h.txt
-            echo "--- bagefter, udefra:"
-            curl -sS -D h2.txt -o p.html -m 30 "$U"; head -12 h2.txt; echo -n "ny-værktøjslinje="; grep -c results__n p.html; head -c 300 p.html
+            for u in "https://fitbase.dk/" "https://fitbase.dk/traeningsmaskiner/lobebaand/gaabaand/"; do
+              curl -sS -D h.txt -o p.html -m 30 "$u"
+              echo "$u -> $(head -1 h.txt | tr -d '\r') $(grep -i '^x-proxy-cache:\|^sg-captcha' h.txt | tr -d '\r' | tr '\n' ' ') $(grep -o 'main.css?ver=[0-9.]*' p.html | head -1)"
+            done
           } > resultat.txt 2>&1
           exit 0
 

@@ -106,34 +106,6 @@ function playform_purge_everything(): void {
 }
 add_action( 'playform_purge_rest', static fn() => playform_purge_cache( 'rest' ) );
 
-/** Diagnose: hvilken tømmemetode rammer en given side? Varmer siden, prøver metoder én ad gangen og måler x-proxy-cache. */
-function playform_purge_probe( string $url ): string {
-	$S     = '\\SiteGround_Optimizer\\Supercacher\\Supercacher';
-	$purge = static fn( string $u ) => $S::purge_cache_request( $u, false );
-	$get   = static function () use ( $url ) {
-		$r = wp_remote_get( $url, [ 'timeout' => 20, 'redirection' => 0 ] );
-		return is_wp_error( $r ) ? 'fejl' : strtoupper( (string) wp_remote_retrieve_header( $r, 'x-proxy-cache' ) ?: '?' );
-	};
-	$warm = static function () use ( $get ) {
-		$get();
-		return $get(); // skal give HIT
-	};
-	$out = [];
-	$out[] = 'A warm=' . $warm();
-	$purge( $url ); sleep( 2 );
-	$out[] = 'A efter kun-denne-side-tømning=' . $get();
-	$out[] = 'B warm=' . $warm();
-	$purge( home_url( '/' ) ); sleep( 2 ); $purge( $url ); sleep( 3 );
-	$out[] = 'B efter forside+side=' . $get();
-	$out[] = 'C warm=' . $warm();
-	$purge( $url ); sleep( 8 );
-	$out[] = 'C efter 8 sek=' . $get();
-	$out[] = 'D warm=' . $warm();
-	$purge( untrailingslashit( $url ) ); sleep( 3 );
-	$out[] = 'D efter uden-slash=' . $get();
-	return implode( ' | ', $out );
-}
-
 // Diagnose: udrulningens kald til /wp-json/?pf_deploy=… får at vide, om opdateringerne kørte, og hvordan cachen blev tømt.
 add_filter(
 	'rest_post_dispatch',
@@ -142,9 +114,6 @@ add_filter(
 			$response->header( 'X-PF-Upgrade', ! empty( $GLOBALS['pf_upgrade_ran'] ) ? 'ran' : 'skipped' );
 			$response->header( 'X-PF-Purge', (string) get_option( 'playform_last_purge', 'never' ) );
 			$response->header( 'X-PF-Css', (string) filemtime( get_template_directory() . '/assets/css/main.css' ) );
-			if ( ! empty( $_GET['pf_probe'] ) ) { // phpcs:ignore
-				$response->header( 'X-PF-Probe', playform_purge_probe( esc_url_raw( wp_unslash( $_GET['pf_probe'] ) ) ) ); // phpcs:ignore
-			}
 		}
 		return $response;
 	}
