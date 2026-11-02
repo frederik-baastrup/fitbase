@@ -78,7 +78,8 @@ while ( have_posts() ) :
 					<span class="pcard__ph"><?php echo playform_icon( 'product', 160, 1 ); // phpcs:ignore ?></span>
 				<?php endif; ?>
 				<span class="pcard__badges">
-					<?php if ( $d['sale'] ) : ?><span class="badge badge--sale">Tilbud hos <?php echo esc_html( $d['shop'] ); ?></span><?php endif; ?>
+					<?php $pct = playform_save_pct( (float) $d['price'], (float) $d['was'] ); ?>
+					<?php if ( $d['sale'] ) : ?><span class="badge badge--sale"><?php echo $pct ? esc_html( '−' . $pct . ' % hos ' . $d['shop'] ) : 'Tilbud hos ' . esc_html( $d['shop'] ); ?></span><?php endif; ?>
 					<?php if ( $d['foldable'] ) : ?><span class="badge">Foldbar</span><?php endif; ?>
 				</span>
 			</div>
@@ -101,6 +102,7 @@ while ( have_posts() ) :
 							<?php $is_was = $d['was'] > $d['price']; ?>
 							<span class="pricebox__price<?php echo $is_was ? ' is-sale' : ''; ?>"><?php echo esc_html( playform_kr( $d['price'] ) ); ?></span>
 							<?php if ( $is_was ) : ?>
+								<span class="pricebox__save">Spar <?php echo esc_html( playform_kr( $d['was'] - $d['price'] ) ); ?> (<?php echo (int) $pct; ?> %)</span>
 								<span class="pricebox__ref">Førpris <s><?php echo esc_html( playform_kr( $d['was'] ) ); ?></s> · laveste pris hos <?php echo esc_html( $d['shop'] ); ?> de 30 dage før tilbuddet</span>
 							<?php elseif ( $d['drop'] && $d['ref'] ) : ?>
 								<span class="pricebox__ref">Laveste pris de 30 dage før: <s><?php echo esc_html( playform_kr( $d['ref'] ) ); ?></s></span>

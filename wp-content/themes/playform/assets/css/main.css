@@ -814,3 +814,6 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 	ul.guide__facts { gap: 8px 16px; }
 	.guide__facts > li + li { margin-left: 0; padding-left: 0; border-left: 0; }
 }
+
+/* Besparelse ved kontrolleret førpris */
+.pricebox__save { display: inline-flex; align-self: flex-start; margin-top: 6px; padding: 3px 9px 2px; border-radius: 999px; background: rgba(180, 35, 24, .08); color: var(--sale); font-size: 13px; font-weight: 600; }

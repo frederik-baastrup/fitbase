@@ -90,7 +90,8 @@ function playform_product_card( WC_Product $p, string $class = 'pcard' ): void {
 				<span class="pcard__ph"><?php echo playform_icon( 'product', 72, 1.2 ); // phpcs:ignore ?></span>
 			<?php endif; ?>
 			<span class="pcard__badges">
-				<?php if ( $d['sale'] ) : ?><span class="badge badge--sale">Tilbud</span><?php endif; ?>
+				<?php $pct = playform_save_pct( (float) $d['price'], (float) $d['was'] ); ?>
+				<?php if ( $d['sale'] ) : ?><span class="badge badge--sale"><?php echo $pct ? esc_html( '−' . $pct . ' %' ) : 'Tilbud'; ?></span><?php endif; ?>
 				<?php if ( $d['foldable'] ) : ?><span class="badge">Foldbar</span><?php endif; ?>
 				<?php if ( ! $d['in_stock'] ) : ?><span class="badge badge--muted">Ikke på lager</span><?php endif; ?>
 			</span>
@@ -136,6 +137,14 @@ function playform_breadcrumbs( array $items ): void {
 		}
 	}
 	echo '</nav>';
+}
+
+/**
+ * Besparelse i procent i forhold til den kontrollerede førpris (laveste pris de 30 dage før tilbuddet).
+ * 0, når der ikke er en kontrolleret førpris – så viser vi ingen procent (førprisreglen).
+ */
+function playform_save_pct( float $price, float $was ): int {
+	return ( $was > $price && $price > 0 ) ? (int) floor( ( $was - $price ) / $was * 100 ) : 0;
 }
 
 /** Hvornår priserne sidst blev opdateret, fx "i dag kl. 05:30". */
