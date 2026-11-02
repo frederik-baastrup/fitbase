@@ -17,9 +17,14 @@ jobs:
         run: |
           set +e
           {
-            for u in "https://fitbase.dk/" "https://fitbase.dk/traeningsmaskiner/lobebaand/gaabaand/"; do
+            for u in "https://fitbase.dk/" "https://fitbase.dk/traeningsmaskiner/lobebaand/"; do
               curl -sS -D h.txt -o p.html -m 30 "$u"
-              echo "$u -> $(head -1 h.txt | tr -d '\r') $(grep -i '^x-proxy-cache:\|^sg-captcha' h.txt | tr -d '\r' | tr '\n' ' ') $(grep -o 'main.css?ver=[0-9.]*' p.html | head -1)"
+              css=$(grep -o 'https://fitbase.dk/wp-content/themes/playform/assets/css/main.css?ver=[0-9.]*' p.html | head -1)
+              echo "$u -> $(head -1 h.txt | tr -d '\r') $(grep -i '^x-proxy-cache:\|^sg-captcha\|^cache-control' h.txt | tr -d '\r' | tr '\n' ' ') css=$css"
+              if [ -n "$css" ]; then
+                curl -sS -m 30 -o m.css "$css"
+                echo "  css-bytes=$(wc -c < m.css) topbar-rule=$(grep -c 'Reklamelinks venstrestillet' m.css) footer-rule=$(grep -c 'Footer på mobil' m.css) rel-rule=$(grep -c 'Kig videre' m.css)"
+              fi
             done
           } > resultat.txt 2>&1
           exit 0
