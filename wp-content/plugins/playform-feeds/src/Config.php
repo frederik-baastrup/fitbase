@@ -20,7 +20,7 @@ final class Config {
 			// så rækker med samme navn samles til ét produkt ('group_variants').
 			'cykelexperten'         => [
 				'name'           => 'Cykelexperten.dk',
-				'url'            => '', // feed-adressen (med feedid) fra Partner-ads indsættes her
+				'url'            => "$base&bannerid=35898&feedid=345",
 				'category_map'   => [ 'cykler > damecykler' => 'damecykler', 'cykler > herrecykler' => 'herrecykler' ],
 				'group_variants' => true,
 			],
@@ -119,6 +119,7 @@ final class Config {
 	public static function exclude(): array {
 		return [
 			'gavekort',
+			'konnector|connector kit|\\bkit for\\b|spare ?part|replacement part|\\bsn ?[<>]',
 			'\bguide\b|guides til|tips og tricks|de bedste|de \d bedste|vedligeholder du',
 			'kosttilskud|protein|kreatin|\bbcaa\b|vitamin|mad og drikke|drikkeflask|termokop',
 			'\bsko\b|sneaker|t-shirt|tights|shorts|bukser|jakke|hættetrøje|sportstøj|træningstøj|fritidstøj|tøj & sko|kompressionsbeklædning|strømpe|sokker|undertøj|nederdel|kjole',

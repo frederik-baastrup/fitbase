@@ -47,6 +47,11 @@ final class Cron {
 	/** AI-sortering og nye produkttekster. Kører efter hver fuld import (både WP-cron og `wp playform import`). */
 	public static function after_import(): int {
 		do_action( 'playform_feeds_after_import' ); // fx temaets ugentlige tjek af købsguides
+		try {
+			LinkCheck::run(); // døde produktsider hos butikkerne
+		} catch ( \Throwable $e ) {
+			error_log( 'Fitbase linktjek: ' . $e->getMessage() ); // phpcs:ignore
+		}
 		if ( ! Ai::enabled() ) {
 			return 0;
 		}

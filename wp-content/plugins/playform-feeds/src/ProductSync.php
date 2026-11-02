@@ -77,8 +77,6 @@ final class ProductSync {
 		if ( empty( $locks['name'] ) ) {
 			$product->set_name( $best['name'] );
 		}
-		$product->save();
-
 		$image = '';
 		foreach ( $offers as $o ) {
 			if ( $o['image'] ) {
@@ -86,6 +84,14 @@ final class ProductSync {
 				break;
 			}
 		}
+		// Uden billede er det typisk en udgået vare eller en reservedel – den vises ikke, før der kommer et billede.
+		if ( '' === $image ) {
+			$product->set_status( 'draft' );
+		} elseif ( 'draft' === $product->get_status() && ( $product->get_meta( self::META_CATEGORY ) ?: $category ) !== Config::uncategorized_slug() ) {
+			$product->set_status( 'publish' );
+		}
+		$product->save();
+
 		update_post_meta( $product_id, self::META_IMAGE, $image );
 		update_post_meta( $product_id, self::META_IN_STOCK, (int) $best['in_stock'] );
 		self::write_flat_attributes( $product_id, (array) get_post_meta( $product_id, self::META_ATTR, true ) );

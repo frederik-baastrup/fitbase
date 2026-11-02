@@ -62,6 +62,10 @@ final class Install {
 
 		// Kolonner tilføjet efter første version.
 		$cols = (array) $wpdb->get_col( "SHOW COLUMNS FROM $offers" );
+		if ( $cols && ! in_array( 'link_checked', $cols, true ) ) {
+			$wpdb->query( "ALTER TABLE $offers ADD COLUMN link_checked datetime NULL" );
+			$wpdb->query( "ALTER TABLE $offers ADD COLUMN link_dead_url text NULL" );
+		}
 		if ( $cols && ! in_array( 'sale_since', $cols, true ) ) {
 			$wpdb->query( "ALTER TABLE $offers ADD COLUMN sale_since date NULL" );
 			// Tilbud, butikkerne allerede har kørende, regnes fra i dag (vi kender ikke deres startdato).

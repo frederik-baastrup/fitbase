@@ -40,6 +40,7 @@ function playform_run_upgrades(): void {
 	playform_launch();
 	playform_update_legal_pages();
 	playform_author_profile();
+	playform_hide_imageless_products();
 	// Importens tabeller og kategorier (kolonner, underkategorier, omsortering).
 	if ( class_exists( '\Playform\Feeds\Install' ) ) {
 		\Playform\Feeds\Install::activate();
@@ -635,4 +636,24 @@ function playform_launch(): void {
 	update_option( 'woocommerce_coming_soon', 'no' );
 	update_option( 'blog_public', '1' ); // søgemaskiner må indeksere
 	update_option( 'playform_launched', current_time( 'mysql' ), false );
+}
+
+/**
+ * Engangsoprydning (2. nov. 2026): produkter uden billede er typisk udgåede varer eller reservedele,
+ * hvis side hos butikken ofte er væk. De skjules (kladde). Får de et billede, viser importen dem igen.
+ */
+function playform_hide_imageless_products(): void {
+	if ( get_option( 'playform_imageless_hidden' ) ) {
+		return;
+	}
+	global $wpdb;
+	$ids = $wpdb->get_col(
+		"SELECT p.ID FROM {$wpdb->posts} p
+		 LEFT JOIN {$wpdb->postmeta} m ON m.post_id = p.ID AND m.meta_key = '_pf_image'
+		 WHERE p.post_type = 'product' AND p.post_status = 'publish' AND ( m.meta_value IS NULL OR m.meta_value = '' )"
+	);
+	foreach ( (array) $ids as $id ) {
+		wp_update_post( [ 'ID' => (int) $id, 'post_status' => 'draft' ] );
+	}
+	update_option( 'playform_imageless_hidden', count( (array) $ids ), false );
 }

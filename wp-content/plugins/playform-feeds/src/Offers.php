@@ -101,9 +101,11 @@ final class Offers {
 	public static function for_product( int $product_id, bool $active_only = true ): array {
 		global $wpdb;
 		$where = $active_only ? 'AND active = 1' : '';
-		return $wpdb->get_results(
+		$rows = $wpdb->get_results(
 			$wpdb->prepare( 'SELECT * FROM ' . self::table() . " WHERE product_id = %d $where ORDER BY in_stock DESC, price ASC", $product_id ),
 			ARRAY_A
 		) ?: [];
+		// Tilbud, hvis side hos butikken er væk (se LinkCheck), tæller ikke med – medmindre adressen er ændret siden.
+		return $active_only ? array_values( array_filter( $rows, static fn( $r ) => empty( $r['link_dead_url'] ) || $r['link_dead_url'] !== $r['url'] ) ) : $rows;
 	}
 }
