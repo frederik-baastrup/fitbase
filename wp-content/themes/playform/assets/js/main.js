@@ -165,7 +165,7 @@
 			if (header) {
 				header.classList.remove('is-tucked');
 				closeSearch();
-				document.documentElement.style.setProperty('--dr-top', Math.max(0, header.getBoundingClientRect().bottom) + 'px');
+				document.documentElement.style.setProperty('--dr-top', header.offsetHeight + 'px');
 			}
 			drawer.removeAttribute('inert');
 			drawer.setAttribute('aria-hidden', 'false');
@@ -220,6 +220,7 @@
 			requestAnimationFrame(function () {
 				var y = window.scrollY;
 				var tuck = header.classList.contains('is-tucked');
+				if (document.documentElement.classList.contains('dr-lock')) { lastY = y; ticking = false; return; }
 				if (!mobile.matches || y < 160 || header.classList.contains('is-searching')) tuck = false;
 				else if (y > lastY + 4) tuck = true;
 				else if (y < lastY - 4) tuck = false;
