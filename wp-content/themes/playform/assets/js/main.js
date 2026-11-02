@@ -335,6 +335,15 @@
 		var f = document.querySelector('.filters__mobile');
 		if (f && !document.querySelector('.tags')) f.removeAttribute('open');
 	}
+	// Knappen "Filtrer" ved siden af sorteringen åbner/lukker filterlisten på mobil
+	var fbtn = document.querySelector('[data-filter-btn]');
+	var fbox = document.querySelector('.filters__mobile');
+	if (fbtn && fbox) {
+		var sync = function () { fbtn.setAttribute('aria-expanded', fbox.open ? 'true' : 'false'); };
+		fbtn.addEventListener('click', function () { fbox.open = !fbox.open; sync(); });
+		fbox.addEventListener('toggle', sync);
+		sync();
+	}
 
 	// Nyhedsbrev: sendes til vores endpoint, som videresender til Brevo/MailerLite (double opt-in)
 	document.querySelectorAll('[data-newsletter]').forEach(function (form) {

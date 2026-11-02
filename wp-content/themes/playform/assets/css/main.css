@@ -942,3 +942,34 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 	.crumbs::-webkit-scrollbar { display: none; }
 	.cat-top .crumbs [aria-current], .cat-top .crumbs span[aria-hidden]:nth-last-child(2) { display: none; }
 }
+
+/* Kategorisider på mobil: Filtrer til venstre og sortering til højre i én række, lille tællelinje under, mindre kategori-piller */
+.filterbtn { display: none; }
+@media (max-width: 900px) {
+	.layout { gap: 0; }
+	.results { display: contents; }
+	.layout > .results__bar, .results > .results__bar { order: 1; }
+	.filters { order: 2; }
+	.results > .tags { order: 3; }
+	.results > *:not(.results__bar):not(.tags) { order: 4; }
+	.layout > .filters ~ * { order: 4; }
+	.results__bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 10px; padding-bottom: 10px; }
+	.filterbtn { display: inline-flex; align-items: center; gap: 7px; height: 36px; padding: 0 14px; border: 1px solid var(--line-2); border-radius: 999px; background: #fff; font: inherit; font-size: 13.5px; font-weight: 500; color: var(--ink); cursor: pointer; }
+	.filterbtn[aria-expanded="true"] { border-color: var(--ink); }
+	.filterbtn__n { display: inline-flex; align-items: center; justify-content: center; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 11px; font-weight: 600; }
+	.results__bar .sort { order: 2; margin-left: auto; }
+	.results__bar .sort label { display: none; }
+	.results__bar .select select { height: 36px; padding: 0 34px 0 14px; font-size: 13.5px; }
+	.results__bar .select svg { right: 13px; }
+	.results__count { order: 3; flex: 0 0 100%; font-size: 11.5px; color: var(--muted); line-height: 1.3; }
+	.results__count b { font-weight: 600; color: var(--ink-2); }
+	.filters { margin-bottom: 12px; }
+	.filters__mobile:not([open]) > summary { display: none; }
+	.filters:has(.filters__mobile:not([open])) { margin-bottom: 0; }
+	.results > .tags { padding-bottom: 12px; }
+}
+@media (max-width: 760px) {
+	.tabs { gap: 6px; margin-top: 16px; }
+	.tab { gap: 5px; padding: 6px 12px; font-size: 12.5px; }
+	.tab__n { font-size: 11px; }
+}

@@ -146,7 +146,8 @@ global $wp_query;
 
 		<div class="results">
 			<div class="results__bar">
-				<span><b><?php echo (int) $state['total']; ?></b> produkter<?php echo $updated ? ' <span class="muted">· Priser opdateret ' . esc_html( $updated ) . '</span>' : ''; ?></span>
+				<button type="button" class="filterbtn" data-filter-btn aria-expanded="false"><?php echo playform_icon( 'filter', 16, 1.8 ); // phpcs:ignore ?>Filtrer<?php $n_act = count( array_filter( $state['tags'], static fn( $t ) => ! str_starts_with( $t['label'], '"' ) ) ); echo $n_act ? '<span class="filterbtn__n">' . (int) $n_act . '</span>' : ''; ?></button>
+				<span class="results__count"><b><?php echo (int) $state['total']; ?></b> produkter<?php echo $updated ? ' <span class="muted">· Priser opdateret ' . esc_html( $updated ) . '</span>' : ''; ?></span>
 				<form method="get" class="sort">
 					<?php foreach ( $_GET as $k => $v ) : // phpcs:ignore ?>
 						<?php if ( $k !== 'sortering' && $k !== 'paged' && ! is_array( $v ) ) : ?><input type="hidden" name="<?php echo esc_attr( $k ); ?>" value="<?php echo esc_attr( wp_unslash( $v ) ); ?>"><?php endif; ?>
