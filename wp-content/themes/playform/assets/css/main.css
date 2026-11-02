@@ -1098,3 +1098,15 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 	.cc__btn { flex: 1 1 calc(50% - 4px); }
 }
 .cc:focus { outline: none; }
+
+/* "Kig videre": kompakt – små runde links i stedet for lange lister, og luft ned til footeren */
+.rel { margin: 32px 0 56px; padding-top: 22px; }
+.rel__title { font-size: 17px; letter-spacing: -.2px; margin: 0 0 14px; }
+.rel__grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+.rel__col { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 8px; }
+.rel__h { flex: 0 0 100%; font-size: 11px; margin-bottom: 0; }
+.rel__col a { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid #D6D6D0; border-radius: 999px; font-size: 13.5px; text-decoration: none; background: #fff; }
+.rel__col a:hover { border-color: var(--ink); }
+.rel__col a small { margin: 0; }
+@media (min-width: 761px) { .rel__col { flex-wrap: nowrap; flex-wrap: wrap; } .rel__h { flex: 0 0 auto; min-width: 96px; } .rel__grid { gap: 10px; } .rel__col { gap: 8px; } .rel__h { margin-right: 4px; } }
+@media (max-width: 760px) { .rel { margin: 24px 0 44px; padding-top: 18px; } .rel__title { font-size: 16px; margin-bottom: 12px; } .rel__col a { padding: 5px 11px; font-size: 13px; } }
