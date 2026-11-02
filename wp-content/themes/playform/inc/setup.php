@@ -59,6 +59,30 @@ function playform_purge_cache(): string {
 			$used = 'action:sg_cachepress_purge_cache';
 		}
 	}
+	// Den fulde tømning rammer ikke altid undersider – tøm derfor også de vigtigste sider enkeltvis.
+	$urls = [ home_url( '/' ), home_url( '/koebsguide/' ), home_url( '/viden/' ) ];
+	foreach ( get_terms( [ 'taxonomy' => 'product_cat', 'hide_empty' => false ] ) as $t ) {
+		$l = get_term_link( $t );
+		if ( ! is_wp_error( $l ) ) {
+			$urls[] = $l;
+			$urls[] = trailingslashit( $l ) . 'tilbud/';
+		}
+	}
+	foreach ( get_posts( [ 'post_type' => [ 'post', 'page' ], 'post_status' => 'publish', 'posts_per_page' => 300, 'fields' => 'ids' ] ) as $pid ) {
+		$urls[] = get_permalink( $pid );
+	}
+	$n = 0;
+	foreach ( array_unique( $urls ) as $u ) {
+		if ( function_exists( 'sg_cachepress_purge_cache' ) ) {
+			sg_cachepress_purge_cache( $u );
+		} elseif ( class_exists( '\\SiteGround_Optimizer\\Supercacher\\Supercacher' ) && method_exists( '\\SiteGround_Optimizer\\Supercacher\\Supercacher', 'purge_cache_request' ) ) {
+			\SiteGround_Optimizer\Supercacher\Supercacher::purge_cache_request( $u, false );
+		} else {
+			break;
+		}
+		++$n;
+	}
+	$used .= sprintf( ' | enkeltsider:%d fn_purge_cache:%s fn_everything:%s req:%s', $n, function_exists( 'sg_cachepress_purge_cache' ) ? 'ja' : 'nej', function_exists( 'sg_cachepress_purge_everything' ) ? 'ja' : 'nej', class_exists( '\\SiteGround_Optimizer\\Supercacher\\Supercacher' ) && method_exists( '\\SiteGround_Optimizer\\Supercacher\\Supercacher', 'purge_cache_request' ) ? 'ja' : 'nej' );
 	update_option( 'playform_last_purge', gmdate( 'c' ) . ' ' . $used, false );
 	return $used;
 }
