@@ -8,10 +8,10 @@ namespace Playform\Feeds;
  * og tilbuddet højst er DAYS dage gammelt. Forbrugerombudsmanden regner en tilbudspris, der har stået
  * mere end to uger, som en ny normalpris – så faste "førpriser" falder ud af sig selv.
  *
- * Vi viser aldrig butikkens egen førpris (glpris) – den kan vi ikke kontrollere. En overstreget førpris
- * vises kun, når vores egen prishistorik har fulgt butikkens pris i alle 30 dage før tilbuddet begyndte.
- * Førprisen er så den laveste pris i de 30 dage (førprisreglen). Den gemmes i _pf_sale_ref.
- * _pf_sale_percent (butikkens egen rabat) bruges kun til sortering.
+ * Førpris: Har vores egen prishistorik fulgt butikkens pris i alle 30 dage før tilbuddet begyndte, viser vi
+ * den laveste pris i de 30 dage som kontrolleret førpris (førprisreglen) – gemt i _pf_sale_ref.
+ * Ellers viser vi butikkens egen førpris (glpris), tydeligt mærket "butikkens førpris" – gemt i _pf_sale_list
+ * (ejerens valg, indtil vores historik er lang nok). _pf_sale_percent er butikkens egen rabat og bruges til sortering.
  */
 final class Sales {
 
@@ -19,6 +19,7 @@ final class Sales {
 	public const META_SALE    = '_pf_shop_sale';
 	public const META_PERCENT = '_pf_sale_percent';
 	public const META_REF     = '_pf_sale_ref';
+	public const META_LIST    = '_pf_sale_list';
 	public const REF_DAYS     = 30;
 
 	/** Genberegner tilbuds-felterne for alle produkter. Kaldes efter hver import (tilbud udløber med datoen). */
@@ -45,6 +46,7 @@ final class Sales {
 			if ( $r['sale_since'] && $r['sale_since'] >= $cut && $list > $price && $price > 0 ) {
 				$sale[ $id ] = [
 					'percent' => (int) round( ( $list - $price ) / $list * 100 ),
+					'list'    => $list,
 					'ref'     => self::reference( $id, (string) $r['shop'], $price, (string) $r['sale_since'] ),
 				];
 			}
@@ -55,10 +57,12 @@ final class Sales {
 			delete_post_meta( $id, self::META_SALE );
 			delete_post_meta( $id, self::META_PERCENT );
 			delete_post_meta( $id, self::META_REF );
+			delete_post_meta( $id, self::META_LIST );
 		}
 		foreach ( $sale as $id => $s ) {
 			update_post_meta( $id, self::META_SALE, 1 );
 			update_post_meta( $id, self::META_PERCENT, $s['percent'] );
+			update_post_meta( $id, self::META_LIST, $s['list'] );
 			if ( $s['ref'] ) {
 				update_post_meta( $id, self::META_REF, $s['ref'] );
 			} else {

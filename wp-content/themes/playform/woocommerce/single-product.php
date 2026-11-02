@@ -103,7 +103,11 @@ while ( have_posts() ) :
 							<span class="pricebox__price<?php echo $is_was ? ' is-sale' : ''; ?>"><?php echo esc_html( playform_kr( $d['price'] ) ); ?></span>
 							<?php if ( $is_was ) : ?>
 								<span class="pricebox__save">Spar <?php echo esc_html( playform_kr( $d['was'] - $d['price'] ) ); ?> (<?php echo (int) $pct; ?> %)</span>
-								<span class="pricebox__ref">Førpris <s><?php echo esc_html( playform_kr( $d['was'] ) ); ?></s> · laveste pris hos <?php echo esc_html( $d['shop'] ); ?> de 30 dage før tilbuddet</span>
+								<?php if ( 'shop' === $d['was_src'] ) : ?>
+									<span class="pricebox__ref">Butikkens førpris <s><?php echo esc_html( playform_kr( $d['was'] ) ); ?></s> · oplyst af <?php echo esc_html( $d['shop'] ); ?></span>
+								<?php else : ?>
+									<span class="pricebox__ref">Førpris <s><?php echo esc_html( playform_kr( $d['was'] ) ); ?></s> · laveste pris hos <?php echo esc_html( $d['shop'] ); ?> de 30 dage før tilbuddet</span>
+								<?php endif; ?>
 							<?php elseif ( $d['drop'] && $d['ref'] ) : ?>
 								<span class="pricebox__ref">Laveste pris de 30 dage før: <s><?php echo esc_html( playform_kr( $d['ref'] ) ); ?></s></span>
 							<?php endif; ?>

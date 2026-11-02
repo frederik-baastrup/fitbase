@@ -61,6 +61,16 @@ function playform_card_data( WC_Product $p ): array {
 	$in_stock = (bool) get_post_meta( $id, '_pf_in_stock', true );
 	$attrs    = (array) get_post_meta( $id, '_pf_attributes', true );
 	$brand    = (string) get_post_meta( $id, '_pf_brand', true );
+	$was     = 0.0;
+	$was_src = '';
+	if ( $in_stock && get_post_meta( $id, '_pf_shop_sale', true ) ) {
+		$was     = (float) get_post_meta( $id, '_pf_sale_ref', true );
+		$was_src = $was > 0 ? 'ref' : '';
+		if ( ! $was ) {
+			$was     = (float) get_post_meta( $id, '_pf_sale_list', true );
+			$was_src = $was > 0 ? 'shop' : '';
+		}
+	}
 	return [
 		'url'      => get_permalink( $id ),
 		'name'     => $p->get_name(),
@@ -71,8 +81,10 @@ function playform_card_data( WC_Product $p ): array {
 		'ref'      => $ref,
 		'in_stock' => $in_stock,
 		'sale'     => $in_stock && (bool) get_post_meta( $id, '_pf_shop_sale', true ),
-		// Kontrolleret førpris: laveste pris i de 30 dage før tilbuddet, målt af os (se Sales::reference).
-		'was'      => $in_stock && get_post_meta( $id, '_pf_shop_sale', true ) ? (float) get_post_meta( $id, '_pf_sale_ref', true ) : 0.0,
+		// Førpris: helst vores kontrollerede (laveste pris de 30 dage før tilbuddet, se Sales::reference),
+		// ellers butikkens egen førpris – mærket som sådan ('was_src' => 'shop').
+		'was'      => $was,
+		'was_src'  => $was_src,
 		'foldable' => ! empty( $attrs['foldable'] ),
 		'shop'     => $shop,
 		'shops'    => $shops,
@@ -102,7 +114,7 @@ function playform_product_card( WC_Product $p, string $class = 'pcard' ): void {
 			<span class="pcard__price">
 				<?php if ( $d['was'] > $d['price'] ) : ?>
 					<span class="is-sale"><?php echo esc_html( playform_kr( $d['price'] ) ); ?></span>
-					<s title="Laveste pris de 30 dage før tilbuddet"><?php echo esc_html( playform_kr( $d['was'] ) ); ?></s>
+					<s title="<?php echo 'shop' === $d['was_src'] ? esc_attr( 'Butikkens førpris' ) : 'Laveste pris de 30 dage før tilbuddet'; ?>"><?php echo esc_html( playform_kr( $d['was'] ) ); ?></s>
 				<?php else : ?>
 					<span><?php echo esc_html( playform_kr( $d['price'] ) ); ?></span>
 				<?php endif; ?>
@@ -140,8 +152,8 @@ function playform_breadcrumbs( array $items ): void {
 }
 
 /**
- * Besparelse i procent i forhold til den kontrollerede førpris (laveste pris de 30 dage før tilbuddet).
- * 0, når der ikke er en kontrolleret førpris – så viser vi ingen procent (førprisreglen).
+ * Besparelse i procent i forhold til førprisen (kontrolleret førpris, ellers butikkens egen – se playform_card_data()).
+ * 0, når der ingen førpris er.
  */
 function playform_save_pct( float $price, float $was ): int {
 	return ( $was > $price && $price > 0 ) ? (int) floor( ( $was - $price ) / $was * 100 ) : 0;

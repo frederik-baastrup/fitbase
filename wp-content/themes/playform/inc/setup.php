@@ -56,6 +56,7 @@ function playform_run_upgrades(): void {
 		\Playform\Feeds\Sales::refresh_all( current_time( 'Y-m-d' ) ); // kontrollerede førpriser
 	}
 	playform_update_text( 'saadan-tjener-vi-penge', '<p>Som tilbud viser vi kun butikkernes egne tilbud, og kun i højst 14 dage. Vi viser aldrig butikkernes førpriser eller rabatter i procent.</p>', '<p>Som tilbud viser vi kun butikkernes egne tilbud, og kun i højst 14 dage. Vi viser ikke butikkernes egne førpriser. En overstreget førpris viser vi kun, når vi selv har fulgt prisen hos butikken i de 30 dage før tilbuddet, og den er den laveste pris i perioden.</p>' );
+	playform_update_text( 'saadan-tjener-vi-penge', '<p>Som tilbud viser vi kun butikkernes egne tilbud, og kun i højst 14 dage. Vi viser ikke butikkernes egne førpriser. En overstreget førpris viser vi kun, når vi selv har fulgt prisen hos butikken i de 30 dage før tilbuddet, og den er den laveste pris i perioden.</p>', '<p>Som tilbud viser vi kun butikkernes egne tilbud, og kun i højst 14 dage. Har vi selv fulgt prisen hos butikken i de 30 dage før tilbuddet, viser vi den laveste pris i perioden som førpris. Ellers viser vi butikkens egen førpris, tydeligt mærket som butikkens. Tjek altid den endelige pris hos butikken.</p>' );
 	foreach ( [ 'playform_front_popular', 'playform_front_deals', 'playform_front_new', 'playform_price_ranges' ] as $t ) {
 		delete_transient( $t );
 	}
