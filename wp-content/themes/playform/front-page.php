@@ -45,6 +45,19 @@ $hero = [
 	[ 'slug' => 'kettlebell', 'title' => 'Kettlebells', 'img' => 'hero-kettlebells.jpg', 'subs' => [ [ 'Kettlebell 12 kg', [ 'sub' => 'kettlebell', 'vaegt' => '12' ] ], [ 'Kettlebell 16 kg', [ 'sub' => 'kettlebell', 'vaegt' => '16' ] ], [ 'Kettlebell 24 kg', [ 'sub' => 'kettlebell', 'vaegt' => '24' ] ] ] ],
 	[ 'slug' => 'motionscykler', 'title' => 'Motionscykler', 'img' => 'hero-motionscykler.jpg', 'subs' => [ [ 'Spinningcykel', [ 'sub' => 'spinningcykel' ] ], [ 'Kondicykel', [ 'sub' => 'kondicykel' ] ], [ 'Airbike', [ 'sub' => 'airbike' ] ], [ 'Liggecykel', [ 'sub' => 'liggecykel' ] ] ] ],
 ];
+// Flere kategorier – kun i mobilkarrusellen (desktop viser de tre store kort). Underkategorier hentes fra kategoritræet.
+foreach ( [
+	[ 'romaskiner-crosstrainere', 'Romaskiner & crosstrainere', 'mm-crosstrainer.jpg' ],
+	[ 'vaegte-kettlebells', 'Vægte', 'mm-vaegte.jpg' ],
+	[ 'styrke-baenke', 'Bænke & racks', 'mm-baenk.jpg' ],
+	[ 'yoga-pilates', 'Yoga & pilates', 'mm-pilates.jpg' ],
+	[ 'restitution', 'Restitution', 'mm-restitution.jpg' ],
+	[ 'tilbehor', 'Tilbehør', 'mm-tilbehor.jpg' ],
+] as [ $x_slug, $x_title, $x_img ] ) {
+	if ( get_term_by( 'slug', $x_slug, 'product_cat' ) ) {
+		$hero[] = [ 'slug' => $x_slug, 'title' => $x_title, 'img' => $x_img, 'extra' => true, 'subs' => array_map( static fn( $l ) => [ $l[0], $l[1] ], array_slice( playform_sub_links( $x_slug ), 0, 3 ) ) ];
+	}
+}
 $deals     = playform_front_products( 'deals' );
 $has_deals = count( $deals ) >= 4;
 ?>
@@ -53,7 +66,7 @@ $has_deals = count( $deals ) >= 4;
 	<div class="hero">
 		<?php foreach ( $hero as $i => $h ) : ?>
 			<?php if ( $i === 1 ) : ?><div class="hero__side"><?php endif; ?>
-			<div class="cat<?php echo ! empty( $h['big'] ) ? ' cat--big' : ''; ?>">
+			<div class="cat<?php echo ! empty( $h['big'] ) ? ' cat--big' : ''; ?><?php echo ! empty( $h['extra'] ) ? ' cat--extra' : ''; ?>">
 				<img class="cat__img" src="<?php echo esc_url( playform_asset( $h['img'] ) ); ?>" alt="" <?php echo $i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'; ?>>
 				<span class="cat__shade"></span>
 				<a class="cat__main" href="<?php echo esc_url( playform_category_url( $h['slug'], $h['args'] ?? [] ) ); ?>" aria-label="<?php echo esc_attr( $h['title'] ); ?>"></a>
