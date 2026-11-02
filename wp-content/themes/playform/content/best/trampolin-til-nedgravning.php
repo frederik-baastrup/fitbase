@@ -1,7 +1,7 @@
 <?php
 /**
  * Overført fra det gamle fitbase.dk (/trampolin-til-nedgravning/) og omskrevet som ren købsguide.
- * Vores butikker sælger ikke trampoliner, så der er ingen produktvalg – kun generel købsrådgivning.
+ * Produktvalg fra Træningspartner og Apuls (feeddata). Fakta kun fra butikkens produktdata. Ingen påstand om egne test.
  */
 defined( 'ABSPATH' ) || exit;
 
@@ -9,12 +9,52 @@ return [
 	'slug'     => 'trampolin-til-nedgravning',
 	'title'    => 'Trampolin til nedgravning: Sådan vælger og graver du den ned',
 	'excerpt'  => 'En nedgravet trampolin står i niveau med plænen og falder smukt ind i haven. Her er fordele, ulemper og det, du skal vide, før du begynder at grave.',
-	'more_cat' => '',
+	'more_cat' => 'trampoliner',
 	'intro'    => <<<'HTML'
 <p>En trampolin til nedgravning – også kaldet inground-trampolin – står i niveau med græsplænen. Den er nemmere at komme op på for små børn, ser pænere ud i haven og tager mindre af udsigten. Til gengæld kræver den et hul og lidt planlægning.</p>
-<p>Butikkerne, vi samarbejder med, sælger ikke trampoliner, så her finder du ingen produktliste. I stedet får du det, du skal vide om at vælge og grave en trampolin ned.</p>
+<p>Herunder er vores bud på de 3 bedste nedgravede trampoliner hos danske butikker lige nu. Nederst får du det, du skal vide om at vælge og grave en trampolin ned.</p>
 HTML,
-	'picks'    => [],
+	'picks'    => [
+		[
+			'ean'     => '7051944186735',
+			'name'    => 'Jumpmaster Premium Inground 4,3 m',
+			'role'    => 'Bedst samlet',
+			'reviews' => [],
+			'verdict' => 'Stor nedgravet trampolin på 4,3 m med 96 fjedre og Premium hoppedug.',
+			'why'     => <<<'HTML'
+<p>Jumpmaster Premium Inground 4,3 m er ifølge butikken en stor nedgravet trampolin med 96 fjedre og Premium hoppedug. Butikken beskriver den som en stabil og familievenlig løsning med høj hoppeeffekt.</p>
+<p>4,3 m giver god plads, men kræver også et større hul. Mål haven op, og tjek, hvor dybt der skal graves, før du bestiller.</p>
+HTML,
+			'good'    => [ 'Familier med flere børn', 'Dig, der vil have god plads og en stabil konstruktion' ],
+			'less'    => [ 'Små haver eller dig, der vil undgå et stort hul' ],
+		],
+		[
+			'ean'     => '7051944186704',
+			'name'    => 'Jumpmaster Premium Inground 3,65 m',
+			'role'    => 'Bedst til prisen',
+			'reviews' => [],
+			'verdict' => 'Nedgravet trampolin på 3,65 m med 72 fjedre og Premium hoppedug.',
+			'why'     => <<<'HTML'
+<p>Jumpmaster Premium Inground 3,65 m er ifølge butikken en nedgravet trampolin med Premium hoppedug og 72 fjedre, beskrevet som stabil og med et diskret design til haven. Den er den billigste af vores nedgravede valg.</p>
+<p>Den mindre størrelse kræver et mindre hul og passer til haver med begrænset plads.</p>
+HTML,
+			'good'    => [ 'Mindre haver', 'Dig, der vil have en nedgravet trampolin til en lavere pris' ],
+			'less'    => [ 'Dig, der vil have den størst mulige hoppeflade' ],
+		],
+		[
+			'ean'     => '7051943729599',
+			'name'    => 'Flexi Inground Sport Line 4,3 m',
+			'role'    => 'Justerbar affjedring',
+			'reviews' => [],
+			'verdict' => 'Nedgravet familietrampolin på 4,3 m med justerbar Flexi-affjedring.',
+			'why'     => <<<'HTML'
+<p>Flexi Inground Sport Line 4,3 m er ifølge butikken en nedgravet familietrampolin med justerbar affjedring. Flexi-systemet tilpasses vægten, så hoppet er komfortabelt for både børn og voksne.</p>
+<p>Det gør den interessant, hvis børn og voksne skal bruge samme trampolin. Tjek lagerstatus hos butikken, da modellen kan være udsolgt.</p>
+HTML,
+			'good'    => [ 'Familier, hvor både børn og voksne hopper', 'Dig, der vil have justerbar affjedring' ],
+			'less'    => [ 'Dig, der vil have den billigste løsning' ],
+		],
+	],
 	'guide'    => <<<'HTML'
 <h2>Fordele og ulemper</h2>
 <h3>Fordele</h3>

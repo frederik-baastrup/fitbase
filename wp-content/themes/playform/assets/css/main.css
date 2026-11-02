@@ -1110,3 +1110,8 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 .rel__col a small { margin: 0; }
 @media (min-width: 761px) { .rel__col { flex-wrap: nowrap; flex-wrap: wrap; } .rel__h { flex: 0 0 auto; min-width: 96px; } .rel__grid { gap: 10px; } .rel__col { gap: 8px; } .rel__h { margin-right: 4px; } }
 @media (max-width: 760px) { .rel { margin: 24px 0 44px; padding-top: 18px; } .rel__title { font-size: 16px; margin-bottom: 12px; } .rel__col a { padding: 5px 11px; font-size: 13px; } }
+
+/* Købsknappen i accentfarven (#23D200 fra logoet): den vigtigste handling skal skille sig ud fra resten af siden */
+.btn-shop { background: #23D200; color: #0B0B0A; border: 0; box-shadow: 0 1px 0 rgba(0,0,0,.06), 0 6px 16px rgba(35,210,0,.22); }
+.btn-shop:hover, .btn-shop:focus-visible { background: #1EBD00; color: #0B0B0A; }
+.btn-shop svg { color: inherit; }

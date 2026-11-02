@@ -1,7 +1,7 @@
 <?php
 /**
  * Overført fra det gamle fitbase.dk (/firkantet-trampolin/) og omskrevet som ren købsguide.
- * Vores butikker sælger ikke trampoliner, så der er ingen produktvalg – kun generel købsrådgivning.
+ * Produktvalg fra Træningspartner og Apuls (feeddata). Fakta kun fra butikkens produktdata. Ingen påstand om egne test.
  */
 defined( 'ABSPATH' ) || exit;
 
@@ -9,12 +9,52 @@ return [
 	'slug'     => 'firkantet-trampolin',
 	'title'    => 'Firkantet trampolin: Fordele, ulemper og hvad du skal vælge',
 	'excerpt'  => 'En firkantet trampolin udnytter haven bedre og giver mere hoppeflade. Her er fordele og ulemper – og hvad du skal tjekke, før du køber.',
-	'more_cat' => '',
+	'more_cat' => 'trampoliner',
 	'intro'    => <<<'HTML'
 <p>De fleste havetrampoliner er runde, men firkantede og rektangulære trampoliner er blevet populære – især i haver med begrænset plads. Formen har betydning for både pladsen, hoppet og sikkerheden.</p>
-<p>Butikkerne, vi samarbejder med, sælger ikke trampoliner, så her finder du ingen produktliste. I stedet får du fordele og ulemper og det, du skal tjekke, uanset hvor du køber.</p>
+<p>Herunder er vores bud på de 3 firkantede (rektangulære) trampoliner hos danske butikker. Modellerne er dyrere og kan være udsolgt, så tjek lagerstatus hos butikken. Nederst får du fordele, ulemper og det, du skal tjekke.</p>
 HTML,
-	'picks'    => [],
+	'picks'    => [
+		[
+			'ean'     => '7051944189699',
+			'name'    => 'Jumpmaster Premium Rektangulær Inground Sport Line',
+			'role'    => 'Billigste firkantede',
+			'reviews' => [],
+			'verdict' => 'Nedgravet rektangulær trampolin på 4,57 x 3,05 m med 84 fjedre – uden net.',
+			'why'     => <<<'HTML'
+<p>Jumpmaster Premium Rektangulær Inground Sport Line 4,57 x 3,05 m er ifølge butikken en nedgravet rektangulær trampolin uden net med 84 fjedre og Premium hoppedug, der giver en præcis og responsiv hoppeeffekt.</p>
+<p>Den er den billigste af vores firkantede valg. Bemærk, at den leveres uden net. Tjek lagerstatus hos butikken.</p>
+HTML,
+			'good'    => [ 'Dig, der vil have en nedgravet rektangulær trampolin til en lavere pris', 'Øvede hoppere, der ikke kræver net' ],
+			'less'    => [ 'Små børn, hvor sikkerhedsnet er vigtigt' ],
+		],
+		[
+			'ean'     => '7051944188036',
+			'name'    => 'Jumpmaster Premium Rektangulær Inground 4,57 x 3,05 m',
+			'role'    => 'Nedgravet med net',
+			'reviews' => [],
+			'verdict' => 'Nedgravet rektangulær trampolin med 84 fjedre og Pro sikkerhedsnet.',
+			'why'     => <<<'HTML'
+<p>Jumpmaster Premium Rektangulær Inground 4,57 x 3,05 m er ifølge butikken en nedgravet rektangulær trampolin med Premium hoppedug, 84 fjedre og Pro sikkerhedsnet. Butikken fremhæver et præcist hop og solid kvalitet.</p>
+<p>Det er en dyr model, men den kommer med net. Tjek lagerstatus hos butikken.</p>
+HTML,
+			'good'    => [ 'Dig, der vil have en rektangulær trampolin i niveau med plænen og med net', 'Familier med børn i flere aldre' ],
+			'less'    => [ 'Dig, der leder efter en billig løsning' ],
+		],
+		[
+			'ean'     => '7051944187978',
+			'name'    => 'Jumpmaster Premium Rektangulær 4,57 x 3,05 m',
+			'role'    => 'Over jorden',
+			'reviews' => [],
+			'verdict' => 'Rektangulær trampolin med 84 fjedre og Premium hoppedug til opstilling over jorden.',
+			'why'     => <<<'HTML'
+<p>Jumpmaster Premium Rektangulær 4,57 x 3,05 m er ifølge butikken en stor rektangulær trampolin med 84 fjedre og Premium hoppedug, der giver kontrolleret hop, høj stabilitet og sikker hopning.</p>
+<p>Den står over jorden, så du undgår at skulle grave. Tjek lagerstatus hos butikken.</p>
+HTML,
+			'good'    => [ 'Dig, der vil have en rektangulær trampolin uden at grave et hul', 'Dig, der træner spring og vil have en lang hoppezone' ],
+			'less'    => [ 'Dig, der vil have trampolinen i niveau med plænen' ],
+		],
+	],
 	'guide'    => <<<'HTML'
 <h2>Fordele ved en firkantet trampolin</h2>
 <ul>

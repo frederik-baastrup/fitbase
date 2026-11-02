@@ -1,7 +1,7 @@
 <?php
 /**
  * Overført fra det gamle fitbase.dk (/bedste-trampolin/) og omskrevet som ren købsguide.
- * Vores butikker sælger ikke trampoliner, så der er ingen produktvalg – kun generel købsrådgivning.
+ * Produktvalg fra Træningspartner og Apuls (feeddata). Fakta kun fra butikkens produktdata. Ingen påstand om egne test.
  */
 defined( 'ABSPATH' ) || exit;
 
@@ -9,12 +9,52 @@ return [
 	'slug'     => 'bedste-trampolin',
 	'title'    => 'Bedste trampolin: Sådan finder du den rigtige til haven',
 	'excerpt'  => 'Størrelse, form, sikkerhedsnet, fjedre og ramme: her er det, der skiller en god havetrampolin fra en dårlig – og hvad du skal tjekke, før du køber.',
-	'more_cat' => '',
+	'more_cat' => 'trampoliner',
 	'intro'    => <<<'HTML'
 <p>En trampolin i haven giver timevis af leg og bevægelse – for børn og for voksne. Men der er stor forskel på kvaliteten, og en trampolin skal holde til mange års vind og vejr. Den bedste trampolin er derfor ikke nødvendigvis den største eller den dyreste, men den, der passer til din have, dine børn og den måde, I vil bruge den på.</p>
-<p>Butikkerne, vi samarbejder med, sælger ikke trampoliner, så her finder du ingen produktliste. I stedet har vi samlet det, du skal vide for at vælge rigtigt, uanset hvor du køber.</p>
+<p>Herunder er vores bud på de 3 bedste havetrampoliner hos danske butikker lige nu. Nederst finder du en købsguide til størrelse, sikkerhed og vedligehold.</p>
 HTML,
-	'picks'    => [],
+	'picks'    => [
+		[
+			'ean'     => '5714237011962',
+			'name'    => 'Odin Trampolin ø366cm',
+			'role'    => 'Bedst til prisen',
+			'reviews' => [],
+			'verdict' => 'Rund havetrampolin på 366 cm inkl. sikkerhedsnet til en lav pris.',
+			'why'     => <<<'HTML'
+<p>Odin Trampolin ø366 cm er ifølge butikken en trampolin til både børn og voksne, udført i robuste materialer og leveret med sikkerhedsnet. Med en diameter på 366 cm har den plads til legen i en almindelig have.</p>
+<p>Det er den billigste af vores tre valg og et godt sted at starte, hvis du vil have en komplet trampolin med net uden at bruge mange penge.</p>
+HTML,
+			'good'    => [ 'Familier, der vil have en komplet trampolin med net til en lav pris', 'Haver med almindelig plads' ],
+			'less'    => [ 'Dig, der vil have en nedgravet trampolin eller en meget stor flade' ],
+		],
+		[
+			'ean'     => '5714237011979',
+			'name'    => 'Odin Trampolin ø427cm',
+			'role'    => 'Mest plads',
+			'reviews' => [],
+			'verdict' => 'Større udgave med 427 cm i diameter og sikkerhedsnet.',
+			'why'     => <<<'HTML'
+<p>Odin Trampolin ø427 cm er den største af Odins runde trampoliner hos butikken. Ifølge butikken er den udført i robuste materialer til både børn og voksne og leveres med sikkerhedsnet.</p>
+<p>Den ekstra størrelse giver mere hoppeflade, så flere kan hoppe uden at komme i vejen for hinanden. Tjek, at haven har plads til både trampolinen og den frie zone rundt om.</p>
+HTML,
+			'good'    => [ 'Dig, der vil have mere hoppeflade til flere børn', 'Større haver' ],
+			'less'    => [ 'Små haver, hvor der ikke er plads til den frie zone rundt om' ],
+		],
+		[
+			'ean'     => '7051944185714',
+			'name'    => 'Jumpmaster Premium 4,3 m',
+			'role'    => 'Premium',
+			'reviews' => [],
+			'verdict' => 'Trampolin på 4,3 m med Premium hoppedug og 96 fjedre.',
+			'why'     => <<<'HTML'
+<p>Jumpmaster Premium 4,3 m har ifølge butikken Premium hoppedug og 96 fjedre og er beskrevet som en stabil konstruktion til både børn og voksne. Den har en højere pris end Odin-modellerne.</p>
+<p>Det er et valg for dig, der vil have en mere solid trampolin og er villig til at give mere for den. Se i butikken, hvad der følger med.</p>
+HTML,
+			'good'    => [ 'Dig, der vil have en mere solid og dyrere trampolin', 'Hyppig brug af både børn og voksne' ],
+			'less'    => [ 'Dig, der kun leder efter den billigste løsning' ],
+		],
+	],
 	'guide'    => <<<'HTML'
 <h2>Rund, firkantet eller til nedgravning?</h2>
 <p>Den første beslutning er formen og placeringen.</p>

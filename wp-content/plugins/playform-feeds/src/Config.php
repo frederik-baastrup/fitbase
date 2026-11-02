@@ -35,6 +35,7 @@ final class Config {
 	 */
 	public static function categories(): array {
 		return [
+			'trampoliner'        => [ 'name' => 'Trampoliner', 'match' => 'trampolin|mini-?tramp|rebounder' ],
 			'lobebaand'          => [ 'name' => 'Løbebånd', 'match' => 'løbebånd|gåbånd|walking ?pad|curve runner|treadmill' ],
 			'motionscykler'      => [ 'name' => 'Motionscykler', 'match' => 'siddecykel|spinningcykel|spinning ?bike|spin ?bike|motionscykel|kondicykel|liggecykel|air ?bike|assault ?bike|ergometercykel|indoor ?cycle|indendørscykel|pedaltræner' ],
 			'romaskiner-crosstrainere' => [ 'name' => 'Romaskiner & crosstrainere', 'match' => 'romaskine|rower|rowing|roergometer|ski ?erg|crosstrainer|cross ?trainer|elliptical' ],
@@ -98,6 +99,11 @@ final class Config {
 				'recovery-boots' => [ 'name' => 'Recovery boots', 'match' => 'recovery boots|kompressionsstøvle' ],
 				'kuldeterapi'   => [ 'name' => 'Kuldeterapi og isbad', 'match' => 'kulde|isbad|ice ?bath|cold' ],
 			],
+			'trampoliner' => [
+				'havetrampolin'       => [ 'name' => 'Havetrampolin', 'match' => 'ø ?\\d{3}|\\d,\\d{1,2} ?m\\b|sikkerhedsnet|premium|flexi|oval|rektangul|inground' ],
+				'nedgravet-trampolin' => [ 'name' => 'Nedgravet trampolin', 'match' => 'inground|nedgrav' ],
+				'fitnesstrampolin'    => [ 'name' => 'Fitnesstrampolin', 'match' => 'fitness|mini-?tramp|rebounder|\\b(8\\d|9\\d|1[0-4]\\d) ?cm' ],
+			],
 			'tilbehor' => [
 				'traeningsmaatte' => [ 'name' => 'Træningsmåtte', 'match' => 'træningsmåtte|gulvmåtte|måtte|gulv' ],
 				'elastikker'      => [ 'name' => 'Træningselastik', 'match' => 'elastik|band\b|bands\b|loop' ],
@@ -119,11 +125,13 @@ final class Config {
 	public static function exclude(): array {
 		return [
 			'gavekort',
+			// Trampoliner er med, men ikke tilbehøret (stige, cover, elastik, forankring, sikring m.m.).
+			'\\b(stige|cover|elastik|forankring\\w*|stormsikring|basketkurv|opbevaringslommer|rutchebane|fjedre?|kantbeklædning|betræk|net)\\b[^,]{0,40}trampolin|trampolin[^,]{0,25}\\b(stormsikring|basketkurv|opbevaringslommer|rutchebane|stige|cover)\\b|tilbehør til trampolin',
 			'konnector|connector kit|\\bkit for\\b|spare ?part|replacement part|\\bsn ?[<>]',
 			'\bguide\b|guides til|tips og tricks|de bedste|de \d bedste|vedligeholder du',
 			'kosttilskud|protein|kreatin|\bbcaa\b|vitamin|mad og drikke|drikkeflask|termokop',
 			'\bsko\b|sneaker|t-shirt|tights|shorts|bukser|jakke|hættetrøje|sportstøj|træningstøj|fritidstøj|tøj & sko|kompressionsbeklædning|strømpe|sokker|undertøj|nederdel|kjole',
-			'løbesko|leggins|leggings|termokrus|camping|grill|flåt|næsestrip|basketstander|netgarniture|skudtræner|shine & protect|bandage|sleeve|\\bbrace\\b|albuebeskytter|knæbeskytter|smerteplaster|plaster\\b|træningssko|pulsmåling|pleje|hygiejne|bøger|\bbog\b|skærmbrille|computer-|søvn|udlejning|\bdemo\b|reservedel|trampolin|håndbold|fodbold|basketball|volleyball|svøm|padel|tennis|golf|kampsport|graviditet|sanser|børn|ergonomi|funktionelle møbler|\bnav\b|fokus|lyd &|måleapparat|åndedræt|bækkenbund|støttebind|hårtilbehør|\btens\b|hydrogen',
+			'løbesko|leggins|leggings|termokrus|camping|grill|flåt|næsestrip|basketstander|netgarniture|skudtræner|shine & protect|bandage|sleeve|\\bbrace\\b|albuebeskytter|knæbeskytter|smerteplaster|plaster\\b|træningssko|pulsmåling|pleje|hygiejne|bøger|\bbog\b|skærmbrille|computer-|søvn|udlejning|\bdemo\b|reservedel|håndbold|fodbold|basketball|volleyball|svøm|padel|tennis|golf|kampsport|graviditet|sanser|børn|ergonomi|funktionelle møbler|\bnav\b|fokus|lyd &|måleapparat|åndedræt|bækkenbund|støttebind|hårtilbehør|\btens\b|hydrogen',
 		];
 	}
 
