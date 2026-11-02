@@ -79,6 +79,13 @@ jobs:
             sleep 10
           done
 
+      # SiteGround tager kun imod én tømning pr. sekund – så siderne tømmes i 6 dele, hver med sit eget kald.
+      - name: Tøm cachen side for side
+        run: |
+          for i in 0 1 2 3 4 5; do
+            curl -s -D - -o /dev/null --max-time 90 "https://fitbase.dk/wp-json/?pf_deploy=purge-${GITHUB_RUN_ID}-$i&pf_purge=$i" | grep -i "^x-pf-purge:" | tr -d '\r'
+          done
+
       # Kontrol: er en kategoriside (som ellers kunne ligge i cachen) frisk, dvs. har den samme CSS-version som filen?
       - name: Tjek at siderne er friske
         run: |

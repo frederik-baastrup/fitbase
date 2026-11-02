@@ -41,21 +41,7 @@ add_action(
  * Tømmer SiteGrounds sidecache (SiteGround Optimizer). Prøver alle kendte indgange og returnerer, hvad der blev brugt
  * ("none" = ingen fundet). Resultatet sendes som header ved udrulningens kald, så det kan ses i GitHub Actions.
  */
-function playform_purge_cache(): string {
-	delete_transient( 'playform_front_mobile_cats' );
-	@set_time_limit( 300 ); // phpcs:ignore
-	$S = '\\SiteGround_Optimizer\\Supercacher\\Supercacher';
-	// SiteGrounds samlede "tøm alt" virker ikke på undersider (og stjæler de efterfølgende tømninger) – tøm derfor side for side.
-	$purge = null;
-	if ( class_exists( $S ) && method_exists( $S, 'purge_cache_request' ) ) {
-		$purge = static fn( string $u ) => $S::purge_cache_request( $u, false );
-		$used  = 'Supercacher::purge_cache_request';
-	} elseif ( function_exists( 'sg_cachepress_purge_cache' ) ) {
-		$purge = static fn( string $u ) => sg_cachepress_purge_cache( $u );
-		$used  = 'sg_cachepress_purge_cache(url)';
-	} else {
-		$used = 'none';
-	}
+function playform_purge_urls(): array {
 	$urls = [ home_url( '/' ), home_url( '/koebsguide/' ), home_url( '/viden/' ), home_url( '/vores-butikker/' ) ];
 	foreach ( get_terms( [ 'taxonomy' => 'product_cat', 'hide_empty' => false ] ) as $t ) {
 		$l = get_term_link( $t );
@@ -64,18 +50,40 @@ function playform_purge_cache(): string {
 			$urls[] = trailingslashit( $l ) . 'tilbud/';
 		}
 	}
-	foreach ( get_posts( [ 'post_type' => [ 'post', 'page' ], 'post_status' => 'publish', 'posts_per_page' => 300, 'fields' => 'ids' ] ) as $pid ) {
+	foreach ( get_posts( [ 'post_type' => [ 'post', 'page' ], 'post_status' => 'publish', 'posts_per_page' => 300, 'fields' => 'ids', 'orderby' => 'ID' ] ) as $pid ) {
 		$urls[] = get_permalink( $pid );
 	}
-	$n = 0;
-	if ( $purge ) {
-		foreach ( array_unique( $urls ) as $u ) {
-			$purge( $u );
-			++$n;
-			usleep( 120000 ); // små pauser, så SiteGround ikke dropper tømninger i en byge
-		}
+	return array_values( array_unique( $urls ) );
+}
+
+/**
+ * Tømmer SiteGrounds sidecache side for side (SiteGrounds samlede "tøm alt" rammer ikke undersider). SiteGround tager kun
+ * imod ca. én tømning pr. sekund, så listen deles i dele ($part af $parts), som udrulningen kalder efter hinanden.
+ * Uden $part tømmes kun forsiden (hurtigt, bruges efter importen og i selve opdateringen).
+ */
+function playform_purge_cache( ?int $part = null, int $parts = 6 ): string {
+	delete_transient( 'playform_front_mobile_cats' );
+	@set_time_limit( 120 ); // phpcs:ignore
+	$S = '\\SiteGround_Optimizer\\Supercacher\\Supercacher';
+	if ( class_exists( $S ) && method_exists( $S, 'purge_cache_request' ) ) {
+		$purge = static fn( string $u ) => $S::purge_cache_request( $u, false );
+		$used  = 'Supercacher::purge_cache_request';
+	} elseif ( function_exists( 'sg_cachepress_purge_cache' ) ) {
+		$purge = static fn( string $u ) => sg_cachepress_purge_cache( $u );
+		$used  = 'sg_cachepress_purge_cache(url)';
+	} else {
+		update_option( 'playform_last_purge', gmdate( 'c' ) . ' none', false );
+		return 'none';
 	}
-	$used .= " | sider:$n";
+	$all  = playform_purge_urls();
+	$urls = $part === null ? [ $all[0] ] : array_slice( $all, $part * (int) ceil( count( $all ) / $parts ), (int) ceil( count( $all ) / $parts ) );
+	foreach ( $urls as $i => $u ) {
+		if ( $i ) {
+			usleep( 1100000 ); // SiteGround: højst én tømning pr. sekund
+		}
+		$purge( $u );
+	}
+	$used .= sprintf( ' | del %s: %d sider (af %d)', $part === null ? 'forside' : ( $part + 1 ) . '/' . $parts, count( $urls ), count( $all ) );
 	update_option( 'playform_last_purge', gmdate( 'c' ) . ' ' . $used, false );
 	return $used;
 }
@@ -116,6 +124,9 @@ add_filter(
 	static function ( $response ) {
 		if ( isset( $_GET['pf_deploy'] ) && $response instanceof WP_REST_Response ) { // phpcs:ignore
 			$response->header( 'X-PF-Upgrade', ! empty( $GLOBALS['pf_upgrade_ran'] ) ? 'ran' : 'skipped' );
+			if ( isset( $_GET['pf_purge'] ) ) { // phpcs:ignore
+				playform_purge_cache( max( 0, (int) $_GET['pf_purge'] ) ); // phpcs:ignore
+			}
 			$response->header( 'X-PF-Purge', (string) get_option( 'playform_last_purge', 'never' ) );
 			$response->header( 'X-PF-Css', (string) filemtime( get_template_directory() . '/assets/css/main.css' ) );
 			if ( ! empty( $_GET['pf_probe'] ) ) { // phpcs:ignore
