@@ -63,8 +63,15 @@ add_action(
 		header( 'X-Frame-Options: SAMEORIGIN' );
 		header( 'Referrer-Policy: strict-origin-when-cross-origin' );
 		header( 'Permissions-Policy: camera=(), microphone=(), geolocation=()' );
+		header( 'Cross-Origin-Opener-Policy: same-origin-allow-popups' );
 		if ( is_ssl() ) {
 			header( 'Strict-Transport-Security: max-age=31536000' );
 		}
 	}
 );
+
+// Samme fejlbesked ved login, uanset om brugernavnet findes (ellers kan man afprøve brugernavne).
+add_filter( 'login_errors', static fn() => 'Brugernavn eller adgangskode er forkert.' );
+
+// Adgangskoder til programmer (Application Passwords) bruges ikke – lukkes, medmindre der er behov.
+add_filter( 'wp_is_application_passwords_available', '__return_false' );
