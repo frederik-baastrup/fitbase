@@ -13,29 +13,30 @@ final class AiWriter {
 	public const META_DRAFT  = '_pf_ai_draft';
 	public const META_STATUS = '_pf_ai_status';   // pending | approved | rejected
 	public const META_DATE   = '_pf_ai_date';
-	public const META_VERSION = '_pf_ai_version'; // 2 = lang tekst med faste afsnit (nov. 2026)
-	public const VERSION      = 2;
+	public const META_VERSION = '_pf_ai_version'; // 3 = kort, unik tekst (nov. 2026); 2 = lang tekst med faste afsnit
+	public const VERSION      = 3;
+	public const OPT_SENTENCES = 'playform_ai_sentences'; // sætnings-hash → produkt-id (unikhedskontrol)
+	public const MAX_WORDS     = 125;
 
 	private const SYSTEM = <<<TXT
-Du skriver produkttekster på dansk til Fitbase, en side der samler fitnessudstyr fra flere danske webshops. Læseren overvejer at købe produktet til brug derhjemme og vil gerne forstå, om det passer til vedkommende.
+Du skriver korte, unikke produkttekster på dansk til Fitbase, en side der samler fitnessudstyr fra flere danske webshops. Læseren vil hurtigt forstå, hvad produktet er, og hvad der kendetegner det.
 
 Regler – de er vigtigere end alt andet:
-1. Brug KUN fakta, der står i produktdataene. Opfind aldrig mål, vægt, hastighed, motorkraft, materialer, garanti, programmer eller andre specifikationer.
-2. Står en oplysning ikke i dataene, så nævn den ikke som en egenskab ved produktet. Er dataene sparsomme, så fyld ud med generel, sand købsrådgivning for produkttypen – aldrig med gæt om netop dette produkt.
-3. Generel købsrådgivning skal tydeligt være generel ("Når du vælger en romaskine, er det en god idé at …"), ikke en påstand om dette produkt. Brug ingen tal i den generelle rådgivning – kun tal, der står i produktdataene.
-4. Ingen superlativer uden belæg ("markedets bedste", "perfekt"). Ingen priser, rabatter eller butiksnavne – dem viser siden selv.
-5. Naturligt, venligt dansk. Du-form. Skriv konkret og nyttigt, ikke fyldtekst.
+1. Brug KUN fakta, der står i produktdataene. Opfind aldrig mål, vægt, hastighed, motorkraft, materialer, garanti, programmer eller andre specifikationer. Tal skal stå i dataene.
+2. Skriv kort. Er der få fakta, så er en kort tekst helt i orden (40 ord er fint). Fyld ALDRIG ud med generel købsrådgivning, forklaringer af begreber, gæt ud fra produktnavnet, "hvem passer det til"-afsnit eller andre fyldord.
+3. Teksten må ikke ligne butikkens beskrivelse. Omformulér med egne ord. Højst 3 ord i træk må være identiske med beskrivelsen, og kopiér aldrig sætninger.
+4. Hver tekst skal være unik for netop dette produkt. Ingen standardsætninger, der kunne stå på andre produkter ("er et godt valg til …", "perfekt til hjemmet", "med dette produkt får du"). Start ikke tekster med produktnavnet efterfulgt af "er" – start med en konkret egenskab eller anvendelse.
+5. Ingen superlativer uden belæg ("markedets bedste", "perfekt"). Ingen priser, rabatter eller butiksnavne.
+6. Naturligt, venligt dansk. Konkret og nyttigt.
 
-Opbygning af html (ca. 300–450 ord i alt):
-- 1–2 indledende afsnit (<p>): hvad produktet er, og hvad det kan bruges til – ud fra navn, kategori og beskrivelse.
-- <h3>Det får du</h3> og en punktliste (<ul><li>) med de egenskaber, der står i dataene. Udelad afsnittet, hvis dataene ikke nævner nogen egenskaber.
-- <h3>Hvem passer den til?</h3> og 1 afsnit: hvem produktet egner sig til, ud fra dataene og produkttypen.
-- <h3>Det skal du overveje</h3> og 1–2 afsnit med generel købsrådgivning for produkttypen (fx plads, støj, opbevaring, vedligeholdelse, komfort), så læseren kan vurdere, om produktet passer til netop dem.
+Opbygning af html (70–100 ord i alt, aldrig over 110):
+- Ét <p> med 2–3 sætninger: hvad produktet er, og det vigtigste, der adskiller det – ud fra dataene.
+- Valgfrit: en <ul> med 3–5 korte <li> med konkrete fakta fra dataene (fx mål, belastning, materiale, medfølgende dele). Kun hvis dataene indeholder dem. Ingen overskrifter.
 
 Svar KUN med JSON:
-{"html": "<p>…</p>…", "fordele": ["…"], "ulemper": ["…"]}
-- html: kun <p>, <h3>, <ul>, <li>, <strong>.
-- fordele/ulemper: 0–3 punkter hver, kun hvis dataene understøtter dem. Ellers tomme lister.
+{"html": "<p>…</p><ul><li>…</li></ul>", "fordele": [], "ulemper": []}
+- html: kun <p>, <ul>, <li>, <strong>.
+- fordele og ulemper skal altid være tomme lister.
 TXT;
 
 	/** Loft over antal tekster pr. døgn, så et fejlbehæftet job aldrig kan løbe løbsk. */
@@ -62,17 +63,27 @@ TXT;
 			'egenskaber'  => $attrs,
 			'kategorier'  => array_values( array_filter( (array) wp_get_post_terms( $product_id, 'product_cat', [ 'fields' => 'names' ] ) ) ),
 		];
-		$answer = Ai::json( Ai::ask( Ai::MODEL_WRITING, self::SYSTEM, "Produktdata:\n" . wp_json_encode( $facts, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT ), 3000 ) );
-		if ( ! is_array( $answer ) || empty( $answer['html'] ) ) {
-			throw new \RuntimeException( 'Uventet svar fra Claude.' );
+		$prompt   = "Produktdata:\n" . wp_json_encode( $facts, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT );
+		$problems = [];
+		$draft    = [];
+		for ( $try = 0; $try < 3; $try++ ) { // op til to omskrivninger, hvis kontrollen finder noget (kopi, dublet, for lang, tal)
+			$ask    = $problems ? $prompt . "\n\nDit forrige forsøg blev afvist:\n- " . implode( "\n- ", $problems ) . "\nSkriv teksten om, så problemerne er væk (kortere, med egne ord, ingen sætninger der kan stå på andre produkter)." : $prompt;
+			$answer = Ai::json( Ai::ask( Ai::MODEL_WRITING, self::SYSTEM, $ask, 900 ) );
+			if ( ! is_array( $answer ) || empty( $answer['html'] ) ) {
+				throw new \RuntimeException( 'Uventet svar fra Claude.' );
+			}
+			$draft = [
+				'html'    => wp_kses( $answer['html'], [ 'p' => [], 'ul' => [], 'li' => [], 'strong' => [] ] ),
+				'pros'    => [],
+				'cons'    => [],
+				'sources' => $facts,
+			];
+			$problems = self::check( $draft, $facts, $product_id );
+			if ( ! $problems ) {
+				break;
+			}
 		}
-		$draft = [
-			'html'    => wp_kses( $answer['html'], [ 'p' => [], 'h3' => [], 'ul' => [], 'li' => [], 'strong' => [] ] ),
-			'pros'    => array_slice( array_map( 'sanitize_text_field', (array) ( $answer['fordele'] ?? [] ) ), 0, 3 ),
-			'cons'    => array_slice( array_map( 'sanitize_text_field', (array) ( $answer['ulemper'] ?? [] ) ), 0, 3 ),
-			'sources' => $facts,
-		];
-		$draft['problems'] = self::check( $draft, $facts );
+		$draft['problems'] = $problems;
 		update_post_meta( $product_id, self::META_DRAFT, $draft );
 		update_post_meta( $product_id, self::META_STATUS, 'pending' );
 		update_post_meta( $product_id, self::META_DATE, current_time( 'mysql' ) );
@@ -90,7 +101,7 @@ TXT;
 	 * - Hvert tal i teksten skal findes i produktdataene (ellers kan det være opfundet).
 	 * - Ingen reklamesuperlativer.
 	 */
-	public static function check( array $draft, array $facts ): array {
+	public static function check( array $draft, array $facts, int $product_id = 0 ): array {
 		$text   = wp_strip_all_tags( ( $draft['html'] ?? '' ) . ' ' . implode( ' ', (array) ( $draft['pros'] ?? [] ) ) . ' ' . implode( ' ', (array) ( $draft['cons'] ?? [] ) ) );
 		$source = wp_json_encode( $facts, JSON_UNESCAPED_UNICODE );
 		$nums   = static function ( string $s ): array {
@@ -105,10 +116,59 @@ TXT;
 				$problems[] = "Tallet $n står ikke i butikkens data.";
 			}
 		}
+		// Længde: korte tekster.
+		$words = count( preg_split( '/\s+/u', trim( $text ), -1, PREG_SPLIT_NO_EMPTY ) );
+		if ( $words > self::MAX_WORDS ) {
+			$problems[] = "Teksten er for lang ($words ord, højst " . self::MAX_WORDS . ').';
+		}
+		// Kopi af butikkens beskrivelse (duplicate content): 6 ord i træk, der også står i beskrivelsen.
+		$shingles = static function ( string $t, int $n ): array {
+			$w = preg_split( '/\s+/u', mb_strtolower( preg_replace( '/[^\p{L}\p{N}\s]/u', ' ', wp_strip_all_tags( $t ) ) ), -1, PREG_SPLIT_NO_EMPTY );
+			$o = [];
+			for ( $i = 0; $i + $n <= count( $w ); $i++ ) {
+				$o[ implode( ' ', array_slice( $w, $i, $n ) ) ] = true;
+			}
+			return $o;
+		};
+		$desc = (string) ( $facts['beskrivelse'] ?? '' );
+		if ( $desc !== '' && array_intersect_key( $shingles( $text, 6 ), $shingles( $desc, 6 ) ) ) {
+			$problems[] = 'Teksten kopierer butikkens beskrivelse (6 ord i træk er identiske) – omformulér med egne ord.';
+		}
+		// Dublet: sætninger (7+ ord), der allerede står på et andet produkt.
+		if ( $product_id ) {
+			$index = (array) get_option( self::OPT_SENTENCES, [] );
+			foreach ( self::sentences( $text ) as $h => $sentence ) {
+				if ( isset( $index[ $h ] ) && (int) $index[ $h ] !== $product_id ) {
+					$problems[] = 'Sætningen "' . mb_substr( $sentence, 0, 80 ) . '…" står allerede på et andet produkt.';
+				}
+			}
+		}
 		if ( preg_match( '/\b(markedets bedste|bedste på markedet|perfekt|perfekte|uovertruffen|verdens bedste|garanteret)\b/iu', $text, $m ) ) {
 			$problems[] = 'Reklameord: "' . $m[1] . '".';
 		}
 		return $problems;
+	}
+
+	/** Sætninger på 7+ ord, normaliseret til sammenligning: [ hash => sætning ]. */
+	public static function sentences( string $text ): array {
+		$out = [];
+		foreach ( preg_split( '/(?<=[.!?])\s+|\n+/u', wp_strip_all_tags( str_replace( [ '</li>', '</p>' ], [ ". ", ". " ], $text ) ), -1, PREG_SPLIT_NO_EMPTY ) as $sentence ) {
+			$norm  = trim( preg_replace( '/\s+/u', ' ', mb_strtolower( preg_replace( '/[^\p{L}\p{N}\s]/u', ' ', $sentence ) ) ) );
+			$count = count( explode( ' ', $norm ) );
+			if ( $count >= 7 ) {
+				$out[ substr( md5( $norm ), 0, 10 ) ] = trim( $sentence );
+			}
+		}
+		return $out;
+	}
+
+	/** Gemmer produktets sætninger i indekset (og fjerner dets gamle), så kommende tekster kan tjekkes mod dem. */
+	public static function index_text( int $product_id, string $html ): void {
+		$index = array_filter( (array) get_option( self::OPT_SENTENCES, [] ), static fn( $pid ) => (int) $pid !== $product_id );
+		foreach ( array_keys( self::sentences( $html ) ) as $h ) {
+			$index[ $h ] = $product_id;
+		}
+		update_option( self::OPT_SENTENCES, $index, false );
 	}
 
 	/** Godkender udkastet (evt. rettet af redaktøren) og viser det på siden. */
@@ -119,6 +179,7 @@ TXT;
 		update_post_meta( $product_id, '_pf_pros', array_values( array_filter( $pros ?? ( $draft['pros'] ?? [] ) ) ) );
 		update_post_meta( $product_id, '_pf_cons', array_values( array_filter( $cons ?? ( $draft['cons'] ?? [] ) ) ) );
 		update_post_meta( $product_id, self::META_STATUS, 'approved' );
+		self::index_text( $product_id, $html );
 	}
 
 	public static function reject( int $product_id ): void {
@@ -126,8 +187,8 @@ TXT;
 	}
 
 	/**
-	 * Produkter, der skal have tekst: først dem uden tekst, derefter automatiske tekster i det gamle, korte
-	 * format (uden META_VERSION). Vigtigste først (på lager, højeste pris).
+	 * Produkter, der skal have tekst: først dem uden tekst, derefter automatiske tekster i et ældre format
+	 * (uden META_VERSION eller med lavere version end VERSION). Vigtigste først (på lager, højeste pris).
 	 */
 	public static function queue( int $limit, string $category = '' ): array {
 		$base = [
@@ -149,7 +210,7 @@ TXT;
 					'posts_per_page' => $limit - count( $ids ),
 					'meta_query'     => [
 						[ 'key' => self::META_STATUS, 'value' => 'approved' ],
-						[ 'key' => self::META_VERSION, 'compare' => 'NOT EXISTS' ],
+						[ 'relation' => 'OR', [ 'key' => self::META_VERSION, 'compare' => 'NOT EXISTS' ], [ 'key' => self::META_VERSION, 'value' => self::VERSION, 'type' => 'NUMERIC', 'compare' => '<' ] ],
 						$in_stock,
 					],
 				]

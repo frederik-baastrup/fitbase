@@ -195,10 +195,9 @@ while ( have_posts() ) :
 		<?php
 		if ( $text ) {
 			the_content();
-		} elseif ( $feed_txt ) {
-			echo '<p>' . esc_html( $feed_txt ) . '</p>';
 		} else {
-			echo '<p class="muted">Der er endnu ingen beskrivelse af produktet.</p>';
+			// Butikkens egen tekst vises ikke (duplicate content) – kun vores egne tekster.
+			echo '<p class="muted">Vores beskrivelse af produktet er på vej. Se specifikationerne herunder for de oplysninger, butikken har.</p>';
 		}
 		$pros = array_filter( (array) get_post_meta( $id, '_pf_pros', true ) );
 		$cons = array_filter( (array) get_post_meta( $id, '_pf_cons', true ) );

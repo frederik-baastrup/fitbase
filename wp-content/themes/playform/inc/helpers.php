@@ -201,7 +201,7 @@ function playform_product_schema( WC_Product $product, array $offers, array $d )
 	if ( strlen( $ean ) === 13 ) {
 		$data['gtin13'] = $ean;
 	}
-	$desc = wp_strip_all_tags( get_the_content( null, false, $product->get_id() ) ?: (string) get_post_meta( $product->get_id(), '_pf_feed_description', true ) );
+	$desc = wp_strip_all_tags( get_the_content( null, false, $product->get_id() ) ); // kun vores egen tekst, ikke butikkens (duplicate content)
 	if ( $desc ) {
 		$data['description'] = mb_substr( $desc, 0, 500 );
 	}
