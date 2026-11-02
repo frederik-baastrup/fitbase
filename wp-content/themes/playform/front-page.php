@@ -45,17 +45,38 @@ $hero = [
 	[ 'slug' => 'kettlebell', 'title' => 'Kettlebells', 'img' => 'hero-kettlebells.jpg', 'subs' => [ [ 'Kettlebell 12 kg', [ 'sub' => 'kettlebell', 'vaegt' => '12' ] ], [ 'Kettlebell 16 kg', [ 'sub' => 'kettlebell', 'vaegt' => '16' ] ], [ 'Kettlebell 24 kg', [ 'sub' => 'kettlebell', 'vaegt' => '24' ] ] ] ],
 	[ 'slug' => 'motionscykler', 'title' => 'Motionscykler', 'img' => 'hero-motionscykler.jpg', 'subs' => [ [ 'Spinningcykel', [ 'sub' => 'spinningcykel' ] ], [ 'Kondicykel', [ 'sub' => 'kondicykel' ] ], [ 'Airbike', [ 'sub' => 'airbike' ] ], [ 'Liggecykel', [ 'sub' => 'liggecykel' ] ] ] ],
 ];
-// Flere kategorier – kun i mobilkarrusellen (desktop viser de tre store kort). Underkategorier hentes fra kategoritræet.
-foreach ( [
-	[ 'romaskiner-crosstrainere', 'Romaskiner & crosstrainere', 'mm-crosstrainer.jpg' ],
-	[ 'vaegte-kettlebells', 'Vægte', 'mm-vaegte.jpg' ],
-	[ 'styrke-baenke', 'Bænke & racks', 'mm-baenk.jpg' ],
-	[ 'yoga-pilates', 'Yoga & pilates', 'mm-pilates.jpg' ],
-	[ 'restitution', 'Restitution', 'mm-restitution.jpg' ],
-	[ 'tilbehor', 'Tilbehør', 'mm-tilbehor.jpg' ],
-] as [ $x_slug, $x_title, $x_img ] ) {
-	if ( get_term_by( 'slug', $x_slug, 'product_cat' ) ) {
-		$hero[] = [ 'slug' => $x_slug, 'title' => $x_title, 'img' => $x_img, 'extra' => true, 'subs' => array_map( static fn( $l ) => [ $l[0], $l[1] ], array_slice( playform_sub_links( $x_slug ), 0, 3 ) ) ];
+// Desktop: de tre store kort ovenfor. Mobil: karrusel med de 6 kategorier, der har flest produkter.
+$mob = get_transient( 'playform_front_mobile_cats' );
+if ( ! is_array( $mob ) ) {
+	$counts = [];
+	foreach ( [ 'lobebaand', 'motionscykler', 'romaskiner-crosstrainere', 'vaegte-kettlebells', 'styrke-baenke', 'yoga-pilates', 'restitution', 'tilbehor' ] as $c ) {
+		if ( ! get_term_by( 'slug', $c, 'product_cat' ) ) {
+			continue;
+		}
+		$q            = new WP_Query( [ 'post_type' => 'product', 'post_status' => 'publish', 'fields' => 'ids', 'posts_per_page' => 1, 'tax_query' => [ [ 'taxonomy' => 'product_cat', 'field' => 'slug', 'terms' => $c ] ] ] ); // phpcs:ignore
+		$counts[ $c ] = (int) $q->found_posts;
+	}
+	arsort( $counts );
+	$mob = array_slice( array_keys( $counts ), 0, 6 );
+	set_transient( 'playform_front_mobile_cats', $mob, 12 * HOUR_IN_SECONDS );
+}
+$extra = [
+	'romaskiner-crosstrainere' => [ 'Romaskiner', 'mm-crosstrainer.jpg' ],
+	'vaegte-kettlebells'       => [ 'Vægte & kettlebells', 'hero-kettlebells.jpg' ],
+	'styrke-baenke'            => [ 'Bænke & racks', 'mm-baenk.jpg' ],
+	'yoga-pilates'             => [ 'Yoga & pilates', 'mm-pilates.jpg' ],
+	'restitution'              => [ 'Restitution', 'mm-restitution.jpg' ],
+	'tilbehor'                 => [ 'Tilbehør', 'mm-tilbehor.jpg' ],
+];
+foreach ( $hero as &$h ) {
+	$pos       = array_search( $h['slug'], $mob, true );
+	$h['mob']  = false !== $pos ? $pos : -1; // -1 = kun desktop
+	$h['desk'] = true;
+}
+unset( $h );
+foreach ( $mob as $pos => $c ) {
+	if ( isset( $extra[ $c ] ) ) {
+		$hero[] = [ 'slug' => $c, 'title' => $extra[ $c ][0], 'img' => $extra[ $c ][1], 'mob' => $pos, 'desk' => false, 'subs' => array_map( static fn( $l ) => [ $l[0], $l[1] ], array_slice( playform_sub_links( $c ), 0, 3 ) ) ];
 	}
 }
 $deals     = playform_front_products( 'deals' );
@@ -66,7 +87,7 @@ $has_deals = count( $deals ) >= 4;
 	<div class="hero">
 		<?php foreach ( $hero as $i => $h ) : ?>
 			<?php if ( $i === 1 ) : ?><div class="hero__side"><?php endif; ?>
-			<div class="cat<?php echo ! empty( $h['big'] ) ? ' cat--big' : ''; ?><?php echo ! empty( $h['extra'] ) ? ' cat--extra' : ''; ?>">
+			<div class="cat<?php echo ! empty( $h['big'] ) ? ' cat--big' : ''; ?><?php echo $h['desk'] ? '' : ' cat--mob'; ?><?php echo $h['mob'] < 0 ? ' cat--desk' : ''; ?>"<?php echo $h['mob'] >= 0 ? ' style="--mob-order:' . (int) $h['mob'] . '"' : ''; ?>>
 				<img class="cat__img" src="<?php echo esc_url( playform_asset( $h['img'] ) ); ?>" alt="" <?php echo $i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'; ?>>
 				<span class="cat__shade"></span>
 				<a class="cat__main" href="<?php echo esc_url( playform_category_url( $h['slug'], $h['args'] ?? [] ) ); ?>" aria-label="<?php echo esc_attr( $h['title'] ); ?>"></a>

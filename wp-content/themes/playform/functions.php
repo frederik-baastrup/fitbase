@@ -35,8 +35,8 @@ add_action(
 	'wp_enqueue_scripts',
 	static function () {
 		$uri = get_template_directory_uri();
-		wp_enqueue_style( 'playform', "$uri/assets/css/main.css", [], PLAYFORM_THEME_VERSION );
-		wp_enqueue_script( 'playform', "$uri/assets/js/main.js", [], PLAYFORM_THEME_VERSION, [ 'in_footer' => true, 'strategy' => 'defer' ] );
+		wp_enqueue_style( 'playform', "$uri/assets/css/main.css", [], PLAYFORM_THEME_VERSION . '.' . filemtime( __DIR__ . '/assets/css/main.css' ) ); // ny version ved hver ændring, så mobil/cache ikke viser gammel CSS
+		wp_enqueue_script( 'playform', "$uri/assets/js/main.js", [], PLAYFORM_THEME_VERSION . '.' . filemtime( __DIR__ . '/assets/js/main.js' ), [ 'in_footer' => true, 'strategy' => 'defer' ] );
 		// WooCommerce' egen CSS bruges ikke – temaet styler alt selv.
 		wp_dequeue_style( 'woocommerce-general' );
 		wp_dequeue_style( 'woocommerce-layout' );

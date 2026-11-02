@@ -910,5 +910,9 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 	.hero .cat__subs { gap: 10px; }
 	.cat__title, .cat--big .cat__title { font-size: 22px; }
 }
-.cat--extra { display: none; }
-@media (max-width: 760px) { .hero .cat--extra { display: block; } }
+.cat--mob { display: none; }
+@media (max-width: 760px) {
+	.hero .cat--mob { display: block; }
+	.hero .cat--desk { display: none; }
+	.hero .cat { order: var(--mob-order, 99); }
+}
