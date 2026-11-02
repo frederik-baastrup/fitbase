@@ -19,6 +19,13 @@ jobs:
           HOST="https://fitbase.dk"
           SLUGS="lobebaand motionscykler romaskiner-crosstrainere vaegte-kettlebells styrke-baenke yoga-pilates restitution tilbehor"
           {
+            echo "== Domæne og https =="
+            for u in "http://fitbase.dk/" "http://www.fitbase.dk/" "https://www.fitbase.dk/" "https://fitbase.dk/" "https://fitbase.dk/romaskine-med-vand/"; do
+              echo -n "$u -> "; curl -sS -o /dev/null -m 20 -w "%{http_code} %{redirect_url}\n" "$u" || echo "fejl"
+            done
+            echo -n "SSL-certifikat: "; echo | openssl s_client -connect fitbase.dk:443 -servername fitbase.dk 2>/dev/null | openssl x509 -noout -subject -ext subjectAltName -enddate 2>/dev/null | tr '\n' ' '; echo
+            echo -n "Forekomster af frederikb7.sg-host.com i forsidens HTML: "; curl -sS -m 20 https://fitbase.dk/ | grep -c "frederikb7.sg-host.com"
+            echo ""
             echo "== css/js version på forsiden =="
             curl -sS -k -o /dev/null -w "HTTP %{http_code}\n" "$HOST/"
             curl -sS -k "$HOST/" | grep -o "main.css?ver=[0-9.]*"

@@ -531,24 +531,92 @@ function playform_fix_incline_attr(): void {
 
 /**
  * Hoveddomænet blev skiftet fra SiteGrounds midlertidige frederikb7.sg-host.com til fitbase.dk (2. nov. 2026).
- * Står WordPress stadig på den gamle adresse, flyttes adressen og gamle absolutte links i indhold og menuer.
+ * Erstatter den gamle adresse overalt i databasen: indlæg, metadata, indstillinger, kommentarer og brugere.
+ * Serialiserede værdier pakkes ud og pakkes ind igen, så længdeangivelserne passer (en almindelig
+ * tekst-erstatning ville ødelægge dem, fordi den nye adresse er kortere).
  */
 function playform_move_to_fitbase_dk(): void {
-	$old = 'frederikb7.sg-host.com';
-	$new = 'https://fitbase.dk';
+	$pairs = [
+		'https://frederikb7.sg-host.com' => 'https://fitbase.dk',
+		'http://frederikb7.sg-host.com'  => 'https://fitbase.dk',
+		'https:\\/\\/frederikb7.sg-host.com' => 'https:\\/\\/fitbase.dk', // JSON-escapet
+		'http:\\/\\/frederikb7.sg-host.com'  => 'https:\\/\\/fitbase.dk',
+		'frederikb7.sg-host.com'         => 'fitbase.dk',
+	];
 	foreach ( [ 'home', 'siteurl' ] as $opt ) {
-		if ( str_contains( (string) get_option( $opt ), $old ) ) {
-			update_option( $opt, $new );
+		if ( str_contains( (string) get_option( $opt ), 'frederikb7.sg-host.com' ) ) {
+			update_option( $opt, 'https://fitbase.dk' );
 		}
 	}
-	if ( get_option( 'playform_moved_to_fitbase' ) ) {
+	if ( 2 <= (int) get_option( 'playform_moved_to_fitbase' ) ) {
 		return;
 	}
 	global $wpdb;
-	foreach ( [ 'https://' . $old, 'http://' . $old ] as $from ) {
-		$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->posts} SET post_content = REPLACE(post_content, %s, %s) WHERE post_content LIKE %s", $from, $new, '%' . $wpdb->esc_like( $from ) . '%' ) );
-		$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->postmeta} SET meta_value = REPLACE(meta_value, %s, %s) WHERE meta_key = '_menu_item_url' AND meta_value LIKE %s", $from, $new, '%' . $wpdb->esc_like( $from ) . '%' ) );
+	$like = '%' . $wpdb->esc_like( 'frederikb7.sg-host.com' ) . '%';
+	$fix  = static function ( $value ) use ( &$fix, $pairs ) {
+		if ( is_string( $value ) ) {
+			if ( is_serialized( $value ) ) {
+				$data = @unserialize( $value, [ 'allowed_classes' => false ] ); // phpcs:ignore
+				return false === $data && 'b:0;' !== $value ? strtr( $value, $pairs ) : serialize( $fix( $data ) );
+			}
+			return strtr( $value, $pairs );
+		}
+		if ( is_array( $value ) ) {
+			foreach ( $value as $k => $v ) {
+				$value[ $k ] = $fix( $v );
+			}
+		}
+		return $value;
+	};
+	// tabel => [ id-kolonne, kolonner der kan indeholde adressen ]
+	$tables = [
+		$wpdb->posts       => [ 'ID', [ 'post_content', 'post_excerpt', 'guid', 'post_content_filtered' ] ],
+		$wpdb->postmeta    => [ 'meta_id', [ 'meta_value' ] ],
+		$wpdb->options     => [ 'option_id', [ 'option_value' ] ],
+		$wpdb->termmeta    => [ 'meta_id', [ 'meta_value' ] ],
+		$wpdb->term_taxonomy => [ 'term_taxonomy_id', [ 'description' ] ],
+		$wpdb->comments    => [ 'comment_ID', [ 'comment_content', 'comment_author_url' ] ],
+		$wpdb->commentmeta => [ 'meta_id', [ 'meta_value' ] ],
+		$wpdb->users       => [ 'ID', [ 'user_url' ] ],
+		$wpdb->usermeta    => [ 'umeta_id', [ 'meta_value' ] ],
+	];
+	foreach ( $tables as $table => [ $id_col, $cols ] ) {
+		foreach ( $cols as $col ) {
+			$rows = $wpdb->get_results( $wpdb->prepare( "SELECT `$id_col` AS id, `$col` AS v FROM `$table` WHERE `$col` LIKE %s", $like ) ); // phpcs:ignore
+			foreach ( (array) $rows as $r ) {
+				$new = $fix( $r->v );
+				if ( $new !== $r->v ) {
+					$wpdb->update( $table, [ $col => $new ], [ $id_col => $r->id ] );
+				}
+			}
+		}
 	}
-	update_option( 'playform_moved_to_fitbase', 1, false );
+	update_option( 'playform_moved_to_fitbase', 2, false );
 	wp_cache_flush();
 }
+
+/**
+ * Én adresse: https://fitbase.dk uden www. www.fitbase.dk, det gamle midlertidige domæne og http
+ * sendes videre med 301. (SiteGrounds "HTTPS Enforce" gør det samme for http – dette er en sikkerhed.)
+ */
+add_action(
+	'init',
+	static function () {
+		if ( ( defined( 'WP_CLI' ) && WP_CLI ) || wp_doing_cron() || 'cli' === PHP_SAPI ) {
+			return;
+		}
+		$host = strtolower( (string) ( $_SERVER['HTTP_HOST'] ?? '' ) ); // phpcs:ignore
+		$host = preg_replace( '/:\d+$/', '', $host );
+		if ( ! in_array( $host, [ 'fitbase.dk', 'www.fitbase.dk', 'frederikb7.sg-host.com' ], true ) ) {
+			return; // fx localhost under udvikling
+		}
+		$https = is_ssl()
+			|| 'https' === strtolower( (string) ( $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '' ) ) // phpcs:ignore
+			|| 'on' === strtolower( (string) ( $_SERVER['HTTP_X_FORWARDED_SSL'] ?? '' ) ); // phpcs:ignore
+		if ( 'fitbase.dk' !== $host || ! $https ) {
+			wp_redirect( 'https://fitbase.dk' . ( $_SERVER['REQUEST_URI'] ?? '/' ), 301 ); // phpcs:ignore
+			exit;
+		}
+	},
+	0
+);
