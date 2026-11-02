@@ -31,9 +31,23 @@ add_action(
 		playform_run_upgrades();
 		update_option( 'playform_content_version', $want, false );
 		delete_transient( 'playform_upgrading' );
+		playform_purge_cache(); // nye filer → tøm sidecachen, så besøgende ikke får gammel HTML
 	},
 	25
 );
+
+/** Tømmer SiteGrounds sidecache (SiteGround Optimizer), hvis den findes. */
+function playform_purge_cache(): void {
+	if ( function_exists( 'sg_cachepress_purge_everything' ) ) {
+		sg_cachepress_purge_everything();
+	} elseif ( function_exists( 'sg_cachepress_purge_cache' ) ) {
+		sg_cachepress_purge_cache();
+	}
+	delete_transient( 'playform_front_mobile_cats' );
+}
+
+// Efter hver import har priser og lager ændret sig – tøm også cachen her.
+add_action( 'playform_feeds_after_import', 'playform_purge_cache', 99 );
 
 function playform_run_upgrades(): void {
 	playform_move_to_fitbase_dk();
