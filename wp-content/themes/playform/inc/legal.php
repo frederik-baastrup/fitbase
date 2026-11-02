@@ -8,7 +8,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-const PLAYFORM_LEGAL_VERSION = 4;
+const PLAYFORM_LEGAL_VERSION = 5;
 
 function playform_legal_privacy(): string {
 	return <<<'HTML'
@@ -56,16 +56,20 @@ function playform_legal_cookies(): string {
 <p><em>Senest opdateret: 2. november 2026</em></p>
 
 <h2>Bruger Fitbase cookies?</h2>
-<p>Fitbase bruger ikke cookies til statistik, markedsføring eller til at følge dig. Derfor beder vi dig heller ikke om samtykke, når du besøger siden.</p>
+<p>Fitbase bruger lige nu ingen cookies til statistik eller markedsføring. Vi har alligevel et samtykkevalg, så det er på plads, hvis vi senere tilføjer sådanne værktøjer. Du kan ændre dit valg når som helst via "Cookie-indstillinger" nederst på alle sider.</p>
 
 <h2>Nødvendige cookies</h2>
-<p>Siden sætter kun cookies, hvis du logger ind som redaktør i administrationen. De er nødvendige for, at login fungerer, og bruges ikke på den offentlige del af siden.</p>
+<p>Disse cookies er nødvendige og kræver ikke samtykke:</p>
+<ul>
+<li><b>pf_consent</b> husker dit cookie-valg (hvilke kategorier du har sagt ja eller nej til, og hvornår). Den gemmes i op til 12 måneder, hvorefter vi spørger igen.</li>
+<li>Login-cookies sættes kun, hvis du logger ind som redaktør i administrationen.</li>
+</ul>
+
+<h2>Statistik og markedsføring</h2>
+<p>Hvis vi begynder at bruge statistikværktøjer eller markedsføring, sættes og indlæses de først, når du har sagt ja. Du kan sige nej og bruge siden på samme måde. Du kan altid trække dit samtykke tilbage, og det er lige så nemt som at give det.</p>
 
 <h2>Når du klikker videre til en butik</h2>
-<p>Når du klikker på "Gå til butik", sendes du via affiliate-netværket Partner-ads videre til butikken. Partner-ads og butikken kan sætte deres egne cookies, når du lander hos dem. De er omfattet af Partner-ads' og butikkens egne cookie- og privatlivspolitikker.</p>
-
-<h2>Hvis vi ændrer det</h2>
-<p>Begynder vi at bruge fx statistikværktøjer, opdaterer vi denne side og beder om dit samtykke, før der sættes cookies, som ikke er nødvendige.</p>
+<p>Når du klikker på "Gå til butik", sendes du via affiliate-netværket Partner-ads videre til butikken. Partner-ads og butikken sætter deres egne cookies hos sig, så de kan registrere, at du kom fra Fitbase, og vi kan få provision, hvis du handler. Det sker på deres sider og efter du har forladt Fitbase, og de er ansvarlige for det. Du kan læse mere i Partner-ads' og den enkelte butiks cookie- og privatlivspolitik og styre cookies i din browser.</p>
 
 <h2>Spørgsmål</h2>
 <p>Kontakt os på <a href="mailto:kontakt@fitbase.dk">kontakt@fitbase.dk</a>. Fitbase drives af Mondae, CVR 37208329.</p>

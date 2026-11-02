@@ -382,3 +382,76 @@
 	window.addEventListener('resize', function () { navs.forEach(update); });
 	window.addEventListener('load', function () { navs.forEach(update); });
 })();
+
+// Cookie-samtykke: valget gemmes i den nødvendige førstepartscookie pf_consent (12 måneder, med tidspunkt og version).
+(function () {
+	var box = document.querySelector('[data-cc]');
+	if (!box) return;
+	var VERSION = parseInt(box.getAttribute('data-version'), 10) || 1;
+	var NAME = 'pf_consent';
+	var read = function () {
+		var m = document.cookie.match(new RegExp('(?:^|; )' + NAME + '=([^;]*)'));
+		if (!m) return null;
+		try { var c = JSON.parse(decodeURIComponent(m[1])); return c && c.v === VERSION ? c : null; } catch (e) { return null; }
+	};
+	var write = function (c) {
+		var secure = location.protocol === 'https:' ? '; Secure' : '';
+		document.cookie = NAME + '=' + encodeURIComponent(JSON.stringify(c)) + '; Max-Age=31536000; Path=/; SameSite=Lax' + secure;
+	};
+	var activate = function (c) {
+		document.querySelectorAll('script[type="text/plain"][data-consent]').forEach(function (old) {
+			var cat = old.getAttribute('data-consent');
+			if (!c[cat] || old.getAttribute('data-done')) return;
+			old.setAttribute('data-done', '1');
+			var s = document.createElement('script');
+			Array.prototype.forEach.call(old.attributes, function (a) {
+				if (['type', 'data-consent', 'data-src', 'data-done'].indexOf(a.name) === -1) s.setAttribute(a.name, a.value);
+			});
+			if (old.getAttribute('data-src')) s.src = old.getAttribute('data-src'); else s.text = old.text;
+			old.parentNode.insertBefore(s, old.nextSibling);
+		});
+	};
+	var wipe = function () { // tilbagetrukket samtykke: fjern de cookies, siden selv kan nå
+		document.cookie.split('; ').forEach(function (kv) {
+			var n = kv.split('=')[0];
+			if (!n || n === NAME) return;
+			['', '; Domain=' + location.hostname, '; Domain=.' + location.hostname.replace(/^www\./, '')].forEach(function (d) {
+				document.cookie = n + '=; Max-Age=0; Path=/' + d;
+			});
+		});
+	};
+	var views = function (name) {
+		box.querySelectorAll('[data-cc-view]').forEach(function (v) { v.hidden = v.getAttribute('data-cc-view') !== name; });
+	};
+	var show = function (name) {
+		var c = read() || {};
+		box.querySelectorAll('[data-cc-cat]').forEach(function (i) { i.checked = !!c[i.getAttribute('data-cc-cat')]; });
+		views(name || 'main');
+		box.hidden = false;
+		box.focus({ preventScroll: true });
+	};
+	var save = function (stat, mark) {
+		var before = read();
+		var withdrew = before && ((before.statistik && !stat) || (before.marketing && !mark));
+		write({ v: VERSION, t: new Date().toISOString(), statistik: !!stat, marketing: !!mark });
+		box.hidden = true;
+		if (withdrew) { wipe(); location.reload(); return; }
+		activate({ statistik: !!stat, marketing: !!mark });
+		document.dispatchEvent(new CustomEvent('pf:consent', { detail: { statistik: !!stat, marketing: !!mark } }));
+	};
+	box.addEventListener('click', function (e) {
+		var b = e.target.closest('[data-cc-act]');
+		if (!b) return;
+		var a = b.getAttribute('data-cc-act');
+		if (a === 'accept') save(true, true);
+		else if (a === 'reject') save(false, false);
+		else if (a === 'settings') show('settings');
+		else if (a === 'save') {
+			var st = box.querySelector('[data-cc-cat="statistik"]').checked, mk = box.querySelector('[data-cc-cat="marketing"]').checked;
+			save(st, mk);
+		}
+	});
+	document.querySelectorAll('[data-cc-open]').forEach(function (b) { b.addEventListener('click', function () { show('settings'); }); });
+	var c = read();
+	if (c) activate(c); else show('main');
+})();
