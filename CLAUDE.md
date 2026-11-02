@@ -60,7 +60,7 @@ På hosting: kør `wp playform import` fra et rigtigt cronjob kl. 05:30 og 17:30
 
 ## Udrulning
 
-Hvert push til `main` udrulles via GitHub Actions (FTPS) til `frederikb7.sg-host.com/public_html` på FTP-kontoen. Bliver playform.dk hoveddomæne, kan SiteGround omdøbe mappen – ret så stien i `.github/workflows/deploy.yml`.
+Hvert push til `main` udrulles via GitHub Actions (FTPS) til `fitbase.dk/public_html` på FTP-kontoen (`SITE_DIR` i `.github/workflows/deploy.yml`; udrulningen stopper, hvis mappen ikke indeholder `wp-config.php`). Hoveddomænet blev skiftet fra `frederikb7.sg-host.com` til fitbase.dk den 2. nov. 2026; `playform_move_to_fitbase_dk()` flytter WordPress-adressen. GitHub-secret `FTP_SERVER` skal være SiteGrounds FTP-værtsnavn, ikke det midlertidige domæne.
 
 ## Design
 

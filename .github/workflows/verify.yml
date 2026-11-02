@@ -12,11 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Tjek hovedkategorier på det midlertidige SiteGround-domæne
+      - name: Tjek hovedkategorier på fitbase.dk
         shell: bash
         run: |
           set +e
-          HOST="https://frederikb7.sg-host.com"
+          HOST="https://fitbase.dk"
           SLUGS="lobebaand motionscykler romaskiner-crosstrainere vaegte-kettlebells styrke-baenke yoga-pilates restitution tilbehor"
           {
             echo "== css/js version på forsiden =="

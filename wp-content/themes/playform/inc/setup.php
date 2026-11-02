@@ -36,6 +36,7 @@ add_action(
 );
 
 function playform_run_upgrades(): void {
+	playform_move_to_fitbase_dk();
 	// Importens tabeller og kategorier (kolonner, underkategorier, omsortering).
 	if ( class_exists( '\Playform\Feeds\Install' ) ) {
 		\Playform\Feeds\Install::activate();
@@ -526,4 +527,28 @@ function playform_fix_incline_attr(): void {
 		delete_post_meta( $id, '_pf_incline' );
 	}
 	update_option( 'playform_incline_fixed', 1, false );
+}
+
+/**
+ * Hoveddomænet blev skiftet fra SiteGrounds midlertidige frederikb7.sg-host.com til fitbase.dk (2. nov. 2026).
+ * Står WordPress stadig på den gamle adresse, flyttes adressen og gamle absolutte links i indhold og menuer.
+ */
+function playform_move_to_fitbase_dk(): void {
+	$old = 'frederikb7.sg-host.com';
+	$new = 'https://fitbase.dk';
+	foreach ( [ 'home', 'siteurl' ] as $opt ) {
+		if ( str_contains( (string) get_option( $opt ), $old ) ) {
+			update_option( $opt, $new );
+		}
+	}
+	if ( get_option( 'playform_moved_to_fitbase' ) ) {
+		return;
+	}
+	global $wpdb;
+	foreach ( [ 'https://' . $old, 'http://' . $old ] as $from ) {
+		$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->posts} SET post_content = REPLACE(post_content, %s, %s) WHERE post_content LIKE %s", $from, $new, '%' . $wpdb->esc_like( $from ) . '%' ) );
+		$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->postmeta} SET meta_value = REPLACE(meta_value, %s, %s) WHERE meta_key = '_menu_item_url' AND meta_value LIKE %s", $from, $new, '%' . $wpdb->esc_like( $from ) . '%' ) );
+	}
+	update_option( 'playform_moved_to_fitbase', 1, false );
+	wp_cache_flush();
 }
