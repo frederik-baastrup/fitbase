@@ -25,6 +25,9 @@ jobs:
             done
             echo -n "SSL-certifikat: "; echo | openssl s_client -connect fitbase.dk:443 -servername fitbase.dk 2>/dev/null | openssl x509 -noout -subject -ext subjectAltName -enddate 2>/dev/null | tr '\n' ' '; echo
             echo -n "Forekomster af frederikb7.sg-host.com i forsidens HTML: "; curl -sS -m 20 https://fitbase.dk/ | grep -c "frederikb7.sg-host.com"
+            echo -n "Kommer snart-side (0 = siden er synlig): "; curl -sS -m 20 https://fitbase.dk/ | grep -ci "coming-soon\|kommer snart"
+            echo -n "Produktkort på forsiden: "; curl -sS -m 20 https://fitbase.dk/ | grep -o 'class="pcard' | wc -l
+            echo -n "Robots: "; curl -sS -m 20 https://fitbase.dk/robots.txt | tr '\n' ' '; echo
             echo ""
             echo "== css/js version på forsiden =="
             curl -sS -k -o /dev/null -w "HTTP %{http_code}\n" "$HOST/"
