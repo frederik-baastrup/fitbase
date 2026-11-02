@@ -877,3 +877,23 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 	.hero { gap: 12px; }
 	.hero__side { gap: 12px; }
 }
+
+/* Kompakt menu på mobil: lavere bjælker og tættere rækker i den udfoldede menu */
+@media (max-width: 1080px) {
+	.site-header__row { padding: 2px 0 3px; }
+	.logo img { height: 17px; }
+	.menu-toggle, .search-toggle, .site-header__row .icon-btn { width: 36px; height: 36px; }
+	.dr__view { padding: 4px 16px 24px; }
+	.dr__bar { top: -4px; margin: -4px -16px 2px; padding: 6px 16px 6px 4px; }
+	.dr__back { width: 36px; height: 36px; }
+	.dr__heading { font-size: 17px; }
+	.dr__label { margin: 14px 0 4px; font-size: 11px; }
+	.dr__row { gap: 12px; min-height: 44px; padding: 5px 0; font-size: 15px; }
+	.dr__list--big .dr__row { min-height: 46px; padding: 4px 0; font-size: 15.5px; }
+	.dr__thumb { width: 32px; height: 32px; border-radius: 9px; }
+	.dr__list--small a { padding: 7px 0; font-size: 14px; }
+}
+@media (max-width: 700px) {
+	.topbar__mob { height: 26px; font-size: 10.5px; gap: 8px; }
+	.topbar__mob .topbar__tag { padding: 2px 5px 1px; font-size: 8.5px; }
+}
