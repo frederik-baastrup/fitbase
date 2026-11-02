@@ -37,6 +37,7 @@ add_action(
 
 function playform_run_upgrades(): void {
 	playform_move_to_fitbase_dk();
+	playform_launch();
 	// Importens tabeller og kategorier (kolonner, underkategorier, omsortering).
 	if ( class_exists( '\Playform\Feeds\Install' ) ) {
 		\Playform\Feeds\Install::activate();
@@ -620,3 +621,16 @@ add_action(
 	},
 	0
 );
+
+/**
+ * Lancering 2. nov. 2026: slår WooCommerce' "Kommer snart"-tilstand fra, så siden er synlig for alle.
+ * Kører kun én gang – slår ejeren tilstanden til igen, bliver den ikke slået fra på ny.
+ */
+function playform_launch(): void {
+	if ( get_option( 'playform_launched' ) ) {
+		return;
+	}
+	update_option( 'woocommerce_coming_soon', 'no' );
+	update_option( 'blog_public', '1' ); // søgemaskiner må indeksere
+	update_option( 'playform_launched', current_time( 'mysql' ), false );
+}
