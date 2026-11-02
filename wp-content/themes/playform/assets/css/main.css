@@ -1218,3 +1218,9 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 
 /* Topbar-mærkat: grå kant */
 .topbar__tag { border-color: rgba(255,255,255,.3); }
+
+/* Fordele under købsknappen som piller med ikoner */
+.pricebox__chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 2px; padding: 0; list-style: none; }
+.pricebox__chips li { display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 5px 11px; border-radius: 999px; background: var(--soft); font-size: 12.5px; line-height: 1.25; color: var(--ink); }
+.pricebox__chips svg { flex: 0 0 auto; color: var(--muted-2); }
+@media (max-width: 700px) { .pricebox__chips { gap: 6px; } .pricebox__chips li { font-size: 12px; padding: 5px 10px; } }

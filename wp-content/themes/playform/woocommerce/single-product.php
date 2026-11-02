@@ -117,19 +117,21 @@ while ( have_posts() ) :
 					<?php if ( $best ) : ?>
 						<a href="<?php echo esc_url( playform_aff_url( $best['url'], get_post_field( 'post_name', $id ), 'produktside' ) ); ?>" class="btn-shop" rel="sponsored nofollow noopener" target="_blank">Se pris hos <?php echo esc_html( $best['shop'] ); ?> <?php echo playform_icon( 'external', 18 ); // phpcs:ignore ?></a>
 						<span class="adnote"><b>Annonce</b>Vi får provision, hvis du køber via knappen.</span>
-						<span class="pricebox__note">
+						<ul class="pricebox__chips">
 							<?php
 							$bits = [];
 							if ( $best['delivery'] ) {
-								$bits[] = 'Levering ' . $best['delivery'];
+								$bits[] = [ 'clock', 'Levering ' . $best['delivery'] ];
 							}
 							if ( $best['shipping'] !== null ) {
-								$bits[] = $best['shipping'] > 0 ? 'Fragt ' . playform_kr( $best['shipping'] ) : 'Gratis fragt';
+								$bits[] = [ 'product', $best['shipping'] > 0 ? 'Fragt ' . playform_kr( $best['shipping'] ) : 'Gratis fragt' ];
 							}
-							$bits[] = 'Sælges af ' . $best['shop'];
-							echo esc_html( implode( ' · ', $bits ) );
-							?>
-						</span>
+							$bits[] = [ 'store', 'Sælges af ' . $best['shop'] ];
+							foreach ( $bits as [ $ic, $tx ] ) :
+								?>
+								<li><?php echo playform_icon( $ic, 14, 1.4 ); // phpcs:ignore ?><span><?php echo esc_html( $tx ); ?></span></li>
+							<?php endforeach; ?>
+						</ul>
 						<span class="pricebox__legal">Du sendes videre til <?php echo esc_html( $best['shop'] ); ?>, hvor du gennemfører købet. Prisen er inkl. moms<?php $u = playform_last_update_label(); echo $u ? ' og blev opdateret ' . esc_html( $u ) : ''; ?>.</span>
 					<?php endif; ?>
 				</div>
