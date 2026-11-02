@@ -163,9 +163,12 @@
 		};
 		var openDrawer = function () {
 			if (header) {
+				var wasTucked = header.classList.contains('is-tucked');
 				header.classList.remove('is-tucked');
 				closeSearch();
-				document.documentElement.style.setProperty('--dr-top', header.offsetHeight + 'px');
+				// Tophøjde: headerens underkant (topbaren over headeren tæller med, når siden ikke er scrollet)
+				var hb = header.getBoundingClientRect().bottom;
+				document.documentElement.style.setProperty('--dr-top', Math.max(0, wasTucked ? header.offsetHeight : hb) + 'px');
 			}
 			drawer.removeAttribute('inert');
 			drawer.setAttribute('aria-hidden', 'false');
