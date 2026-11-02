@@ -119,8 +119,12 @@ function playform_best_check( bool $notify = false ): array {
 					$res  = wp_remote_get( $url, [ 'timeout' => 15, 'redirection' => 5, 'limit_response_size' => 20000 ] );
 					$code = is_wp_error( $res ) ? 0 : (int) wp_remote_retrieve_response_code( $res );
 				}
-				if ( $code < 200 || $code >= 400 ) {
-					$issues[] = [ 'type' => 'review', 'nr' => $i + 1, 'message' => "Anmeldelseslink ($label) svarer " . ( $code ?: 'ikke' ) . ": $url" ];
+				// Kun 404/410 betyder, at siden er væk. Mange anmeldelsessider (fx Garage Gym Reviews) afviser
+				// automatiske kald med 403/429/5xx – det er ikke et dødt link og må ikke fjernes på det grundlag.
+				if ( 404 === $code || 410 === $code ) {
+					$issues[] = [ 'type' => 'review', 'nr' => $i + 1, 'message' => "Anmeldelseslink ($label) findes ikke længere ($code): $url" ];
+				} elseif ( $code < 200 || $code >= 400 ) {
+					$issues[] = [ 'type' => 'review_unsure', 'nr' => $i + 1, 'message' => "Anmeldelseslink ($label) kunne ikke tjekkes automatisk (svarer " . ( $code ?: 'ikke' ) . ') – sandsynligvis blokering af robotter. Tjek manuelt, fjern ikke uden bevis: ' . $url ];
 				}
 			}
 		}
