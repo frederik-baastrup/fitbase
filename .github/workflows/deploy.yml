@@ -71,7 +71,7 @@ jobs:
         run: |
           sleep 3
           for i in 1 2 3; do
-            code=$(curl -s -D hdr.txt -o /dev/null -w "%{http_code}" --max-time 120 "https://fitbase.dk/wp-json/?pf_deploy=${GITHUB_RUN_ID}-$i" -H "Cache-Control: no-cache")
+            code=$(curl -s -D hdr.txt -o /dev/null -w "%{http_code}" --max-time 240 "https://fitbase.dk/wp-json/?pf_deploy=${GITHUB_RUN_ID}-$i" -H "Cache-Control: no-cache")
             echo "Svar: $code"
             grep -i "x-pf-" hdr.txt || echo "(ingen x-pf-headere)"
             css=$(grep -i "^x-pf-css:" hdr.txt | tr -d '\r' | awk '{print $2}')
@@ -80,13 +80,13 @@ jobs:
           done
 
       # Kontrol: er en kategoriside (som ellers kunne ligge i cachen) frisk, dvs. har den samme CSS-version som filen?
-      - name: Tjek at siderne er friske (baggrundstømningen tager ca. 3 min)
+      - name: Tjek at siderne er friske (forside og kategorier tømmes under opdateringen)
         run: |
           want=$(curl -s -D - -o /dev/null --max-time 60 "https://fitbase.dk/wp-json/?pf_deploy=check-${GITHUB_RUN_ID}" | grep -i "^x-pf-css:" | tr -d '\r' | awk '{print $2}')
-          for i in 1 2 3 4 5 6 7 8; do
-            sleep 30
+          for i in 1 2 3 4; do
+            sleep 15
             got=$(curl -s --max-time 60 "https://fitbase.dk/traeningsmaskiner/lobebaand/gaabaand/" | grep -o "main.css?ver=[0-9.]*" | head -1 | sed 's/.*\.//')
             echo "forsøg $i: side=$got fil=$want"
             [ -n "$want" ] && [ "$got" = "$want" ] && { echo "FRISK"; exit 0; }
           done
-          echo "GAMMEL SIDE I CACHEN efter 4 min"
+          echo "GAMMEL SIDE I CACHEN efter 1 min"

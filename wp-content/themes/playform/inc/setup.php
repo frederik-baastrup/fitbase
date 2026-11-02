@@ -32,7 +32,7 @@ add_action(
 		$GLOBALS['pf_upgrade_ran'] = true;
 		update_option( 'playform_content_version', $want, false );
 		delete_transient( 'playform_upgrading' );
-		playform_purge_in_background(); // nye filer → tøm sidecachen (i baggrunden), så besøgende ikke får gammel HTML
+		playform_purge_everything(); // nye filer → tøm sidecachen, så besøgende ikke får gammel HTML
 	},
 	25
 );
@@ -41,28 +41,39 @@ add_action(
  * Tømmer SiteGrounds sidecache (SiteGround Optimizer). Prøver alle kendte indgange og returnerer, hvad der blev brugt
  * ("none" = ingen fundet). Resultatet sendes som header ved udrulningens kald, så det kan ses i GitHub Actions.
  */
-function playform_purge_urls(): array {
-	$urls = [ home_url( '/' ), home_url( '/koebsguide/' ), home_url( '/viden/' ), home_url( '/vores-butikker/' ) ];
-	foreach ( get_terms( [ 'taxonomy' => 'product_cat', 'hide_empty' => false ] ) as $t ) {
-		$l = get_term_link( $t );
-		if ( ! is_wp_error( $l ) ) {
-			$urls[] = $l;
-			$urls[] = trailingslashit( $l ) . 'tilbud/';
+/** Sider, der kan ligge i SiteGrounds sidecache. 'terms' = forside + alle kategorisider (vigtigst), 'rest' = tilbudssider, guides og artikler. */
+function playform_purge_urls( string $group ): array {
+	$urls = [];
+	if ( $group === 'terms' ) {
+		$urls[] = home_url( '/' );
+		foreach ( get_terms( [ 'taxonomy' => 'product_cat', 'hide_empty' => false ] ) as $t ) {
+			$l = get_term_link( $t );
+			if ( ! is_wp_error( $l ) ) {
+				$urls[] = $l;
+			}
 		}
-	}
-	foreach ( get_posts( [ 'post_type' => [ 'post', 'page' ], 'post_status' => 'publish', 'posts_per_page' => 300, 'fields' => 'ids', 'orderby' => 'ID' ] ) as $pid ) {
-		$urls[] = get_permalink( $pid );
+	} else {
+		$urls = [ home_url( '/koebsguide/' ), home_url( '/viden/' ), home_url( '/vores-butikker/' ) ];
+		foreach ( get_terms( [ 'taxonomy' => 'product_cat', 'hide_empty' => false ] ) as $t ) {
+			$l = get_term_link( $t );
+			if ( ! is_wp_error( $l ) ) {
+				$urls[] = trailingslashit( $l ) . 'tilbud/';
+			}
+		}
+		foreach ( get_posts( [ 'post_type' => [ 'post', 'page' ], 'post_status' => 'publish', 'posts_per_page' => 300, 'fields' => 'ids', 'orderby' => 'ID' ] ) as $pid ) {
+			$urls[] = get_permalink( $pid );
+		}
 	}
 	return array_values( array_unique( $urls ) );
 }
 
 /**
  * Tømmer SiteGrounds sidecache side for side (SiteGrounds samlede "tøm alt" rammer ikke undersider). SiteGround tager kun
- * imod ca. én tømning pr. sekund. $mode: 'home' = kun forsiden (hurtigt), 'all' = alle sider med pause (ca. 2½ minut).
+ * imod ca. én tømning pr. sekund. $group: 'terms' (forside + kategorier, ca. 1 min) eller 'rest' (resten, via cron).
  */
-function playform_purge_cache( string $mode = 'home' ): string {
+function playform_purge_cache( string $group = 'terms' ): string {
 	delete_transient( 'playform_front_mobile_cats' );
-	@set_time_limit( 600 ); // phpcs:ignore
+	@set_time_limit( 300 ); // phpcs:ignore
 	$S = '\\SiteGround_Optimizer\\Supercacher\\Supercacher';
 	if ( class_exists( $S ) && method_exists( $S, 'purge_cache_request' ) ) {
 		$purge = static fn( string $u ) => $S::purge_cache_request( $u, false );
@@ -74,42 +85,26 @@ function playform_purge_cache( string $mode = 'home' ): string {
 		update_option( 'playform_last_purge', gmdate( 'c' ) . ' none', false );
 		return 'none';
 	}
-	$all  = playform_purge_urls();
-	$urls = $mode === 'all' ? $all : [ $all[0] ];
+	$urls = playform_purge_urls( $group );
 	foreach ( $urls as $i => $u ) {
 		if ( $i ) {
 			usleep( 1100000 ); // SiteGround: højst én tømning pr. sekund
 		}
 		$purge( $u );
 	}
-	$used .= sprintf( ' | %s: %d sider', $mode, count( $urls ) );
+	$used .= sprintf( ' | %s: %d sider', $group, count( $urls ) );
 	update_option( 'playform_last_purge', gmdate( 'c' ) . ' ' . $used, false );
 	return $used;
 }
 
-/** Tømmer alle sider i baggrunden, efter svaret er sendt (ingen venter) – kaldes af opdateringen efter en udrulning. */
-function playform_purge_in_background(): void {
-	if ( get_transient( 'playform_purging' ) ) {
-		return;
+/** Forside + kategorier tømmes straks; resten (tilbudssider, guides, artikler) lægges i cron og tømmes inden for 15 minutter. */
+function playform_purge_everything(): void {
+	playform_purge_cache( 'terms' );
+	if ( ! wp_next_scheduled( 'playform_purge_rest' ) ) {
+		wp_schedule_single_event( time() + 5, 'playform_purge_rest' );
 	}
-	set_transient( 'playform_purging', 1, 10 * MINUTE_IN_SECONDS );
-	update_option( 'playform_last_purge', gmdate( 'c' ) . ' startet i baggrunden', false );
-	add_action(
-		'shutdown',
-		static function () {
-			ignore_user_abort( true );
-			if ( function_exists( 'fastcgi_finish_request' ) ) {
-				fastcgi_finish_request(); // svaret er sendt – resten sker uden at nogen venter
-			}
-			try {
-				playform_purge_cache( 'all' );
-			} finally {
-				delete_transient( 'playform_purging' );
-			}
-		},
-		99
-	);
 }
+add_action( 'playform_purge_rest', static fn() => playform_purge_cache( 'rest' ) );
 
 /** Diagnose: hvilken tømmemetode rammer en given side? Varmer siden, prøver metoder én ad gangen og måler x-proxy-cache. */
 function playform_purge_probe( string $url ): string {
@@ -158,7 +153,7 @@ add_filter(
 );
 
 // Efter hver import har priser og lager ændret sig – tøm også cachen her.
-add_action( 'playform_feeds_after_import', 'playform_purge_in_background', 99 );
+add_action( 'playform_feeds_after_import', 'playform_purge_everything', 99 );
 
 function playform_run_upgrades(): void {
 	playform_move_to_fitbase_dk();
