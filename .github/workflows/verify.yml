@@ -22,7 +22,7 @@ jobs:
             curl -sS -D h.txt -o /dev/null -m 120 "https://fitbase.dk/wp-json/?pf_deploy=probe-$RANDOM&pf_probe=$U"
             grep -i "^HTTP\|x-pf-" h.txt
             echo "--- bagefter, udefra:"
-            curl -sS -D h2.txt -o p.html -m 30 "$U"; grep -i "x-proxy-cache:" h2.txt; echo -n "ny-værktøjslinje="; grep -c results__n p.html
+            curl -sS -D h2.txt -o p.html -m 30 "$U"; head -12 h2.txt; echo -n "ny-værktøjslinje="; grep -c results__n p.html; head -c 300 p.html
           } > resultat.txt 2>&1
           exit 0
 
