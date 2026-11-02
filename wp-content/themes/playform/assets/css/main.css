@@ -925,3 +925,12 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 }
 }
 }
+
+/* Mærkefilter: lang liste foldes sammen */
+.fmore > summary { display: block; margin-top: 4px; padding: 8px 0 2px; font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer; list-style: none; }
+.fmore > summary::-webkit-details-marker { display: none; }
+.fmore > summary:hover { color: var(--ink); }
+.fmore .fmore__less, .fmore[open] .fmore__more { display: none; }
+.fmore[open] .fmore__less { display: inline; }
+.fmore[open] > summary { order: 99; margin-top: 8px; }
+.fmore[open] { display: flex; flex-direction: column; gap: 2px; }

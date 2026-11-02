@@ -23,11 +23,6 @@ function playform_filter_groups(): array {
 			return $v !== null && $v > 0 && ( $min === null || $v >= $min ) && ( $max === null || $v < $max );
 		};
 	};
-	$shops = class_exists( '\Playform\Feeds\Config' ) ? \Playform\Feeds\Config::shops() : [];
-	$shop_opts = [];
-	foreach ( $shops as $key => $shop ) {
-		$shop_opts[ $key ] = [ $shop['name'], static fn( array $m ) => str_contains( (string) ( $m['_pf_shop_list'] ?? '' ), "|$key|" ) ];
-	}
 	return [
 		'pris'        => [
 			'label'   => 'Pris',
@@ -39,7 +34,7 @@ function playform_filter_groups(): array {
 				'10000-'     => [ 'Over 10.000 kr', $range( '_price', 10000, null ) ],
 			],
 		],
-		'butik'       => [ 'label' => 'Butik', 'options' => $shop_opts ],
+		'maerke'      => [ 'label' => 'Mærke', 'options' => [], 'dynamic' => 'brand', 'collapse' => 8 ], // mulighederne bygges ud fra kategoriens produkter
 		'egenskab'    => [
 			'label'   => 'Egenskaber',
 			'all'     => true, // alle valgte skal være opfyldt
@@ -169,7 +164,7 @@ function playform_catalog_state(): array {
 	foreach ( $ids as $id ) {
 		$all = get_post_meta( $id );
 		$m   = [];
-		foreach ( [ '_price', '_pf_in_stock', '_pf_drop_percent', '_pf_foldable', '_pf_incline', '_pf_max_speed', '_pf_max_weight', '_pf_weight_kg', '_pf_shop_list', '_pf_shop_sale' ] as $k ) {
+		foreach ( [ '_price', '_pf_in_stock', '_pf_drop_percent', '_pf_foldable', '_pf_incline', '_pf_max_speed', '_pf_max_weight', '_pf_weight_kg', '_pf_shop_list', '_pf_shop_sale', '_pf_brand' ] as $k ) {
 			if ( isset( $all[ $k ][0] ) ) {
 				$m[ $k ] = $all[ $k ][0];
 			}
@@ -183,6 +178,31 @@ function playform_catalog_state(): array {
 
 	$groups = playform_filter_groups();
 	$active = playform_active_filters();
+
+	// Mærker: ét valg pr. mærke (store/små bogstaver og mellemrum ensrettes), flest produkter først.
+	if ( isset( $groups['maerke'] ) ) {
+		$brands = [];
+		foreach ( $meta as $m ) {
+			$raw = trim( (string) ( $m['_pf_brand'] ?? '' ) );
+			$key = sanitize_title( $raw );
+			if ( $key === '' ) {
+				continue;
+			}
+			$brands[ $key ]['n']              = ( $brands[ $key ]['n'] ?? 0 ) + 1;
+			$brands[ $key ]['names'][ $raw ]  = ( $brands[ $key ]['names'][ $raw ] ?? 0 ) + 1;
+		}
+		uasort( $brands, static fn( $a, $b ) => $b['n'] <=> $a['n'] );
+		$opts = [];
+		foreach ( $brands as $key => $info ) {
+			arsort( $info['names'] );
+			$label        = (string) array_key_first( $info['names'] ); // den mest brugte stavemåde
+			if ( $label === mb_strtolower( $label ) ) {
+				$label = mb_convert_case( $label, MB_CASE_TITLE ); // rent småt i feedet → stort begyndelsesbogstav
+			}
+			$opts[ $key ] = [ $label, static fn( array $m ) => sanitize_title( (string) ( $m['_pf_brand'] ?? '' ) ) === $key ];
+		}
+		$groups['maerke']['options'] = $opts;
+	}
 
 	$passes = static function ( array $m, ?string $skip ) use ( $groups, $active ): bool {
 		foreach ( $active as $g => $vals ) {
@@ -231,7 +251,7 @@ function playform_catalog_state(): array {
 			}
 		}
 		if ( $opts ) {
-			$facets[ $g ] = [ 'label' => $def['label'], 'options' => $opts ];
+			$facets[ $g ] = [ 'label' => $def['label'], 'options' => $opts, 'collapse' => (int) ( $def['collapse'] ?? 0 ) ];
 		}
 	}
 

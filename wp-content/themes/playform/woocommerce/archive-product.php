@@ -110,13 +110,34 @@ global $wp_query;
 					<details class="fsec"<?php echo in_array( $g, [ 'brugervaegt' ], true ) && empty( playform_active_filters()[ $g ] ) ? '' : ' open'; ?>>
 						<summary><?php echo esc_html( $facet['label'] ); ?><?php echo playform_icon( 'chevron', 16 ); // phpcs:ignore ?></summary>
 						<div class="fsec__opts">
-							<?php foreach ( $facet['options'] as $o ) : ?>
+							<?php
+							// Lange lister (mærker): vis de største + valgte, resten bag "Vis flere".
+							$cut   = ! empty( $facet['collapse'] ) && count( $facet['options'] ) > $facet['collapse'] + 2 ? $facet['collapse'] : 0;
+							$extra = 0;
+							foreach ( $facet['options'] as $oi => $o ) :
+								if ( $cut && $oi >= $cut && ! $o['checked'] ) {
+									++$extra;
+									continue;
+								}
+							?>
 								<a class="opt<?php echo $o['checked'] ? ' is-checked' : ''; ?>" href="<?php echo esc_url( playform_filter_toggle_url( $g, $o['key'] ) ); ?>" rel="nofollow" role="checkbox" aria-checked="<?php echo $o['checked'] ? 'true' : 'false'; ?>">
 									<span class="opt__box"><?php echo $o['checked'] ? playform_icon( 'check', 14, 2.2 ) : ''; // phpcs:ignore ?></span>
 									<?php echo esc_html( $o['label'] ); ?>
 									<span class="opt__n"><?php echo (int) $o['count']; ?></span>
 								</a>
 							<?php endforeach; ?>
+							<?php if ( $extra ) : ?>
+								<details class="fmore">
+									<summary><span class="fmore__more">Vis flere (<?php echo (int) $extra; ?>)</span><span class="fmore__less">Vis færre</span></summary>
+									<?php foreach ( $facet['options'] as $oi => $o ) : if ( $oi < $cut || $o['checked'] ) { continue; } ?>
+										<a class="opt" href="<?php echo esc_url( playform_filter_toggle_url( $g, $o['key'] ) ); ?>" rel="nofollow" role="checkbox" aria-checked="false">
+											<span class="opt__box"></span>
+											<?php echo esc_html( $o['label'] ); ?>
+											<span class="opt__n"><?php echo (int) $o['count']; ?></span>
+										</a>
+									<?php endforeach; ?>
+								</details>
+							<?php endif; ?>
 						</div>
 					</details>
 				<?php endforeach; ?>
