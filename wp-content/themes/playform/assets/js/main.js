@@ -86,6 +86,21 @@
 		}, 4000);
 	}
 
+	// USP'er på mobil: én ad gangen, centreret, med fade (kun når de står oven på hinanden)
+	var usps = document.querySelectorAll('.usp__item');
+	if (usps.length > 1) {
+		var u = 0;
+		usps[0].classList.add('is-on');
+		if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+			setInterval(function () {
+				if (document.hidden || !window.matchMedia('(max-width: 760px)').matches) return;
+				usps[u].classList.remove('is-on');
+				u = (u + 1) % usps.length;
+				usps[u].classList.add('is-on');
+			}, 3200);
+		}
+	}
+
 	// Alle menupaneler får samme højde som det højeste, så panelet ikke hopper, når man skifter punkt.
 	// Måles ved første hover (skjult), og igen hvis vinduet ændrer størrelse.
 	if (menu) {

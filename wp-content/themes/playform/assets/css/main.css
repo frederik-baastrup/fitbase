@@ -920,10 +920,12 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 /* Mobil: lidt større logo, USP'er i et kompakt 2×2-gitter */
 @media (max-width: 1080px) { .logo img { height: 20px; } }
 @media (max-width: 760px) {
-	.usp { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 10px; margin-top: 18px; }
-	.usp__item { gap: 9px; align-items: flex-start; }
-	.usp__icon { flex: 0 0 32px; height: 32px; }
-	.usp__icon svg { width: 17px; height: 17px; }
-	.usp__item b { font-size: 12.5px; line-height: 1.25; white-space: normal; }
-	.usp__item span span { font-size: 11.5px; line-height: 1.3; margin-top: 1px; white-space: normal; }
+	.usp { grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 0; margin-top: 18px; }
+	.usp__item { grid-area: 1 / 1; gap: 10px; opacity: 0; transform: translateY(6px); transition: opacity .5s ease, transform .5s ease; pointer-events: none; }
+	.usp__item.is-on { opacity: 1; transform: none; pointer-events: auto; }
+	.usp__icon { flex: 0 0 36px; height: 36px; }
+	.usp__icon svg { width: 18px; height: 18px; }
+	.usp__item b { font-size: 14px; }
+	.usp__item span span { font-size: 12.5px; }
+}
 }
