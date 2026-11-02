@@ -244,6 +244,9 @@ global $wp_query;
 					get_template_part( 'template-parts/seo-text', null, [ 'html' => $seo ] );
 				}
 			}
+			if ( $is_cat && max( 1, (int) get_query_var( 'paged' ) ) === 1 ) {
+				playform_related_block( $term, $offers ? 'Kig videre' : 'Mere om ' . mb_strtolower( $label ) );
+			}
 			?>
 		</div>
 	</div>

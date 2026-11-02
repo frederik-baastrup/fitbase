@@ -125,6 +125,7 @@ add_action( 'playform_feeds_after_import', 'playform_purge_everything', 99 );
 function playform_run_upgrades(): void {
 	playform_move_to_fitbase_dk();
 	playform_launch();
+	playform_open_for_indexing();
 	playform_update_legal_pages();
 	playform_author_profile();
 	playform_hide_imageless_products();
@@ -724,6 +725,30 @@ function playform_launch(): void {
 	update_option( 'blog_public', '1' ); // søgemaskiner må indeksere
 	update_option( 'playform_launched', current_time( 'mysql' ), false );
 }
+
+/**
+ * Åbner siden for søgemaskiner (ejerens ønske 2. nov. 2026). Lanceringen satte det én gang, men indstillingen
+ * "Frarådet søgemaskiner at indeksere dette websted" kan være slået til igen (fx ved kopi fra staging).
+ * Kører én gang; slår ejeren det selv fra bagefter, bliver det ikke tvunget til igen.
+ */
+function playform_open_for_indexing(): void {
+	if ( get_option( 'playform_indexing_opened' ) ) {
+		return;
+	}
+	update_option( 'blog_public', '1' );
+	update_option( 'woocommerce_coming_soon', 'no' );
+	update_option( 'playform_indexing_opened', current_time( 'mysql' ), false );
+}
+
+// Advarsel i administrationen, hvis siden står som skjult for søgemaskiner.
+add_action(
+	'admin_notices',
+	static function () {
+		if ( '0' === (string) get_option( 'blog_public' ) && current_user_can( 'manage_options' ) ) {
+			echo '<div class="notice notice-error"><p><b>Fitbase er skjult for Google.</b> Gå til Indstillinger → Læsning og fjern markeringen i "Frarådet søgemaskiner at indeksere dette websted".</p></div>';
+		}
+	}
+);
 
 /**
  * Engangsoprydning (2. nov. 2026): produkter uden billede er typisk udgåede varer eller reservedele,

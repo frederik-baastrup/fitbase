@@ -20,6 +20,7 @@ require_once __DIR__ . '/inc/guides.php';
 require_once __DIR__ . '/inc/authors.php';
 require_once __DIR__ . '/inc/best.php';
 require_once __DIR__ . '/inc/best-check.php';
+require_once __DIR__ . '/inc/links.php';
 
 add_action(
 	'after_setup_theme',

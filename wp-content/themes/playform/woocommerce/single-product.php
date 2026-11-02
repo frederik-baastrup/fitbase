@@ -265,7 +265,7 @@ while ( have_posts() ) :
 				'posts_per_page' => 4,
 				'post__not_in'   => [ $id ],
 				'fields'         => 'ids',
-				'orderby'        => 'rand',
+				'orderby'        => 'RAND(' . (int) $id . ')', // samme udvalg hver gang for samme produkt (stabile interne links)
 				'tax_query'      => [ [ 'taxonomy' => 'product_cat', 'field' => 'term_id', 'terms' => $cat_term->term_id ] ],
 				'meta_query'     => [
 					[ 'key' => '_pf_in_stock', 'value' => 1, 'type' => 'NUMERIC' ],
@@ -283,6 +283,9 @@ while ( have_posts() ) :
 			}
 			echo '</div></section>';
 		}
+		echo '<section class="wrap section">';
+		playform_related_block( $cat_term, 'Kig videre' );
+		echo '</section>';
 	}
 
 	playform_product_schema( $product, $offers, $d );
