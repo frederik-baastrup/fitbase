@@ -1200,3 +1200,18 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 @media (max-width: 760px) {
 	.byline__txt { flex-direction: column; flex-wrap: nowrap; align-items: flex-start; gap: 0; }
 }
+
+/* Tydelig annonceoplysning */
+.topbar__tag { padding: 4px 8px 3px; border-color: rgba(255,255,255,.55); font-size: 10.5px; color: #fff; }
+.topbar__ad { color: rgba(255,255,255,.82); font-size: 12px; }
+.topbar__mob { color: rgba(255,255,255,.8); }
+.adnote, .adline { display: flex; align-items: center; gap: 8px; font-size: 12.5px; line-height: 1.4; color: var(--ink-2); }
+.adnote b, .adline b { flex: 0 0 auto; padding: 3px 8px 2px; border: 1px solid var(--line-2); border-radius: 999px; font-size: 10.5px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; color: var(--ink); background: #fff; }
+.adnote { margin-top: 2px; justify-content: center; }
+.adline { margin: 0 0 20px; padding: 10px 14px; border-radius: 12px; background: var(--soft); }
+.adline a { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; white-space: nowrap; }
+@media (max-width: 700px) {
+	.adline { align-items: flex-start; font-size: 12px; padding: 9px 12px; margin-bottom: 16px; }
+	.adline b { margin-top: 1px; }
+	.adnote { font-size: 12px; }
+}

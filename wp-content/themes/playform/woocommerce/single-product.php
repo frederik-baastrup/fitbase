@@ -116,6 +116,7 @@ while ( have_posts() ) :
 					</div>
 					<?php if ( $best ) : ?>
 						<a href="<?php echo esc_url( playform_aff_url( $best['url'], get_post_field( 'post_name', $id ), 'produktside' ) ); ?>" class="btn-shop" rel="sponsored nofollow noopener" target="_blank">Se pris hos <?php echo esc_html( $best['shop'] ); ?> <?php echo playform_icon( 'external', 18 ); // phpcs:ignore ?></a>
+						<span class="adnote"><b>Annonce</b>Vi får provision, hvis du køber via knappen.</span>
 						<span class="pricebox__note">
 							<?php
 							$bits = [];
@@ -129,7 +130,7 @@ while ( have_posts() ) :
 							echo esc_html( implode( ' · ', $bits ) );
 							?>
 						</span>
-						<span class="pricebox__legal">Du sendes videre til <?php echo esc_html( $best['shop'] ); ?>, hvor du gennemfører købet. Prisen er inkl. moms<?php $u = playform_last_update_label(); echo $u ? ' og blev opdateret ' . esc_html( $u ) : ''; ?>. Vi kan modtage provision, hvis du handler.</span>
+						<span class="pricebox__legal">Du sendes videre til <?php echo esc_html( $best['shop'] ); ?>, hvor du gennemfører købet. Prisen er inkl. moms<?php $u = playform_last_update_label(); echo $u ? ' og blev opdateret ' . esc_html( $u ) : ''; ?>.</span>
 					<?php endif; ?>
 				</div>
 

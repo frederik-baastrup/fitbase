@@ -187,6 +187,8 @@ global $wp_query;
 				</div>
 			<?php endif; ?>
 
+			<p class="adline"><b>Annonce</b><span>Siden indeholder reklamelinks. Vi får provision, hvis du handler hos en butik via dem. <a href="<?php echo esc_url( home_url( '/saadan-tjener-vi-penge/' ) ); ?>">Sådan tjener vi penge</a></span></p>
+
 			<?php if ( have_posts() ) : ?>
 				<div class="grid">
 					<?php
