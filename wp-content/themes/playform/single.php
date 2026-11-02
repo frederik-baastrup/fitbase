@@ -29,6 +29,7 @@ while ( have_posts() ) :
 					<?php echo playform_author_avatar( $author, 44 ); // phpcs:ignore ?>
 					<span class="byline__txt"><b><span>Af</span> <?php echo esc_html( $author['name'] ); ?></b><em><?php echo esc_html( $author['role'] ); ?> hos Fitbase</em></span>
 				</a>
+				<div class="guide__chips">
 				<ul class="guide__facts">
 					<?php if ( $cats ) : ?>
 						<li><a class="guide__cat" href="<?php echo esc_url( get_category_link( $cats[0] ) ); ?>"><i aria-hidden="true"></i><?php echo esc_html( $tag ); ?></a></li>
@@ -41,6 +42,7 @@ while ( have_posts() ) :
 				<?php if ( playform_picks() || str_contains( $html, 'sponsored' ) || str_contains( $html, 'pcard' ) ) : ?>
 					<a class="guide__trust" href="<?php echo esc_url( home_url( '/saadan-tjener-vi-penge/' ) ); ?>"><?php echo playform_icon( 'tag', 14, 1.6 ); // phpcs:ignore ?><span class="gt-long">Indeholder affiliate-links</span><span class="gt-short">Affiliate-links</span></a>
 				<?php endif; ?>
+				</div>
 			</div>
 		</header>
 		<?php $hero = playform_post_image( get_the_ID(), 1200 ); ?>
