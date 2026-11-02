@@ -45,21 +45,14 @@ $hero = [
 	[ 'slug' => 'kettlebell', 'title' => 'Kettlebells', 'img' => 'hero-kettlebells.jpg', 'subs' => [ [ 'Kettlebell 12 kg', [ 'sub' => 'kettlebell', 'vaegt' => '12' ] ], [ 'Kettlebell 16 kg', [ 'sub' => 'kettlebell', 'vaegt' => '16' ] ], [ 'Kettlebell 24 kg', [ 'sub' => 'kettlebell', 'vaegt' => '24' ] ] ] ],
 	[ 'slug' => 'motionscykler', 'title' => 'Motionscykler', 'img' => 'hero-motionscykler.jpg', 'subs' => [ [ 'Spinningcykel', [ 'sub' => 'spinningcykel' ] ], [ 'Kondicykel', [ 'sub' => 'kondicykel' ] ], [ 'Airbike', [ 'sub' => 'airbike' ] ], [ 'Liggecykel', [ 'sub' => 'liggecykel' ] ] ] ],
 ];
-// Desktop: de tre store kort ovenfor. Mobil: karrusel med de 6 kategorier, der har flest produkter.
-$mob = get_transient( 'playform_front_mobile_cats' );
-if ( ! is_array( $mob ) ) {
-	$counts = [];
-	foreach ( [ 'lobebaand', 'motionscykler', 'romaskiner-crosstrainere', 'vaegte-kettlebells', 'styrke-baenke', 'yoga-pilates', 'restitution', 'tilbehor' ] as $c ) {
-		if ( ! get_term_by( 'slug', $c, 'product_cat' ) ) {
-			continue;
-		}
-		$q            = new WP_Query( [ 'post_type' => 'product', 'post_status' => 'publish', 'fields' => 'ids', 'posts_per_page' => 1, 'tax_query' => [ [ 'taxonomy' => 'product_cat', 'field' => 'slug', 'terms' => $c ] ] ] ); // phpcs:ignore
-		$counts[ $c ] = (int) $q->found_posts;
+// Desktop: de tre store kort ovenfor. Mobil: karrusel med 6 kategorier – dyre maskiner først (størst kurv og kommission).
+$mob = array_values( array_filter(
+	[ 'lobebaand', 'motionscykler', 'romaskiner-crosstrainere', 'styrke-baenke', 'vaegte-kettlebells', 'restitution' ],
+	static function ( $c ) {
+		$t = get_term_by( 'slug', $c, 'product_cat' );
+		return $t && ( $t->count > 0 || get_term_children( $t->term_id, 'product_cat' ) );
 	}
-	arsort( $counts );
-	$mob = array_slice( array_keys( $counts ), 0, 6 );
-	set_transient( 'playform_front_mobile_cats', $mob, 12 * HOUR_IN_SECONDS );
-}
+) );
 $extra = [
 	'romaskiner-crosstrainere' => [ 'Romaskiner', 'mm-crosstrainer.jpg' ],
 	'vaegte-kettlebells'       => [ 'Vægte & kettlebells', 'hero-kettlebells.jpg' ],
