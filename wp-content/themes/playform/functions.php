@@ -12,6 +12,7 @@ require_once __DIR__ . '/inc/permalinks.php';
 require_once __DIR__ . '/inc/search.php';
 require_once __DIR__ . '/inc/helpers.php';
 require_once __DIR__ . '/inc/catalog.php';
+require_once __DIR__ . '/inc/security.php';
 require_once __DIR__ . '/inc/setup.php';
 require_once __DIR__ . '/inc/seo.php';
 require_once __DIR__ . '/inc/legal.php';
