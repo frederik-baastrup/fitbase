@@ -1165,3 +1165,10 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 	}
 	.guide__chips svg { width: 13px; height: 13px; }
 }
+
+/* Byline på mobil: mindre billede, navn og titel i samme størrelse */
+@media (max-width: 760px) {
+	.guide__head .byline { gap: 10px; margin-bottom: 2px; }
+	.byline .avatar-pf { width: 32px; height: 32px; box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--line-2); }
+	.byline__txt b, .byline__txt em { font-size: 13px; line-height: 1.3; }
+}
