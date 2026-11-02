@@ -87,6 +87,36 @@ function playform_purge_cache(): string {
 	return $used;
 }
 
+/** Diagnose: hvilken tømmemetode rammer en given side? Varmer siden, prøver metoder én ad gangen og måler x-proxy-cache. */
+function playform_purge_probe( string $url ): string {
+	$S   = '\\SiteGround_Optimizer\\Supercacher\\Supercacher';
+	$get = static function () use ( $url ) {
+		$r = wp_remote_get( $url, [ 'timeout' => 20, 'redirection' => 0, 'headers' => [ 'Cache-Control' => 'no-transform' ] ] );
+		return is_wp_error( $r ) ? 'fejl' : strtoupper( (string) wp_remote_retrieve_header( $r, 'x-proxy-cache' ) ?: '?' );
+	};
+	$tries = [
+		'req(url,false)'  => static fn() => class_exists( $S ) && method_exists( $S, 'purge_cache_request' ) ? $S::purge_cache_request( $url, false ) : null,
+		'req(url,true)'   => static fn() => class_exists( $S ) && method_exists( $S, 'purge_cache_request' ) ? $S::purge_cache_request( $url, true ) : null,
+		'req(uden /)'     => static fn() => class_exists( $S ) && method_exists( $S, 'purge_cache_request' ) ? $S::purge_cache_request( untrailingslashit( $url ), false ) : null,
+		'fn_purge(url)'   => static fn() => function_exists( 'sg_cachepress_purge_cache' ) ? sg_cachepress_purge_cache( $url ) : null,
+		'purge_cache()'   => static fn() => class_exists( $S ) && method_exists( $S, 'purge_cache' ) ? $S::purge_cache() : null,
+		'everything()'    => static fn() => function_exists( 'sg_cachepress_purge_everything' ) ? sg_cachepress_purge_everything() : null,
+		'PURGE-metode'    => static fn() => wp_remote_request( $url, [ 'method' => 'PURGE', 'timeout' => 10 ] ),
+	];
+	$out = [ 'start:' . $get() . '/' . $get() ];
+	foreach ( $tries as $name => $fn ) {
+		try {
+			$fn();
+		} catch ( \Throwable $e ) {
+			$out[] = "$name:undtagelse";
+			continue;
+		}
+		sleep( 1 );
+		$out[] = "$name:" . $get();
+	}
+	return implode( ' ', $out );
+}
+
 // Diagnose: udrulningens kald til /wp-json/?pf_deploy=… får at vide, om opdateringerne kørte, og hvordan cachen blev tømt.
 add_filter(
 	'rest_post_dispatch',
@@ -94,6 +124,9 @@ add_filter(
 		if ( isset( $_GET['pf_deploy'] ) && $response instanceof WP_REST_Response ) { // phpcs:ignore
 			$response->header( 'X-PF-Upgrade', ! empty( $GLOBALS['pf_upgrade_ran'] ) ? 'ran' : 'skipped' );
 			$response->header( 'X-PF-Purge', (string) get_option( 'playform_last_purge', 'never' ) );
+			if ( ! empty( $_GET['pf_probe'] ) ) { // phpcs:ignore
+				$response->header( 'X-PF-Probe', playform_purge_probe( esc_url_raw( wp_unslash( $_GET['pf_probe'] ) ) ) ); // phpcs:ignore
+			}
 		}
 		return $response;
 	}

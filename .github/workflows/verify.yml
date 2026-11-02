@@ -12,21 +12,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Tjek cache og ny kode (venter op til 6 min på frisk side)
+      - name: Find tømmemetode der virker
         shell: bash
         run: |
           set +e
           U="https://fitbase.dk/traeningsmaskiner/lobebaand/gaabaand/"
           {
             echo "start: $(date -u +%T)"
-            for i in $(seq 1 18); do
-              curl -sS -D headers.txt -o page.html -m 30 "$U"
-              st=$(grep -i "^x-proxy-cache:" headers.txt | tr -d '\r')
-              n=$(grep -c "results__n" page.html)
-              echo "$(date -u +%T)  $st  ny-værktøjslinje=$n  $(grep -o 'main.css?ver=[0-9.]*' page.html | head -1)"
-              [ "$n" -ge 1 ] && break
-              sleep 20
-            done
+            curl -sS -D h.txt -o /dev/null -m 120 "https://fitbase.dk/wp-json/?pf_deploy=probe-$RANDOM&pf_probe=$U"
+            grep -i "^HTTP\|x-pf-" h.txt
+            echo "--- bagefter, udefra:"
+            curl -sS -D h2.txt -o p.html -m 30 "$U"; grep -i "x-proxy-cache:" h2.txt; echo -n "ny-værktøjslinje="; grep -c results__n p.html
           } > resultat.txt 2>&1
           exit 0
 
