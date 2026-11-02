@@ -1187,3 +1187,11 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 	.guide__head .guide__chips .guide__trust { order: -1; background: #EAF9E4; }
 	.guide__head .guide__chips .guide__trust svg { color: var(--ink); }
 }
+
+/* Kategori som de andre piller: ikon, normal vægt */
+.guide__cat { font-weight: 500; }
+.guide__cat svg { color: var(--ink); opacity: .7; }
+@media (max-width: 760px) {
+	.guide__facts > li .guide__cat { font-weight: 500; }
+	.guide__facts > li .guide__cat svg { color: var(--muted-2); opacity: 1; }
+}

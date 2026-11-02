@@ -32,7 +32,7 @@ while ( have_posts() ) :
 				<div class="guide__chips">
 				<ul class="guide__facts">
 					<?php if ( $cats ) : ?>
-						<li><a class="guide__cat" href="<?php echo esc_url( get_category_link( $cats[0] ) ); ?>"><i aria-hidden="true"></i><?php echo esc_html( $tag ); ?></a></li>
+						<li><a class="guide__cat" href="<?php echo esc_url( get_category_link( $cats[0] ) ); ?>"><?php echo playform_icon( 'grid', 15, 1.4 ); // phpcs:ignore ?><?php echo esc_html( $tag ); ?></a></li>
 					<?php endif; ?>
 					<li><?php echo playform_icon( 'calendar', 15, 1.4 ); // phpcs:ignore ?><span>Opdateret <i class="gt-long">d. </i><time datetime="<?php echo esc_attr( get_the_modified_date( 'c' ) ); ?>"><?php echo esc_html( get_the_modified_date( 'j. M Y' ) ); ?></time></span></li>
 					<?php if ( $checked && playform_picks() ) : ?>
