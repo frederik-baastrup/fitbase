@@ -361,7 +361,7 @@ function playform_setup_site(): void {
 
 function playform_default_text( string $which ): string {
 	if ( $which === 'butikker' ) {
-		return '<p>Fitbase samler fitnessudstyr fra flere danske webshops ét sted. Vi henter produkter, priser og lagerstatus direkte fra butikkerne to gange i døgnet. Når du klikker på "Gå til butik", sendes du videre til butikken, hvor du handler som normalt.</p><h2>Butikker på Fitbase</h2><p>[Listen over butikker vises automatisk her.]</p>';
+		return '<p>Fitbase samler fitnessudstyr fra flere danske webshops ét sted. Vi henter produkter, priser og lagerstatus direkte fra butikkerne to gange i døgnet. Når du klikker på "Gå til butik", sendes du videre til butikken, hvor du handler som normalt.</p><h2>Butikker på Fitbase</h2>';
 	}
 	return '<p>Fitbase er gratis at bruge. Når du klikker videre til en butik og handler, får vi en lille provision fra butikken. Det koster ikke dig noget ekstra, og det påvirker ikke, hvilke produkter vi viser, eller hvordan vi sorterer dem.</p><p>Som tilbud viser vi kun butikkernes egne tilbud, og kun i højst 14 dage. Vi viser ikke butikkernes egne førpriser. En overstreget førpris viser vi kun, når vi selv har fulgt prisen hos butikken i de 30 dage før tilbuddet, og den er den laveste pris i perioden.</p>';
 }

@@ -7,7 +7,7 @@ while ( have_posts() ) :
 	<article class="wrap page-wrap prose">
 		<?php playform_breadcrumbs( [ [ 'Forside', home_url( '/' ) ], [ get_the_title(), '' ] ] ); ?>
 		<h1 style="margin-top:16px"><?php the_title(); ?></h1>
-		<?php the_content(); ?>
+		<?php echo preg_replace( '#<p>\s*\[Listen over butikker[^<]*</p>#u', '', apply_filters( 'the_content', get_the_content() ) ); // phpcs:ignore ?>
 		<?php if ( get_post_field( 'post_name' ) === 'vores-butikker' ) : ?>
 			<ul>
 				<?php foreach ( playform_shop_names() as $name ) : ?>
