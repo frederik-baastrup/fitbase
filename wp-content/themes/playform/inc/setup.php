@@ -108,32 +108,30 @@ add_action( 'playform_purge_rest', static fn() => playform_purge_cache( 'rest' )
 
 /** Diagnose: hvilken tømmemetode rammer en given side? Varmer siden, prøver metoder én ad gangen og måler x-proxy-cache. */
 function playform_purge_probe( string $url ): string {
-	$S   = '\\SiteGround_Optimizer\\Supercacher\\Supercacher';
-	$get = static function () use ( $url ) {
-		$r = wp_remote_get( $url, [ 'timeout' => 20, 'redirection' => 0, 'headers' => [ 'Cache-Control' => 'no-transform' ] ] );
+	$S     = '\\SiteGround_Optimizer\\Supercacher\\Supercacher';
+	$purge = static fn( string $u ) => $S::purge_cache_request( $u, false );
+	$get   = static function () use ( $url ) {
+		$r = wp_remote_get( $url, [ 'timeout' => 20, 'redirection' => 0 ] );
 		return is_wp_error( $r ) ? 'fejl' : strtoupper( (string) wp_remote_retrieve_header( $r, 'x-proxy-cache' ) ?: '?' );
 	};
-	$tries = [
-		'req(url,false)'  => static fn() => class_exists( $S ) && method_exists( $S, 'purge_cache_request' ) ? $S::purge_cache_request( $url, false ) : null,
-		'req(url,true)'   => static fn() => class_exists( $S ) && method_exists( $S, 'purge_cache_request' ) ? $S::purge_cache_request( $url, true ) : null,
-		'req(uden /)'     => static fn() => class_exists( $S ) && method_exists( $S, 'purge_cache_request' ) ? $S::purge_cache_request( untrailingslashit( $url ), false ) : null,
-		'fn_purge(url)'   => static fn() => function_exists( 'sg_cachepress_purge_cache' ) ? sg_cachepress_purge_cache( $url ) : null,
-		'purge_cache()'   => static fn() => class_exists( $S ) && method_exists( $S, 'purge_cache' ) ? $S::purge_cache() : null,
-		'everything()'    => static fn() => function_exists( 'sg_cachepress_purge_everything' ) ? sg_cachepress_purge_everything() : null,
-		'PURGE-metode'    => static fn() => wp_remote_request( $url, [ 'method' => 'PURGE', 'timeout' => 10 ] ),
-	];
-	$out = [ 'start:' . $get() . '/' . $get() ];
-	foreach ( $tries as $name => $fn ) {
-		try {
-			$fn();
-		} catch ( \Throwable $e ) {
-			$out[] = "$name:undtagelse";
-			continue;
-		}
-		sleep( 1 );
-		$out[] = "$name:" . $get();
-	}
-	return implode( ' ', $out );
+	$warm = static function () use ( $get ) {
+		$get();
+		return $get(); // skal give HIT
+	};
+	$out = [];
+	$out[] = 'A warm=' . $warm();
+	$purge( $url ); sleep( 2 );
+	$out[] = 'A efter kun-denne-side-tømning=' . $get();
+	$out[] = 'B warm=' . $warm();
+	$purge( home_url( '/' ) ); sleep( 2 ); $purge( $url ); sleep( 3 );
+	$out[] = 'B efter forside+side=' . $get();
+	$out[] = 'C warm=' . $warm();
+	$purge( $url ); sleep( 8 );
+	$out[] = 'C efter 8 sek=' . $get();
+	$out[] = 'D warm=' . $warm();
+	$purge( untrailingslashit( $url ) ); sleep( 3 );
+	$out[] = 'D efter uden-slash=' . $get();
+	return implode( ' | ', $out );
 }
 
 // Diagnose: udrulningens kald til /wp-json/?pf_deploy=… får at vide, om opdateringerne kørte, og hvordan cachen blev tømt.
