@@ -248,3 +248,22 @@ function playform_post_image( $post, int $min_width, string $size = 'large' ): s
 	}
 	return (string) wp_get_attachment_image_url( $id, $size );
 }
+
+/**
+ * Partner-ads-sporing: uid (produktet) og uid2 (hvor klikket kom fra, fx købsguidens adresse eller "produktside")
+ * sættes på klik-linket, så klik og salg kan følges i Partner-ads' statistik. Parametrene sættes ind før htmlurl=,
+ * fordi butikkens adresse i htmlurl ikke er kodet og skal stå til sidst.
+ */
+function playform_aff_url( string $url, string $uid, string $uid2 = '' ): string {
+	if ( ! str_contains( $url, 'partner-ads.com' ) || str_contains( $url, 'uid=' ) ) {
+		return $url;
+	}
+	$clean = static fn( string $v ): string => substr( sanitize_title( $v ), 0, 50 );
+	$add   = '&uid=' . rawurlencode( $clean( $uid ) ) . ( '' !== $uid2 ? '&uid2=' . rawurlencode( $clean( $uid2 ) ) : '' );
+	$pos   = strpos( $url, '&htmlurl=' );
+	if ( false === $pos ) {
+		$pos = strpos( $url, '&amp;htmlurl=' );
+		$add = str_replace( '&', '&amp;', $add );
+	}
+	return false === $pos ? $url . $add : substr( $url, 0, $pos ) . $add . substr( $url, $pos );
+}
