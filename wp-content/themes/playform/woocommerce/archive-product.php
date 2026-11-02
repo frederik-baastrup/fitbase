@@ -96,6 +96,19 @@ global $wp_query;
 			<?php endif; ?>
 		</nav>
 	<?php endif; ?>
+	<?php
+	// Sider på tværs af kategorier (Tilbud, Alle produkter): kategorierne som runde faner, der filtrerer på siden.
+	$kat = ( ! $is_cat && '' === $search && ! empty( $state['facets']['kat'] ) ) ? $state['facets']['kat']['options'] : [];
+	if ( $kat ) :
+		$kat_on = array_values( array_filter( $kat, static fn( $o ) => $o['checked'] ) );
+		?>
+		<nav class="tabs" aria-label="Kategorier">
+			<a href="<?php echo esc_url( remove_query_arg( [ 'kat', 'paged' ] ) ); ?>" class="tab<?php echo $kat_on ? '' : ' is-active'; ?>"<?php echo $kat_on ? '' : ' aria-current="page"'; ?>><?php echo $offers ? 'Alle tilbud' : 'Alle produkter'; ?><?php echo $kat_on ? '' : '<span class="tab__n">' . (int) $state['total'] . '</span>'; ?></a>
+			<?php foreach ( $kat as $o ) : ?>
+				<a href="<?php echo esc_url( $o['checked'] ? remove_query_arg( [ 'kat', 'paged' ] ) : add_query_arg( 'kat', $o['key'], remove_query_arg( 'paged' ) ) ); ?>" class="tab<?php echo $o['checked'] ? ' is-active' : ''; ?>" rel="nofollow"<?php echo $o['checked'] ? ' aria-current="true"' : ''; ?>><?php echo esc_html( $o['label'] ); ?><span class="tab__n"><?php echo (int) $o['count']; ?></span></a>
+			<?php endforeach; ?>
+		</nav>
+	<?php endif; ?>
 </section>
 
 <section class="wrap catalog">
@@ -107,6 +120,7 @@ global $wp_query;
 					<?php if ( $state['tags'] ) : ?><a href="<?php echo esc_url( playform_reset_url() ); ?>">Nulstil</a><?php endif; ?>
 				</summary>
 				<?php foreach ( $state['facets'] as $g => $facet ) : ?>
+					<?php if ( 'kat' === $g ) { continue; } // kategorierne står som faner øverst ?>
 					<details class="fsec"<?php echo in_array( $g, [ 'brugervaegt' ], true ) && empty( playform_active_filters()[ $g ] ) ? '' : ' open'; ?>>
 						<summary><?php echo esc_html( $facet['label'] ); ?><?php echo playform_icon( 'chevron', 16 ); // phpcs:ignore ?></summary>
 						<div class="fsec__opts">
