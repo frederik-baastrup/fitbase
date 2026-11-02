@@ -1195,3 +1195,8 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 	.guide__facts > li .guide__cat { font-weight: 500; }
 	.guide__facts > li .guide__cat svg { color: var(--muted-2); opacity: 1; }
 }
+
+/* Byline på mobil: navn og titel på to linjer igen */
+@media (max-width: 760px) {
+	.byline__txt { flex-direction: column; flex-wrap: nowrap; align-items: flex-start; gap: 0; }
+}
