@@ -1152,3 +1152,16 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 	.guide__facts > li svg, .guide__head .guide__trust svg { width: 14px; height: 14px; color: var(--muted-2); opacity: 1; }
 	.guide__facts > li > span { color: var(--ink-2); }
 }
+
+/* Artikelpiller: én række, kan swipes, fade til højre */
+.guide__chips { display: contents; }
+.guide__chips.has-more { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); }
+@media (max-width: 760px) {
+	.guide__chips { display: flex; flex-wrap: nowrap; gap: 8px; flex: 0 0 100%; min-width: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+	.guide__chips::-webkit-scrollbar { display: none; }
+	.guide__chips ul.guide__facts { display: contents; }
+	.guide__chips .guide__facts > li, .guide__chips .guide__facts > li + li, .guide__head .guide__chips .guide__trust {
+		flex: 0 0 auto; height: 28px; padding: 0 11px; margin: 0; border: 0; gap: 6px; font-size: 12px; white-space: nowrap;
+	}
+	.guide__chips svg { width: 13px; height: 13px; }
+}
