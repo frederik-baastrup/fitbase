@@ -1215,3 +1215,6 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 	.adline b { margin-top: 1px; }
 	.adnote { font-size: 12px; }
 }
+
+/* Topbar-mærkat: grå kant */
+.topbar__tag { border-color: rgba(255,255,255,.3); }
