@@ -29,6 +29,7 @@ add_action(
 		set_transient( 'playform_upgrading', 1, 5 * MINUTE_IN_SECONDS ); // kun én ad gangen
 		@set_time_limit( 300 ); // phpcs:ignore
 		playform_run_upgrades();
+		$GLOBALS['pf_upgrade_ran'] = true;
 		update_option( 'playform_content_version', $want, false );
 		delete_transient( 'playform_upgrading' );
 		playform_purge_cache(); // nye filer → tøm sidecachen, så besøgende ikke får gammel HTML
@@ -36,15 +37,43 @@ add_action(
 	25
 );
 
-/** Tømmer SiteGrounds sidecache (SiteGround Optimizer), hvis den findes. */
-function playform_purge_cache(): void {
-	if ( function_exists( 'sg_cachepress_purge_everything' ) ) {
+/**
+ * Tømmer SiteGrounds sidecache (SiteGround Optimizer). Prøver alle kendte indgange og returnerer, hvad der blev brugt
+ * ("none" = ingen fundet). Resultatet sendes som header ved udrulningens kald, så det kan ses i GitHub Actions.
+ */
+function playform_purge_cache(): string {
+	$used = 'none';
+	delete_transient( 'playform_front_mobile_cats' );
+	if ( class_exists( '\SiteGround_Optimizer\Supercacher\Supercacher' ) && method_exists( '\SiteGround_Optimizer\Supercacher\Supercacher', 'purge_cache' ) ) {
+		\SiteGround_Optimizer\Supercacher\Supercacher::purge_cache();
+		$used = 'Supercacher::purge_cache';
+	} elseif ( function_exists( 'sg_cachepress_purge_everything' ) ) {
 		sg_cachepress_purge_everything();
+		$used = 'sg_cachepress_purge_everything';
 	} elseif ( function_exists( 'sg_cachepress_purge_cache' ) ) {
 		sg_cachepress_purge_cache();
+		$used = 'sg_cachepress_purge_cache';
+	} else {
+		do_action( 'sg_cachepress_purge_cache' ); // ældre versioner lytter på handlingen
+		if ( has_action( 'sg_cachepress_purge_cache' ) ) {
+			$used = 'action:sg_cachepress_purge_cache';
+		}
 	}
-	delete_transient( 'playform_front_mobile_cats' );
+	update_option( 'playform_last_purge', gmdate( 'c' ) . ' ' . $used, false );
+	return $used;
 }
+
+// Diagnose: udrulningens kald til /wp-json/?pf_deploy=… får at vide, om opdateringerne kørte, og hvordan cachen blev tømt.
+add_filter(
+	'rest_post_dispatch',
+	static function ( $response ) {
+		if ( isset( $_GET['pf_deploy'] ) && $response instanceof WP_REST_Response ) { // phpcs:ignore
+			$response->header( 'X-PF-Upgrade', ! empty( $GLOBALS['pf_upgrade_ran'] ) ? 'ran' : 'skipped' );
+			$response->header( 'X-PF-Purge', (string) get_option( 'playform_last_purge', 'never' ) );
+		}
+		return $response;
+	}
+);
 
 // Efter hver import har priser og lager ændret sig – tøm også cachen her.
 add_action( 'playform_feeds_after_import', 'playform_purge_cache', 99 );

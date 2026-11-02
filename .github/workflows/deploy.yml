@@ -71,8 +71,9 @@ jobs:
         run: |
           sleep 3
           for i in 1 2 3; do
-            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 120 "https://fitbase.dk/wp-json/?pf_deploy=${GITHUB_RUN_ID}-$i" -H "Cache-Control: no-cache")
+            code=$(curl -s -D hdr.txt -o /dev/null -w "%{http_code}" --max-time 120 "https://fitbase.dk/wp-json/?pf_deploy=${GITHUB_RUN_ID}-$i" -H "Cache-Control: no-cache")
             echo "Svar: $code"
+            grep -i "x-pf-" hdr.txt || echo "(ingen x-pf-headere)"
             [ "$code" = "200" ] && break
             sleep 10
           done
