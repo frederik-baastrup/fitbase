@@ -27,6 +27,10 @@ jobs:
             echo -n "Forekomster af frederikb7.sg-host.com i forsidens HTML: "; curl -sS -m 20 https://fitbase.dk/ | grep -c "frederikb7.sg-host.com"
             echo -n "Kommer snart-side (0 = siden er synlig): "; curl -sS -m 20 https://fitbase.dk/ | grep -ci "coming-soon\|kommer snart"
             echo -n "Produktkort på forsiden: "; curl -sS -m 20 https://fitbase.dk/ | grep -o 'class="pcard' | wc -l
+            for u in "https://fitbase.dk/wp-sitemap.xml" "https://fitbase.dk/sitemap_index.xml" "https://fitbase.dk/viden/forfatter/frederik-baastrup/"; do
+              echo -n "$u -> "; curl -sS -o /dev/null -m 20 -w "%{http_code} %{content_type} %{redirect_url}\n" "$u"
+            done
+            echo -n "Profilbillede på forfattersiden: "; curl -sS -m 20 https://fitbase.dk/viden/forfatter/frederik-baastrup/ | grep -c "authors/frederik-baastrup.jpg"
             echo -n "Robots: "; curl -sS -m 20 https://fitbase.dk/robots.txt | tr '\n' ' '; echo
             echo ""
             echo "== css/js version på forsiden =="

@@ -181,3 +181,26 @@ $playform_author_save = static function ( int $user_id ) {
 };
 add_action( 'personal_options_update', $playform_author_save );
 add_action( 'edit_user_profile_update', $playform_author_save );
+
+/**
+ * Frederiks profil (2. nov. 2026): bio og profilbillede, hvis felterne stadig er tomme eller står på standardteksten.
+ * Rettes de i WordPress (Brugere → Profil), bliver de ikke overskrevet.
+ * Kun fakta, Frederik selv har oplyst – ingen påståede kvalifikationer.
+ */
+function playform_author_profile(): void {
+	if ( get_option( 'playform_author_profile' ) ) {
+		return;
+	}
+	$users = get_users( [ 'search' => 'Frederik Baastrup', 'search_columns' => [ 'display_name' ], 'number' => 1 ] )
+		?: get_users( [ 'role' => 'administrator', 'number' => 1 ] );
+	foreach ( $users as $u ) {
+		$bio = trim( (string) get_user_meta( $u->ID, 'description', true ) );
+		if ( '' === $bio || playform_author_defaults()['bio'] === $bio ) {
+			update_user_meta( $u->ID, 'description', 'Frederik Baastrup er stifter og redaktør af Fitbase. Til daglig driver han Mondae, hvor han arbejder med webdesign og digitale løsninger. Med Fitbase samler han fitnessudstyr fra danske webshops ét sted og skriver købsguides, der gør det nemt at sammenligne priser, specifikationer og tilbud – med åbenhed om, hvordan produkterne er valgt, og hvordan siden tjener penge.' );
+		}
+		if ( '' === (string) get_user_meta( $u->ID, 'pf_photo', true ) ) {
+			update_user_meta( $u->ID, 'pf_photo', playform_asset( 'authors/frederik-baastrup.jpg' ) );
+		}
+	}
+	update_option( 'playform_author_profile', 1, false );
+}

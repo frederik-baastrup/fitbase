@@ -338,6 +338,9 @@ function playform_legacy_redirects(): array {
 		'koebsguide/traeningsudstyr'                                      => home_url( '/tilbehor/' ),
 		'hvad-er-cardio'                                                  => home_url( '/viden/hvad-er-cardio/' ),
 		'guide-derfor-boer-du-proeve-kompressionsterapi'                  => home_url( '/viden/kompressionsterapi/' ),
+		'sitemap_index.xml'                                               => home_url( '/wp-sitemap.xml' ), // gammelt Yoast-sitemap i Search Console
+		'post-sitemap.xml'                                                => home_url( '/wp-sitemap.xml' ),
+		'page-sitemap.xml'                                                => home_url( '/wp-sitemap.xml' ),
 		'generelt'                                                        => home_url( '/viden/' ),
 		'viden/artikler'                                                  => home_url( '/viden/' ),
 		'om'                                                              => home_url( '/viden/forfatter/frederik-baastrup/' ),
