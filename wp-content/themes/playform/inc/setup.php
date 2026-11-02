@@ -744,3 +744,30 @@ function playform_hide_imageless_products(): void {
 	}
 	update_option( 'playform_imageless_hidden', count( (array) $ids ), false );
 }
+
+/**
+ * Favicon: SVG til moderne browsere, PNG (192 px, deler af 48) til Google og Android, Apple-ikon til iOS.
+ * /favicon.ico (som mange browsere og crawlere beder om uden at læse siden) sendes videre til PNG'en.
+ */
+add_action(
+	'wp_head',
+	static function () {
+		$u = get_template_directory_uri() . '/assets/img/';
+		echo '<link rel="icon" href="' . esc_url( $u . 'favicon.svg' ) . '" type="image/svg+xml">' . "\n";
+		echo '<link rel="icon" href="' . esc_url( $u . 'favicon-32.png' ) . '" type="image/png" sizes="32x32">' . "\n";
+		echo '<link rel="icon" href="' . esc_url( $u . 'favicon-192.png' ) . '" type="image/png" sizes="192x192">' . "\n";
+		echo '<link rel="apple-touch-icon" href="' . esc_url( $u . 'apple-touch-icon.png' ) . '">' . "\n";
+	},
+	2
+);
+add_action(
+	'template_redirect',
+	static function () {
+		$path = wp_parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ); // phpcs:ignore
+		if ( '/favicon.ico' === $path ) {
+			wp_safe_redirect( get_template_directory_uri() . '/assets/img/favicon-32.png', 301 );
+			exit;
+		}
+	},
+	0
+);
