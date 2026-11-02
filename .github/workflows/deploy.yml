@@ -74,6 +74,17 @@ jobs:
             code=$(curl -s -D hdr.txt -o /dev/null -w "%{http_code}" --max-time 120 "https://fitbase.dk/wp-json/?pf_deploy=${GITHUB_RUN_ID}-$i" -H "Cache-Control: no-cache")
             echo "Svar: $code"
             grep -i "x-pf-" hdr.txt || echo "(ingen x-pf-headere)"
+            css=$(grep -i "^x-pf-css:" hdr.txt | tr -d '\r' | awk '{print $2}')
             [ "$code" = "200" ] && break
             sleep 10
+          done
+
+      # Kontrol: er en kategoriside (som ellers kunne ligge i cachen) frisk, dvs. har den samme CSS-version som filen?
+      - name: Tjek at siderne er friske
+        run: |
+          sleep 5
+          want=$(curl -s -D - -o /dev/null --max-time 60 "https://fitbase.dk/wp-json/?pf_deploy=check-${GITHUB_RUN_ID}" | grep -i "^x-pf-css:" | tr -d '\r' | awk '{print $2}')
+          for u in "https://fitbase.dk/" "https://fitbase.dk/traeningsmaskiner/lobebaand/gaabaand/"; do
+            got=$(curl -s --max-time 60 "$u" | grep -o "main.css?ver=[0-9.]*" | head -1 | sed 's/.*\.//')
+            if [ -n "$want" ] && [ "$got" = "$want" ]; then echo "FRISK: $u ($got)"; else echo "GAMMEL SIDE I CACHEN: $u (side=$got, fil=$want)"; fi
           done

@@ -42,25 +42,21 @@ add_action(
  * ("none" = ingen fundet). Resultatet sendes som header ved udrulningens kald, så det kan ses i GitHub Actions.
  */
 function playform_purge_cache(): string {
-	$used = 'none';
 	delete_transient( 'playform_front_mobile_cats' );
-	if ( class_exists( '\SiteGround_Optimizer\Supercacher\Supercacher' ) && method_exists( '\SiteGround_Optimizer\Supercacher\Supercacher', 'purge_cache' ) ) {
-		\SiteGround_Optimizer\Supercacher\Supercacher::purge_cache();
-		$used = 'Supercacher::purge_cache';
-	} elseif ( function_exists( 'sg_cachepress_purge_everything' ) ) {
-		sg_cachepress_purge_everything();
-		$used = 'sg_cachepress_purge_everything';
+	@set_time_limit( 300 ); // phpcs:ignore
+	$S = '\\SiteGround_Optimizer\\Supercacher\\Supercacher';
+	// SiteGrounds samlede "tøm alt" virker ikke på undersider (og stjæler de efterfølgende tømninger) – tøm derfor side for side.
+	$purge = null;
+	if ( class_exists( $S ) && method_exists( $S, 'purge_cache_request' ) ) {
+		$purge = static fn( string $u ) => $S::purge_cache_request( $u, false );
+		$used  = 'Supercacher::purge_cache_request';
 	} elseif ( function_exists( 'sg_cachepress_purge_cache' ) ) {
-		sg_cachepress_purge_cache();
-		$used = 'sg_cachepress_purge_cache';
+		$purge = static fn( string $u ) => sg_cachepress_purge_cache( $u );
+		$used  = 'sg_cachepress_purge_cache(url)';
 	} else {
-		do_action( 'sg_cachepress_purge_cache' ); // ældre versioner lytter på handlingen
-		if ( has_action( 'sg_cachepress_purge_cache' ) ) {
-			$used = 'action:sg_cachepress_purge_cache';
-		}
+		$used = 'none';
 	}
-	// Den fulde tømning rammer ikke altid undersider – tøm derfor også de vigtigste sider enkeltvis.
-	$urls = [ home_url( '/' ), home_url( '/koebsguide/' ), home_url( '/viden/' ) ];
+	$urls = [ home_url( '/' ), home_url( '/koebsguide/' ), home_url( '/viden/' ), home_url( '/vores-butikker/' ) ];
 	foreach ( get_terms( [ 'taxonomy' => 'product_cat', 'hide_empty' => false ] ) as $t ) {
 		$l = get_term_link( $t );
 		if ( ! is_wp_error( $l ) ) {
@@ -72,17 +68,14 @@ function playform_purge_cache(): string {
 		$urls[] = get_permalink( $pid );
 	}
 	$n = 0;
-	foreach ( array_unique( $urls ) as $u ) {
-		if ( function_exists( 'sg_cachepress_purge_cache' ) ) {
-			sg_cachepress_purge_cache( $u );
-		} elseif ( class_exists( '\\SiteGround_Optimizer\\Supercacher\\Supercacher' ) && method_exists( '\\SiteGround_Optimizer\\Supercacher\\Supercacher', 'purge_cache_request' ) ) {
-			\SiteGround_Optimizer\Supercacher\Supercacher::purge_cache_request( $u, false );
-		} else {
-			break;
+	if ( $purge ) {
+		foreach ( array_unique( $urls ) as $u ) {
+			$purge( $u );
+			++$n;
+			usleep( 120000 ); // små pauser, så SiteGround ikke dropper tømninger i en byge
 		}
-		++$n;
 	}
-	$used .= sprintf( ' | enkeltsider:%d fn_purge_cache:%s fn_everything:%s req:%s', $n, function_exists( 'sg_cachepress_purge_cache' ) ? 'ja' : 'nej', function_exists( 'sg_cachepress_purge_everything' ) ? 'ja' : 'nej', class_exists( '\\SiteGround_Optimizer\\Supercacher\\Supercacher' ) && method_exists( '\\SiteGround_Optimizer\\Supercacher\\Supercacher', 'purge_cache_request' ) ? 'ja' : 'nej' );
+	$used .= " | sider:$n";
 	update_option( 'playform_last_purge', gmdate( 'c' ) . ' ' . $used, false );
 	return $used;
 }
@@ -124,6 +117,7 @@ add_filter(
 		if ( isset( $_GET['pf_deploy'] ) && $response instanceof WP_REST_Response ) { // phpcs:ignore
 			$response->header( 'X-PF-Upgrade', ! empty( $GLOBALS['pf_upgrade_ran'] ) ? 'ran' : 'skipped' );
 			$response->header( 'X-PF-Purge', (string) get_option( 'playform_last_purge', 'never' ) );
+			$response->header( 'X-PF-Css', (string) filemtime( get_template_directory() . '/assets/css/main.css' ) );
 			if ( ! empty( $_GET['pf_probe'] ) ) { // phpcs:ignore
 				$response->header( 'X-PF-Probe', playform_purge_probe( esc_url_raw( wp_unslash( $_GET['pf_probe'] ) ) ) ); // phpcs:ignore
 			}
