@@ -92,12 +92,15 @@ function playform_card_data( WC_Product $p ): array {
 }
 
 function playform_product_card( WC_Product $p, string $class = 'pcard' ): void {
-	$d = playform_card_data( $p );
+	static $n = 0;
+	++$n;
+	$d    = playform_card_data( $p );
+	$lazy = $n > 2 ? 'loading="lazy" decoding="async"' : 'decoding="async"'; // de første kort ses uden scroll – ikke udskudt
 	?>
 	<a href="<?php echo esc_url( $d['url'] ); ?>" class="<?php echo esc_attr( $class ); ?>">
 		<span class="pcard__img">
 			<?php if ( $d['image'] ) : ?>
-				<img src="<?php echo esc_url( $d['image'] ); ?>" alt="<?php echo esc_attr( $d['name'] ); ?>" loading="lazy" decoding="async">
+				<img src="<?php echo esc_url( $d['image'] ); ?>" alt="<?php echo esc_attr( $d['name'] ); ?>" <?php echo $lazy; // phpcs:ignore ?>>
 			<?php else : ?>
 				<span class="pcard__ph"><?php echo playform_icon( 'product', 72, 1.2 ); // phpcs:ignore ?></span>
 			<?php endif; ?>
@@ -149,6 +152,19 @@ function playform_breadcrumbs( array $items ): void {
 		}
 	}
 	echo '</nav>';
+
+	// Brødkrummer som strukturerede data (vises som sti i Googles resultater).
+	$list = [];
+	foreach ( array_values( $items ) as $i => [ $label, $url ] ) {
+		$li = [ '@type' => 'ListItem', 'position' => $i + 1, 'name' => wp_specialchars_decode( (string) $label ) ];
+		if ( $url ) {
+			$li['item'] = $url;
+		}
+		$list[] = $li;
+	}
+	if ( count( $list ) > 1 && function_exists( 'playform_json_ld' ) ) {
+		playform_json_ld( [ '@type' => 'BreadcrumbList', 'itemListElement' => $list ] );
+	}
 }
 
 /**
@@ -201,6 +217,11 @@ function playform_product_schema( WC_Product $product, array $offers, array $d )
 	if ( strlen( $ean ) === 13 ) {
 		$data['gtin13'] = $ean;
 	}
+	$data['sku'] = $ean ?: (string) get_post_field( 'post_name', $product->get_id() );
+	$cat         = function_exists( 'playform_product_term' ) ? playform_product_term( $product->get_id() ) : null;
+	if ( $cat ) {
+		$data['category'] = wp_specialchars_decode( $cat->name );
+	}
 	$desc = wp_strip_all_tags( get_the_content( null, false, $product->get_id() ) ); // kun vores egen tekst, ikke butikkens (duplicate content)
 	if ( $desc ) {
 		$data['description'] = mb_substr( $desc, 0, 500 );
@@ -209,9 +230,9 @@ function playform_product_schema( WC_Product $product, array $offers, array $d )
 		$prices = array_column( $offers, 'price' );
 		$avail  = ! empty( array_filter( array_column( $offers, 'in_stock' ) ) ) ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock';
 		if ( count( $offers ) === 1 ) {
-			$data['offers'] = [ '@type' => 'Offer', 'price' => number_format( $offers[0]['price'], 2, '.', '' ), 'priceCurrency' => 'DKK', 'availability' => $avail, 'url' => $data['url'], 'seller' => [ '@type' => 'Organization', 'name' => $offers[0]['shop'] ] ];
+			$data['offers'] = [ '@type' => 'Offer', 'price' => number_format( $offers[0]['price'], 2, '.', '' ), 'priceCurrency' => 'DKK', 'itemCondition' => 'https://schema.org/NewCondition', 'availability' => $avail, 'url' => $data['url'], 'seller' => [ '@type' => 'Organization', 'name' => $offers[0]['shop'] ] ];
 		} else {
-			$data['offers'] = [ '@type' => 'AggregateOffer', 'lowPrice' => number_format( min( $prices ), 2, '.', '' ), 'highPrice' => number_format( max( $prices ), 2, '.', '' ), 'offerCount' => count( $offers ), 'priceCurrency' => 'DKK', 'availability' => $avail ];
+			$data['offers'] = [ '@type' => 'AggregateOffer', 'lowPrice' => number_format( min( $prices ), 2, '.', '' ), 'highPrice' => number_format( max( $prices ), 2, '.', '' ), 'offerCount' => count( $offers ), 'priceCurrency' => 'DKK', 'itemCondition' => 'https://schema.org/NewCondition', 'availability' => $avail, 'url' => $data['url'] ];
 		}
 	}
 	echo '<script type="application/ld+json">' . wp_json_encode( $data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . '</script>';
