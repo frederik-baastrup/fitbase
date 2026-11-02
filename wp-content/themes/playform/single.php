@@ -38,7 +38,9 @@ while ( have_posts() ) :
 						<li><?php echo playform_icon( 'refresh', 15, 1.4 ); // phpcs:ignore ?><span>Produkter tjekket d. <?php echo esc_html( wp_date( 'j. M', strtotime( $checked ) ) ); ?></span></li>
 					<?php endif; ?>
 				</ul>
-				<a class="guide__trust" href="<?php echo esc_url( home_url( '/saadan-tjener-vi-penge/' ) ); ?>"><?php echo playform_icon( 'tag', 14, 1.6 ); // phpcs:ignore ?>Indeholder affiliate-links</a>
+				<?php if ( playform_picks() || str_contains( $html, 'sponsored' ) || str_contains( $html, 'pcard' ) ) : ?>
+					<a class="guide__trust" href="<?php echo esc_url( home_url( '/saadan-tjener-vi-penge/' ) ); ?>"><?php echo playform_icon( 'tag', 14, 1.6 ); // phpcs:ignore ?>Indeholder affiliate-links</a>
+				<?php endif; ?>
 			</div>
 		</header>
 		<?php $hero = playform_post_image( get_the_ID(), 1200 ); ?>
@@ -59,7 +61,7 @@ while ( have_posts() ) :
 				<?php endif; ?>
 			</aside>
 			<div class="guide__body prose">
-				<?php if ( ! playform_picks() ) : // anbefalinger har deres egen boks om metode og provision ?>
+				<?php if ( ! playform_picks() && ( str_contains( $html, 'sponsored' ) || str_contains( $html, 'pcard' ) ) ) : // anbefalinger har deres egen boks om metode og provision ?>
 				<p class="guide__note">Guiden indeholder links til butikker. Køber du via et link, kan vi få en provision – det koster ikke dig noget ekstra og påvirker ikke vores råd.</p>
 				<?php endif; ?>
 				<?php echo $html; // phpcs:ignore -- indholdet er allerede filtreret af the_content ?>

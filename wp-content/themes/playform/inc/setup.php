@@ -50,6 +50,7 @@ function playform_run_upgrades(): void {
 		playform_best_check( false ); // første rapport med det samme
 	}
 	playform_article_images();
+	playform_fix_incline_attr();
 	playform_guide_topics();
 	if ( class_exists( '\Playform\Feeds\Sales' ) ) {
 		\Playform\Feeds\Sales::refresh_all( current_time( 'Y-m-d' ) ); // kontrollerede førpriser
@@ -470,7 +471,7 @@ function playform_seed_articles(): void {
 		$id  = wp_insert_post(
 			[
 				'post_type'     => 'post',
-				'post_status'   => 'draft',
+				'post_status'   => $a['status'] ?? 'draft',
 				'post_name'     => $a['slug'],
 				'post_title'    => $a['title'],
 				'post_excerpt'  => $a['excerpt'],
@@ -503,3 +504,25 @@ add_action(
 		}
 	}
 );
+
+/**
+ * Engangsoprydning: "indstigning" blev læst som "stigning", så fx motionscykler med lav indstigning
+ * fik egenskaben incline. Fjerner incline, hvor teksten ikke nævner stigning/incline/hældning som eget ord.
+ */
+function playform_fix_incline_attr(): void {
+	if ( get_option( 'playform_incline_fixed' ) ) {
+		return;
+	}
+	$ids = get_posts( [ 'post_type' => 'product', 'post_status' => 'any', 'fields' => 'ids', 'posts_per_page' => -1, 'meta_key' => '_pf_incline', 'meta_value' => '1' ] );
+	foreach ( $ids as $id ) {
+		$text = mb_strtolower( get_the_title( $id ) . ' ' . get_post_meta( $id, '_pf_feed_description', true ) );
+		if ( preg_match( '/(?<!\p{L})(incline|stigning|hældning)/u', $text ) ) {
+			continue;
+		}
+		$attr = (array) get_post_meta( $id, '_pf_attributes', true );
+		unset( $attr['incline'] );
+		update_post_meta( $id, '_pf_attributes', $attr );
+		delete_post_meta( $id, '_pf_incline' );
+	}
+	update_option( 'playform_incline_fixed', 1, false );
+}

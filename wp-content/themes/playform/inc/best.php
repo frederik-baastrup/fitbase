@@ -336,6 +336,8 @@ function playform_legacy_redirects(): array {
 		'koebsguide/traeningsmaskiner'                                    => home_url( '/traeningsmaskiner/' ),
 		'koebsguide/styrketraening'                                       => home_url( '/styrketraening/' ),
 		'koebsguide/traeningsudstyr'                                      => home_url( '/tilbehor/' ),
+		'hvad-er-cardio'                                                  => home_url( '/viden/hvad-er-cardio/' ),
+		'guide-derfor-boer-du-proeve-kompressionsterapi'                  => home_url( '/viden/kompressionsterapi/' ),
 		'generelt'                                                        => home_url( '/viden/' ),
 		'viden/artikler'                                                  => home_url( '/viden/' ),
 		'om'                                                              => home_url( '/viden/forfatter/frederik-baastrup/' ),
@@ -441,9 +443,8 @@ function playform_seed_best(): void {
 /** Bygger indlæggets HTML ud fra artikelfilen. */
 function playform_best_html( array $a ): string {
 	$h  = trim( $a['intro'] ?? '' ) . "\n";
-	$h .= "[fitbase_metode]\n";
 	if ( ! empty( $a['picks'] ) ) {
-		$h .= "[fitbase_kort]\n";
+		$h .= "[fitbase_metode]\n[fitbase_kort]\n";
 		foreach ( $a['picks'] as $i => $pk ) {
 			$n  = $i + 1;
 			$h .= '<h2 id="valg-' . $n . '">' . esc_html( $pk['role'] ) . ': ' . esc_html( $pk['name'] ) . "</h2>\n";

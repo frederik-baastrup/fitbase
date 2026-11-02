@@ -20,7 +20,7 @@ final class Attributes {
 		if ( preg_match( '/foldbar|sammenfoldelig|kan foldes|sammenklappelig|foldes sammen|foldable/u', $text ) ) {
 			$attr['foldable'] = true;
 		}
-		if ( preg_match( '/incline|stigning|hældning/u', $text ) ) {
+		if ( preg_match( '/(?<!\p{L})(incline|stigning|hældning)/u', $text ) ) {
 			$attr['incline'] = ! preg_match( '/uden (incline|stigning|hældning)/u', $text );
 		}
 		if ( preg_match( '/(\d{1,2}(?:[.,]\d)?)\s*km\s*\/?\s*t/u', $text, $m ) ) {
