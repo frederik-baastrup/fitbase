@@ -372,7 +372,7 @@
 
 // Underkategorier på kategorikort: tone ud i kanten, så længe der er mere at swipe til
 (function () {
-	var navs = document.querySelectorAll('.cat__subs, .guide__chips');
+	var navs = document.querySelectorAll('.cat__subs, .guide__chips, .pricebox__chips');
 	if (!navs.length) return;
 	var update = function (n) { n.classList.toggle('has-more', n.scrollWidth > n.clientWidth + 2 && n.scrollLeft + n.clientWidth < n.scrollWidth - 2); };
 	navs.forEach(function (n) {

@@ -124,7 +124,7 @@ while ( have_posts() ) :
 								$bits[] = [ 'clock', 'Levering ' . $best['delivery'] ];
 							}
 							if ( $best['shipping'] !== null ) {
-								$bits[] = [ 'product', $best['shipping'] > 0 ? 'Fragt ' . playform_kr( $best['shipping'] ) : 'Gratis fragt' ];
+								$bits[] = [ 'truck', $best['shipping'] > 0 ? 'Fragt ' . playform_kr( $best['shipping'] ) : 'Gratis fragt' ];
 							}
 							$bits[] = [ 'store', 'Sælges af ' . $best['shop'] ];
 							foreach ( $bits as [ $ic, $tx ] ) :
