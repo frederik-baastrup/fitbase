@@ -16,6 +16,14 @@ final class Config {
 			'traeningspartner'      => [ 'name' => 'Træningspartner',       'url' => "$base&bannerid=67325&feedid=1378" ],
 			'den-intelligente-krop' => [ 'name' => 'Den Intelligente Krop', 'url' => "$base&bannerid=38097&feedid=400" ],
 			'optimasport'           => [ 'name' => 'OptimaSport.dk',        'url' => "$base&bannerid=83091&feedid=2014" ],
+			// Kun dame- og herrecykler (til købsguiderne om citybikes). Hver størrelse er en række i feedet,
+			// så rækker med samme navn samles til ét produkt ('group_variants').
+			'cykelexperten'         => [
+				'name'           => 'Cykelexperten.dk',
+				'url'            => '', // feed-adressen (med feedid) fra Partner-ads indsættes her
+				'category_map'   => [ 'cykler > damecykler' => 'damecykler', 'cykler > herrecykler' => 'herrecykler' ],
+				'group_variants' => true,
+			],
 		];
 		$custom = get_option( 'playform_shops' );
 		return is_array( $custom ) && $custom ? $custom : $defaults;
@@ -34,6 +42,8 @@ final class Config {
 			'styrke-baenke'      => [ 'name' => 'Bænke & racks', 'match' => 'multi træningsmaskine|træningsmaskine|stack|lat[- ]?attachment|træningsbænk|vægtbænk|\bbænk\b|\bbench\b|\brack\b|racks|power ?cage|squat|smith|multigym|home ?gym|styrkemaskine|kabeltræk|lat ?pull|leg ?press|benpres|pulley|keiser|plate loaded|pull[- ]?up|dip ?station|chin[- ]?up|vægtstak' ],
 			'yoga-pilates'       => [ 'name' => 'Yoga & pilates', 'match' => 'yoga|pilates|reformer|meditation' ],
 			'restitution'        => [ 'name' => 'Restitution', 'match' => 'sauna|jacknobber|ekoroll|rygstrækker|backflex|massage|foam ?roller|foamroller|recovery|kuldeterapi|varmeterapi|isbad|ice ?bath|triggerpunkt|massagepistol' ],
+			'damecykler'         => [ 'name' => 'Damecykler', 'match' => 'damecykel|damecykler' ],
+			'herrecykler'        => [ 'name' => 'Herrecykler', 'match' => 'herrecykel|herrecykler' ],
 			'tilbehor'           => [ 'name' => 'Tilbehør', 'match' => 'fitnessbold|træningsbold|\\bbold\\b|grips|løftekæde|hammer|wallbar|ribbe|slyngetræner|push-?up|parallettes|stepbænk|vægtvest|weight ?vest|power ?bags?|timer|pegboard|hand ?grip|flexbar|hand ?wraps|håndbind|\\bmma\\b|boksehjelm|benskinne|shin ?guard|skridtbeskytter|tandbeskytter|løftebælte|træningsbælte|fjederlås|\\bgreb\\b|attachment|hoppetræning|vibrationstræner|chalk|magnesia|kinesio|sportstape|\\btape\\b|boksehandske|boksesæk|boksebold|boksning|sandsæk|træningsmåtte|gulvmåtte|underlag|gulv\b|måtte|elastik|træningsbånd|loop ?band|modstandsbånd|sjippetov|springreb|ab ?wheel|mavehjul|medicinbold|slam ?ball|wall ?ball|gymball|balancebold|balance|stepbræt|træningshandske|løftestropper|vægtløfterbælte|greb og håndtag|håndtag|kalk|sandbag|battle ?rope|plyo|agility|træningsudstyr|core|boldtræning|suspension|trx|ringe|vægtløftning' ],
 		];
 	}

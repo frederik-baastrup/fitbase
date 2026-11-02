@@ -35,6 +35,9 @@ add_filter(
 		if ( playform_has_seo_plugin() ) {
 			return $parts;
 		}
+		if ( is_front_page() ) {
+			return [ 'title' => 'Fitbase – fitnessudstyr fra danske webshops samlet ét sted' ];
+		}
 		if ( playform_is_tilbud_page() ) {
 			$t              = get_queried_object();
 			$parts['title'] = $t instanceof WP_Term ? 'Tilbud på ' . mb_strtolower( playform_cat_label( $t ) ) . ' – aktuelle tilbud fra danske shops' : 'Tilbud på fitnessudstyr – aktuelle tilbud fra danske shops';
@@ -58,7 +61,7 @@ add_action(
 		}
 		$desc = '';
 		if ( is_front_page() ) {
-			$desc = 'Fitnessudstyr fra flere danske webshops samlet ét sted: løbebånd, motionscykler, vægte, kettlebells, yoga og meget mere. Priserne opdateres to gange i døgnet.';
+			$desc = 'Find løbebånd, motionscykler, romaskiner, vægte og andet fitnessudstyr fra danske webshops ét sted. Sammenlign priser, se tilbud og læs vores købsguides.';
 		} elseif ( playform_is_tilbud_page() ) {
 			$t    = get_queried_object();
 			$desc = sprintf( 'Se %s, som danske webshops har sat på tilbud lige nu. Vi samler butikkernes egne tilbud ét sted, og du handler direkte hos butikken.', $t instanceof WP_Term ? mb_strtolower( playform_cat_label( $t ) ) : 'fitnessudstyr' );

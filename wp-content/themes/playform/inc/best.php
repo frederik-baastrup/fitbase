@@ -321,8 +321,6 @@ add_filter(
 function playform_legacy_redirects(): array {
 	$home = home_url( '/' );
 	return [
-		'citybike-til-herre'                                              => $home,
-		'bedste-citybike-til-dame'                                        => $home,
 		'vaelg-den-rigtige-fodboldstoevle'                                => $home,
 		'vaelg-en-fodboldtroeje-der-matcher-dit-yndlingshold'             => $home,
 		'kosttilskud-og-traening-optimer-din-praestation-og-restitution' => $home,

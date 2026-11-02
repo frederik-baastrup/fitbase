@@ -65,7 +65,7 @@ final class Admin {
 			$state = [
 				'started'     => current_time( 'mysql', true ),
 				'today'       => current_time( 'Y-m-d' ),
-				'shop_keys'   => array_keys( Config::shops() ),
+				'shop_keys'   => array_keys( array_filter( Config::shops(), static fn( $s ) => ! empty( $s['url'] ) ) ),
 				'shop_index'  => 0,
 				'offset'      => 0,
 				'file'        => null,

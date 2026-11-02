@@ -37,7 +37,7 @@
 		</div>
 		<div class="foot__bottom">
 			<span>fitbase.dk indeholder annoncer. Når du klikker videre og handler hos en af vores partnere, kan vi modtage en provision. Det koster ikke dig noget ekstra. Priser og lagerstatus kan have ændret sig siden seneste opdatering.</span>
-			<span>© <?php echo esc_html( wp_date( 'Y' ) ); ?> fitbase.dk · Drives af Mondae v/ Frederik Baastrup · CVR 37208329</span>
+			<span>© <?php echo esc_html( wp_date( 'Y' ) ); ?> fitbase.dk · Mondae · CVR 37208329</span>
 		</div>
 	</div>
 </footer>

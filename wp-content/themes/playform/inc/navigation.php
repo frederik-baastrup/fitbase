@@ -14,6 +14,8 @@ function playform_virtual_groups(): array {
 	return [
 		'traeningsmaskiner' => [ 'label' => 'Træningsmaskiner', 'children' => [ 'lobebaand', 'motionscykler', 'romaskiner-crosstrainere' ] ],
 		'styrketraening'    => [ 'label' => 'Styrketræning', 'children' => [ 'vaegte-kettlebells', 'styrke-baenke' ] ],
+		// Ikke i hovedmenuen – bruges af købsguiderne om citybikes (produkter fra Cykelexperten.dk).
+		'cykler'            => [ 'label' => 'Cykler', 'children' => [ 'damecykler', 'herrecykler' ] ],
 	];
 }
 

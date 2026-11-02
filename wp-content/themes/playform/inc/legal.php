@@ -8,14 +8,14 @@
 
 defined( 'ABSPATH' ) || exit;
 
-const PLAYFORM_LEGAL_VERSION = 3;
+const PLAYFORM_LEGAL_VERSION = 4;
 
 function playform_legal_privacy(): string {
 	return <<<'HTML'
 <p><em>Senest opdateret: 2. november 2026</em></p>
 
 <h2>Hvem er ansvarlig?</h2>
-<p>Fitbase (fitbase.dk) drives af Mondae v/ Frederik Baastrup, Rønnevej 19 B, kl., 5270 Odense N, CVR 37208329. Du kan altid kontakte os på <a href="mailto:kontakt@fitbase.dk">kontakt@fitbase.dk</a>.</p>
+<p>Fitbase (fitbase.dk) drives af Mondae, Rønnevej 19 B, kl., 5270 Odense N, CVR 37208329. Du kan altid kontakte os på <a href="mailto:kontakt@fitbase.dk">kontakt@fitbase.dk</a>.</p>
 
 <h2>Hvad Fitbase er</h2>
 <p>Fitbase samler fitnessudstyr fra flere danske webshops ét sted. Du kan ikke købe noget direkte hos os. Når du klikker på "Gå til butik", sendes du videre til butikken, og det er butikken, der behandler dit køb og dine oplysninger i forbindelse med det.</p>
@@ -68,7 +68,7 @@ function playform_legal_cookies(): string {
 <p>Begynder vi at bruge fx statistikværktøjer, opdaterer vi denne side og beder om dit samtykke, før der sættes cookies, som ikke er nødvendige.</p>
 
 <h2>Spørgsmål</h2>
-<p>Kontakt os på <a href="mailto:kontakt@fitbase.dk">kontakt@fitbase.dk</a>. Fitbase drives af Mondae v/ Frederik Baastrup, CVR 37208329.</p>
+<p>Kontakt os på <a href="mailto:kontakt@fitbase.dk">kontakt@fitbase.dk</a>. Fitbase drives af Mondae, CVR 37208329.</p>
 HTML;
 }
 

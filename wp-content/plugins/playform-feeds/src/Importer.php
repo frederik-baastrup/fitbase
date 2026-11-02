@@ -35,6 +35,9 @@ final class Importer {
 			if ( $only && ! in_array( $key, $only, true ) ) {
 				continue;
 			}
+			if ( empty( $shop['url'] ) && ! isset( $files[ $key ] ) ) {
+				continue; // butik uden feed-adresse endnu
+			}
 			$this->stats[ $key ] = [ 'name' => $shop['name'], 'read' => 0, 'excluded' => 0, 'new' => 0, 'updated' => 0, 'unchanged' => 0, 'removed' => 0, 'error' => '' ];
 			try {
 				$file = $files[ $key ] ?? FeedReader::download( $shop['url'], $key );
@@ -116,6 +119,13 @@ final class Importer {
 			$stats['read']++;
 
 			$offer = Normalizer::offer( $row, $shop_key, $name );
+			if ( ! empty( $shops[ $shop_key ]['group_variants'] ) ) {
+				$offer = self::group_variant( $row, $offer, $file );
+				if ( ! $offer ) {
+					$stats['excluded']++;
+					continue;
+				}
+			}
 			if ( $offer['shop_product_id'] === '' || $offer['url'] === '' ) {
 				$stats['excluded']++;
 				continue;
@@ -156,6 +166,49 @@ final class Importer {
 		return [ 'stats' => $stats, 'next_offset' => $pos, 'eof' => $eof ];
 	}
 
+	/**
+	 * Butikker med 'group_variants': hver størrelse er en egen række med samme navn. Vi beholder én række
+	 * pr. navn – helst en på lager, ellers den billigste – og giver den et fast id ud fra navnet, så
+	 * produktet bliver det samme, uanset hvilken størrelse der er på lager i dag.
+	 *
+	 * @return array<string,bool> butikkens produktid for de valgte rækker => true
+	 */
+	private static function variant_reps( string $file ): array {
+		static $cache = [];
+		if ( isset( $cache[ $file ] ) ) {
+			return $cache[ $file ];
+		}
+		$best = [];
+		foreach ( FeedReader::read( $file ) as $row ) {
+			$key   = self::variant_key( $row );
+			$stock = Normalizer::stock( (string) ( $row['lagerantal'] ?? '' ) )[0];
+			$price = Normalizer::price( (string) ( $row['nypris'] ?? '' ) );
+			$id    = (string) ( $row['produktid'] ?? '' );
+			if ( $id === '' ) {
+				continue;
+			}
+			$cur = $best[ $key ] ?? null;
+			if ( ! $cur || ( $stock && ! $cur[1] ) || ( $stock === $cur[1] && $price > 0 && $price < $cur[2] ) ) {
+				$best[ $key ] = [ $id, $stock, $price ];
+			}
+		}
+		$cache[ $file ] = array_fill_keys( array_column( $best, 0 ), true );
+		return $cache[ $file ];
+	}
+
+	private static function variant_key( array $row ): string {
+		return mb_strtolower( trim( (string) ( $row['brand'] ?? '' ) ) . '|' . trim( (string) ( $row['produktnavn'] ?? '' ) ) );
+	}
+
+	/** Anvender 'group_variants': false = rækken springes over; ellers tilbuddet med fast id. */
+	private static function group_variant( array $row, array $offer, string $file ) {
+		if ( ! isset( self::variant_reps( $file )[ (string) ( $row['produktid'] ?? '' ) ] ) ) {
+			return false;
+		}
+		$offer['shop_product_id'] = 'v-' . substr( md5( self::variant_key( $row ) ), 0, 20 );
+		return $offer;
+	}
+
 	/** Markerer tilbud, der ikke dukkede op i feedet, som væk – kaldes når en butiks chunks er færdige. */
 	public static function finish_shop( string $shop_key, string $started ): int {
 		$ids = Offers::deactivate_missing( $shop_key, $started );
@@ -173,6 +226,13 @@ final class Importer {
 			}
 			$s['read']++;
 			$offer = Normalizer::offer( $row, $key, $name );
+			if ( ! empty( Config::shops()[ $key ]['group_variants'] ) ) {
+				$offer = self::group_variant( $row, $offer, $file );
+				if ( ! $offer ) {
+					$s['excluded']++;
+					continue;
+				}
+			}
 			if ( $offer['shop_product_id'] === '' || $offer['url'] === '' ) {
 				$s['excluded']++;
 				continue;

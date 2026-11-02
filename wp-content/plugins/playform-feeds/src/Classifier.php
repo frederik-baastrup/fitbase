@@ -21,6 +21,11 @@ final class Classifier {
 		if ( $offer['price'] <= 0 ) {
 			return 'exclude';
 		}
+		// Butikker med fast kategori-oversættelse (fx cykelbutikker): kun de nævnte butikskategorier kommer med.
+		$map = Config::shops()[ $offer['shop'] ]['category_map'] ?? null;
+		if ( is_array( $map ) ) {
+			return $map[ $cat ] ?? 'exclude';
+		}
 		foreach ( Config::exclude() as $pattern ) {
 			if ( self::m( $pattern, $name ) || self::m( $pattern, $cat ) ) {
 				return 'exclude';

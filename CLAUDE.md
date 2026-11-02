@@ -68,4 +68,4 @@ Designet ligger som et Claude-artefakt (Playform: forside, kategoriside, produkt
 
 ## Shops
 
-Apuls.dk, Fitnessshoppen.dk, Træningspartner, Den Intelligente Krop (kun træning, yoga, pilates, massage) og OptimaSport.dk (kun restitution). Padelshoppen og Watery er fravalgt (ikke fitness).
+Apuls.dk, Fitnessshoppen.dk, Træningspartner, Den Intelligente Krop (kun træning, yoga, pilates, massage) og OptimaSport.dk (kun restitution). Cykelexperten.dk kun dame- og herrecykler (`category_map` i `Config::shops()`, størrelsesvarianter samles med `group_variants`) til købsguiderne om citybikes; gruppen Cykler (`/cykler/`) er ikke i hovedmenuen. Cykelpartner har ingen hele cykler og er ikke med. Padelshoppen og Watery er fravalgt (ikke fitness).
