@@ -1025,3 +1025,9 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 	.pd__compare { font-size: 13px; }
 	.pd__trust { display: none; }
 }
+
+/* Mobil: produktsliderne viser ca. 2,4 kort, så næste kort kigger frem */
+@media (max-width: 760px) {
+	.slider { grid-auto-columns: calc((100% - 24px) / 2.4); gap: 12px; margin-right: -18px; padding-right: 18px; scroll-padding-left: 0; }
+	.slider .pcard .pcard__name, .slider .pcard h3 { font-size: 14px; }
+}
