@@ -839,7 +839,7 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 }
 @media (max-width: 760px) {
 	:root { --top-gap: 20px; }
-	.wrap { padding: 0 18px; }
+	.wrap { padding-left: 18px; padding-right: 18px; }
 	body { font-size: 15px; }
 	/* Overskrifter */
 	.guide__head h1, .gh h1 { font-size: 27px; letter-spacing: -.5px; line-height: 1.12; }
@@ -896,4 +896,17 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 @media (max-width: 700px) {
 	.topbar__mob { height: 26px; font-size: 10.5px; gap: 8px; }
 	.topbar__mob .topbar__tag { padding: 2px 5px 1px; font-size: 8.5px; }
+}
+
+/* Forsidens kategorikort som karrusel på mobil: ens højde, mindre overskrift, næste kort titter frem */
+@media (max-width: 760px) {
+	.hero { display: flex; gap: 10px; margin: 0 calc(-1 * var(--wrap-pad, 18px)); padding: 0 var(--wrap-pad, 18px) 4px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 var(--wrap-pad, 18px); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+	.hero::-webkit-scrollbar { display: none; }
+	.hero__side { display: contents; }
+	.hero .cat, .hero .cat--big { flex: 0 0 80%; min-height: 0; height: 190px; scroll-snap-align: start; }
+	.hero .cat__title, .hero .cat--big .cat__title { font-size: 22px; letter-spacing: -.3px; }
+	.hero .cat__body { left: 16px; right: 64px; bottom: 16px; gap: 7px; }
+	.hero .cat__arrow { right: 14px; bottom: 14px; width: 38px; height: 38px; }
+	.hero .cat__subs { gap: 10px; }
+	.cat__title, .cat--big .cat__title { font-size: 22px; }
 }
