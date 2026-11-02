@@ -33,13 +33,13 @@ while ( have_posts() ) :
 					<?php if ( $cats ) : ?>
 						<li><a class="guide__cat" href="<?php echo esc_url( get_category_link( $cats[0] ) ); ?>"><i aria-hidden="true"></i><?php echo esc_html( $tag ); ?></a></li>
 					<?php endif; ?>
-					<li><?php echo playform_icon( 'calendar', 15, 1.4 ); // phpcs:ignore ?><span>Opdateret d. <time datetime="<?php echo esc_attr( get_the_modified_date( 'c' ) ); ?>"><?php echo esc_html( get_the_modified_date( 'j. M Y' ) ); ?></time></span></li>
+					<li><?php echo playform_icon( 'calendar', 15, 1.4 ); // phpcs:ignore ?><span>Opdateret <i class="gt-long">d. </i><time datetime="<?php echo esc_attr( get_the_modified_date( 'c' ) ); ?>"><?php echo esc_html( get_the_modified_date( 'j. M Y' ) ); ?></time></span></li>
 					<?php if ( $checked && playform_picks() ) : ?>
 						<li><?php echo playform_icon( 'refresh', 15, 1.4 ); // phpcs:ignore ?><span>Produkter tjekket d. <?php echo esc_html( wp_date( 'j. M', strtotime( $checked ) ) ); ?></span></li>
 					<?php endif; ?>
 				</ul>
 				<?php if ( playform_picks() || str_contains( $html, 'sponsored' ) || str_contains( $html, 'pcard' ) ) : ?>
-					<a class="guide__trust" href="<?php echo esc_url( home_url( '/saadan-tjener-vi-penge/' ) ); ?>"><?php echo playform_icon( 'tag', 14, 1.6 ); // phpcs:ignore ?>Indeholder affiliate-links</a>
+					<a class="guide__trust" href="<?php echo esc_url( home_url( '/saadan-tjener-vi-penge/' ) ); ?>"><?php echo playform_icon( 'tag', 14, 1.6 ); // phpcs:ignore ?><span class="gt-long">Indeholder affiliate-links</span><span class="gt-short">Affiliate-links</span></a>
 				<?php endif; ?>
 			</div>
 		</header>
