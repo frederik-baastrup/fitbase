@@ -1043,3 +1043,8 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 	.foot__title { font-size: 12px; letter-spacing: .6px; text-transform: uppercase; color: #8F8F89; margin-bottom: 6px; }
 	.foot__bottom { margin-top: 32px; padding-top: 20px; gap: 12px; }
 }
+
+/* Underkategorier på kategorikort: kan swipes sidelæns og toner ud i kanten, når der er flere */
+.cat__subs { overflow-x: auto; overflow-y: hidden; scrollbar-width: none; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
+.cat__subs::-webkit-scrollbar { display: none; }
+.cat__subs.has-more { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent); }

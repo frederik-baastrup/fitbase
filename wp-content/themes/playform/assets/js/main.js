@@ -369,3 +369,16 @@
 		});
 	});
 })();
+
+// Underkategorier på kategorikort: tone ud i kanten, så længe der er mere at swipe til
+(function () {
+	var navs = document.querySelectorAll('.cat__subs');
+	if (!navs.length) return;
+	var update = function (n) { n.classList.toggle('has-more', n.scrollWidth > n.clientWidth + 2 && n.scrollLeft + n.clientWidth < n.scrollWidth - 2); };
+	navs.forEach(function (n) {
+		update(n);
+		n.addEventListener('scroll', function () { update(n); }, { passive: true });
+	});
+	window.addEventListener('resize', function () { navs.forEach(update); });
+	window.addEventListener('load', function () { navs.forEach(update); });
+})();
