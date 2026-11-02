@@ -79,19 +79,14 @@ jobs:
             sleep 10
           done
 
-      # SiteGround tager kun imod én tømning pr. sekund – så siderne tømmes i 6 dele, hver med sit eget kald.
-      - name: Tøm cachen side for side
-        run: |
-          for i in 0 1 2 3 4 5; do
-            curl -s -D - -o /dev/null --max-time 90 "https://fitbase.dk/wp-json/?pf_deploy=purge-${GITHUB_RUN_ID}-$i&pf_purge=$i" | grep -i "^x-pf-purge:" | tr -d '\r'
-          done
-
       # Kontrol: er en kategoriside (som ellers kunne ligge i cachen) frisk, dvs. har den samme CSS-version som filen?
-      - name: Tjek at siderne er friske
+      - name: Tjek at siderne er friske (baggrundstømningen tager ca. 3 min)
         run: |
-          sleep 5
           want=$(curl -s -D - -o /dev/null --max-time 60 "https://fitbase.dk/wp-json/?pf_deploy=check-${GITHUB_RUN_ID}" | grep -i "^x-pf-css:" | tr -d '\r' | awk '{print $2}')
-          for u in "https://fitbase.dk/" "https://fitbase.dk/traeningsmaskiner/lobebaand/gaabaand/"; do
-            got=$(curl -s --max-time 60 "$u" | grep -o "main.css?ver=[0-9.]*" | head -1 | sed 's/.*\.//')
-            if [ -n "$want" ] && [ "$got" = "$want" ]; then echo "FRISK: $u ($got)"; else echo "GAMMEL SIDE I CACHEN: $u (side=$got, fil=$want)"; fi
+          for i in 1 2 3 4 5 6 7 8; do
+            sleep 30
+            got=$(curl -s --max-time 60 "https://fitbase.dk/traeningsmaskiner/lobebaand/gaabaand/" | grep -o "main.css?ver=[0-9.]*" | head -1 | sed 's/.*\.//')
+            echo "forsøg $i: side=$got fil=$want"
+            [ -n "$want" ] && [ "$got" = "$want" ] && { echo "FRISK"; exit 0; }
           done
+          echo "GAMMEL SIDE I CACHEN efter 4 min"

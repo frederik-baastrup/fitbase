@@ -32,7 +32,7 @@ add_action(
 		$GLOBALS['pf_upgrade_ran'] = true;
 		update_option( 'playform_content_version', $want, false );
 		delete_transient( 'playform_upgrading' );
-		playform_purge_cache(); // nye filer → tøm sidecachen, så besøgende ikke får gammel HTML
+		playform_purge_in_background(); // nye filer → tøm sidecachen (i baggrunden), så besøgende ikke får gammel HTML
 	},
 	25
 );
@@ -58,12 +58,11 @@ function playform_purge_urls(): array {
 
 /**
  * Tømmer SiteGrounds sidecache side for side (SiteGrounds samlede "tøm alt" rammer ikke undersider). SiteGround tager kun
- * imod ca. én tømning pr. sekund, så listen deles i dele ($part af $parts), som udrulningen kalder efter hinanden.
- * Uden $part tømmes kun forsiden (hurtigt, bruges efter importen og i selve opdateringen).
+ * imod ca. én tømning pr. sekund. $mode: 'home' = kun forsiden (hurtigt), 'all' = alle sider med pause (ca. 2½ minut).
  */
-function playform_purge_cache( ?int $part = null, int $parts = 6 ): string {
+function playform_purge_cache( string $mode = 'home' ): string {
 	delete_transient( 'playform_front_mobile_cats' );
-	@set_time_limit( 120 ); // phpcs:ignore
+	@set_time_limit( 600 ); // phpcs:ignore
 	$S = '\\SiteGround_Optimizer\\Supercacher\\Supercacher';
 	if ( class_exists( $S ) && method_exists( $S, 'purge_cache_request' ) ) {
 		$purge = static fn( string $u ) => $S::purge_cache_request( $u, false );
@@ -76,16 +75,40 @@ function playform_purge_cache( ?int $part = null, int $parts = 6 ): string {
 		return 'none';
 	}
 	$all  = playform_purge_urls();
-	$urls = $part === null ? [ $all[0] ] : array_slice( $all, $part * (int) ceil( count( $all ) / $parts ), (int) ceil( count( $all ) / $parts ) );
+	$urls = $mode === 'all' ? $all : [ $all[0] ];
 	foreach ( $urls as $i => $u ) {
 		if ( $i ) {
 			usleep( 1100000 ); // SiteGround: højst én tømning pr. sekund
 		}
 		$purge( $u );
 	}
-	$used .= sprintf( ' | del %s: %d sider (af %d)', $part === null ? 'forside' : ( $part + 1 ) . '/' . $parts, count( $urls ), count( $all ) );
+	$used .= sprintf( ' | %s: %d sider', $mode, count( $urls ) );
 	update_option( 'playform_last_purge', gmdate( 'c' ) . ' ' . $used, false );
 	return $used;
+}
+
+/** Tømmer alle sider i baggrunden, efter svaret er sendt (ingen venter) – kaldes af opdateringen efter en udrulning. */
+function playform_purge_in_background(): void {
+	if ( get_transient( 'playform_purging' ) ) {
+		return;
+	}
+	set_transient( 'playform_purging', 1, 10 * MINUTE_IN_SECONDS );
+	update_option( 'playform_last_purge', gmdate( 'c' ) . ' startet i baggrunden', false );
+	add_action(
+		'shutdown',
+		static function () {
+			ignore_user_abort( true );
+			if ( function_exists( 'fastcgi_finish_request' ) ) {
+				fastcgi_finish_request(); // svaret er sendt – resten sker uden at nogen venter
+			}
+			try {
+				playform_purge_cache( 'all' );
+			} finally {
+				delete_transient( 'playform_purging' );
+			}
+		},
+		99
+	);
 }
 
 /** Diagnose: hvilken tømmemetode rammer en given side? Varmer siden, prøver metoder én ad gangen og måler x-proxy-cache. */
@@ -124,9 +147,6 @@ add_filter(
 	static function ( $response ) {
 		if ( isset( $_GET['pf_deploy'] ) && $response instanceof WP_REST_Response ) { // phpcs:ignore
 			$response->header( 'X-PF-Upgrade', ! empty( $GLOBALS['pf_upgrade_ran'] ) ? 'ran' : 'skipped' );
-			if ( isset( $_GET['pf_purge'] ) ) { // phpcs:ignore
-				playform_purge_cache( max( 0, (int) $_GET['pf_purge'] ) ); // phpcs:ignore
-			}
 			$response->header( 'X-PF-Purge', (string) get_option( 'playform_last_purge', 'never' ) );
 			$response->header( 'X-PF-Css', (string) filemtime( get_template_directory() . '/assets/css/main.css' ) );
 			if ( ! empty( $_GET['pf_probe'] ) ) { // phpcs:ignore
@@ -138,7 +158,7 @@ add_filter(
 );
 
 // Efter hver import har priser og lager ændret sig – tøm også cachen her.
-add_action( 'playform_feeds_after_import', 'playform_purge_cache', 99 );
+add_action( 'playform_feeds_after_import', 'playform_purge_in_background', 99 );
 
 function playform_run_upgrades(): void {
 	playform_move_to_fitbase_dk();
