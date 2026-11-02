@@ -973,3 +973,25 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 	.tab { gap: 5px; padding: 6px 12px; font-size: 12.5px; }
 	.tab__n { font-size: 11px; }
 }
+
+/* Mobil: antal, filtrer og sortering samlet i ét afrundet værktøjsfelt */
+.results__count .dot { font-style: normal; }
+@media (max-width: 900px) {
+	.results__bar { gap: 10px; padding: 12px; margin-bottom: 16px; border-radius: 18px; background: var(--soft); }
+	.results__count { order: 1; display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 0 2px; font-size: 14px; color: var(--ink); }
+	.results__count b { font-weight: 700; color: var(--ink); }
+	.results__count .muted { font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+	.results__count .dot { display: none; }
+	.filterbtn { order: 2; flex: 1 1 0; justify-content: center; border-color: transparent; background: #fff; }
+	.filterbtn[aria-expanded="true"] { border-color: var(--ink); }
+	.results__bar .sort { order: 3; flex: 1 1 0; margin-left: 0; }
+	.results__bar .sort .select { display: flex; width: 100%; }
+	.results__bar .select select { width: 100%; border-color: transparent; }
+	.filters:has(.filters__mobile[open]) { margin-top: -4px; }
+}
+
+@media (max-width: 900px) {
+	.filterbtn { flex: 0 0 36%; }
+	.results__bar .sort { flex: 1 1 0; min-width: 0; }
+	.results__bar .select select { padding: 0 30px 0 14px; }
+}
