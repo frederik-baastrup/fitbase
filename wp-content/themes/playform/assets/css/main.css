@@ -1181,3 +1181,9 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 	.byline__txt b, .byline__txt em { font-size: 12px; line-height: 1.3; }
 	.guide__head .guide__meta { padding-top: 12px; gap: 8px; }
 }
+
+/* Annonceoplysningen skal altid være synlig: først i rækken på mobil */
+@media (max-width: 760px) {
+	.guide__head .guide__chips .guide__trust { order: -1; background: #EAF9E4; }
+	.guide__head .guide__chips .guide__trust svg { color: var(--ink); }
+}
