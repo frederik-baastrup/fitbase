@@ -1172,3 +1172,12 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 	.byline .avatar-pf { width: 32px; height: 32px; box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--line-2); }
 	.byline__txt b, .byline__txt em { font-size: 13px; line-height: 1.3; }
 }
+
+/* Byline på mobil: endnu mindre */
+@media (max-width: 760px) {
+	.guide__head .byline { gap: 8px; margin-bottom: 0; }
+	.byline .avatar-pf { width: 24px; height: 24px; box-shadow: 0 0 0 1.5px #fff, 0 0 0 2.5px var(--line-2); }
+	.byline__txt { flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 0 6px; }
+	.byline__txt b, .byline__txt em { font-size: 12px; line-height: 1.3; }
+	.guide__head .guide__meta { padding-top: 12px; gap: 8px; }
+}
