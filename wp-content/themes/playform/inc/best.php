@@ -76,7 +76,7 @@ add_shortcode(
 		$money = esc_url( home_url( '/saadan-tjener-vi-penge/' ) );
 		return '<aside class="method"><span class="method__title">' . playform_icon( 'check', 16, 1.6 ) . 'Sådan har vi valgt</span>'
 			. '<p>Vi har ikke selv testet produkterne. Udvalget er vores bud ud fra anmeldelser fra andre medier og brugere, hvor de findes, samt specifikationer, pris og garanti fra butikkernes data. Hvor der ikke findes anmeldelser, står det tydeligt ved produktet.</p>'
-			. '<p>Priser og lagerstatus opdateres to gange i døgnet. Vi får provision, hvis du køber via vores links – det påvirker ikke, hvilke produkter vi vælger. <a href="' . $money . '">Sådan tjener vi penge</a>.</p></aside>';
+			. '<p>Priser og lagerstatus opdateres to gange i døgnet. Vi får provision, hvis du køber via vores links. Anbefalingerne er valgt ud fra produktdata og anmeldelser, ikke ud fra provision. <a href="' . $money . '">Sådan tjener vi penge</a>.</p></aside>';
 	}
 );
 

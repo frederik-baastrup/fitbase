@@ -62,7 +62,7 @@ while ( have_posts() ) :
 			</aside>
 			<div class="guide__body prose">
 				<?php if ( ! playform_picks() && ( str_contains( $html, 'sponsored' ) || str_contains( $html, 'pcard' ) ) ) : // anbefalinger har deres egen boks om metode og provision ?>
-				<p class="guide__note">Guiden indeholder links til butikker. Køber du via et link, kan vi få en provision – det koster ikke dig noget ekstra og påvirker ikke vores råd.</p>
+				<p class="guide__note">Guiden indeholder links til butikker. Køber du via et link, kan vi få en provision – det koster ikke dig noget ekstra. Anbefalingerne er valgt ud fra produktdata og anmeldelser, ikke ud fra provision.</p>
 				<?php endif; ?>
 				<?php echo $html; // phpcs:ignore -- indholdet er allerede filtreret af the_content ?>
 				<?php
