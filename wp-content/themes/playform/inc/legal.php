@@ -8,7 +8,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-const PLAYFORM_LEGAL_VERSION = 2;
+const PLAYFORM_LEGAL_VERSION = 3;
 
 function playform_legal_privacy(): string {
 	return <<<'HTML'
@@ -27,7 +27,7 @@ function playform_legal_privacy(): string {
 
 <h3>Når du tilmelder dig nyhedsbrevet</h3>
 <p>Tilmelder du dig nyhedsbrevet, gemmer vi din e-mailadresse og tidspunktet for tilmeldingen. Vi bruger den kun til at sende dig nyhedsbrevet. Du skal bekræfte tilmeldingen via en mail, og du kan altid afmelde dig via linket nederst i hver mail.</p>
-<p>Retsgrundlaget er dit samtykke (artikel 6, stk. 1, litra a). Vi sletter din e-mail, når du afmelder dig.</p>
+<p>Retsgrundlaget er dit samtykke (artikel 6, stk. 1, litra a). Nyhedsbrevet sendes via MailerLite, som behandler oplysningerne på vores vegne som databehandler. Vi sletter din e-mail, når du afmelder dig.</p>
 
 <h3>Når du kontakter os</h3>
 <p>Skriver du til os, bruger vi dine oplysninger til at svare dig. Vi sletter korrespondancen, når den ikke længere er relevant, og senest efter 12 måneder.</p>
@@ -42,6 +42,7 @@ function playform_legal_privacy(): string {
 <p>Vi sælger aldrig dine oplysninger. Vi bruger disse databehandlere:</p>
 <ul>
 <li>SiteGround – drift af hjemmesiden og e-mail</li>
+<li>MailerLite – udsendelse af nyhedsbrev</li>
 </ul>
 
 <h2>Dine rettigheder</h2>

@@ -90,6 +90,7 @@ get_template_part(
 );
 ?>
 
+<?php if ( class_exists( '\Playform\Feeds\Newsletter' ) && \Playform\Feeds\Newsletter::enabled() ) : // vises først, når nyhedsbrevet er sat op (Værktøjer → Playform Feeds) ?>
 <section class="wrap section">
 	<div class="news">
 		<div>
@@ -107,6 +108,7 @@ get_template_part(
 		</form>
 	</div>
 </section>
+<?php endif; ?>
 
 <?php
 $posts = get_posts( [ 'post_type' => 'post', 'posts_per_page' => 8 ] );
