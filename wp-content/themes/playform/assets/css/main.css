@@ -1115,3 +1115,19 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 .btn-shop { background: #23D200; color: #0B0B0A; border: 0; box-shadow: 0 1px 0 rgba(0,0,0,.06), 0 6px 16px rgba(35,210,0,.22); }
 .btn-shop:hover, .btn-shop:focus-visible { background: #1EBD00; color: #0B0B0A; }
 .btn-shop svg { color: inherit; }
+
+/* Artikelhoved: kompakt og i samme skriftstørrelse */
+.byline__txt b { font-size: 13px; line-height: 1.25; }
+.byline__txt em { font-size: 13px; line-height: 1.25; }
+.guide__trust { font-size: 13px; }
+@media (max-width: 760px) {
+	.guide__head .guide__meta { gap: 10px 16px; margin-top: 4px; padding-top: 14px; padding-bottom: 0; }
+	.byline { gap: 10px; }
+	.byline .avatar-pf { width: 34px; height: 34px; box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--line-2); }
+	.byline__txt { gap: 0; }
+	ul.guide__facts { gap: 6px 16px; }
+	.guide__facts > li { gap: 6px; }
+	.guide__facts svg { width: 14px; height: 14px; }
+	.guide__trust { padding: 4px 10px 3px; font-size: 12px; }
+	.guide__trust svg { width: 13px; height: 13px; }
+}
