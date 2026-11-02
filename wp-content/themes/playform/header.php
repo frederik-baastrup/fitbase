@@ -30,7 +30,7 @@ $pf_usps  = [
 	</div>
 	<?php // Mobil: én linje, hvor fordelene skifter roligt ?>
 	<div class="topbar__mob">
-		<a class="topbar__tag" href="<?php echo esc_url( $pf_money ); ?>">Annonce</a>
+		<a class="topbar__tag" href="<?php echo esc_url( $pf_money ); ?>" title="Siden indeholder reklamelinks (affiliate-links)">Reklamelinks</a>
 		<span class="topbar__rot" aria-live="off">
 			<?php foreach ( $pf_usps as $i => [ $icon, $lead, $rest ] ) : ?>
 				<span class="topbar__msg<?php echo $i === 0 ? ' is-on' : ''; ?>"><?php echo playform_icon( $icon, 13, 1.5 ); // phpcs:ignore ?><b><?php echo esc_html( $lead ); ?></b> <?php echo esc_html( $rest ); ?></span>

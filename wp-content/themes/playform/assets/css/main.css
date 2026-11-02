@@ -155,8 +155,8 @@ button, input, select { font-family: inherit; }
 .topbar__mob { align-items: center; justify-content: center; gap: 10px; height: 32px; padding: 0 16px; }
 .topbar__mob .topbar__tag:hover { color: #fff; }
 .topbar__rot { position: relative; display: inline-grid; }
-.topbar__msg { grid-area: 1 / 1; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; opacity: 0; transform: translateY(6px); transition: opacity .45s ease, transform .45s ease; }
-.topbar__msg.is-on { opacity: 1; transform: none; }
+.topbar__msg { grid-area: 1 / 1; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; opacity: 0; transform: translateY(6px); transition: opacity .22s ease, transform .22s ease; }
+.topbar__msg.is-on { opacity: 1; transform: none; transition: opacity .35s ease .24s, transform .35s ease .24s; } /* den gamle tones ud, før den nye tones ind – ingen overlap */
 .topbar__msg svg { margin-right: 4px; }
 @media (max-width: 700px) {
 	.topbar__in { display: none; }
