@@ -823,3 +823,57 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 .prose ul:not([class]) > li { position: relative; margin: 0 0 6px; padding-left: 20px; font-size: 15px; line-height: 1.65; color: var(--ink-2); }
 .prose ul:not([class]) > li::before { content: ""; position: absolute; left: 4px; top: .7em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
 #om h3:first-of-type { margin-top: 20px; }
+
+/* -------------------------------------------------------------------------
+ * Mobil: mere kompakt (nov. 2026) – lavere header, mindre overskrifter og mindre luft
+ * ---------------------------------------------------------------------- */
+@media (max-width: 1080px) {
+	.site-header__row { padding: 4px 0 5px; gap: 6px 8px; }
+	.logo img { height: 19px; }
+	.menu-toggle, .search-toggle { width: 40px; height: 40px; }
+	.burger { width: 20px; height: 14px; }
+	.burger i:nth-child(2) { top: 6.2px; }
+	.burger i:nth-child(3) { top: 12.4px; }
+	.menu-toggle[aria-expanded="true"] .burger i:nth-child(1),
+	.menu-toggle[aria-expanded="true"] .burger i:nth-child(3) { top: 6.2px; }
+}
+@media (max-width: 760px) {
+	:root { --top-gap: 20px; }
+	.wrap { padding: 0 18px; }
+	body { font-size: 15px; }
+	/* Overskrifter */
+	.guide__head h1, .gh h1 { font-size: 27px; letter-spacing: -.5px; line-height: 1.12; }
+	.guide__head .guide__lead { font-size: 15.5px; line-height: 1.55; }
+	.guide__head { gap: 12px; }
+	.cat-top h1, .page-wrap h1, .author-hero__body h1 { font-size: 28px; letter-spacing: -.5px; }
+	.pd h1 { font-size: 24px; letter-spacing: -.4px; }
+	.guide__body h2 { font-size: 21px; letter-spacing: -.3px; margin: 32px 0 10px; }
+	.guide__body h3, .prose h3 { font-size: 17px; }
+	.guide__body h2[id^="valg-"] { margin-top: 44px; margin-bottom: 12px; }
+	.guide__body h2#valg-1 { margin-top: 28px; }
+	.prose p, .guide__body p { font-size: 15px; line-height: 1.65; }
+	/* Produktvalg i købsguides */
+	.pick { padding: 14px; gap: 12px; }
+	.guide__body .pick-verdict { padding: 12px 14px 14px; font-size: 15px; }
+	.guide__body .pick-fit { margin-top: 16px; gap: 10px; }
+	.pick-fit > div { padding: 12px 14px; }
+	.guide__hero, .guide__head + .wrap .guide__hero { margin-top: 20px; }
+	.crumbs { font-size: 12.5px; }
+	.section { padding-top: 44px; }
+}
+@media (max-width: 760px) {
+	.guide__head .guide__meta { padding-bottom: 8px; }
+	.pick__media { aspect-ratio: 16 / 10; max-height: 210px; }
+	.cat { min-height: 176px; }
+	.cat--big { min-height: 210px; }
+	.overview .cat { min-height: 190px; }
+	.cat__title, .cat--big .cat__title { font-size: 26px; letter-spacing: -.4px; }
+}
+@media (max-width: 760px) {
+	.pd__media { aspect-ratio: 4 / 3; }
+	.pd__media img { width: 74%; height: 74%; }
+	.pricebox__price { font-size: 30px; }
+	.pd-top .crumbs [aria-current], .pd-top .crumbs span[aria-hidden]:nth-last-child(2) { display: none; }
+	.hero { gap: 12px; }
+	.hero__side { gap: 12px; }
+}
