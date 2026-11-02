@@ -934,3 +934,11 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 .fmore[open] .fmore__less { display: inline; }
 .fmore[open] > summary { order: 99; margin-top: 8px; }
 .fmore[open] { display: flex; flex-direction: column; gap: 2px; }
+
+/* Mindre brødkrummer: én linje på mobil, uden den side man står på (den står i overskriften) */
+.crumbs { font-size: 12.5px; }
+@media (max-width: 760px) {
+	.crumbs { flex-wrap: nowrap; gap: 5px; font-size: 11.5px; white-space: nowrap; overflow-x: auto; scrollbar-width: none; }
+	.crumbs::-webkit-scrollbar { display: none; }
+	.cat-top .crumbs [aria-current], .cat-top .crumbs span[aria-hidden]:nth-last-child(2) { display: none; }
+}
