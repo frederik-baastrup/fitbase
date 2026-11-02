@@ -817,3 +817,9 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 
 /* Besparelse ved kontrolleret førpris */
 .pricebox__save { display: inline-flex; align-self: flex-start; margin-top: 6px; padding: 3px 9px 2px; border-radius: 999px; background: rgba(180, 35, 24, .08); color: var(--sale); font-size: 13px; font-weight: 600; }
+
+/* Lister i produkttekster (Det får du …) */
+.prose ul:not([class]) { margin: 0 0 16px; padding-left: 0; list-style: none; }
+.prose ul:not([class]) > li { position: relative; margin: 0 0 6px; padding-left: 20px; font-size: 15px; line-height: 1.65; color: var(--ink-2); }
+.prose ul:not([class]) > li::before { content: ""; position: absolute; left: 4px; top: .7em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+#om h3:first-of-type { margin-top: 20px; }

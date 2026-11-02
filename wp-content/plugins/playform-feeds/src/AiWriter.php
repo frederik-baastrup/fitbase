@@ -13,20 +13,28 @@ final class AiWriter {
 	public const META_DRAFT  = '_pf_ai_draft';
 	public const META_STATUS = '_pf_ai_status';   // pending | approved | rejected
 	public const META_DATE   = '_pf_ai_date';
+	public const META_VERSION = '_pf_ai_version'; // 2 = lang tekst med faste afsnit (nov. 2026)
+	public const VERSION      = 2;
 
 	private const SYSTEM = <<<TXT
-Du skriver produkttekster på dansk til Fitbase, en side der samler fitnessudstyr fra flere danske webshops. Læseren overvejer at købe produktet til brug derhjemme.
+Du skriver produkttekster på dansk til Fitbase, en side der samler fitnessudstyr fra flere danske webshops. Læseren overvejer at købe produktet til brug derhjemme og vil gerne forstå, om det passer til vedkommende.
 
 Regler – de er vigtigere end alt andet:
 1. Brug KUN fakta, der står i produktdataene. Opfind aldrig mål, vægt, hastighed, motorkraft, materialer, garanti, programmer eller andre specifikationer.
-2. Står en oplysning ikke i dataene, så nævn den ikke. Skriv hellere kortere.
-3. Du må gerne give generel, sand købsrådgivning for produkttypen (fx hvad man bør overveje ved et løbebånd), men gør det tydeligt generelt og ikke som en påstand om netop dette produkt.
+2. Står en oplysning ikke i dataene, så nævn den ikke som en egenskab ved produktet. Er dataene sparsomme, så fyld ud med generel, sand købsrådgivning for produkttypen – aldrig med gæt om netop dette produkt.
+3. Generel købsrådgivning skal tydeligt være generel ("Når du vælger en romaskine, er det en god idé at …"), ikke en påstand om dette produkt. Brug ingen tal i den generelle rådgivning – kun tal, der står i produktdataene.
 4. Ingen superlativer uden belæg ("markedets bedste", "perfekt"). Ingen priser, rabatter eller butiksnavne – dem viser siden selv.
-5. Naturligt, venligt dansk. Korte afsnit. Du-form.
+5. Naturligt, venligt dansk. Du-form. Skriv konkret og nyttigt, ikke fyldtekst.
+
+Opbygning af html (ca. 300–450 ord i alt):
+- 1–2 indledende afsnit (<p>): hvad produktet er, og hvad det kan bruges til – ud fra navn, kategori og beskrivelse.
+- <h3>Det får du</h3> og en punktliste (<ul><li>) med de egenskaber, der står i dataene. Udelad afsnittet, hvis dataene ikke nævner nogen egenskaber.
+- <h3>Hvem passer den til?</h3> og 1 afsnit: hvem produktet egner sig til, ud fra dataene og produkttypen.
+- <h3>Det skal du overveje</h3> og 1–2 afsnit med generel købsrådgivning for produkttypen (fx plads, støj, opbevaring, vedligeholdelse, komfort), så læseren kan vurdere, om produktet passer til netop dem.
 
 Svar KUN med JSON:
-{"html": "<p>…</p><p>…</p>", "fordele": ["…"], "ulemper": ["…"]}
-- html: 2–4 korte afsnit, kun <p>, <h3>, <ul>, <li>, <strong>.
+{"html": "<p>…</p>…", "fordele": ["…"], "ulemper": ["…"]}
+- html: kun <p>, <h3>, <ul>, <li>, <strong>.
 - fordele/ulemper: 0–3 punkter hver, kun hvis dataene understøtter dem. Ellers tomme lister.
 TXT;
 
@@ -52,8 +60,9 @@ TXT;
 			'kategori'    => Config::categories()[ $cat ]['name'] ?? $cat,
 			'beskrivelse' => (string) get_post_meta( $product_id, ProductSync::META_FEED_DESC, true ),
 			'egenskaber'  => $attrs,
+			'kategorier'  => array_values( array_filter( (array) wp_get_post_terms( $product_id, 'product_cat', [ 'fields' => 'names' ] ) ) ),
 		];
-		$answer = Ai::json( Ai::ask( Ai::MODEL_WRITING, self::SYSTEM, "Produktdata:\n" . wp_json_encode( $facts, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT ), 1500 ) );
+		$answer = Ai::json( Ai::ask( Ai::MODEL_WRITING, self::SYSTEM, "Produktdata:\n" . wp_json_encode( $facts, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT ), 3000 ) );
 		if ( ! is_array( $answer ) || empty( $answer['html'] ) ) {
 			throw new \RuntimeException( 'Uventet svar fra Claude.' );
 		}
@@ -67,6 +76,7 @@ TXT;
 		update_post_meta( $product_id, self::META_DRAFT, $draft );
 		update_post_meta( $product_id, self::META_STATUS, 'pending' );
 		update_post_meta( $product_id, self::META_DATE, current_time( 'mysql' ) );
+		update_post_meta( $product_id, self::META_VERSION, self::VERSION );
 		$used = array_slice( [ $today => ( $used[ $today ] ?? 0 ) + 1 ] + $used, 0, 60, true );
 		update_option( 'playform_ai_usage', $used, false );
 		if ( ! $draft['problems'] && get_option( 'playform_ai_autopublish', '1' ) === '1' ) {
@@ -115,24 +125,37 @@ TXT;
 		update_post_meta( $product_id, self::META_STATUS, 'rejected' );
 	}
 
-	/** Produkter uden tekst, de vigtigste først (på lager, højeste pris). */
+	/**
+	 * Produkter, der skal have tekst: først dem uden tekst, derefter automatiske tekster i det gamle, korte
+	 * format (uden META_VERSION). Vigtigste først (på lager, højeste pris).
+	 */
 	public static function queue( int $limit, string $category = '' ): array {
-		$args = [
+		$base = [
 			'post_type'      => 'product',
 			'post_status'    => 'publish',
 			'fields'         => 'ids',
-			'posts_per_page' => $limit,
 			'meta_key'       => '_price',
 			'orderby'        => 'meta_value_num',
 			'order'          => 'DESC',
-			'meta_query'     => [
-				[ 'key' => self::META_STATUS, 'compare' => 'NOT EXISTS' ],
-				[ 'key' => ProductSync::META_IN_STOCK, 'value' => 1, 'type' => 'NUMERIC' ],
-			],
 		];
 		if ( $category ) {
-			$args['tax_query'] = [ [ 'taxonomy' => 'product_cat', 'field' => 'slug', 'terms' => $category ] ];
+			$base['tax_query'] = [ [ 'taxonomy' => 'product_cat', 'field' => 'slug', 'terms' => $category ] ];
 		}
-		return get_posts( $args );
+		$in_stock = [ 'key' => ProductSync::META_IN_STOCK, 'value' => 1, 'type' => 'NUMERIC' ];
+		$ids      = get_posts( $base + [ 'posts_per_page' => $limit, 'meta_query' => [ [ 'key' => self::META_STATUS, 'compare' => 'NOT EXISTS' ], $in_stock ] ] );
+		if ( count( $ids ) < $limit ) {
+			$old = get_posts(
+				$base + [
+					'posts_per_page' => $limit - count( $ids ),
+					'meta_query'     => [
+						[ 'key' => self::META_STATUS, 'value' => 'approved' ],
+						[ 'key' => self::META_VERSION, 'compare' => 'NOT EXISTS' ],
+						$in_stock,
+					],
+				]
+			);
+			$ids = array_merge( $ids, $old );
+		}
+		return $ids;
 	}
 }
