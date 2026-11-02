@@ -159,6 +159,8 @@ global $wp_query;
 		</aside>
 
 		<div class="results">
+			<p class="adline"><b>Annonce</b><span>Siden indeholder reklamelinks. Vi får provision, hvis du handler hos en butik via dem. <a href="<?php echo esc_url( home_url( '/saadan-tjener-vi-penge/' ) ); ?>">Sådan tjener vi penge</a></span></p>
+
 			<div class="results__bar">
 				<button type="button" class="filterbtn" data-filter-btn aria-expanded="false"><?php echo playform_icon( 'filter', 16, 1.8 ); // phpcs:ignore ?>Filtrer<?php $n_act = count( array_filter( $state['tags'], static fn( $t ) => ! str_starts_with( $t['label'], '"' ) ) ); echo $n_act ? '<span class="filterbtn__n">' . (int) $n_act . '</span>' : ''; ?></button>
 				<span class="results__count"><span class="results__n"><b><?php echo (int) $state['total']; ?></b> produkter</span><?php echo $updated ? ' <span class="muted"><i class="dot">·</i> Priser opdateret ' . esc_html( $updated ) . '</span>' : ''; ?></span>
@@ -187,7 +189,6 @@ global $wp_query;
 				</div>
 			<?php endif; ?>
 
-			<p class="adline"><b>Annonce</b><span>Siden indeholder reklamelinks. Vi får provision, hvis du handler hos en butik via dem. <a href="<?php echo esc_url( home_url( '/saadan-tjener-vi-penge/' ) ); ?>">Sådan tjener vi penge</a></span></p>
 
 			<?php if ( have_posts() ) : ?>
 				<div class="grid">

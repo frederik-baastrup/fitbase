@@ -1233,3 +1233,5 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 }
 
 .adnote { justify-content: flex-start; margin: 2px 0 0; }
+
+.results > .adline { margin-top: 0; }
