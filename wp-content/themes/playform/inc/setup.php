@@ -38,6 +38,7 @@ add_action(
 function playform_run_upgrades(): void {
 	playform_move_to_fitbase_dk();
 	playform_launch();
+	playform_update_legal_pages();
 	// Importens tabeller og kategorier (kolonner, underkategorier, omsortering).
 	if ( class_exists( '\Playform\Feeds\Install' ) ) {
 		\Playform\Feeds\Install::activate();
