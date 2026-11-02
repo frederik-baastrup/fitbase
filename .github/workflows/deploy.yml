@@ -64,3 +64,15 @@ jobs:
           echo "${GITHUB_SHA}-${GITHUB_RUN_ID}" > playform-deploy.txt
           curl -sS -k --ssl-reqd --user "$FTP_USERNAME:$FTP_PASSWORD" -T playform-deploy.txt \
             "ftp://$FTP_SERVER:21/$SITE_DIR/wp-content/playform-deploy.txt"
+
+      # Besøg siden uden om cachen (REST-API'et caches ikke). Det kører opdateringerne med det samme,
+      # og de tømmer SiteGrounds sidecache (playform_purge_cache), så ændringer ses straks.
+      - name: Kør opdateringer og tøm cachen
+        run: |
+          sleep 3
+          for i in 1 2 3; do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 120 "https://fitbase.dk/wp-json/?pf_deploy=${GITHUB_RUN_ID}-$i" -H "Cache-Control: no-cache")
+            echo "Svar: $code"
+            [ "$code" = "200" ] && break
+            sleep 10
+          done
