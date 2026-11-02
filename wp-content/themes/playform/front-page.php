@@ -54,7 +54,7 @@ $mob = array_values( array_filter(
 	}
 ) );
 $extra = [
-	'romaskiner-crosstrainere' => [ 'Romaskiner', 'mm-crosstrainer.jpg' ],
+	'romaskiner-crosstrainere' => [ 'Romaskiner', 'mm-romaskine.jpg' ],
 	'vaegte-kettlebells'       => [ 'Vægte & kettlebells', 'hero-kettlebells.jpg' ],
 	'styrke-baenke'            => [ 'Bænke & racks', 'mm-baenk.jpg' ],
 	'yoga-pilates'             => [ 'Yoga & pilates', 'mm-pilates.jpg' ],
