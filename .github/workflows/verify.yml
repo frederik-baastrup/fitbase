@@ -12,36 +12,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Tjek hovedkategorier på fitbase.dk
+      - name: Tjek cache og ny kode
         shell: bash
         run: |
           set +e
-          HOST="https://fitbase.dk"
-          SLUGS="lobebaand motionscykler romaskiner-crosstrainere vaegte-kettlebells styrke-baenke yoga-pilates restitution tilbehor"
+          H="https://fitbase.dk"
           {
-            echo "== Domæne og https =="
-            for u in "http://fitbase.dk/" "http://www.fitbase.dk/" "https://www.fitbase.dk/" "https://fitbase.dk/" "https://fitbase.dk/romaskine-med-vand/"; do
-              echo -n "$u -> "; curl -sS -o /dev/null -m 20 -w "%{http_code} %{redirect_url}\n" "$u" || echo "fejl"
-            done
-            echo -n "SSL-certifikat: "; echo | openssl s_client -connect fitbase.dk:443 -servername fitbase.dk 2>/dev/null | openssl x509 -noout -subject -ext subjectAltName -enddate 2>/dev/null | tr '\n' ' '; echo
-            echo -n "Forekomster af frederikb7.sg-host.com i forsidens HTML: "; curl -sS -m 20 https://fitbase.dk/ | grep -c "frederikb7.sg-host.com"
-            echo -n "Kommer snart-side (0 = siden er synlig): "; curl -sS -m 20 https://fitbase.dk/ | grep -ci "coming-soon\|kommer snart"
-            echo -n "Produktkort på forsiden: "; curl -sS -m 20 https://fitbase.dk/ | grep -o 'class="pcard' | wc -l
-            for u in "https://fitbase.dk/wp-sitemap.xml" "https://fitbase.dk/sitemap_index.xml" "https://fitbase.dk/viden/forfatter/frederik-baastrup/"; do
-              echo -n "$u -> "; curl -sS -o /dev/null -m 20 -w "%{http_code} %{content_type} %{redirect_url}\n" "$u"
-            done
-            echo -n "Profilbillede på forfattersiden: "; curl -sS -m 20 https://fitbase.dk/viden/forfatter/frederik-baastrup/ | grep -c "authors/frederik-baastrup.jpg"
-            echo -n "Robots: "; curl -sS -m 20 https://fitbase.dk/robots.txt | tr '\n' ' '; echo
-            echo ""
-            echo "== css/js version på forsiden =="
-            curl -sS -k -o /dev/null -w "HTTP %{http_code}\n" "$HOST/"
-            curl -sS -k "$HOST/" | grep -o "main.css?ver=[0-9.]*"
-            echo ""
-            for s in $SLUGS; do
-              echo "== /kategori/$s/ =="
-              curl -sS -k -o "$s.html" -w "HTTP %{http_code}\n" "$HOST/kategori/$s/"
-              echo -n "Ofte stillede spørgsmål: "; grep -c "Ofte stillede" "$s.html"
-              echo -n "Købsguide-overskrift (h2 med 'Køb'): "; grep -c "<h2[^>]*>Køb" "$s.html"
+            for u in "$H/traeningsmaskiner/lobebaand/gaabaand/" "$H/traeningsmaskiner/lobebaand/gaabaand/?nocache=$RANDOM" "$H/"; do
+              echo "== $u =="
+              curl -sS -D headers.txt -o page.html -m 30 "$u"
+              grep -i "^HTTP\|cache\|age:\|x-proxy\|sg-\|last-modified\|date:" headers.txt
+              echo -n "css-version: "; grep -o "main.css?ver=[0-9.]*" page.html | head -1
+              echo -n "results__n (ny værktøjslinje): "; grep -c "results__n" page.html
+              echo -n "filterbtn (ny knap): "; grep -c "data-filter-btn" page.html
+              echo -n "Reklamelinks (ny topbar): "; grep -c "Reklamelinks" page.html
+              echo
             done
           } > resultat.txt 2>&1
           exit 0
