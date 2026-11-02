@@ -24,6 +24,8 @@ function playform_filter_groups(): array {
 		};
 	};
 	return [
+		// Kun på sider på tværs af kategorier (fx /tilbud/): filter i stedet for en landingsside pr. kategori.
+		'kat'         => [ 'label' => 'Kategori', 'options' => [], 'dynamic' => 'category', 'no_cat' => true, 'collapse' => 8 ],
 		'pris'        => [
 			'label'   => 'Pris',
 			'options' => [
@@ -159,6 +161,29 @@ function playform_catalog_state(): array {
 	}
 	$ids = get_posts( $args );
 	update_meta_cache( 'post', $ids );
+	// Kategorier pr. produkt (inkl. overkategorier) til kategorifilteret – én samlet forespørgsel.
+	$cats_of = [];
+	if ( ! $cat && $ids ) {
+		global $wpdb;
+		$slug_chain = [];
+		$by_id      = [];
+		foreach ( get_terms( [ 'taxonomy' => 'product_cat', 'hide_empty' => false ] ) as $t ) {
+			$by_id[ $t->term_id ] = $t;
+		}
+		foreach ( $by_id as $tid => $t ) {
+			$chain = [];
+			for ( $x = $t; $x; $x = $x->parent ? ( $by_id[ $x->parent ] ?? null ) : null ) {
+				$chain[] = $x->slug;
+			}
+			$slug_chain[ $t->term_taxonomy_id ] = $chain;
+		}
+		$rows = $wpdb->get_results( "SELECT object_id, term_taxonomy_id FROM {$wpdb->term_relationships} WHERE object_id IN (" . implode( ',', array_map( 'intval', $ids ) ) . ')' ); // phpcs:ignore
+		foreach ( $rows as $r ) {
+			foreach ( $slug_chain[ $r->term_taxonomy_id ] ?? [] as $sl ) {
+				$cats_of[ (int) $r->object_id ][ $sl ] = true;
+			}
+		}
+	}
 
 	$meta = [];
 	foreach ( $ids as $id ) {
@@ -172,6 +197,9 @@ function playform_catalog_state(): array {
 		// Tilbudssider viser kun produkter, butikken har på tilbud.
 		if ( playform_is_tilbud_page() && empty( $m['_pf_shop_sale'] ) ) {
 			continue;
+		}
+		if ( ! $cat ) {
+			$m['_cats'] = array_keys( $cats_of[ $id ] ?? [] );
 		}
 		$meta[ $id ] = $m;
 	}
@@ -204,6 +232,21 @@ function playform_catalog_state(): array {
 		$groups['maerke']['options'] = $opts;
 	}
 
+	// Kategori: de rigtige kategorier (ikke de virtuelle grupper), i menuens rækkefølge.
+	if ( isset( $groups['kat'] ) ) {
+		$opts = [];
+		if ( ! $cat ) {
+			foreach ( playform_tilbud_slugs() as $slug ) {
+				$term = get_term_by( 'slug', $slug, 'product_cat' );
+				if ( ! $term instanceof WP_Term || isset( $opts[ $slug ] ) || playform_is_virtual_category( $slug ) ) {
+					continue;
+				}
+				$opts[ $slug ] = [ playform_cat_label( $term ), static fn( array $m ) => in_array( $slug, $m['_cats'] ?? [], true ) ];
+			}
+		}
+		$groups['kat']['options'] = $opts;
+	}
+
 	$passes = static function ( array $m, ?string $skip ) use ( $groups, $active ): bool {
 		foreach ( $active as $g => $vals ) {
 			if ( $g === $skip || empty( $groups[ $g ] ) ) {
@@ -234,14 +277,24 @@ function playform_catalog_state(): array {
 		if ( ! empty( $def['only'] ) && ! in_array( playform_current_real_top_slug(), $def['only'], true ) ) {
 			continue;
 		}
+		if ( ! empty( $def['no_cat'] ) && $cat ) {
+			continue;
+		}
 		$opts = [];
+		// Produkter, der opfylder alle ANDRE filtre – beregnes én gang pr. gruppe, ikke pr. mulighed.
+		$base = [];
+		foreach ( $meta as $m ) {
+			if ( $passes( $m, empty( $def['all'] ) ? $g : null ) ) {
+				$base[] = $m;
+			}
+		}
 		foreach ( $def['options'] as $key => [ $label, $test ] ) {
 			if ( $key === 'tilbud' && playform_is_tilbud_page() ) {
 				continue;
 			}
 			$n = 0;
-			foreach ( $meta as $m ) {
-				if ( ( empty( $def['all'] ) ? $passes( $m, $g ) : $passes( $m, null ) ) && $test( $m ) ) {
+			foreach ( $base as $m ) {
+				if ( $test( $m ) ) {
 					$n++;
 				}
 			}
