@@ -8,7 +8,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-const PLAYFORM_PER_PAGE = 30;
+const PLAYFORM_PER_PAGE = 60;
 
 function playform_is_catalog( ?WP_Query $q = null ): bool {
 	$q = $q ?: $GLOBALS['wp_query'];
