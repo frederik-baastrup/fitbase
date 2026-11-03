@@ -1235,3 +1235,8 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 .adnote { justify-content: flex-start; margin: 2px 0 0; }
 
 .results > .adline { margin-top: 0; }
+
+/* Produktside: to kolonner – venstre: sammenlign + om produktet, højre: specifikationer + prishistorik */
+.two__col { display: flex; flex-direction: column; gap: 48px; min-width: 0; }
+.two__col > div > .muted { margin: 0 0 20px; font-size: 14px; }
+@media (max-width: 1080px) { .two__col { gap: 32px; } }

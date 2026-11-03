@@ -248,15 +248,10 @@ while ( have_posts() ) :
 	<?php
 	$specs_html = ob_get_clean();
 
-	$rows_out = $compare_html
-		? [ [ $compare_html, $history_html ], [ $about_html, $specs_html ] ]
-		: [ [ $about_html, $specs_html ], [ $history_html, '' ] ];
-	foreach ( $rows_out as $i => [ $a, $b ] ) {
-		if ( trim( $a . $b ) === '' ) {
-			continue;
-		}
-		echo '<section class="wrap section"' . ( $i === 0 && $compare_html ? ' id="priser"' : '' ) . '><div class="two' . ( $b === '' ? ' two--half' : '' ) . '">' . $a . $b . '</div></section>'; // phpcs:ignore
-	}
+	// Desktop: venstre kolonne = sammenlign priser + om produktet; højre kolonne = specifikationer + prishistorik.
+	$left  = $compare_html . $about_html;
+	$right = $specs_html . $history_html;
+	echo '<section class="wrap section"' . ( $compare_html ? ' id="priser"' : '' ) . '><div class="two"><div class="two__col">' . $left . '</div><div class="two__col">' . $right . '</div></div></section>'; // phpcs:ignore
 	?>
 
 	<?php
