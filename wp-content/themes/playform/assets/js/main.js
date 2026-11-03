@@ -455,3 +455,53 @@
 	var c = read();
 	if (c) activate(c); else show('main');
 })();
+
+// Kategori-faner: slider med fade, træk med musen og pile på desktop
+(function () {
+	document.querySelectorAll('nav.tabs').forEach(function (tabs) {
+		var wrap = document.createElement('div');
+		wrap.className = 'tabs-wrap';
+		tabs.parentNode.insertBefore(wrap, tabs);
+		wrap.appendChild(tabs);
+		var mk = function (dir, label) {
+			var b = document.createElement('button');
+			b.type = 'button';
+			b.className = 'tabs__arrow tabs__arrow--' + dir;
+			b.setAttribute('aria-label', label);
+			b.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>';
+			wrap.appendChild(b);
+			return b;
+		};
+		var prev = mk('prev', 'Vis tidligere kategorier');
+		var next = mk('next', 'Vis flere kategorier');
+		var update = function () {
+			var more = tabs.scrollLeft + tabs.clientWidth < tabs.scrollWidth - 2;
+			var back = tabs.scrollLeft > 2;
+			tabs.classList.toggle('has-more', more);
+			tabs.classList.toggle('has-prev', back);
+			wrap.classList.toggle('has-more', more);
+			wrap.classList.toggle('has-prev', back);
+		};
+		var step = function (d) { tabs.scrollBy({ left: d * Math.max(200, tabs.clientWidth * 0.7), behavior: 'smooth' }); };
+		prev.addEventListener('click', function () { step(-1); });
+		next.addEventListener('click', function () { step(1); });
+		tabs.addEventListener('scroll', update, { passive: true });
+		window.addEventListener('resize', update);
+		// Aktiv fane skal være synlig
+		var act = tabs.querySelector('.is-active, [aria-current]');
+		if (act) { tabs.scrollLeft = Math.max(0, act.offsetLeft - tabs.clientWidth / 2 + act.offsetWidth / 2); }
+		update();
+		window.addEventListener('load', function () { if (act) { tabs.scrollLeft = Math.max(0, act.offsetLeft - tabs.clientWidth / 2 + act.offsetWidth / 2); } update(); });
+		// Træk med musen
+		var down = false, moved = false, sx = 0, sl = 0;
+		tabs.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse') return; down = true; moved = false; sx = e.clientX; sl = tabs.scrollLeft; });
+		window.addEventListener('pointermove', function (e) {
+			if (!down) return;
+			var dx = e.clientX - sx;
+			if (Math.abs(dx) > 5) { moved = true; tabs.classList.add('is-dragging'); }
+			if (moved) tabs.scrollLeft = sl - dx;
+		});
+		window.addEventListener('pointerup', function () { down = false; tabs.classList.remove('is-dragging'); });
+		tabs.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+	});
+})();
