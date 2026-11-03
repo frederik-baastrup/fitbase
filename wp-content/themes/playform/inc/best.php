@@ -147,7 +147,7 @@ add_shortcode(
 						<?php
 						echo implode( // phpcs:ignore
 							', ',
-							array_map( static fn( $r ) => '<a href="' . esc_url( $r[1] ) . '" target="_blank" rel="noopener">' . esc_html( $r[0] ) . '</a>', $rev )
+							array_map( static fn( $r ) => '<a href="' . esc_url( $r[1] ) . '" target="_blank" rel="noopener">' . esc_html( $r[0] ) . '</a>' . ( ! empty( $r[2] ) ? ' <span class="pick__revnote">(' . esc_html( $r[2] ) . ')</span>' : '' ), $rev )
 						);
 						?>
 					</span>
