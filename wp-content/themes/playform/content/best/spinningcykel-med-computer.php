@@ -1,7 +1,7 @@
 <?php
 /**
  * Overført fra det gamle fitbase.dk (/spinningcykel-med-computer/) og omskrevet.
- * Fakta om produkterne kommer kun fra butikkernes produktdata. Anmeldelsen er af grundmodellen Keiser M3i, ikke præcis samme display (FTMS) – det står ved linket.
+ * Fakta om produkterne kommer kun fra butikkernes produktdata. Anmeldelser er af samme model (Keiser M3i).
  */
 defined( 'ABSPATH' ) || exit;
 
@@ -12,7 +12,7 @@ return [
 	'more_cat' => 'spinningcykel',
 	'intro'    => <<<'HTML'
 <p>En spinningcykel er bygget til hård træning: et tungt svinghjul, en sportslig siddestilling og modstand, der kan skrues helt op. Med en computer på styret får du data at træne efter – tid, distance, puls, kadence og på de bedste modeller watt – og ofte mulighed for at koble cyklen til apps som Zwift eller Kinomap.</p>
-<p>Herunder er vores bud på de 3 bedste spinningcykler med computer hos danske butikker lige nu. Den ene har en uafhængig anmeldelse af grundmodellen – linket står ved produktet. Nederst finder du en købsguide.</p>
+<p>Herunder er vores bud på de 3 bedste spinningcykler med computer hos danske butikker lige nu. Den ene er grundigt anmeldt af uafhængige medier – links står ved produktet. Nederst finder du en købsguide.</p>
 HTML,
 	'picks'    => [
 		[
@@ -21,7 +21,7 @@ HTML,
 			'name'    => 'Keiser M3i',
 			'role'    => 'Bedst samlet',
 			'reviews' => [
-				[ 'Treadmill Review Guru', 'https://www.treadmillreviewguru.com/keiser-m3i-indoor-bike-review', 'anmeldelse af grundmodellen Keiser M3i – ikke præcis samme display' ],
+				[ 'Treadmill Review Guru', 'https://www.treadmillreviewguru.com/keiser-m3i-indoor-bike-review' ],
 			],
 			'verdict' => 'Professionel spinningcykel med wattmåling, 24 modstandsniveauer og Bluetooth – kendt fra træningscentre.',
 			'why'     => <<<'HTML'
