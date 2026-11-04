@@ -1302,3 +1302,13 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 .pricebox__after { display: flex; flex-direction: column; gap: 12px; margin-top: -8px; padding: 0 2px; }
 .pricebox__after .pricebox__chips { margin: 0; }
 @media (max-width: 760px) { .pricebox__after { margin-top: -4px; padding: 0; gap: 10px; } }
+
+/* Fordele under knappen igen; småt nederst ud for billedets underkant */
+.pricebox .pricebox__chips { margin: -4px 0 0; }
+.pd__legal { margin: 0; font-size: 12px; line-height: 1.5; color: var(--muted-2); }
+@media (min-width: 1081px) {
+	.pd { align-items: stretch; }
+	.pd__media { align-self: start; }
+	.pd__legal { margin-top: auto; }
+}
+@media (max-width: 760px) { .pd__legal { font-size: 11px; line-height: 1.45; } }
