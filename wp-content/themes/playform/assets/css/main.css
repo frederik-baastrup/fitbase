@@ -1267,3 +1267,33 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 .tabs-wrap.has-prev .tabs__arrow--prev, .tabs-wrap.has-more .tabs__arrow--next { display: inline-flex; }
 @media (hover: none), (max-width: 760px) { .tabs__arrow { display: none !important; } }
 @media (max-width: 760px) { .tabs-wrap { margin-top: 16px; margin-right: -16px; } .tabs-wrap .tabs { padding-right: 16px; } }
+
+/* Produktside: rabat ved siden af prisen */
+.pricebox__row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
+.pricebox__row .pricebox__save { display: inline-flex !important; margin-top: 0; align-self: center; }
+
+/* Produktside: levering, fragt og butik på én linje */
+.pricebox__chips { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; gap: 6px; }
+.pricebox__chips::-webkit-scrollbar { display: none; }
+.pricebox__chips li { flex: 0 0 auto; white-space: nowrap; padding: 5px 10px; font-size: 12px; }
+
+/* USP-bånd under produkttoppen (fuld bredde, streger imellem) */
+.usps { margin-top: 48px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.usps__in { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; list-style: none; }
+.usps__in li { display: flex; align-items: center; gap: 12px; padding: 18px 20px; border-left: 1px solid var(--line); min-width: 0; }
+.usps__in li:first-child { border-left: 0; padding-left: 0; }
+.usps__in svg { flex: 0 0 auto; color: var(--ink); opacity: .8; }
+.usps__in span { display: flex; flex-direction: column; gap: 2px; font-size: 12.5px; line-height: 1.35; color: var(--muted-2); }
+.usps__in b { font-size: 13px; font-weight: 600; color: var(--ink); }
+@media (max-width: 1080px) {
+	.usps__in { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.usps__in li:nth-child(3) { border-left: 0; padding-left: 0; }
+	.usps__in li:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+@media (max-width: 760px) {
+	.usps { margin-top: 28px; }
+	.usps__in { display: flex; overflow-x: auto; scrollbar-width: none; }
+	.usps__in::-webkit-scrollbar { display: none; }
+	.usps__in li, .usps__in li:nth-child(n) { flex: 0 0 78%; border-top: 0; padding: 14px 16px; }
+	.usps__in li:first-child { padding-left: 0; }
+}

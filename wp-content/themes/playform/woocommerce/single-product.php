@@ -100,9 +100,11 @@ while ( have_posts() ) :
 						<div>
 							<span class="muted"><?php echo $shops_n > 1 ? 'Laveste pris lige nu' : 'Pris'; ?></span>
 							<?php $is_was = $d['was'] > $d['price']; ?>
-							<span class="pricebox__price<?php echo $is_was ? ' is-sale' : ''; ?>"><?php echo esc_html( playform_kr( $d['price'] ) ); ?></span>
+							<span class="pricebox__row">
+								<span class="pricebox__price<?php echo $is_was ? ' is-sale' : ''; ?>"><?php echo esc_html( playform_kr( $d['price'] ) ); ?></span>
+								<?php if ( $is_was ) : ?><span class="pricebox__save">Spar <?php echo esc_html( playform_kr( $d['was'] - $d['price'] ) ); ?> (<?php echo (int) $pct; ?> %)</span><?php endif; ?>
+							</span>
 							<?php if ( $is_was ) : ?>
-								<span class="pricebox__save">Spar <?php echo esc_html( playform_kr( $d['was'] - $d['price'] ) ); ?> (<?php echo (int) $pct; ?> %)</span>
 								<?php if ( 'shop' === $d['was_src'] ) : ?>
 									<span class="pricebox__ref">Butikkens førpris <s><?php echo esc_html( playform_kr( $d['was'] ) ); ?></s> · oplyst af <?php echo esc_html( $d['shop'] ); ?></span>
 								<?php else : ?>
@@ -140,13 +142,17 @@ while ( have_posts() ) :
 					<a href="#priser" class="pd__compare">Sammenlign priser fra <?php echo (int) $shops_n; ?> butikker ↓</a>
 				<?php endif; ?>
 
-				<ul class="pd__trust">
-					<li><?php echo playform_icon( 'refresh', 20, 1.4 ); // phpcs:ignore ?><span><b>Opdateret 2× dagligt</b>Pris og lagerstatus hentes direkte fra butikken</span></li>
-					<li><?php echo playform_icon( 'store', 20, 1.4 ); // phpcs:ignore ?><span><b>Du handler hos butikken</b>Levering, retur og garanti følger butikkens vilkår</span></li>
-					<li><?php echo playform_icon( 'grid', 20, 1.4 ); // phpcs:ignore ?><span><b>Udstyr fra flere shops</b>Vi samler danske webshops ét sted</span></li>
-				</ul>
 			</div>
 		</div>
+	</section>
+
+	<section class="usps" aria-label="Sådan virker Fitbase">
+		<ul class="wrap usps__in">
+			<li><?php echo playform_icon( 'refresh', 18, 1.4 ); // phpcs:ignore ?><span><b>Opdateret 2× dagligt</b>Pris og lager direkte fra butikken</span></li>
+			<li><?php echo playform_icon( 'store', 18, 1.4 ); // phpcs:ignore ?><span><b>Du handler hos butikken</b>Levering, retur og garanti efter butikkens vilkår</span></li>
+			<li><?php echo playform_icon( 'tag', 18, 1.4 ); // phpcs:ignore ?><span><b>Butikkernes egne tilbud</b>Højst 14 dage gamle</span></li>
+			<li><?php echo playform_icon( 'grid', 18, 1.4 ); // phpcs:ignore ?><span><b>Udstyr fra flere shops</b>Danske webshops samlet ét sted</span></li>
+		</ul>
 	</section>
 
 	<?php
