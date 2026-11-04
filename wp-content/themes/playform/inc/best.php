@@ -475,3 +475,49 @@ function playform_best_html( array $a ): string {
 	}
 	return $h;
 }
+
+/**
+ * Advarsel i WordPress-admin, når et produkt i en købsguide ikke findes i butikkerne eller ikke er på lager.
+ * Indtil guiden er opdateret, viser [fitbase_valg] automatisk et alternativ i samme kategori og prisklasse.
+ */
+function playform_unavailable_picks(): array {
+	$cached = get_transient( 'playform_unavailable_picks' );
+	if ( is_array( $cached ) ) {
+		return $cached;
+	}
+	$out = [];
+	foreach ( playform_root_posts() as $slug => $post_id ) {
+		foreach ( playform_picks( (int) $post_id ) as $pick ) {
+			$p = playform_pick_product( $pick );
+			if ( ! $p || $p->get_status() !== 'publish' ) {
+				$out[] = [ (int) $post_id, (string) ( $pick['name'] ?? '' ), 'findes ikke i butikkerne' ];
+			} elseif ( ! get_post_meta( $p->get_id(), '_pf_in_stock', true ) ) {
+				$out[] = [ (int) $post_id, (string) ( $pick['name'] ?? '' ), 'ikke på lager' ];
+			}
+		}
+	}
+	set_transient( 'playform_unavailable_picks', $out, 6 * HOUR_IN_SECONDS );
+	return $out;
+}
+
+add_action(
+	'admin_notices',
+	static function () {
+		if ( ! current_user_can( 'edit_posts' ) || ! function_exists( 'playform_root_posts' ) ) {
+			return;
+		}
+		$screen = get_current_screen();
+		if ( ! $screen || ! in_array( $screen->id, [ 'dashboard', 'edit-post' ], true ) ) {
+			return;
+		}
+		$rows = playform_unavailable_picks();
+		if ( ! $rows ) {
+			return;
+		}
+		echo '<div class="notice notice-warning"><p><b>Købsguides: produkter, der ikke kan købes lige nu</b> (guiden viser et alternativ, indtil den er opdateret):</p><ul style="list-style:disc;padding-left:20px">';
+		foreach ( $rows as [ $id, $name, $why ] ) {
+			printf( '<li><a href="%s">%s</a>: %s – %s</li>', esc_url( (string) get_edit_post_link( $id ) ), esc_html( get_the_title( $id ) ), esc_html( $name ), esc_html( $why ) );
+		}
+		echo '</ul></div>';
+	}
+);
