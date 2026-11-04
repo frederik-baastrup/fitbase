@@ -121,7 +121,7 @@ add_shortcode(
 				$alt_html = '<div class="pick-alt"><span class="pick-alt__label">' . ( $p ? 'Ikke på lager lige nu' : 'Ikke længere i butikkerne' ) . ' – et alternativ i samme prisklasse:</span>'
 					. '<a class="pick-alt__item" href="' . esc_url( $a['url'] ) . '">' . ( $a['image'] ? '<img src="' . esc_url( $a['image'] ) . '" alt="" loading="lazy">' : '' )
 					. '<span><b>' . esc_html( $a['name'] ) . '</b><small>' . esc_html( playform_kr( $a['price'] ) . ' · Hos ' . $a['shop'] ) . '</small></span></a>'
-					. ( $ao ? '<a class="pick-alt__cta" href="' . esc_url( playform_aff_url( $ao['url'], get_post_field( 'post_name', $alts[0]->get_id() ), get_post_field( 'post_name', get_the_ID() ) . '-alternativ' ) ) . '" rel="sponsored nofollow noopener" target="_blank">Se pris</a>' : '' ) . '</div>';
+					. ( $ao ? '<a class="pick-alt__cta" href="' . esc_url( playform_aff_url( $ao['url'], get_post_field( 'post_name', $alts[0]->get_id() ), get_post_field( 'post_name', get_the_ID() ) . '-alternativ' ) ) . '" rel="sponsored nofollow noopener" referrerpolicy="no-referrer-when-downgrade" target="_blank">Se pris</a>' : '' ) . '</div>';
 			}
 		}
 		if ( ! $p ) {
@@ -168,7 +168,7 @@ add_shortcode(
 						<?php endif; ?>
 					</div>
 					<?php if ( $offer ) : ?>
-						<a class="btn-shop pick__cta" href="<?php echo esc_url( playform_aff_url( $offer['url'], get_post_field( 'post_name', $p->get_id() ), get_post_field( 'post_name', get_the_ID() ) ) ); ?>" rel="sponsored nofollow noopener" target="_blank">Se pris hos <?php echo esc_html( $offer['shop'] ); ?> <?php echo playform_icon( 'external', 16 ); // phpcs:ignore ?></a>
+						<a class="btn-shop pick__cta" href="<?php echo esc_url( playform_aff_url( $offer['url'], get_post_field( 'post_name', $p->get_id() ), get_post_field( 'post_name', get_the_ID() ) ) ); ?>" rel="sponsored nofollow noopener" referrerpolicy="no-referrer-when-downgrade" target="_blank">Se pris hos <?php echo esc_html( $offer['shop'] ); ?> <?php echo playform_icon( 'external', 16 ); // phpcs:ignore ?></a>
 					<?php else : ?>
 						<a class="pick__more" href="<?php echo esc_url( $d['url'] ); ?>">Se produktet</a>
 					<?php endif; ?>

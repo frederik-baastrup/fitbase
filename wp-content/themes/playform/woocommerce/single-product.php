@@ -117,7 +117,7 @@ while ( have_posts() ) :
 						<span class="stock<?php echo $best && $best['in_stock'] ? ' stock--in' : ''; ?>"><span class="stock__dot"></span><?php echo esc_html( $stock_txt ); ?></span>
 					</div>
 					<?php if ( $best ) : ?>
-						<a href="<?php echo esc_url( playform_aff_url( $best['url'], get_post_field( 'post_name', $id ), 'produktside' ) ); ?>" class="btn-shop" rel="sponsored nofollow noopener" target="_blank">Se pris hos <?php echo esc_html( $best['shop'] ); ?> <?php echo playform_icon( 'external', 18 ); // phpcs:ignore ?></a>
+						<a href="<?php echo esc_url( playform_aff_url( $best['url'], get_post_field( 'post_name', $id ), 'produktside' ) ); ?>" class="btn-shop" rel="sponsored nofollow noopener" referrerpolicy="no-referrer-when-downgrade" target="_blank">Se pris hos <?php echo esc_html( $best['shop'] ); ?> <?php echo playform_icon( 'external', 18 ); // phpcs:ignore ?></a>
 						<span class="adnote"><b>Annonce</b>Vi får provision, hvis du køber via knappen.</span>
 						<ul class="pricebox__chips">
 							<?php
@@ -176,7 +176,7 @@ while ( have_posts() ) :
 					</span>
 					<span class="offer__meta"><?php echo esc_html( trim( ( $o['delivery'] ? 'Levering ' . $o['delivery'] : '' ) ) ); ?><br><?php echo $o['shipping'] === null ? '' : esc_html( $o['shipping'] > 0 ? 'Fragt ' . playform_kr( $o['shipping'] ) : 'Gratis fragt' ); ?></span>
 					<span class="offer__price"><?php echo esc_html( playform_kr( $o['price'] ) ); ?></span>
-					<a href="<?php echo esc_url( playform_aff_url( $o['url'], get_post_field( 'post_name', $id ), 'produktside-prisliste' ) ); ?>" class="btn-out" rel="sponsored nofollow noopener" target="_blank">Gå til butik</a>
+					<a href="<?php echo esc_url( playform_aff_url( $o['url'], get_post_field( 'post_name', $id ), 'produktside-prisliste' ) ); ?>" class="btn-out" rel="sponsored nofollow noopener" referrerpolicy="no-referrer-when-downgrade" target="_blank">Gå til butik</a>
 				</div>
 			<?php endforeach; ?>
 		</div>

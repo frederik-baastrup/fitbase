@@ -39,6 +39,7 @@ final class Frontend {
 	public static function loop_button_args( $args, $product ) {
 		if ( $product instanceof \WC_Product_External ) {
 			$args['attributes']['rel']    = 'sponsored nofollow noopener';
+			$args['attributes']['referrerpolicy'] = 'no-referrer-when-downgrade'; // Partner-ads ser hele adressen på siden, klikket kom fra
 			$args['attributes']['target'] = '_blank';
 		}
 		return $args;
