@@ -95,3 +95,9 @@ add_action(
 	},
 	100
 );
+
+// Ingen overskrift på sideinddelingen ("Posts pagination" o.l.) – ejerens ønske 4. nov. 2026, gælder alle sider.
+add_filter(
+	'navigation_markup_template',
+	static fn() => '<nav class="navigation %1$s" aria-label="%4$s"><div class="nav-links">%3$s</div></nav>'
+);
