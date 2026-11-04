@@ -48,3 +48,21 @@ add_action(
 	},
 	5
 );
+
+/**
+ * Matomo (WordPress-pluginnet "Matomo Analytics", kører på vores egen server).
+ * Uden samtykke tæller Matomo uden cookies (requireCookieConsent). Har brugeren sagt ja til statistik,
+ * må Matomo sætte sine cookies (_pk_id i højst 12 måneder). Køres før pluginets egen trackingkode,
+ * som bruger samme _paq-kø. Trækkes samtykket tilbage, sletter main.js cookiesne og genindlæser siden.
+ */
+add_action(
+	'wp_head',
+	static function () {
+		$v = (int) PLAYFORM_CONSENT_VERSION;
+		echo "<script>(function(){var q=window._paq=window._paq||[];q.push(['requireCookieConsent']);q.push(['setVisitorCookieTimeout',31536000]);"
+			. "var ok=function(){q.push(['setCookieConsentGiven']);};"
+			. "try{var m=document.cookie.match(/(?:^|; )pf_consent=([^;]*)/),c=m&&JSON.parse(decodeURIComponent(m[1]));if(c&&c.v===$v&&c.statistik)ok();}catch(e){}"
+			. "document.addEventListener('pf:consent',function(e){if(e.detail&&e.detail.statistik)ok();});})();</script>\n"; // phpcs:ignore
+	},
+	1
+);

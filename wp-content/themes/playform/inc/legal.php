@@ -8,11 +8,11 @@
 
 defined( 'ABSPATH' ) || exit;
 
-const PLAYFORM_LEGAL_VERSION = 5;
+const PLAYFORM_LEGAL_VERSION = 6;
 
 function playform_legal_privacy(): string {
 	return <<<'HTML'
-<p><em>Senest opdateret: 2. november 2026</em></p>
+<p><em>Senest opdateret: 4. november 2026</em></p>
 
 <h2>Hvem er ansvarlig?</h2>
 <p>Fitbase (fitbase.dk) drives af Mondae, Rønnevej 19 B, kl., 5270 Odense N, CVR 37208329. Du kan altid kontakte os på <a href="mailto:kontakt@fitbase.dk">kontakt@fitbase.dk</a>.</p>
@@ -24,6 +24,10 @@ function playform_legal_privacy(): string {
 <h3>Når du besøger siden</h3>
 <p>Vores webserver registrerer tekniske oplysninger som IP-adresse, browsertype og hvilke sider der vises. Det sker for at kunne levere siden, beskytte den mod misbrug og rette fejl. Oplysningerne gemmes i serverens logfiler i en begrænset periode, hvorefter de slettes automatisk. De bruges ikke til at følge dig eller lave profiler.</p>
 <p>Retsgrundlaget er vores legitime interesse i at drive en sikker og velfungerende hjemmeside (databeskyttelsesforordningens artikel 6, stk. 1, litra f).</p>
+
+<h3>Statistik med Matomo</h3>
+<p>Vi bruger Matomo til at tælle besøg og se, hvilke sider der bliver brugt, så vi kan gøre siden bedre. Matomo kører på vores egen server, så oplysningerne deles ikke med andre. IP-adressen anonymiseres, og vi laver ikke profiler af dig eller bruger statistikken til markedsføring.</p>
+<p>Uden dit samtykke tæller Matomo kun besøget uden at gemme noget på din enhed (ingen cookies). Siger du ja til statistik, sætter Matomo også cookies, så vi kan se, om du har besøgt siden før. Retsgrundlaget er vores legitime interesse i at forbedre siden (artikel 6, stk. 1, litra f) og, for cookies, dit samtykke (artikel 6, stk. 1, litra a).</p>
 
 <h3>Når du tilmelder dig nyhedsbrevet</h3>
 <p>Tilmelder du dig nyhedsbrevet, gemmer vi din e-mailadresse og tidspunktet for tilmeldingen. Vi bruger den kun til at sende dig nyhedsbrevet. Du skal bekræfte tilmeldingen via en mail, og du kan altid afmelde dig via linket nederst i hver mail.</p>
@@ -53,10 +57,10 @@ HTML;
 
 function playform_legal_cookies(): string {
 	return <<<'HTML'
-<p><em>Senest opdateret: 2. november 2026</em></p>
+<p><em>Senest opdateret: 4. november 2026</em></p>
 
 <h2>Bruger Fitbase cookies?</h2>
-<p>Fitbase bruger lige nu ingen cookies til statistik eller markedsføring. Vi har alligevel et samtykkevalg, så det er på plads, hvis vi senere tilføjer sådanne værktøjer. Du kan ændre dit valg når som helst via "Cookie-indstillinger" nederst på alle sider.</p>
+<p>Fitbase bruger nødvendige cookies og – kun hvis du siger ja – cookies til statistik. Vi bruger ingen cookies til markedsføring. Du kan ændre dit valg når som helst via "Cookie-indstillinger" nederst på alle sider.</p>
 
 <h2>Nødvendige cookies</h2>
 <p>Disse cookies er nødvendige og kræver ikke samtykke:</p>
@@ -65,8 +69,16 @@ function playform_legal_cookies(): string {
 <li>Login-cookies sættes kun, hvis du logger ind som redaktør i administrationen.</li>
 </ul>
 
-<h2>Statistik og markedsføring</h2>
-<p>Hvis vi begynder at bruge statistikværktøjer eller markedsføring, sættes og indlæses de først, når du har sagt ja. Du kan sige nej og bruge siden på samme måde. Du kan altid trække dit samtykke tilbage, og det er lige så nemt som at give det.</p>
+<h2>Statistik (kræver samtykke)</h2>
+<p>Vi bruger Matomo, der kører på vores egen server, til besøgsstatistik. Uden samtykke tæller Matomo besøg uden cookies og med anonymiseret IP-adresse. Siger du ja til statistik, sætter Matomo disse cookies:</p>
+<ul>
+<li><b>_pk_id</b> genkender din browser ved næste besøg, så vi kan se antallet af unikke besøgende. Gemmes i 12 måneder.</li>
+<li><b>_pk_ses</b> samler sidevisningerne fra ét besøg. Gemmes i 30 minutter.</li>
+</ul>
+<p>Oplysningerne bliver hos os og deles ikke med andre. Du kan sige nej og bruge siden på samme måde, og du kan altid trække dit samtykke tilbage – så sletter vi cookiesne fra din browser.</p>
+
+<h2>Markedsføring</h2>
+<p>Vi bruger ingen cookies til markedsføring. Begynder vi på det, sættes de først, når du har sagt ja.</p>
 
 <h2>Når du klikker videre til en butik</h2>
 <p>Når du klikker på "Gå til butik", sendes du via affiliate-netværket Partner-ads videre til butikken. Partner-ads og butikken sætter deres egne cookies hos sig, så de kan registrere, at du kom fra Fitbase, og vi kan få provision, hvis du handler. Det sker på deres sider og efter du har forladt Fitbase, og de er ansvarlige for det. Du kan læse mere i Partner-ads' og den enkelte butiks cookie- og privatlivspolitik og styre cookies i din browser.</p>

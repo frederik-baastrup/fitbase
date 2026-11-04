@@ -64,6 +64,10 @@ På hosting: kør `wp playform import` fra et rigtigt cronjob kl. 05:30 og 17:30
 
 Hvert push til `main` udrulles via GitHub Actions (FTPS) til `fitbase.dk/public_html` på FTP-kontoen (`SITE_DIR` i `.github/workflows/deploy.yml`; udrulningen stopper, hvis mappen ikke indeholder `wp-config.php`). Hoveddomænet blev skiftet fra `frederikb7.sg-host.com` til fitbase.dk den 2. nov. 2026; `playform_move_to_fitbase_dk()` flytter WordPress-adressen. GitHub-secret `FTP_SERVER` skal være SiteGrounds FTP-værtsnavn, ikke det midlertidige domæne.
 
+## Statistik
+
+Matomo via WordPress-pluginnet "Matomo Analytics" (kører på egen server, ingen tredjepart). `inc/consent.php` lægger `requireCookieConsent` i `_paq` før pluginets kode: uden samtykke tælles besøg uden cookies; med samtykke til statistik må Matomo sætte `_pk_id` (12 mdr.) og `_pk_ses`. IP-anonymisering slås til i pluginets indstillinger. Cookie- og privatlivspolitikken (`inc/legal.php`, version 6) beskriver det.
+
 ## Design
 
 Designet ligger som et Claude-artefakt (Playform: forside, kategoriside, produktside). Stil: hvid baggrund, sort tekst, BDO Grotesk, afrundede hjørner (14–18 px), accentfarve #23D200 (fra logoet) brugt sparsomt, tynde linjeikoner (stroke 1.4), tynde streger med lav opacity.
