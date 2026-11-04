@@ -204,29 +204,54 @@ add_shortcode(
 add_shortcode(
 	'fitbase_flere',
 	static function ( $atts ): string {
+		// Ejerens ønske 4. nov. 2026: vis butikkernes tilbud i kategorien først (højst 14 dage gamle, største rabat først),
+		// og fyld op med populære modeller på lager, hvis der ikke er tilbud nok. Overskriften følger indholdet.
 		$cat     = sanitize_title( (string) ( $atts['kategori'] ?? '' ) );
+		$n       = max( 2, min( 8, (int) ( $atts['antal'] ?? 4 ) ) );
 		$exclude = array_filter( array_map( static fn( $pk ) => ( $p = playform_pick_product( $pk ) ) ? $p->get_id() : 0, playform_picks() ) );
-		$ids     = get_posts(
-			[
-				'post_type'      => 'product',
-				'post_status'    => 'publish',
-				'fields'         => 'ids',
-				'posts_per_page' => max( 2, min( 8, (int) ( $atts['antal'] ?? 4 ) ) ),
-				'post__not_in'   => $exclude, // phpcs:ignore
-				'orderby'        => 'rand',
-				'tax_query'      => $cat ? [ [ 'taxonomy' => 'product_cat', 'field' => 'slug', 'terms' => $cat ] ] : [], // phpcs:ignore
-				'meta_query'     => [ // phpcs:ignore
-					[ 'key' => '_pf_in_stock', 'value' => 1, 'type' => 'NUMERIC' ],
-					[ 'key' => '_pf_image', 'value' => '', 'compare' => '!=' ],
-				],
-			]
-		);
+		$base    = [
+			'post_type'      => 'product',
+			'post_status'    => 'publish',
+			'fields'         => 'ids',
+			'posts_per_page' => $n,
+			'post__not_in'   => $exclude, // phpcs:ignore
+			'tax_query'      => $cat ? [ [ 'taxonomy' => 'product_cat', 'field' => 'slug', 'terms' => $cat ] ] : [], // phpcs:ignore
+			'meta_query'     => [ // phpcs:ignore
+				[ 'key' => '_pf_in_stock', 'value' => 1, 'type' => 'NUMERIC' ],
+				[ 'key' => '_pf_image', 'value' => '', 'compare' => '!=' ],
+			],
+		];
+		$q                 = $base;
+		$q['meta_query'][] = [ 'key' => '_pf_shop_sale', 'compare' => 'EXISTS' ];
+		$q['meta_key']     = '_pf_sale_percent'; // phpcs:ignore
+		$q['orderby']      = 'meta_value_num';
+		$q['order']        = 'DESC';
+		$sale              = get_posts( $q );
+		$ids               = $sale;
+		if ( count( $ids ) < $n ) {
+			$q                   = $base;
+			$q['posts_per_page'] = $n - count( $ids );
+			$q['post__not_in']   = array_merge( $exclude, $ids ); // phpcs:ignore
+			$q['orderby']        = 'rand';
+			$ids                 = array_merge( $ids, get_posts( $q ) );
+		}
 		if ( ! $ids ) {
 			return '';
 		}
-		$term = $cat ? get_term_by( 'slug', $cat, 'product_cat' ) : null;
+		$term  = $cat ? get_term_by( 'slug', $cat, 'product_cat' ) : null;
+		$label = $term instanceof WP_Term ? mb_strtolower( playform_cat_label( $term ) ) : '';
+		if ( count( $sale ) >= min( 4, $n ) ) {
+			$title = $label ? 'Tilbud på ' . $label . ' lige nu' : 'Tilbud lige nu';
+			$note  = 'Butikkernes egne tilbud, højst ' . ( class_exists( '\\Playform\\Feeds\\Sales' ) ? \Playform\Feeds\Sales::DAYS : 14 ) . ' dage gamle – ikke en del af vores anbefaling. Tjek altid den endelige pris hos butikken.';
+		} elseif ( $sale ) {
+			$title = 'Tilbud og populære modeller';
+			$note  = 'Butikkernes egne tilbud først, derefter et skiftende udvalg af modeller på lager – ikke en del af vores anbefaling.';
+		} else {
+			$title = 'Flere populære modeller';
+			$note  = 'Et skiftende udvalg af modeller på lager hos vores butikker – ikke en del af vores anbefaling.';
+		}
 		ob_start();
-		echo '<p class="more-note">Et skiftende udvalg af modeller på lager hos vores butikker – ikke en del af vores anbefaling.</p><div class="grid grid--4 guide-products">';
+		echo '<h2>' . esc_html( $title ) . '</h2><p class="more-note">' . esc_html( $note ) . '</p><div class="grid grid--4 guide-products">';
 		foreach ( $ids as $id ) {
 			$p = wc_get_product( $id );
 			if ( $p ) {
@@ -235,7 +260,7 @@ add_shortcode(
 		}
 		echo '</div>';
 		if ( $term instanceof WP_Term ) {
-			echo '<p><a class="btn-ghost" href="' . esc_url( get_term_link( $term ) ) . '">Se alle ' . esc_html( mb_strtolower( playform_cat_label( $term ) ) ) . ' (' . (int) $term->count . ')</a></p>';
+			echo '<p><a class="btn-ghost" href="' . esc_url( $sale ? playform_tilbud_url( $term ) : get_term_link( $term ) ) . '">' . esc_html( $sale ? 'Se alle tilbud på ' . $label : 'Se alle ' . $label . ' (' . (int) $term->count . ')' ) . '</a></p>';
 		}
 		return (string) ob_get_clean();
 	}
@@ -464,7 +489,7 @@ function playform_best_html( array $a ): string {
 		}
 	}
 	if ( ! empty( $a['more_cat'] ) ) {
-		$h .= '<h2>Flere populære modeller</h2>' . "\n" . '[fitbase_flere kategori="' . esc_attr( $a['more_cat'] ) . '" antal="6"]' . "\n";
+		$h .= '[fitbase_flere kategori="' . esc_attr( $a['more_cat'] ) . '" antal="8"]' . "\n"; // overskriften kommer fra shortcoden (tilbud eller populære)
 	}
 	$h .= trim( $a['guide'] ?? '' ) . "\n";
 	if ( ! empty( $a['faq'] ) ) {
