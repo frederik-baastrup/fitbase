@@ -58,7 +58,8 @@ final class Normalizer {
 			$n = (int) $v;
 			return [ $n > 0, $n ];
 		}
-		$out = (bool) preg_match( '/out[ _-]?of[ _-]?stock|udsolgt|ikke på lager|^nej$/', $v );
+		// Restordre/forudbestilling (fx KitchenOnes "backorder") er ikke på lager: butikken har ikke varen hjemme.
+		$out = (bool) preg_match( '/out[ _-]?of[ _-]?stock|udsolgt|ikke på lager|^nej$|back[ _-]?order|pre[ _-]?order|restordre|bestillingsvare/', $v );
 		return [ ! $out, null ];
 	}
 
