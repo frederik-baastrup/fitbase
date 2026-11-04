@@ -45,7 +45,7 @@ add_filter(
 			$t              = get_queried_object();
 			$parts['title'] = $t instanceof WP_Term ? 'Tilbud på ' . mb_strtolower( playform_cat_label( $t ) ) . ' – aktuelle tilbud fra danske shops' : 'Tilbud på fitnessudstyr – aktuelle tilbud fra danske shops';
 		} elseif ( is_tax( 'product_cat' ) ) {
-			$parts['title'] = 'Køb ' . mb_strtolower( single_term_title( '', false ) ) . ' – stort udvalg fra danske shops';
+			$parts['title'] = playform_ucfirst( playform_cat_label( get_queried_object() ) ) . ' – stort udvalg fra danske shops';
 		} elseif ( is_singular( 'product' ) ) {
 			$parts['title'] = get_the_title() . ' – se pris';
 		}
@@ -89,3 +89,8 @@ add_action(
 	},
 	2
 );
+
+// Stort begyndelsesbogstav (også æ, ø, å) – titler må aldrig starte med lille.
+function playform_ucfirst( string $s ): string {
+	return mb_strtoupper( mb_substr( $s, 0, 1 ) ) . mb_substr( $s, 1 );
+}
