@@ -478,7 +478,22 @@ function playform_best_html( array $a ): string {
 			if ( ! empty( $pk['verdict'] ) ) {
 				$h .= '<p class="pick-verdict"><b>Kort sagt</b>' . esc_html( $pk['verdict'] ) . "</p>\n";
 			}
-			$h .= trim( $pk['why'] ?? '' ) . "\n";
+			$why = trim( $pk['why'] ?? '' );
+			foreach ( (array) ( $pk['reviews'] ?? [] ) as $r ) { // første omtale af kilden i teksten bliver et link
+				$pos = strpos( $why, $r[0] );
+				if ( false !== $pos && false === strpos( $why, 'href="' . $r[1] ) ) {
+					$why = substr_replace( $why, '<a href="' . esc_url( $r[1] ) . '" target="_blank" rel="noopener">' . esc_html( $r[0] ) . '</a>', $pos, strlen( $r[0] ) );
+				}
+			}
+			$h .= $why . "\n";
+			foreach ( (array) ( $pk['reviews'] ?? [] ) as $r ) { // tydeligt kort til den eksterne anmeldelse
+				$host = preg_replace( '/^www\./', '', (string) wp_parse_url( $r[1], PHP_URL_HOST ) );
+				$h   .= '<a class="review-card" href="' . esc_url( $r[1] ) . '" target="_blank" rel="noopener">'
+					. '<span class="review-card__icon">' . playform_icon( 'check', 20, 2 ) . '</span>'
+					. '<span class="review-card__body"><small>Uafhængig anmeldelse</small><b>' . esc_html( $r[0] ) . ' har testet ' . esc_html( $pk['name'] ) . '</b>'
+					. '<span>Læs hele anmeldelsen hos ' . esc_html( $host ) . '</span></span>'
+					. '<span class="review-card__go">' . playform_icon( 'external', 18 ) . "</span></a>\n";
+			}
 			if ( ! empty( $pk['good'] ) || ! empty( $pk['less'] ) ) {
 				$h .= '<div class="pick-fit"><div class="pick-fit__good"><b>Godt til</b><ul><li>' . implode( '</li><li>', array_map( 'esc_html', $pk['good'] ?? [] ) ) . '</li></ul></div>'
 					. '<div class="pick-fit__less"><b>Mindre godt til</b><ul><li>' . implode( '</li><li>', array_map( 'esc_html', $pk['less'] ?? [] ) ) . "</li></ul></div></div>\n";
