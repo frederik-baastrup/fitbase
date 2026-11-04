@@ -215,8 +215,8 @@ function playform_product_schema( WC_Product $product, array $offers, array $d )
 		$data['brand'] = [ '@type' => 'Brand', 'name' => $d['brand'] ];
 	}
 	$ean = (string) get_post_meta( $product->get_id(), '_pf_ean', true );
-	if ( strlen( $ean ) === 13 ) {
-		$data['gtin13'] = $ean;
+	if ( in_array( strlen( $ean ), [ 8, 12, 13, 14 ], true ) && ctype_digit( $ean ) ) {
+		$data[ 'gtin' . strlen( $ean ) ] = $ean;
 	}
 	$data['sku'] = $ean ?: (string) get_post_field( 'post_name', $product->get_id() );
 	$cat         = function_exists( 'playform_product_term' ) ? playform_product_term( $product->get_id() ) : null;
@@ -226,12 +226,22 @@ function playform_product_schema( WC_Product $product, array $offers, array $d )
 	$desc = wp_strip_all_tags( get_the_content( null, false, $product->get_id() ) ); // kun vores egen tekst, ikke butikkens (duplicate content)
 	if ( $desc ) {
 		$data['description'] = mb_substr( $desc, 0, 500 );
+	} else {
+		// Uden egen tekst: en neutral beskrivelse, kun ud fra data vi har (navn, mærke, kategori).
+		$data['description'] = trim( $product->get_name() . ( $d['brand'] ? ' fra ' . $d['brand'] : '' ) . ( $cat ? ' i kategorien ' . wp_specialchars_decode( $cat->name ) : '' ) . '. Se pris og lagerstatus hos danske butikker.' );
 	}
 	if ( $offers ) {
 		$prices = array_column( $offers, 'price' );
 		$avail  = ! empty( array_filter( array_column( $offers, 'in_stock' ) ) ) ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock';
 		if ( count( $offers ) === 1 ) {
 			$data['offers'] = [ '@type' => 'Offer', 'price' => number_format( $offers[0]['price'], 2, '.', '' ), 'priceCurrency' => 'DKK', 'itemCondition' => 'https://schema.org/NewCondition', 'availability' => $avail, 'url' => $data['url'], 'seller' => [ '@type' => 'Organization', 'name' => $offers[0]['shop'] ] ];
+			if ( isset( $offers[0]['shipping'] ) && $offers[0]['shipping'] !== null && $offers[0]['shipping'] !== '' ) {
+				$data['offers']['shippingDetails'] = [
+					'@type'               => 'OfferShippingDetails',
+					'shippingRate'        => [ '@type' => 'MonetaryAmount', 'value' => number_format( (float) $offers[0]['shipping'], 2, '.', '' ), 'currency' => 'DKK' ],
+					'shippingDestination' => [ '@type' => 'DefinedRegion', 'addressCountry' => 'DK' ],
+				];
+			}
 		} else {
 			$data['offers'] = [ '@type' => 'AggregateOffer', 'lowPrice' => number_format( min( $prices ), 2, '.', '' ), 'highPrice' => number_format( max( $prices ), 2, '.', '' ), 'offerCount' => count( $offers ), 'priceCurrency' => 'DKK', 'itemCondition' => 'https://schema.org/NewCondition', 'availability' => $avail, 'url' => $data['url'] ];
 		}
