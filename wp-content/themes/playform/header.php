@@ -58,7 +58,7 @@ $pf_usps  = [
 						<a href="<?php echo esc_url( $item['url'] ); ?>" class="mm__link<?php echo $current === $item['slug'] ? ' is-active' : ''; ?>" aria-haspopup="true"><?php echo esc_html( $item['label'] ); ?></a>
 						<div class="mm__panel">
 							<div class="mm__inner">
-								<div class="mm__cats">
+								<div class="mm__cats<?php echo count( $item['primary'] ) > 7 ? ' mm__cats--2' : ''; ?>">
 									<span class="mm__title">Kategorier</span>
 									<a class="mm__all" href="<?php echo esc_url( $item['url'] ); ?>">Se alle <?php echo esc_html( mb_strtolower( $item['label'] ) ); ?></a>
 									<?php foreach ( $item['primary'] as $i => $p ) : ?>

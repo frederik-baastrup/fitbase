@@ -139,12 +139,17 @@ function playform_campaign_bar(): void {
 		return;
 	}
 	[ $lead, $rest ] = playform_campaign_bar_text( $slug );
+	$url  = playform_campaign_url( $slug );
+	$item = '<span class="campaign-bar__item"><b>' . esc_html( $lead ) . '</b><i aria-hidden="true"></i>' . esc_html( $rest ) . '<i aria-hidden="true"></i></span>';
+	// Teksten løber fra venstre mod højre i et bånd med fade i begge sider. To ens grupper, så løkken er sømløs.
+	$group = str_repeat( $item, 6 );
 	printf(
-		'<a class="campaign-bar" href="%s"><span class="wrap campaign-bar__in"><b>%s</b><span>%s</span><span class="campaign-bar__cta">Se tilbuddene %s</span></span></a>',
-		esc_url( playform_campaign_url( $slug ) ),
+		'<div class="campaign-bar"><div class="wrap campaign-bar__in"><a class="campaign-bar__track" href="%1$s" tabindex="-1" aria-hidden="true"><span class="campaign-bar__run"><span class="campaign-bar__group">%2$s</span><span class="campaign-bar__group">%2$s</span></span></a><span class="sr-only">%3$s: %4$s.</span><a class="campaign-bar__btn" href="%1$s">Se tilbuddene %5$s</a></div></div>',
+		esc_url( $url ),
+		$group, // phpcs:ignore -- escaped ovenfor
 		esc_html( $lead ),
 		esc_html( $rest ),
-		playform_icon( 'arrow-right', 16, 1.6 ) // phpcs:ignore
+		playform_icon( 'chevron', 14, 1.8 ) // phpcs:ignore
 	);
 }
 

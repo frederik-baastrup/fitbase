@@ -1314,12 +1314,28 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 @media (max-width: 760px) { .pd__legal { font-size: 11px; line-height: 1.45; } }
 .pricebox .pricebox__chips { margin: 0; }
 
-/* Kampagnebar (inc/campaigns.php): sort bar under menuen, mens en sæsonkampagne kører. */
-.campaign-bar { display: block; background: #0B0B0A; color: #fff; font-size: 14px; }
-.campaign-bar__in { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; padding-block: 8px; text-align: center; flex-wrap: wrap; }
-.campaign-bar b { font-weight: 700; letter-spacing: .2px; }
-.campaign-bar b::after { content: ""; display: inline-block; width: 6px; height: 6px; margin-left: 10px; border-radius: 50%; background: var(--accent); vertical-align: middle; }
-.campaign-bar__cta { display: inline-flex; align-items: center; gap: 6px; margin-left: 6px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
-.campaign-bar:hover .campaign-bar__cta { text-decoration-thickness: 2px; }
-@media (max-width: 700px) { .campaign-bar { font-size: 13px; } .campaign-bar__in > span:not(.campaign-bar__cta) { display: none; } }
+/* Kampagnebar (inc/campaigns.php): sort bånd under menuen, mens en sæsonkampagne kører.
+   Teksten løber fra venstre mod højre med fade i begge sider; knappen står fast til højre. */
+.campaign-bar { background: #0B0B0A; color: #fff; font-size: 14px; }
+.campaign-bar__in { display: flex; align-items: center; gap: 16px; min-height: 48px; padding-block: 7px; }
+.campaign-bar__track { flex: 1 1 auto; min-width: 0; overflow: hidden; color: #E8E8E4; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%); }
+.campaign-bar__run { display: flex; width: max-content; animation: campaign-run 60s linear infinite; }
+.campaign-bar__track:hover .campaign-bar__run { animation-play-state: paused; }
+.campaign-bar__group { display: flex; }
+.campaign-bar__item { display: inline-flex; align-items: center; gap: 14px; padding-right: 14px; white-space: nowrap; }
+.campaign-bar__item b { color: #fff; font-weight: 700; }
+.campaign-bar__item i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+@keyframes campaign-run { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+.campaign-bar__btn { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 10px; height: 34px; padding: 0 12px 0 16px; border-radius: 8px; background: #fff; color: #0B0B0A; font-size: 13px; font-weight: 600; white-space: nowrap; transition: background-color .2s ease; }
+.campaign-bar__btn:hover, .campaign-bar__btn:focus-visible { background: var(--accent); }
+.campaign-bar__btn svg { transform: rotate(-90deg); }
+@media (max-width: 700px) { .campaign-bar { font-size: 13px; } .campaign-bar__in { gap: 10px; min-height: 44px; } .campaign-bar__btn { height: 30px; padding: 0 10px 0 12px; font-size: 12px; } }
+@media (prefers-reduced-motion: reduce) { .campaign-bar__run { animation: none; } }
 .campaign-note { margin-top: 10px; padding: 12px 14px; border-radius: 12px; background: var(--soft); font-size: 14px; }
+
+/* Mega-menuen: mange kategorier (fx Ovne & apparater med 12) deles i to kolonner, så panelet ikke bliver for højt. */
+@media (min-width: 1081px) {
+	.mm__inner:has(.mm__cats--2) { grid-template-columns: 420px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr); }
+	.mm__cats--2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: min-content; column-gap: 8px; align-content: start; }
+	.mm__cats--2 .mm__title { grid-column: 1 / -1; }
+}
