@@ -28,6 +28,7 @@ a:hover { color: #444; }
 h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -0.4px; line-height: 1.1; }
 h2 { font-size: 30px; }
 button, input, select { font-family: inherit; }
+html, body { overflow-x: clip; } /* sikkerhedsnet: intet må gøre siden bredere end skærmen */
 .wrap { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .skip { position: absolute; left: -9999px; }
@@ -670,7 +671,7 @@ a.usp__item:hover b { text-decoration: underline; text-underline-offset: 3px; }
 .guides-index .page-numbers.current { background: var(--ink); border-color: var(--ink); color: #fff; }
 .guides-index a.page-numbers:hover { border-color: var(--ink); }
 /* Faner på mobil: én linje, der kan skubbes sidelæns */
-@media (max-width: 640px) { .tabs { flex-wrap: nowrap; margin-right: -16px; padding-right: 16px; } .tab { flex: 0 0 auto; } }
+@media (max-width: 640px) { .tabs { flex-wrap: nowrap; margin-right: -18px; padding-right: 18px; } .tabs-wrap .tabs { margin-right: 0; } .tab { flex: 0 0 auto; } }
 /* Søgefelt: tydelig kant ved hover, så det føles klikbart */
 .search:hover { border-color: var(--ink); background: #fff; cursor: text; }
 .search:hover > svg { color: var(--ink); }
@@ -1268,7 +1269,7 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 .tabs__arrow--prev svg { transform: rotate(180deg); }
 .tabs-wrap.has-prev .tabs__arrow--prev, .tabs-wrap.has-more .tabs__arrow--next { display: inline-flex; }
 @media (hover: none), (max-width: 760px) { .tabs__arrow { display: none !important; } }
-@media (max-width: 760px) { .tabs-wrap { margin-top: 16px; margin-right: -16px; } .tabs-wrap .tabs { padding-right: 16px; } }
+@media (max-width: 760px) { .tabs-wrap { margin-top: 16px; margin-right: -18px; } .tabs-wrap .tabs { padding-right: 18px; } }
 
 /* Produktside: rabat ved siden af prisen */
 .pricebox__row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; }
