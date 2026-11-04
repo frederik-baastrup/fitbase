@@ -40,12 +40,52 @@ function playform_front_products( string $which ): array {
 	return array_filter( array_map( 'wc_get_product', $ids ) );
 }
 
+/**
+ * Forsidens kategori-sektioner: 5 populære kategorier med god kurvstørrelse (ejerens ønske 4. nov. 2026: ikke noget megabilligt).
+ * slug => [ overskrift, mindstepris i kr. ]. Caches i 6 timer; produkterne blandes, så forsiden skifter.
+ */
+function playform_front_categories(): array {
+	return [
+		'lobebaand'       => [ 'Løbebånd', 3000 ],
+		'spinningcykel'   => [ 'Spinningcykler', 2000 ],
+		'romaskine'       => [ 'Romaskiner', 2000 ],
+		'power-rack'      => [ 'Power racks', 2000 ],
+		'massagepistol'   => [ 'Massagepistoler', 700 ],
+	];
+}
+
+function playform_front_category_products( string $slug, int $min ): array {
+	$key = 'playform_front_cat_' . $slug;
+	$ids = get_transient( $key );
+	if ( $ids === false ) {
+		$ids = get_posts(
+			[
+				'post_type'      => 'product',
+				'post_status'    => 'publish',
+				'fields'         => 'ids',
+				'posts_per_page' => 12,
+				'no_found_rows'  => true,
+				'orderby'        => 'rand',
+				'tax_query'      => [ [ 'taxonomy' => 'product_cat', 'field' => 'slug', 'terms' => [ $slug ] ] ],
+				'meta_query'     => [
+					[ 'key' => '_pf_in_stock', 'value' => 1, 'type' => 'NUMERIC' ],
+					[ 'key' => '_pf_image', 'value' => '', 'compare' => '!=' ],
+					[ 'key' => '_price', 'value' => $min, 'compare' => '>=', 'type' => 'NUMERIC' ],
+				],
+			]
+		);
+		set_transient( $key, $ids, 6 * HOUR_IN_SECONDS );
+	}
+	return array_filter( array_map( 'wc_get_product', $ids ) );
+}
+
 $hero = [
 	[ 'slug' => 'lobebaand', 'title' => 'Løbebånd', 'img' => 'hero-lobebaand.jpg', 'big' => true, 'subs' => [ [ 'Foldbart løbebånd', [ 'sub' => 'foldbart-lobebaand' ] ], [ 'Gåbånd', [ 'sub' => 'gaabaand' ] ], [ 'Løbebånd med incline', [ 'sub' => 'lobebaand-med-incline' ] ], [ 'Billigt løbebånd', [ 'sortering' => 'pris-lav' ] ] ] ],
 	[ 'slug' => 'kettlebell', 'title' => 'Kettlebells', 'img' => 'hero-kettlebells.jpg', 'subs' => [ [ 'Kettlebell 12 kg', [ 'sub' => 'kettlebell', 'vaegt' => '12' ] ], [ 'Kettlebell 16 kg', [ 'sub' => 'kettlebell', 'vaegt' => '16' ] ], [ 'Kettlebell 24 kg', [ 'sub' => 'kettlebell', 'vaegt' => '24' ] ] ] ],
 	[ 'slug' => 'motionscykler', 'title' => 'Motionscykler', 'img' => 'hero-motionscykler.jpg', 'subs' => [ [ 'Spinningcykel', [ 'sub' => 'spinningcykel' ] ], [ 'Kondicykel', [ 'sub' => 'kondicykel' ] ], [ 'Airbike', [ 'sub' => 'airbike' ] ], [ 'Liggecykel', [ 'sub' => 'liggecykel' ] ] ] ],
+	[ 'slug' => 'romaskine', 'title' => 'Romaskiner', 'img' => 'mm-romaskine.jpg', 'subs' => [ [ 'Med vand', [ 'sub' => 'romaskine-vand' ] ], [ 'Med luftmodstand', [ 'sub' => 'romaskine-luftmodstand' ] ], [ 'Magnetisk', [ 'sub' => 'romaskine-magnetisk' ] ] ] ],
 ];
-// Desktop: de tre store kort ovenfor. Mobil: karrusel med 6 kategorier – dyre maskiner først (størst kurv og kommission).
+// Desktop: ét stort kort til venstre og tre til højre (som Kitzhen). Mobil: karrusel med 6 kategorier – dyre maskiner først (størst kurv og kommission).
 $mob = array_values( array_filter(
 	[ 'lobebaand', 'motionscykler', 'romaskiner-crosstrainere', 'styrke-baenke', 'vaegte-kettlebells', 'restitution' ],
 	static function ( $c ) {
@@ -94,7 +134,7 @@ $has_deals = count( $deals ) >= 4;
 				</div>
 				<span class="cat__arrow" aria-hidden="true"><?php echo playform_icon( 'arrow-right', 20, 1.4 ); // phpcs:ignore ?></span>
 			</div>
-			<?php if ( $i === 2 ) : ?></div><?php endif; ?>
+			<?php if ( $i === 3 ) : ?></div><?php endif; ?>
 		<?php endforeach; ?>
 	</div>
 
@@ -115,6 +155,13 @@ get_template_part(
 		? [ 'title' => 'Tilbud lige nu', 'products' => $deals, 'id' => 'slider-deals', 'link' => playform_tilbud_url(), 'link_label' => 'Se alle tilbud' ]
 		: [ 'title' => 'Nyt i butikkerne', 'products' => playform_front_products( 'new' ), 'id' => 'slider-new' ]
 );
+foreach ( playform_front_categories() as $cslug => [ $ctitle, $cmin ] ) {
+	$cterm = get_term_by( 'slug', $cslug, 'product_cat' );
+	$cprod = $cterm ? playform_front_category_products( $cslug, $cmin ) : [];
+	if ( count( $cprod ) >= 4 ) { // en sektion med få produkter ser tom ud – så springes den over
+		get_template_part( 'template-parts/slider', null, [ 'title' => $ctitle, 'products' => $cprod, 'id' => 'slider-' . $cslug, 'link' => get_term_link( $cterm ), 'link_label' => 'Se alle ' . mb_strtolower( $ctitle ) ] );
+	}
+}
 ?>
 
 <?php if ( class_exists( '\Playform\Feeds\Newsletter' ) && \Playform\Feeds\Newsletter::enabled() ) : // vises først, når nyhedsbrevet er sat op (Værktøjer → Playform Feeds) ?>

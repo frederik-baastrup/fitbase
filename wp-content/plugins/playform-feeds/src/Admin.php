@@ -24,6 +24,9 @@ final class Admin {
 		delete_transient( 'playform_front_popular' );
 		delete_transient( 'playform_front_deals' );
 		delete_transient( 'playform_front_new' );
+		foreach ( [ 'lobebaand', 'spinningcykel', 'romaskine', 'power-rack', 'massagepistol' ] as $c ) {
+			delete_transient( 'playform_front_cat_' . $c ); // forsidens kategori-sektioner
+		}
 	}
 
 	public static function clear_cache(): void {

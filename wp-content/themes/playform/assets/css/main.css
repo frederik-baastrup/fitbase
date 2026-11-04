@@ -1340,3 +1340,10 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 	.mm__cats--2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: min-content; column-gap: 8px; align-content: start; }
 	.mm__cats--2 .mm__title { grid-column: 1 / -1; }
 }
+
+/* Forsiden: ét stort kort og tre kort til højre. Det store kort strækker sig til samme højde. */
+@media (min-width: 901px) {
+	.hero__side { grid-template-rows: repeat(3, minmax(0, 1fr)); }
+	.hero__side .cat { min-height: 196px; }
+	.hero .cat--big { min-height: 0; }
+}
