@@ -36,7 +36,14 @@ if ( $is_cat ) {
 }
 $parent = $is_cat && $top && $top->term_id !== $term->term_id ? $top : null;
 $label  = $is_cat ? playform_cat_label( $term ) : '';
-if ( $offers ) {
+$campaign = playform_current_campaign();
+$cnote    = '';
+if ( $campaign ) {
+	$ct    = playform_campaign_page_text( $campaign );
+	$title = $ct['title'];
+	$intro = $ct['intro'];
+	$cnote = $ct['note'];
+} elseif ( $offers ) {
 	$title = $is_cat ? 'Tilbud på ' . mb_strtolower( $label ) : 'Tilbud';
 	$intro = sprintf(
 		'Her er %s, som butikkerne selv har sat på tilbud lige nu. Vi viser kun tilbud, der højst er %d dage gamle, og prisen er butikkens egen – tjek altid den endelige pris hos butikken.',
@@ -69,7 +76,7 @@ if ( $is_cat ) {
 		$crumb[] = [ $term->name, get_term_link( $term ) ];
 	}
 }
-$crumb[] = [ $offers ? 'Tilbud' : $title, '' ];
+$crumb[] = [ $campaign ? playform_campaign_defs()[ $campaign ]['name'] : ( $offers ? 'Tilbud' : $title ), '' ];
 $tabs    = $top ? playform_sub_links( $top->slug ) : [];
 $sort    = playform_current_sort();
 $updated = playform_last_update_label();
@@ -81,6 +88,7 @@ global $wp_query;
 	<div class="cat-top__head">
 		<h1><?php echo esc_html( $title ); ?></h1>
 		<?php if ( $intro ) : ?><p><?php echo esc_html( wp_strip_all_tags( $intro ) ); ?></p><?php endif; ?>
+		<?php if ( $cnote ) : ?><p class="campaign-note"><?php echo esc_html( $cnote ); ?></p><?php endif; ?>
 	</div>
 	<?php if ( $tabs || $has_offer_tab ) : ?>
 		<nav class="tabs" aria-label="Underkategorier">

@@ -1,0 +1,202 @@
+<?php
+/**
+ * Sæsonkampagner: Black Friday (hele november), januarudsalg, sommerudsalg og efterårstilbud.
+ *
+ * Kører helt automatisk ud fra datoen (ejerens ønske 4. nov. 2026 – ingen opsætning i WordPress):
+ * - en sort bar under menuen i kampagnens periode, med tekst der skifter undervejs (fx nedtælling til Black Friday)
+ * - en fast side pr. kampagne (/black-friday/ osv.), der samme adresse år efter år samler links og placeringer.
+ *   Siden viser butikkernes aktuelle tilbud med de samme regler som /tilbud/ (højst 14 dage gamle, kontrolleret
+ *   førpris). Uden for perioden står den stadig, med en note om, hvornår kampagnen kommer igen.
+ *
+ * Vi lover aldrig mere, end tilbuddene holder: ingen "vilde rabatter", kun "butikkernes tilbud".
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+/** Black Friday: fredagen efter fjerde torsdag i november. */
+function playform_black_friday( int $year ): DateTimeImmutable {
+	$tz    = wp_timezone();
+	$first = new DateTimeImmutable( "$year-11-01", $tz );
+	$dow   = (int) $first->format( 'N' ); // 1 = mandag … 7 = søndag
+	$thu   = $first->modify( '+' . ( ( 4 - $dow + 7 ) % 7 ) . ' days' ); // første torsdag
+	return $thu->modify( '+22 days' ); // fjerde torsdag + 1 dag
+}
+
+/**
+ * Kampagnerne. 'period' giver [ start, slut ] (inkl.) for et år. Rækkefølgen er uden betydning; perioderne overlapper ikke.
+ *
+ * @return array<string,array{name:string,title:string,intro:string,period:callable}>
+ */
+function playform_campaign_defs(): array {
+	$niche = playform_site( 'niche' );
+	return [
+		'black-friday'    => [
+			'name'   => 'Black Friday',
+			'title'  => 'Black Friday – butikkernes tilbud',
+			'intro'  => "Hele november samler vi de tilbud, danske webshops selv har sat på $niche op til Black Friday og Cyber Monday. Vi viser kun tilbud, der højst er 14 dage gamle, og hvor vi kan, viser vi den laveste pris de 30 dage før tilbuddet – så du kan se, om rabatten er reel.",
+			'period' => static function ( int $y ): array {
+				$tz  = wp_timezone();
+				$cm  = playform_black_friday( $y )->modify( '+3 days' ); // Cyber Monday
+				$end = new DateTimeImmutable( "$y-11-30", $tz );
+				return [ new DateTimeImmutable( "$y-11-01", $tz ), $cm > $end ? $cm : $end ];
+			},
+		],
+		'januarudsalg'    => [
+			'name'   => 'Januarudsalg',
+			'title'  => 'Januarudsalg – butikkernes tilbud',
+			'intro'  => "Januarudsalget er i gang. Her er de tilbud, danske webshops selv har sat på $niche. Vi viser kun tilbud, der højst er 14 dage gamle, og prisen er butikkens egen – tjek altid den endelige pris hos butikken.",
+			'period' => static fn( int $y ): array => [ new DateTimeImmutable( "$y-01-01", wp_timezone() ), new DateTimeImmutable( "$y-01-31", wp_timezone() ) ],
+		],
+		'sommerudsalg'    => [
+			'name'   => 'Sommerudsalg',
+			'title'  => 'Sommerudsalg – butikkernes tilbud',
+			'intro'  => "Sommerudsalget er i gang. Her er de tilbud, danske webshops selv har sat på $niche. Vi viser kun tilbud, der højst er 14 dage gamle, og prisen er butikkens egen – tjek altid den endelige pris hos butikken.",
+			'period' => static fn( int $y ): array => [ new DateTimeImmutable( "$y-06-25", wp_timezone() ), new DateTimeImmutable( "$y-08-10", wp_timezone() ) ],
+		],
+		'efteraarstilbud' => [
+			'name'   => 'Efterårstilbud',
+			'title'  => 'Efterårstilbud – butikkernes tilbud',
+			'intro'  => "Efteråret er i gang, og her er de tilbud, danske webshops selv har sat på $niche. Vi viser kun tilbud, der højst er 14 dage gamle, og prisen er butikkens egen – tjek altid den endelige pris hos butikken.",
+			'period' => static fn( int $y ): array => [ new DateTimeImmutable( "$y-09-15", wp_timezone() ), new DateTimeImmutable( "$y-10-31", wp_timezone() ) ],
+		],
+	];
+}
+
+function playform_campaign_today(): DateTimeImmutable {
+	return new DateTimeImmutable( current_time( 'Y-m-d' ), wp_timezone() );
+}
+
+/** Kampagnens periode, der er i gang eller kommer næst efter $day: [ start, slut ]. */
+function playform_campaign_next_period( string $slug, ?DateTimeImmutable $day = null ): array {
+	$day = $day ?: playform_campaign_today();
+	$def = playform_campaign_defs()[ $slug ];
+	$y   = (int) $day->format( 'Y' );
+	[ $s, $e ] = ( $def['period'] )( $y );
+	return $e < $day ? ( $def['period'] )( $y + 1 ) : [ $s, $e ];
+}
+
+/** Er kampagnen i gang på dagen? */
+function playform_campaign_running( string $slug, ?DateTimeImmutable $day = null ): bool {
+	$day = $day ?: playform_campaign_today();
+	[ $s, $e ] = playform_campaign_next_period( $slug, $day );
+	return $s <= $day && $day <= $e;
+}
+
+/** Den kampagne, der kører i dag (slug), eller ''. */
+function playform_active_campaign( ?DateTimeImmutable $day = null ): string {
+	foreach ( array_keys( playform_campaign_defs() ) as $slug ) {
+		if ( playform_campaign_running( $slug, $day ) ) {
+			return $slug;
+		}
+	}
+	return '';
+}
+
+/** Kampagnen for den aktuelle side (/black-friday/ osv.), eller ''. */
+function playform_current_campaign(): string {
+	$slug = (string) get_query_var( 'pf_kampagne' );
+	return isset( playform_campaign_defs()[ $slug ] ) ? $slug : '';
+}
+
+function playform_campaign_url( string $slug ): string {
+	return home_url( user_trailingslashit( $slug ) );
+}
+
+/** Barens tekst for dagen: [ fed tekst, resten ]. Black Friday skifter undervejs i november. */
+function playform_campaign_bar_text( string $slug, ?DateTimeImmutable $day = null ): array {
+	$day = $day ?: playform_campaign_today();
+	if ( $slug === 'black-friday' ) {
+		$bf   = playform_black_friday( (int) $day->format( 'Y' ) );
+		$days = (int) $day->diff( $bf )->format( '%r%a' );
+		if ( $days > 7 ) {
+			return [ 'Black Month', 'Butikkernes tilbud hele november' ];
+		}
+		if ( $days > 1 ) {
+			return [ "Black Friday om $days dage", 'Se butikkernes tilbud allerede nu' ];
+		}
+		if ( $days === 1 ) {
+			return [ 'Black Friday i morgen', 'Se butikkernes tilbud allerede nu' ];
+		}
+		if ( $days === 0 ) {
+			return [ 'Black Friday', 'Butikkernes tilbud er i gang' ];
+		}
+		if ( $days >= -2 ) {
+			return [ 'Black Weekend', 'Butikkernes tilbud fortsætter' ];
+		}
+		if ( $days === -3 ) {
+			return [ 'Cyber Monday', 'Sidste chance for mange tilbud' ];
+		}
+		return [ 'Black Month', 'De sidste dage med butikkernes tilbud' ];
+	}
+	$def = playform_campaign_defs()[ $slug ];
+	return [ $def['name'], 'Se butikkernes tilbud' ];
+}
+
+/** Den sorte bar under menuen. Vises kun, mens en kampagne kører (og ikke på selve kampagnesiden). */
+function playform_campaign_bar(): void {
+	$slug = playform_active_campaign();
+	if ( $slug === '' || playform_current_campaign() === $slug ) {
+		return;
+	}
+	[ $lead, $rest ] = playform_campaign_bar_text( $slug );
+	printf(
+		'<a class="campaign-bar" href="%s"><span class="wrap campaign-bar__in"><b>%s</b><span>%s</span><span class="campaign-bar__cta">Se tilbuddene %s</span></span></a>',
+		esc_url( playform_campaign_url( $slug ) ),
+		esc_html( $lead ),
+		esc_html( $rest ),
+		playform_icon( 'arrow-right', 16, 1.6 ) // phpcs:ignore
+	);
+}
+
+/** Overskrift, intro og evt. note til kampagnesiden. */
+function playform_campaign_page_text( string $slug ): array {
+	$def   = playform_campaign_defs()[ $slug ];
+	$today = playform_campaign_today();
+	[ $s, $e ] = playform_campaign_next_period( $slug, $today );
+	$note = '';
+	if ( ! playform_campaign_running( $slug, $today ) ) {
+		$when = $slug === 'black-friday'
+			? 'Black Friday er ' . wp_date( 'j. F Y', playform_black_friday( (int) $s->format( 'Y' ) )->getTimestamp() )
+			: $def['name'] . ' starter ' . wp_date( 'j. F Y', $s->getTimestamp() );
+		$note = $def['name'] . ' er ikke i gang lige nu. ' . $when . '. Indtil da kan du se butikkernes aktuelle tilbud her.';
+	}
+	return [ 'title' => $def['title'], 'intro' => $def['intro'], 'note' => $note ];
+}
+
+// Faste adresser: /black-friday/ og /black-friday/page/2/ viser tilbudslisten med kampagnens tekst.
+add_filter(
+	'rewrite_rules_array',
+	static function ( array $rules ): array {
+		$new = [];
+		foreach ( array_keys( playform_campaign_defs() ) as $slug ) {
+			$q = 'index.php?post_type=product&pf_tilbud=1&pf_kampagne=' . $slug;
+			$new[ '^' . $slug . '/page/?([0-9]{1,})/?$' ] = $q . '&paged=$matches[1]';
+			$new[ '^' . $slug . '/?$' ]                    = $q;
+		}
+		return $new + $rules;
+	}
+);
+add_filter( 'query_vars', static fn( array $vars ): array => array_merge( $vars, [ 'pf_kampagne' ] ) );
+
+// Kampagnesiderne i WordPress' sitemap, så Google kender dem hele året.
+add_action(
+	'init',
+	static function () {
+		if ( ! function_exists( 'wp_register_sitemap_provider' ) || ! class_exists( 'WP_Sitemaps_Provider' ) ) {
+			return;
+		}
+		$provider = new class() extends WP_Sitemaps_Provider {
+			public function __construct() {
+				$this->name        = 'kampagner';
+				$this->object_type = 'kampagner';
+			}
+			public function get_url_list( $page_num, $object_subtype = '' ) {
+				return $page_num > 1 ? [] : array_map( static fn( $s ) => [ 'loc' => playform_campaign_url( $s ) ], array_keys( playform_campaign_defs() ) );
+			}
+			public function get_max_num_pages( $object_subtype = '' ) {
+				return 1;
+			}
+		};
+		wp_register_sitemap_provider( 'kampagner', $provider );
+	}
+);

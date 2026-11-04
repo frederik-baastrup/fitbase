@@ -412,6 +412,9 @@ function playform_reset_url(): string {
 	if ( $term instanceof WP_Term && $term->taxonomy === 'product_cat' ) {
 		return playform_is_tilbud_page() ? playform_tilbud_url( $term ) : get_term_link( $term );
 	}
+	if ( function_exists( 'playform_current_campaign' ) && playform_current_campaign() ) {
+		return playform_campaign_url( playform_current_campaign() );
+	}
 	if ( playform_is_tilbud_page() ) {
 		return playform_tilbud_url();
 	}

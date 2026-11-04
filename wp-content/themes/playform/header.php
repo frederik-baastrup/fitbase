@@ -140,6 +140,7 @@ $pf_usps  = [
 		</div>
 	</div>
 </header>
+<?php playform_campaign_bar(); ?>
 <?php get_template_part( 'template-parts/mobile-menu' ); ?>
 <?php if ( isset( $_GET['nyhedsbrev'] ) && $_GET['nyhedsbrev'] === 'bekraeftet' ) : // phpcs:ignore ?>
 	<div class="notice-bar" role="status"><div class="wrap">Tak – din tilmelding til nyhedsbrevet er bekræftet.</div></div>

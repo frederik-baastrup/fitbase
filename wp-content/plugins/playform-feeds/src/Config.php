@@ -7,6 +7,22 @@ namespace Playform\Feeds;
  */
 final class Config {
 
+	/** Sitets navn og kontaktoplysninger. Bruges af temaet (playform_site(), fx i kampagnerne). */
+	public static function site(): array {
+		return [
+			'name'    => 'Fitbase',
+			'domain'  => 'fitbase.dk',
+			'email'   => 'kontakt@fitbase.dk',
+			'niche'   => 'fitnessudstyr',
+			'tagline' => 'Fitnessudstyr fra flere danske webshops samlet ét sted',
+			'company' => 'Mondae',
+			'cvr'     => '37208329',
+			'address' => 'Rønnevej 19 B, kl., 5270 Odense N',
+			'owner'   => 'Frederik Baastrup',
+			'accent'  => '#23D200',
+		];
+	}
+
 	/** Partner-ads feeds. Kan overstyres med option 'playform_shops'. */
 	public static function shops(): array {
 		$base     = 'https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=14854';

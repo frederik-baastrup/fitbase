@@ -1313,3 +1313,13 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 }
 @media (max-width: 760px) { .pd__legal { font-size: 11px; line-height: 1.45; } }
 .pricebox .pricebox__chips { margin: 0; }
+
+/* Kampagnebar (inc/campaigns.php): sort bar under menuen, mens en sæsonkampagne kører. */
+.campaign-bar { display: block; background: #0B0B0A; color: #fff; font-size: 14px; }
+.campaign-bar__in { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; padding-block: 8px; text-align: center; flex-wrap: wrap; }
+.campaign-bar b { font-weight: 700; letter-spacing: .2px; }
+.campaign-bar b::after { content: ""; display: inline-block; width: 6px; height: 6px; margin-left: 10px; border-radius: 50%; background: var(--accent); vertical-align: middle; }
+.campaign-bar__cta { display: inline-flex; align-items: center; gap: 6px; margin-left: 6px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.campaign-bar:hover .campaign-bar__cta { text-decoration-thickness: 2px; }
+@media (max-width: 700px) { .campaign-bar { font-size: 13px; } .campaign-bar__in > span:not(.campaign-bar__cta) { display: none; } }
+.campaign-note { margin-top: 10px; padding: 12px 14px; border-radius: 12px; background: var(--soft); font-size: 14px; }

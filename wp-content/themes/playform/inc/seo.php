@@ -38,7 +38,10 @@ add_filter(
 		if ( is_front_page() ) {
 			return [ 'title' => 'Fitbase.dk – Find det rigtige træningsudstyr' ];
 		}
-		if ( playform_is_tilbud_page() ) {
+		if ( function_exists( 'playform_current_campaign' ) && playform_current_campaign() ) {
+			$c              = playform_current_campaign();
+			$parts['title'] = playform_campaign_defs()[ $c ]['name'] . ' ' . wp_date( 'Y', playform_campaign_next_period( $c )[0]->getTimestamp() ) . ' – tilbud på ' . playform_site( 'niche' );
+		} elseif ( playform_is_tilbud_page() ) {
 			$t              = get_queried_object();
 			$parts['title'] = $t instanceof WP_Term ? 'Tilbud på ' . mb_strtolower( playform_cat_label( $t ) ) . ' – aktuelle tilbud fra danske shops' : 'Tilbud på fitnessudstyr – aktuelle tilbud fra danske shops';
 		} elseif ( is_tax( 'product_cat' ) ) {
@@ -62,6 +65,8 @@ add_action(
 		$desc = '';
 		if ( is_front_page() ) {
 			$desc = 'Find løbebånd, motionscykler, romaskiner, vægte og andet fitnessudstyr fra danske webshops ét sted. Sammenlign priser, se tilbud og læs vores købsguides.';
+		} elseif ( function_exists( 'playform_current_campaign' ) && playform_current_campaign() ) {
+			$desc = playform_campaign_page_text( playform_current_campaign() )['intro'];
 		} elseif ( playform_is_tilbud_page() ) {
 			$t    = get_queried_object();
 			$desc = sprintf( 'Se %s, som danske webshops har sat på tilbud lige nu. Vi samler butikkernes egne tilbud ét sted, og du handler direkte hos butikken.', $t instanceof WP_Term ? mb_strtolower( playform_cat_label( $t ) ) : 'fitnessudstyr' );

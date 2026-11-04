@@ -7,6 +7,7 @@ defined( 'ABSPATH' ) || exit;
 
 define( 'PLAYFORM_THEME_VERSION', '0.6.0' );
 
+require_once __DIR__ . '/inc/site.php';
 require_once __DIR__ . '/inc/navigation.php';
 require_once __DIR__ . '/inc/permalinks.php';
 require_once __DIR__ . '/inc/search.php';
@@ -23,6 +24,7 @@ require_once __DIR__ . '/inc/best-check.php';
 require_once __DIR__ . '/inc/links.php';
 require_once __DIR__ . '/inc/schema.php';
 require_once __DIR__ . '/inc/consent.php';
+require_once __DIR__ . '/inc/campaigns.php';
 
 add_action(
 	'after_setup_theme',
