@@ -155,6 +155,7 @@ function playform_run_upgrades(): void {
 	playform_launch();
 	playform_open_for_indexing();
 	playform_update_legal_pages();
+	playform_fix_default_site_name();
 	playform_author_profile();
 	playform_hide_imageless_products();
 	// Importens tabeller og kategorier (kolonner, underkategorier, omsortering).
@@ -825,3 +826,33 @@ add_action(
 	},
 	0
 );
+
+/**
+ * Retter tekster, der blev gemt, mens importpluginnet ikke var aktivt: så hed sitet WordPress' standardnavn
+ * ("My WordPress"), og nichen var tom. Kører, indtil intet mere findes – kun når Config er indlæst.
+ */
+function playform_fix_default_site_name(): void {
+	if ( ! class_exists( '\Playform\Feeds\Config' ) || ! method_exists( '\Playform\Feeds\Config', 'site' ) ) {
+		return;
+	}
+	global $wpdb;
+	$name  = playform_site( 'name' );
+	$niche = playform_site( 'niche' );
+	if ( '' === $name || 'My WordPress' === $name ) {
+		return;
+	}
+	foreach ( [ 'My WordPress', 'Mit WordPress' ] as $bad ) {
+		if ( in_array( get_option( 'blogname' ), [ $bad, '' ], true ) ) {
+			update_option( 'blogname', $name );
+		}
+		$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->usermeta} SET meta_value = REPLACE(meta_value, %s, %s) WHERE meta_key = 'description' AND meta_value LIKE %s", $bad, $name, '%' . $wpdb->esc_like( $bad ) . '%' ) );
+		foreach ( [ 'post_title', 'post_content', 'post_excerpt' ] as $col ) {
+			$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->posts} SET $col = REPLACE($col, %s, %s) WHERE post_type IN ('post','page','product') AND $col LIKE %s", $bad, $name, '%' . $wpdb->esc_like( $bad ) . '%' ) ); // phpcs:ignore
+		}
+		$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->term_taxonomy} SET description = REPLACE(description, %s, %s) WHERE description LIKE %s", $bad, $name, '%' . $wpdb->esc_like( $bad ) . '%' ) );
+	}
+	if ( '' !== $niche ) { // tom niche gav "samler han  fra danske webshops"
+		$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->usermeta} SET meta_value = REPLACE(meta_value, 'samler han  fra', %s) WHERE meta_key = 'description'", "samler han $niche fra" ) );
+	}
+	wp_cache_flush();
+}

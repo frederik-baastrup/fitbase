@@ -188,7 +188,7 @@ add_action( 'edit_user_profile_update', $playform_author_save );
  * Kun fakta, Frederik selv har oplyst – ingen påståede kvalifikationer.
  */
 function playform_author_profile(): void {
-	if ( get_option( 'playform_author_profile' ) ) {
+	if ( get_option( 'playform_author_profile' ) || '' === playform_site( 'niche' ) ) { // uden importpluginnet kender vi hverken navn eller niche
 		return;
 	}
 	$users = get_users( [ 'search' => 'Frederik Baastrup', 'search_columns' => [ 'display_name' ], 'number' => 1 ] )
