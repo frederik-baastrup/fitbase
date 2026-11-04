@@ -1349,3 +1349,8 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 	.hero .cat--big { min-height: 0; }
 }
 .screen-reader-text { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+/* "Kig videre": overskriften står i sin egen kolonne til venstre, så knapperne på linje 2 starter under knapperne på linje 1. */
+@media (min-width: 761px) {
+	.rel__col { position: relative; padding-left: 108px; }
+	.rel__h { position: absolute; left: 0; top: 9px; min-width: 0; margin: 0; }
+}
