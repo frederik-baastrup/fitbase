@@ -36,7 +36,7 @@ add_filter(
 			return $parts;
 		}
 		if ( is_front_page() ) {
-			return [ 'title' => 'Fitbase – fitnessudstyr fra danske webshops samlet ét sted' ];
+			return [ 'title' => 'Fitbase.dk – Find det rigtige træningsudstyr' ];
 		}
 		if ( playform_is_tilbud_page() ) {
 			$t              = get_queried_object();
