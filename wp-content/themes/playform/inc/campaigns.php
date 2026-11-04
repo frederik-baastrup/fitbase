@@ -32,7 +32,7 @@ function playform_campaign_defs(): array {
 	return [
 		'black-friday'    => [
 			'name'   => 'Black Friday',
-			'title'  => "Black Friday på $niche",
+			'title'  => "Black Friday – Tilbud på $niche",
 			'intro'  => "Hele november samler vi de tilbud, danske webshops selv har sat på $niche op til Black Friday og Cyber Monday. Vi viser kun tilbud, der højst er 14 dage gamle, og hvor vi kan, viser vi den laveste pris de 30 dage før tilbuddet – så du kan se, om rabatten er reel.",
 			'period' => static function ( int $y ): array {
 				$tz  = wp_timezone();
@@ -43,19 +43,19 @@ function playform_campaign_defs(): array {
 		],
 		'januarudsalg'    => [
 			'name'   => 'Januarudsalg',
-			'title'  => "Januarudsalg på $niche",
+			'title'  => "Januarudsalg – Tilbud på $niche",
 			'intro'  => "Januarudsalget er i gang. Her er de tilbud, danske webshops selv har sat på $niche. Vi viser kun tilbud, der højst er 14 dage gamle, og prisen er butikkens egen – tjek altid den endelige pris hos butikken.",
 			'period' => static fn( int $y ): array => [ new DateTimeImmutable( "$y-01-01", wp_timezone() ), new DateTimeImmutable( "$y-01-31", wp_timezone() ) ],
 		],
 		'sommerudsalg'    => [
 			'name'   => 'Sommerudsalg',
-			'title'  => "Sommerudsalg på $niche",
+			'title'  => "Sommerudsalg – Tilbud på $niche",
 			'intro'  => "Sommerudsalget er i gang. Her er de tilbud, danske webshops selv har sat på $niche. Vi viser kun tilbud, der højst er 14 dage gamle, og prisen er butikkens egen – tjek altid den endelige pris hos butikken.",
 			'period' => static fn( int $y ): array => [ new DateTimeImmutable( "$y-06-25", wp_timezone() ), new DateTimeImmutable( "$y-08-10", wp_timezone() ) ],
 		],
 		'efteraarstilbud' => [
 			'name'   => 'Efterårstilbud',
-			'title'  => "Efterårstilbud på $niche",
+			'title'  => "Efterårstilbud – Tilbud på $niche",
 			'intro'  => "Efteråret er i gang, og her er de tilbud, danske webshops selv har sat på $niche. Vi viser kun tilbud, der højst er 14 dage gamle, og prisen er butikkens egen – tjek altid den endelige pris hos butikken.",
 			'period' => static fn( int $y ): array => [ new DateTimeImmutable( "$y-09-15", wp_timezone() ), new DateTimeImmutable( "$y-10-31", wp_timezone() ) ],
 		],
