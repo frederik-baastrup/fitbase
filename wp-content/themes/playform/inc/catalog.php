@@ -339,7 +339,11 @@ function playform_catalog_state(): array {
 		$tags[] = [ 'label' => '"' . $q . '"', 'url' => remove_query_arg( [ 'q', 'paged' ] ) ];
 	}
 
-	$state = [ 'ids' => $matching, 'facets' => $facets, 'tags' => $tags, 'total' => count( $matching ), 'q' => $q ];
+	$pct = [];
+	foreach ( $matching as $id ) {
+		$pct[ $id ] = [ (int) ! empty( $meta[ $id ]['_pf_in_stock'] ), (int) ( $meta[ $id ]['_pct'] ?? 0 ) ];
+	}
+	$state = [ 'ids' => $matching, 'facets' => $facets, 'tags' => $tags, 'total' => count( $matching ), 'q' => $q, 'pct' => $pct ];
 	return $state;
 }
 
@@ -368,19 +372,14 @@ add_action(
 				$q->set( 'orderby', [ 'stock' => 'DESC', 'date' => 'DESC' ] );
 				break;
 			case 'rabat':
-				// Største rabat ifølge butikken først. Produkter uden tilbud kommer bagefter (NOT EXISTS).
-				$q->set(
-					'meta_query',
-					[
-						'stock' => [ 'key' => '_pf_in_stock', 'type' => 'NUMERIC' ],
-						[
-							'relation' => 'OR',
-							'sale'     => [ 'key' => '_pf_sale_percent', 'type' => 'NUMERIC', 'compare' => 'EXISTS' ],
-							[ 'key' => '_pf_sale_percent', 'compare' => 'NOT EXISTS' ],
-						],
-					]
-				);
-				$q->set( 'orderby', [ 'stock' => 'DESC', 'sale' => 'DESC' ] );
+				// Største rabat først – samme rabat som på produktkortet. Sorteres her i PHP: en meta_query med
+				// EXISTS/NOT EXISTS i OR joiner alle metafelter og sorterede efter tilfældige værdier.
+				$ids = $state['ids'];
+				$pct = $state['pct'] ?? [];
+				usort( $ids, static fn( $a, $b ) => ( $pct[ $b ] ?? [ 0, 0 ] ) <=> ( $pct[ $a ] ?? [ 0, 0 ] ) ?: $a <=> $b );
+				$q->set( 'post__in', $ids ?: [ 0 ] );
+				$q->set( 'meta_query', [] );
+				$q->set( 'orderby', 'post__in' );
 				break;
 			default:
 				// "Mest populære": på lager først, derefter produkter med billede og højest pris (de vigtigste maskiner).
