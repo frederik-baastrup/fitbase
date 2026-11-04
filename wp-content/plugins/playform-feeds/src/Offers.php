@@ -97,12 +97,12 @@ final class Offers {
 		return array_map( 'intval', $ids );
 	}
 
-	/** Aktive tilbud for et produkt, billigste på lager først. */
+	/** Aktive tilbud for et produkt, billigste på lager først – inkl. fragt, når butikken oplyser den (ejerens ønske 4. nov. 2026). */
 	public static function for_product( int $product_id, bool $active_only = true ): array {
 		global $wpdb;
 		$where = $active_only ? 'AND active = 1' : '';
 		$rows = $wpdb->get_results(
-			$wpdb->prepare( 'SELECT * FROM ' . self::table() . " WHERE product_id = %d $where ORDER BY in_stock DESC, price ASC", $product_id ),
+			$wpdb->prepare( 'SELECT * FROM ' . self::table() . " WHERE product_id = %d $where ORDER BY in_stock DESC, price + COALESCE(shipping, 0) ASC, COALESCE(shipping, 0) ASC, price ASC", $product_id ),
 			ARRAY_A
 		) ?: [];
 		// Tilbud, hvis side hos butikken er væk (se LinkCheck), tæller ikke med – medmindre adressen er ændret siden.

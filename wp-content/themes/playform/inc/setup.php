@@ -122,7 +122,35 @@ add_filter(
 // Efter hver import har priser og lager ændret sig – tøm også cachen her.
 add_action( 'playform_feeds_after_import', 'playform_purge_everything', 99 );
 
+/**
+ * Billigste butik regnes nu inkl. fragt (4. nov. 2026). Produkter, der sælges af flere butikker, genberegnes én gang,
+ * så "Billigst hos" og knappen peger på den rigtige butik med det samme. 300 ad gangen via planlagte kørsler.
+ */
+function playform_refresh_multishop( int $batch = 300 ): void {
+	if ( get_option( 'playform_multishop_refreshed' ) || ! class_exists( '\\Playform\\Feeds\\ProductSync' ) ) {
+		return;
+	}
+	global $wpdb;
+	$after = (int) get_option( 'playform_multishop_after', 0 );
+	$ids   = $wpdb->get_col( $wpdb->prepare( "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = '_pf_shop_count' AND CAST(meta_value AS UNSIGNED) > 1 AND post_id > %d ORDER BY post_id ASC LIMIT %d", $after, $batch ) );
+	$today = current_time( 'Y-m-d' );
+	foreach ( $ids as $id ) {
+		\Playform\Feeds\ProductSync::refresh( (int) $id, $today );
+		update_option( 'playform_multishop_after', (int) $id, false );
+	}
+	if ( count( $ids ) < $batch ) {
+		update_option( 'playform_multishop_refreshed', 1, false );
+		if ( function_exists( 'playform_purge_everything' ) ) {
+			playform_purge_everything();
+		}
+	} elseif ( ! wp_next_scheduled( 'playform_refresh_multishop' ) ) {
+		wp_schedule_single_event( time() + 60, 'playform_refresh_multishop' );
+	}
+}
+add_action( 'playform_refresh_multishop', static fn() => playform_refresh_multishop() );
+
 function playform_run_upgrades(): void {
+	playform_refresh_multishop();
 	playform_move_to_fitbase_dk();
 	playform_launch();
 	playform_open_for_indexing();

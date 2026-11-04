@@ -30,7 +30,7 @@ final class Sales {
 
 		// Den billigste aktive butik på lager pr. produkt – samme som den, produktkortet viser.
 		$rows = $wpdb->get_results(
-			"SELECT product_id, shop, price, list_price, sale_since FROM $t WHERE active = 1 AND in_stock = 1 AND product_id > 0 ORDER BY product_id, price ASC, id ASC",
+			"SELECT product_id, shop, price, list_price, sale_since FROM $t WHERE active = 1 AND in_stock = 1 AND product_id > 0 ORDER BY product_id, price + COALESCE(shipping, 0) ASC, COALESCE(shipping, 0) ASC, id ASC",
 			ARRAY_A
 		) ?: [];
 		$sale = [];
