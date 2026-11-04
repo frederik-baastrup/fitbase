@@ -1319,8 +1319,9 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 .campaign-bar { background: #0B0B0A; color: #fff; font-size: 14px; }
 .campaign-bar__in { display: flex; align-items: center; gap: 16px; min-height: 48px; padding-block: 7px; }
 .campaign-bar__track { flex: 1 1 auto; min-width: 0; overflow: hidden; color: #E8E8E4; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 64px, #000 calc(100% - 64px), transparent 100%); }
-.campaign-bar__run { display: flex; width: max-content; animation: campaign-run 60s linear infinite; }
-.campaign-bar__track:hover .campaign-bar__run { animation-play-state: paused; }
+.campaign-bar__run { display: flex; width: max-content; animation: campaign-run 90s linear infinite; }
+.campaign-bar__track, .campaign-bar__track:hover, .campaign-bar__track:focus { color: #E8E8E4; text-decoration: none; }
+.campaign-bar__track:hover .campaign-bar__item b { color: #fff; }
 .campaign-bar__group { display: flex; }
 .campaign-bar__item { display: inline-flex; align-items: center; gap: 14px; padding-right: 14px; white-space: nowrap; }
 .campaign-bar__item b { color: #fff; font-weight: 700; }

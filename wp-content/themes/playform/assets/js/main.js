@@ -505,3 +505,21 @@
 		tabs.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
 	});
 })();
+
+/* Kampagnebaren: teksten sænker farten blødt, når musen er over den (Web Animations API – ingen hop). */
+(function () {
+	var track = document.querySelector('.campaign-bar__track');
+	var run = track && track.querySelector('.campaign-bar__run');
+	if (!run || !run.getAnimations) return;
+	var target = 1, rate = 1, raf = 0;
+	function step() {
+		rate += (target - rate) * 0.08;
+		if (Math.abs(target - rate) < 0.005) rate = target;
+		run.getAnimations().forEach(function (a) { a.playbackRate = rate; });
+		raf = rate === target ? 0 : requestAnimationFrame(step);
+	}
+	function to(r) { target = r; if (!raf) raf = requestAnimationFrame(step); }
+	track.addEventListener('mouseenter', function () { to(0.3); });
+	track.addEventListener('mouseleave', function () { to(1); });
+})();
+
