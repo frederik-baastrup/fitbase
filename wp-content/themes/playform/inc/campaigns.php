@@ -102,34 +102,40 @@ function playform_campaign_url( string $slug ): string {
 	return home_url( user_trailingslashit( $slug ) );
 }
 
-/** Barens tekst for dagen: [ fed tekst, resten ]. Black Friday skifter undervejs i november. */
+/**
+ * Barens tekst for dagen: [ fed tekst, resten ]. Black Friday skifter undervejs i november.
+ * "Resten" kan være en liste af beskeder, der skiftes mellem i båndet.
+ * Kun det, vi kan stå inde for: tilbuddene er butikkernes egne, højst 14 dage gamle, samlet fra flere webshops.
+ */
 function playform_campaign_bar_text( string $slug, ?DateTimeImmutable $day = null ): array {
-	$day = $day ?: playform_campaign_today();
+	$day   = $day ?: playform_campaign_today();
+	$niche = playform_site( 'niche' );
+	$pitch = [ "Spar på $niche – tilbud fra danske webshops samlet ét sted", 'Kun friske tilbud – aldrig ældre end 14 dage' ];
 	if ( $slug === 'black-friday' ) {
 		$bf   = playform_black_friday( (int) $day->format( 'Y' ) );
 		$days = (int) $day->diff( $bf )->format( '%r%a' );
 		if ( $days > 7 ) {
-			return [ 'Black Month', 'Butikkernes tilbud hele november' ];
+			return [ 'Black Month', $pitch ];
 		}
 		if ( $days > 1 ) {
-			return [ "Black Friday om $days dage", 'Se butikkernes tilbud allerede nu' ];
+			return [ "Black Friday om $days dage", [ 'Mange tilbud er allerede startet – kom før de andre', $pitch[1] ] ];
 		}
 		if ( $days === 1 ) {
-			return [ 'Black Friday i morgen', 'Se butikkernes tilbud allerede nu' ];
+			return [ 'Black Friday i morgen', [ 'Mange tilbud er allerede startet – kom før de andre', $pitch[1] ] ];
 		}
 		if ( $days === 0 ) {
-			return [ 'Black Friday', 'Butikkernes tilbud er i gang' ];
+			return [ 'Black Friday', [ 'Tilbuddene er i gang – find dem samlet ét sted', $pitch[1] ] ];
 		}
 		if ( $days >= -2 ) {
-			return [ 'Black Weekend', 'Butikkernes tilbud fortsætter' ];
+			return [ 'Black Weekend', [ 'Tilbuddene fortsætter hele weekenden', $pitch[0] ] ];
 		}
 		if ( $days === -3 ) {
-			return [ 'Cyber Monday', 'Sidste chance for mange tilbud' ];
+			return [ 'Cyber Monday', [ 'Sidste chance for mange af tilbuddene', $pitch[0] ] ];
 		}
-		return [ 'Black Month', 'De sidste dage med butikkernes tilbud' ];
+		return [ 'Black Month', [ 'De sidste dage med Black Month-tilbud', $pitch[1] ] ];
 	}
 	$def = playform_campaign_defs()[ $slug ];
-	return [ $def['name'], 'Se butikkernes tilbud' ];
+	return [ $def['name'], $pitch ];
 }
 
 /** Den sorte bar under menuen. Vises kun, mens en kampagne kører (og ikke på selve kampagnesiden). */
@@ -139,10 +145,14 @@ function playform_campaign_bar(): void {
 		return;
 	}
 	[ $lead, $rest ] = playform_campaign_bar_text( $slug );
-	$url  = playform_campaign_url( $slug );
-	$item = '<span class="campaign-bar__item"><b>' . esc_html( $lead ) . '</b><i aria-hidden="true"></i>' . esc_html( $rest ) . '<i aria-hidden="true"></i></span>';
+	$rest  = array_values( (array) $rest );
+	$url   = playform_campaign_url( $slug );
 	// Teksten løber fra venstre mod højre i et bånd med fade i begge sider. To ens grupper, så løkken er sømløs.
-	$group = str_repeat( $item, 6 );
+	$group = '';
+	for ( $k = 0; $k < 6; $k++ ) {
+		$group .= '<span class="campaign-bar__item"><b>' . esc_html( $lead ) . '</b><i aria-hidden="true"></i>' . esc_html( $rest[ $k % count( $rest ) ] ) . '<i aria-hidden="true"></i></span>';
+	}
+	$rest = $rest[0];
 	printf(
 		'<div class="campaign-bar"><div class="wrap campaign-bar__in"><a class="campaign-bar__track" href="%1$s" tabindex="-1" aria-hidden="true"><span class="campaign-bar__run"><span class="campaign-bar__group">%2$s</span><span class="campaign-bar__group">%2$s</span></span></a><span class="sr-only">%3$s: %4$s.</span><a class="campaign-bar__btn" href="%1$s">Se tilbuddene %5$s</a></div></div>',
 		esc_url( $url ),
