@@ -575,7 +575,9 @@ a.usp__item:hover b { text-decoration: underline; text-underline-offset: 3px; }
 	.offer__meta { display: none; }
 	.pd h1 { font-size: 30px; }
 	.foot { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-	.section__head h2 { white-space: normal; }
+	.section__head h2 { white-space: normal; flex: 1; min-width: 0; }
+	.section__head { gap: 16px; }
+	.section__line, .section__more-x { display: none; }
 }
 @media (max-width: 1360px) { .topbar__usp li:nth-child(4) { display: none; } }
 @media (max-width: 1180px) { .topbar__usp li:nth-child(3) { display: none; } }
