@@ -254,6 +254,9 @@ global $wp_query;
 			<?php endif; ?>
 
 			<?php
+			if ( $campaign && max( 1, (int) get_query_var( 'paged' ) ) === 1 ) {
+				get_template_part( 'template-parts/seo-text', null, [ 'html' => playform_campaign_seo( $campaign ) ] );
+			}
 			if ( $is_cat && ! $offers ) { // tilbudssider gentager ikke kategoriens tekst
 				$faq = get_term_meta( $term->term_id, 'pf_faq', true );
 				if ( is_array( $faq ) && $faq && max( 1, (int) get_query_var( 'paged' ) ) === 1 ) {

@@ -178,6 +178,26 @@ function playform_campaign_page_text( string $slug ): array {
 	return [ 'title' => $def['title'], 'intro' => $def['intro'], 'note' => $note ];
 }
 
+/**
+ * Lang SEO-tekst nederst på kampagnesiden (content/campaign-seo.php, ét HTML-felt pr. kampagne).
+ * {cat:slug} og {cat:slug|tekst} bliver til links til kategorien (eller bare tekst, hvis kategorien ikke findes).
+ */
+function playform_campaign_seo( string $slug ): string {
+	$file = get_template_directory() . '/content/campaign-seo.php';
+	$all  = is_readable( $file ) ? require $file : [];
+	$html = (string) ( $all[ $slug ] ?? '' );
+	return (string) preg_replace_callback(
+		'/\{cat:([a-z0-9-]+)(?:\|([^}]+))?\}/',
+		static function ( $m ) {
+			$term  = get_term_by( 'slug', $m[1], 'product_cat' );
+			$label = $m[2] ?? ( $term ? mb_strtolower( $term->name ) : $m[1] );
+			$link  = $term ? get_term_link( $term ) : '';
+			return $link && ! is_wp_error( $link ) ? '<a href="' . esc_url( $link ) . '">' . esc_html( $label ) . '</a>' : esc_html( $label );
+		},
+		$html
+	);
+}
+
 // Faste adresser: /black-friday/ og /black-friday/page/2/ viser tilbudslisten med kampagnens tekst.
 add_filter(
 	'rewrite_rules_array',
