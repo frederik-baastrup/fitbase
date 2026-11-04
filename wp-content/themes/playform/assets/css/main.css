@@ -1312,3 +1312,4 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 	.pd__legal { margin-top: auto; }
 }
 @media (max-width: 760px) { .pd__legal { font-size: 11px; line-height: 1.45; } }
+.pricebox .pricebox__chips { margin: 0; }

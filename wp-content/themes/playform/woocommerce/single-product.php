@@ -118,6 +118,7 @@ while ( have_posts() ) :
 					</div>
 					<?php if ( $best ) : ?>
 						<a href="<?php echo esc_url( playform_aff_url( $best['url'], get_post_field( 'post_name', $id ), 'produktside' ) ); ?>" class="btn-shop" rel="sponsored nofollow noopener" target="_blank">Se pris hos <?php echo esc_html( $best['shop'] ); ?> <?php echo playform_icon( 'external', 18 ); // phpcs:ignore ?></a>
+						<span class="adnote"><b>Annonce</b>Vi får provision, hvis du køber via knappen.</span>
 						<ul class="pricebox__chips">
 							<?php
 							$bits = [];
@@ -133,7 +134,6 @@ while ( have_posts() ) :
 								<li><?php echo playform_icon( $ic, 14, 1.4 ); // phpcs:ignore ?><span><?php echo esc_html( $tx ); ?></span></li>
 							<?php endforeach; ?>
 						</ul>
-						<span class="adnote"><b>Annonce</b>Vi får provision, hvis du køber via knappen.</span>
 					<?php endif; ?>
 				</div>
 
