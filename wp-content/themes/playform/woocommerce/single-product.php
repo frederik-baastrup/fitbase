@@ -149,7 +149,7 @@ while ( have_posts() ) :
 	<section class="usps" aria-label="Sådan virker Fitbase">
 		<ul class="wrap usps__in">
 			<li><?php echo playform_icon( 'refresh', 18, 1.4 ); // phpcs:ignore ?><span><b>Opdateret 2× dagligt</b>Pris og lager direkte fra butikken</span></li>
-			<li><?php echo playform_icon( 'store', 18, 1.4 ); // phpcs:ignore ?><span><b>Du handler hos butikken</b>Levering, retur og garanti efter butikkens vilkår</span></li>
+			<li><?php echo playform_icon( 'store', 18, 1.4 ); // phpcs:ignore ?><span><b>Du handler hos butikken</b>Butikkens vilkår for levering og retur</span></li>
 			<li><?php echo playform_icon( 'tag', 18, 1.4 ); // phpcs:ignore ?><span><b>Butikkernes egne tilbud</b>Højst 14 dage gamle</span></li>
 			<li><?php echo playform_icon( 'grid', 18, 1.4 ); // phpcs:ignore ?><span><b>Udstyr fra flere shops</b>Danske webshops samlet ét sted</span></li>
 		</ul>

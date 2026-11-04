@@ -1291,9 +1291,9 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 	.usps__in li:nth-child(n+3) { border-top: 1px solid var(--line); }
 }
 @media (max-width: 760px) {
-	.usps { margin-top: 28px; }
-	.usps__in { display: flex; overflow-x: auto; scrollbar-width: none; }
-	.usps__in::-webkit-scrollbar { display: none; }
-	.usps__in li, .usps__in li:nth-child(n) { flex: 0 0 78%; border-top: 0; padding: 14px 16px; }
-	.usps__in li:first-child { padding-left: 0; }
+	.usps { margin-top: 24px; }
+	.usps__in li { flex-direction: column; align-items: flex-start; gap: 6px; padding: 14px 0 14px 14px; }
+	.usps__in li:nth-child(odd) { padding-left: 0; padding-right: 12px; border-left: 0; }
+	.usps__in span { font-size: 11.5px; }
+	.usps__in b { font-size: 12.5px; }
 }
