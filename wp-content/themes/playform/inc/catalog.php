@@ -36,6 +36,16 @@ function playform_filter_groups(): array {
 				'10000-'     => [ 'Over 10.000 kr', $range( '_price', 10000, null ) ],
 			],
 		],
+		// Kun på tilbuds- og kampagnesider. Ét valg ad gangen ("Mindst 20 %"), samme rabat som på produktkortet.
+		'rabat'       => [
+			'label'     => 'Rabat',
+			'single'    => true,
+			'only_sale' => true,
+			'options'   => array_combine(
+				[ '10', '20', '30', '40', '50' ],
+				array_map( static fn( int $p ) => [ "Mindst $p %", static fn( array $m ) => (int) ( $m['_pct'] ?? 0 ) >= $p ], [ 10, 20, 30, 40, 50 ] )
+			),
+		],
 		'maerke'      => [ 'label' => 'Mærke', 'options' => [], 'dynamic' => 'brand', 'collapse' => 8 ], // mulighederne bygges ud fra kategoriens produkter
 		'egenskab'    => [
 			'label'   => 'Egenskaber',
@@ -189,10 +199,15 @@ function playform_catalog_state(): array {
 	foreach ( $ids as $id ) {
 		$all = get_post_meta( $id );
 		$m   = [];
-		foreach ( [ '_price', '_pf_in_stock', '_pf_drop_percent', '_pf_foldable', '_pf_incline', '_pf_max_speed', '_pf_max_weight', '_pf_weight_kg', '_pf_shop_list', '_pf_shop_sale', '_pf_brand' ] as $k ) {
+		foreach ( [ '_price', '_pf_in_stock', '_pf_drop_percent', '_pf_foldable', '_pf_incline', '_pf_max_speed', '_pf_max_weight', '_pf_weight_kg', '_pf_shop_list', '_pf_shop_sale', '_pf_brand', '_pf_sale_ref', '_pf_sale_list' ] as $k ) {
 			if ( isset( $all[ $k ][0] ) ) {
 				$m[ $k ] = $all[ $k ][0];
 			}
+		}
+		// Rabat som på produktkortet: kontrolleret førpris, ellers butikkens førpris (kun på lager).
+		if ( ! empty( $m['_pf_shop_sale'] ) && ! empty( $m['_pf_in_stock'] ) ) {
+			$was       = (float) ( $m['_pf_sale_ref'] ?? 0 ) ?: (float) ( $m['_pf_sale_list'] ?? 0 );
+			$m['_pct'] = playform_save_pct( (float) ( $m['_price'] ?? 0 ), $was );
 		}
 		// Tilbudssider viser kun produkter, butikken har på tilbud.
 		if ( playform_is_tilbud_page() && empty( $m['_pf_shop_sale'] ) ) {
@@ -275,6 +290,9 @@ function playform_catalog_state(): array {
 	$facets = [];
 	foreach ( $groups as $g => $def ) {
 		if ( ! empty( $def['only'] ) && ! in_array( playform_current_real_top_slug(), $def['only'], true ) ) {
+			continue;
+		}
+		if ( ! empty( $def['only_sale'] ) && ! playform_is_tilbud_page() ) {
 			continue;
 		}
 		if ( ! empty( $def['no_cat'] ) && $cat ) {
@@ -388,6 +406,9 @@ function playform_catalog_state_for_query( WP_Query $q ): array {
 function playform_filter_toggle_url( string $group, string $key ): string {
 	$active = playform_active_filters()[ $group ] ?? [];
 	$next   = in_array( $key, $active, true ) ? array_diff( $active, [ $key ] ) : array_merge( $active, [ $key ] );
+	if ( ! empty( playform_filter_groups()[ $group ]['single'] ) ) { // ét valg ad gangen: et nyt valg erstatter det gamle
+		$next = in_array( $key, $active, true ) ? [] : [ $key ];
+	}
 	return add_query_arg( $group, $next ? implode( ',', $next ) : false, remove_query_arg( [ 'paged', 'tilbud' ], get_pagenum_link( 1, false ) ) );
 }
 
