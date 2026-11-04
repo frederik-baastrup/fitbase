@@ -1297,3 +1297,8 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 	.usps__in span { font-size: 11.5px; }
 	.usps__in b { font-size: 12.5px; }
 }
+
+/* Købsboksen slutter efter annonceoplysningen; levering og småt står under boksen */
+.pricebox__after { display: flex; flex-direction: column; gap: 12px; margin-top: -8px; padding: 0 2px; }
+.pricebox__after .pricebox__chips { margin: 0; }
+@media (max-width: 760px) { .pricebox__after { margin-top: -4px; padding: 0; gap: 10px; } }

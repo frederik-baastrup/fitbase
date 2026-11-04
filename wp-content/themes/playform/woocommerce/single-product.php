@@ -119,6 +119,10 @@ while ( have_posts() ) :
 					<?php if ( $best ) : ?>
 						<a href="<?php echo esc_url( playform_aff_url( $best['url'], get_post_field( 'post_name', $id ), 'produktside' ) ); ?>" class="btn-shop" rel="sponsored nofollow noopener" target="_blank">Se pris hos <?php echo esc_html( $best['shop'] ); ?> <?php echo playform_icon( 'external', 18 ); // phpcs:ignore ?></a>
 						<span class="adnote"><b>Annonce</b>Vi får provision, hvis du køber via knappen.</span>
+					<?php endif; ?>
+				</div>
+				<?php if ( $best ) : ?>
+				<div class="pricebox__after">
 						<ul class="pricebox__chips">
 							<?php
 							$bits = [];
@@ -135,8 +139,8 @@ while ( have_posts() ) :
 							<?php endforeach; ?>
 						</ul>
 						<span class="pricebox__legal">Du sendes videre til <?php echo esc_html( $best['shop'] ); ?>, hvor du gennemfører købet. Prisen er inkl. moms<?php $u = playform_last_update_label(); echo $u ? ' og blev opdateret ' . esc_html( $u ) : ''; ?>.</span>
-					<?php endif; ?>
 				</div>
+				<?php endif; ?>
 
 				<?php if ( $shops_n > 1 ) : ?>
 					<a href="#priser" class="pd__compare">Sammenlign priser fra <?php echo (int) $shops_n; ?> butikker ↓</a>
