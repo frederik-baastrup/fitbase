@@ -324,7 +324,9 @@ add_action(
 		if ( is_admin() || ! $q->is_main_query() || ! playform_is_catalog( $q ) ) {
 			return;
 		}
+		$t0    = microtime( true );
 		$state = playform_catalog_state_for_query( $q );
+		$GLOBALS['playform_timing']['state'] = microtime( true ) - $t0;
 		$q->set( 'post__in', $state['ids'] ?: [ 0 ] );
 		$q->set( 'posts_per_page', PLAYFORM_PER_PAGE );
 		$q->set( 'post_type', 'product' );
@@ -473,3 +475,16 @@ function playform_catalog_meta( array $ids, string $cat ): array {
 	}
 	return $meta;
 }
+
+// Server-Timing (ses i browserens udviklerværktøjer): hvor lang tid filterdata og hovedforespørgslen tager.
+add_action( 'wp', static function () {
+	if ( isset( $GLOBALS['playform_timing'] ) ) {
+		$GLOBALS['playform_timing']['wp'] = microtime( true ) - ( $_SERVER['REQUEST_TIME_FLOAT'] ?? microtime( true ) );
+	}
+} );
+add_action( 'template_redirect', static function () {
+	if ( isset( $GLOBALS['playform_timing'] ) && ! headers_sent() ) {
+		$t = $GLOBALS['playform_timing'];
+		header( sprintf( 'Server-Timing: state;dur=%.0f, untilquery;dur=%.0f', ( $t['state'] ?? 0 ) * 1000, ( $t['wp'] ?? 0 ) * 1000 ) );
+	}
+}, 0 );
