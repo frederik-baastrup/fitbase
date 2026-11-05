@@ -140,10 +140,10 @@ $has_deals = count( $deals ) >= 4;
 	</div>
 
 	<div class="usp">
-		<div class="usp__item"><span class="usp__icon"><?php echo playform_icon( 'grid', 22, 1.4 ); // phpcs:ignore ?></span><span><b>Alt udstyr ét sted</b><span>Produkter fra flere danske shops</span></span></div>
-		<div class="usp__item"><span class="usp__icon"><?php echo playform_icon( 'refresh', 22, 1.4 ); // phpcs:ignore ?></span><span><b>Opdateret 2× dagligt</b><span>Aktuelle priser og lagerstatus</span></span></div>
-		<div class="usp__item"><span class="usp__icon"><?php echo playform_icon( 'store', 22, 1.4 ); // phpcs:ignore ?></span><span><b>Køb direkte i butikken</b><span>Du handler hos shoppen som normalt</span></span></div>
-		<a class="usp__item" href="<?php echo esc_url( playform_tilbud_url() ); ?>"><span class="usp__icon"><?php echo playform_icon( 'tag', 22, 1.4 ); // phpcs:ignore ?></span><span><b>Butikkernes tilbud</b><span>Aktuelle tilbud samlet ét sted</span></span></a>
+		<div class="usp__item"><span class="usp__icon"><?php echo playform_icon( 'grid', 22, 1.4 ); // phpcs:ignore ?></span><span><b>Træningsudstyr samlet</b><span>Fra flere danske webshops</span></span></div>
+		<div class="usp__item"><span class="usp__icon"><?php echo playform_icon( 'refresh', 22, 1.4 ); // phpcs:ignore ?></span><span><b>Opdateret 2× dagligt</b><span>Priser og lager morgen og aften</span></span></div>
+		<div class="usp__item"><span class="usp__icon"><?php echo playform_icon( 'store', 22, 1.4 ); // phpcs:ignore ?></span><span><b>Køb hos butikken</b><span>Handlen sker i webshoppen</span></span></div>
+		<a class="usp__item" href="<?php echo esc_url( playform_tilbud_url() ); ?>"><span class="usp__icon"><?php echo playform_icon( 'tag', 22, 1.4 ); // phpcs:ignore ?></span><span><b>Butikkernes tilbud</b><span>Nedsatte priser på én side</span></span></a>
 	</div>
 </section>
 
@@ -170,7 +170,7 @@ foreach ( playform_front_categories() as $cslug => [ $ctitle, $cmin ] ) {
 	<div class="news">
 		<div>
 			<h2>Få besked, når prisen falder</h2>
-			<p>Ugens bedste tilbud på fitnessudstyr og nye guides direkte i din indbakke. Ca. én mail om ugen.</p>
+			<p>Udvalgte tilbud på fitnessudstyr og vores nyeste købsguides, sendt til din indbakke cirka én gang om ugen.</p>
 		</div>
 		<form class="news__form" method="post" action="#" data-newsletter data-endpoint="<?php echo esc_url( rest_url( 'playform/v1/newsletter' ) ); ?>">
 			<input type="text" name="website" tabindex="-1" autocomplete="off" class="sr-only" aria-hidden="true">
@@ -179,7 +179,7 @@ foreach ( playform_front_categories() as $cslug => [ $ctitle, $cmin ] ) {
 				<input id="nl-email" type="email" name="email" placeholder="navn@eksempel.dk" required>
 				<button type="submit">Tilmeld</button>
 			</div>
-			<span class="news__note" role="status" aria-live="polite">Du får en mail, hvor du bekræfter tilmeldingen. Du kan altid afmelde dig igen. Læs vores <a href="<?php echo esc_url( home_url( '/privatlivspolitik/' ) ); ?>">privatlivspolitik</a>.</span>
+			<span class="news__note" role="status" aria-live="polite">Vi sender en mail, så du kan bekræfte din tilmelding. Afmelding er altid mulig. Se vores <a href="<?php echo esc_url( home_url( '/privatlivspolitik/' ) ); ?>">privatlivspolitik</a>.</span>
 		</form>
 	</div>
 </section>
@@ -253,6 +253,6 @@ if ( $posts ) {
 
 <?php
 $front   = get_post( (int) get_option( 'page_on_front' ) );
-$seo     = $front && trim( $front->post_content ) ? apply_filters( 'the_content', $front->post_content ) : '<h2>Fitnessudstyr til hjemmet – samlet ét sted</h2><p>Fitbase samler fitnessudstyr fra flere danske webshops ét sted. Vi henter priser og lagerstatus to gange i døgnet, så du hurtigt kan finde løbebåndet, kettlebellen eller motionscyklen, der passer til dig. Når du har fundet det rigtige produkt, sender vi dig videre til shoppen, hvor du gennemfører købet som normalt.</p><h3>Hvilket fitnessudstyr skal du vælge?</h3><p>Det afhænger af, hvad du vil træne, og hvor meget plads du har. Vil du forbedre din kondition, er et løbebånd, en crosstrainer eller en spinningcykel det oplagte valg. Har du begrænset plads, kan et foldbart løbebånd eller et gåbånd til hjemmekontoret være en god løsning. Til styrketræning kommer du langt med et par justerbare håndvægte, en kettlebell og en træningsbænk.</p><h3>Hvad skal du være opmærksom på?</h3><p>Kig efter maksimal brugervægt, garanti og støjniveau, især hvis du bor i lejlighed. På løbebånd er motorkraft og løbefladens størrelse vigtige, mens svinghjulets vægt betyder meget for, hvor jævn en spinningcykel føles.</p>';
+$seo     = $front && trim( $front->post_content ) ? apply_filters( 'the_content', $front->post_content ) : '<h2>Fitnessudstyr til hjemmet – samlet ét sted</h2><p>Hos Fitbase finder du træningsudstyr fra en række danske webshops på ét sted – fra kettlebells og håndvægte til løbebånd og motionscykler. Morgen og aften opdaterer vi priser og lagerstatus, så du kan se, hvad udstyret koster lige nu, og hvem der har det hjemme. Har du valgt, klikker du videre og køber hos webshoppen på helt almindelig vis.</p><h3>Hvilket fitnessudstyr skal du vælge?</h3><p>Det afhænger af, hvad du vil træne, og hvor meget plads du har. Vil du forbedre din kondition, er et løbebånd, en crosstrainer eller en spinningcykel det oplagte valg. Har du begrænset plads, kan et foldbart løbebånd eller et gåbånd til hjemmekontoret være en god løsning. Til styrketræning kommer du langt med et par justerbare håndvægte, en kettlebell og en træningsbænk.</p><h3>Hvad skal du være opmærksom på?</h3><p>Kig efter maksimal brugervægt, garanti og støjniveau, især hvis du bor i lejlighed. På løbebånd er motorkraft og løbefladens størrelse vigtige, mens svinghjulets vægt betyder meget for, hvor jævn en spinningcykel føles.</p>';
 get_template_part( 'template-parts/seo-text', null, [ 'html' => $seo, 'right' => true ] );
 get_footer();

@@ -7,9 +7,9 @@ defined( 'ABSPATH' ) || exit;
 
 return [
 	'black-friday' => <<<'HTML'
-<h2>Black Friday på fitnessudstyr – sådan finder du de gode tilbud</h2>
-<p>Black Friday er blevet til Black Month. Mange danske webshops sætter allerede i starten af november priserne ned på fitnessudstyr, og tilbuddene fortsætter hen over Black Friday, Black Weekend og Cyber Monday. Samtidig er det lige før nytårsforsætterne, så det er et oplagt tidspunkt at få hjemmetræningen på plads.</p>
-<p>Vi samler tilbuddene ét sted. Vi henter priser og lagerstatus fra de danske webshops, vi samarbejder med, to gange i døgnet, og her på siden ser du de varer, butikkerne selv har sat på tilbud. Du handler direkte hos butikken, når du har fundet det, du skal bruge.</p>
+<h2>Black Friday på fitnessudstyr – find tilbuddene før nytårsforsættet</h2>
+<p>November er gået fra at handle om én fredag til at være en hel tilbudsmåned. Allerede i ugerne før Black Friday begynder webshops at skære i priserne på træningsudstyr, og det fortsætter gennem Black Weekend og frem til Cyber Monday. Timingen passer godt, hvis januar skal starte med træning derhjemme i stedet for en lang kø i centret.</p>
+<p>Alt her på siden er tilbud, som butikkerne selv har oprettet. Morgen og aften opdaterer vi priser og lagerstatus fra de danske webshops, vi samarbejder med. Finder du en maskine eller et sæt vægte, der passer til dig, klikker du videre og gennemfører købet hos butikken.</p>
 
 <h3>Black Friday-tilbud på løbebånd</h3>
 <p>{cat:lobebaand|Løbebånd} er blandt de mest søgte varer op til Black Friday. Her finder du tilbud på {cat:foldbart-lobebaand|foldbare løbebånd}, der kan stilles væk efter brug, {cat:gaabaand|gåbånd} til hjemmekontoret, {cat:lobebaand-med-incline|løbebånd med incline}, {cat:manuelt-lobebaand|manuelle løbebånd} og {cat:lobebaand-til-tunge-brugere|løbebånd til tunge brugere}.</p>
@@ -32,18 +32,18 @@ return [
 <h3>Tilbud på trampoliner og tilbehør</h3>
 <p>Black Friday er et godt tidspunkt at købe trampolin til foråret. Se tilbud på {cat:havetrampolin|havetrampoliner}, {cat:nedgravet-trampolin|nedgravede trampoliner} og {cat:fitnesstrampolin|fitnesstrampoliner}. Under {cat:tilbehor|tilbehør} finder du {cat:traeningsmaatte|træningsmåtter}, {cat:elastikker|træningselastikker}, {cat:boksning|boksudstyr}, {cat:traeningsbolde|træningsbolde} og {cat:sjippetov|sjippetove}.</p>
 
-<h3>Sådan undgår du falske Black Friday-tilbud</h3>
-<p>Ikke alle tilbud er lige gode. Nogle butikker hæver prisen i oktober for at sætte den ned i november. Efter reglerne må en butik kun sammenligne med den laveste pris, varen har haft de seneste 30 dage. Her på siden viser vi kun tilbud, der højst er 14 dage gamle. Hvor vores prishistorik går langt nok tilbage, viser vi den laveste pris de 30 dage før tilbuddet, så du selv kan se, om rabatten er reel. Ellers står der tydeligt, at førprisen er butikkens egen.</p>
-<p>Et par gode råd:</p>
+<h3>Er rabatten ægte? Sådan tjekker du et Black Friday-tilbud</h3>
+<p>En stor procentsats siger ikke alt. Det sker, at en pris bliver skruet op i efteråret, så nedsættelsen i november ser større ud. Reglerne siger, at førprisen i et tilbud skal være den laveste pris, butikken har haft på varen i de 30 dage op til. Vi tager kun tilbud med, der er 14 dage gamle eller nyere. Har vi fulgt prisen i butikken længe nok, ser du den laveste pris fra de 30 dage før rabatten startede – så kan du selv vurdere, om du får en reel besparelse. Mangler vi den historik, er førprisen mærket som butikkens egen.</p>
+<p>Inden du lægger en maskine i kurven:</p>
 <ul>
-<li>Mål pladsen, før du køber en stor maskine – både når den står fremme, og når den er klappet sammen.</li>
-<li>Tjek den maksimale brugervægt og garantien.</li>
-<li>Sammenlign prisen hos flere butikker – samme vare kan koste forskelligt.</li>
-<li>Tjek leveringstid og fragt, især på store og tunge varer.</li>
-<li>Kig på vores <a href="/koebsguide/">købsguides</a>, hvis du er i tvivl om, hvilken model du skal vælge.</li>
+<li>Tag målebåndet frem – et løbebånd eller en romaskine fylder mere i stuen end på billedet, både i brug og sammenklappet.</li>
+<li>Se efter maksimal brugervægt og hvor lang garanti, der følger med.</li>
+<li>Den samme crosstrainer kan have forskellig pris i to butikker, så sammenlign, før du vælger.</li>
+<li>Store og tunge maskiner har ofte længere leveringstid og dyrere fragt – tjek det på forhånd.</li>
+<li>Står du mellem to modeller, kan vores <a href="/koebsguide/">købsguides</a> hjælpe dig med at vælge.</li>
 </ul>
 
 <h3>Hvornår er Black Friday?</h3>
-<p>Black Friday er fredagen efter den amerikanske Thanksgiving, altså den sidste fredag i november. Weekenden efter kaldes Black Weekend, og mandagen efter er Cyber Monday. Mange butikker kører dog tilbud hele november, og derfor opdaterer vi siden hele måneden. Tilbuddene skifter løbende, så kig forbi igen – og tjek altid den endelige pris hos butikken, før du køber.</p>
+<p>Datoen følger den amerikanske Thanksgiving: Black Friday er fredagen efter, i slutningen af november. Lørdag og søndag bliver til Black Weekend, og ugen starter med Cyber Monday. Fordi mange webshops strækker deres tilbud over hele november, holder vi siden opdateret hele måneden. Nye tilbud kommer til, og andre udløber, så det betaler sig at kigge ind flere gange. Den endelige pris er altid den, du ser i butikken ved betalingen.</p>
 HTML,
 ];

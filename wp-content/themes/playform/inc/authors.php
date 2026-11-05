@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || exit;
 function playform_author_defaults(): array {
 	return [
 		'role' => 'Stifter og redaktør',
-		'bio'  => 'Frederik Baastrup står bag Fitbase. Han samler fitnessudstyret fra de danske webshops ét sted og skriver købsguiderne, så du kan sammenligne priser, specifikationer og tilbud, før du køber.',
+		'bio'  => 'Bag Fitbase står Frederik Baastrup. Han samler fitnessudstyr fra danske webshops på én side og skriver købsguiderne, så det bliver lettere at sammenligne pris, specifikationer og tilbud, før du vælger.',
 	];
 }
 
@@ -188,19 +188,22 @@ add_action( 'edit_user_profile_update', $playform_author_save );
  * Kun fakta, Frederik selv har oplyst – ingen påståede kvalifikationer.
  */
 function playform_author_profile(): void {
-	if ( get_option( 'playform_author_profile' ) || '' === playform_site( 'niche' ) ) { // uden importpluginnet kender vi hverken navn eller niche
+	// Version 2 (5. nov. 2026): teksterne er formuleret forskelligt på hvert site (dublet-indhold på tværs af domæner).
+	// Kun en bio, der er tom eller stadig står på en af de gamle standardtekster, skiftes.
+	if ( (int) get_option( 'playform_author_profile' ) >= 2 || '' === playform_site( 'niche' ) ) { // uden importpluginnet kender vi hverken navn eller niche
 		return;
 	}
+	$old = [ 'Frederik Baastrup står bag Fitbase. Han samler fitnessudstyret fra de danske webshops ét sted og skriver købsguiderne, så du kan sammenligne priser, specifikationer og tilbud, før du køber.', 'Frederik Baastrup er stifter og redaktør af Fitbase. Til daglig driver han Mondae, hvor han arbejder med webdesign og digitale løsninger. Med Fitbase samler han fitnessudstyr fra danske webshops ét sted og skriver købsguides, der gør det nemt at sammenligne priser, specifikationer og tilbud – med åbenhed om, hvordan produkterne er valgt, og hvordan siden tjener penge.' ];
 	$users = get_users( [ 'search' => 'Frederik Baastrup', 'search_columns' => [ 'display_name' ], 'number' => 1 ] )
 		?: get_users( [ 'role' => 'administrator', 'number' => 1 ] );
 	foreach ( $users as $u ) {
 		$bio = trim( (string) get_user_meta( $u->ID, 'description', true ) );
-		if ( '' === $bio || playform_author_defaults()['bio'] === $bio ) {
-			update_user_meta( $u->ID, 'description', 'Frederik Baastrup er stifter og redaktør af Fitbase. Til daglig driver han Mondae, hvor han arbejder med webdesign og digitale løsninger. Med Fitbase samler han fitnessudstyr fra danske webshops ét sted og skriver købsguides, der gør det nemt at sammenligne priser, specifikationer og tilbud – med åbenhed om, hvordan produkterne er valgt, og hvordan siden tjener penge.' );
+		if ( '' === $bio || playform_author_defaults()['bio'] === $bio || in_array( $bio, $old, true ) ) {
+			update_user_meta( $u->ID, 'description', 'Frederik Baastrup har stiftet Fitbase og er sidens redaktør. Han driver til daglig Mondae og arbejder med webdesign og digitale løsninger. På Fitbase samler han træningsudstyr fra danske webshops og skriver købsguides, der hjælper dig med at sammenligne pris, specifikationer og tilbud. Han er åben om, hvordan produkterne udvælges, og hvordan siden tjener penge.' );
 		}
 		if ( '' === (string) get_user_meta( $u->ID, 'pf_photo', true ) ) {
 			update_user_meta( $u->ID, 'pf_photo', playform_asset( 'authors/frederik-baastrup.jpg' ) );
 		}
 	}
-	update_option( 'playform_author_profile', 1, false );
+	update_option( 'playform_author_profile', 2, false );
 }

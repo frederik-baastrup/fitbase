@@ -182,6 +182,7 @@ function playform_run_upgrades(): void {
 	playform_update_text( 'saadan-tjener-vi-penge', '<p>Som tilbud viser vi kun butikkernes egne tilbud, og kun i højst 14 dage. Vi viser aldrig butikkernes førpriser eller rabatter i procent.</p>', '<p>Som tilbud viser vi kun butikkernes egne tilbud, og kun i højst 14 dage. Vi viser ikke butikkernes egne førpriser. En overstreget førpris viser vi kun, når vi selv har fulgt prisen hos butikken i de 30 dage før tilbuddet, og den er den laveste pris i perioden.</p>' );
 	playform_update_text( 'saadan-tjener-vi-penge', '<p>Som tilbud viser vi kun butikkernes egne tilbud, og kun i højst 14 dage. Vi viser ikke butikkernes egne førpriser. En overstreget førpris viser vi kun, når vi selv har fulgt prisen hos butikken i de 30 dage før tilbuddet, og den er den laveste pris i perioden.</p>', '<p>Som tilbud viser vi kun butikkernes egne tilbud, og kun i højst 14 dage. Har vi selv fulgt prisen hos butikken i de 30 dage før tilbuddet, viser vi den laveste pris i perioden som førpris. Ellers viser vi butikkens egen førpris, tydeligt mærket som butikkens. Tjek altid den endelige pris hos butikken.</p>' );
 	playform_update_text( 'saadan-tjener-vi-penge', 'Det koster ikke dig noget ekstra, og det påvirker ikke, hvilke produkter vi viser, eller hvordan vi sorterer dem.', 'Det koster ikke dig noget ekstra. Vi fremhæver især større træningsmaskiner, og vores standardsortering viser dyrere produkter først. Du kan altid sortere efter pris, tilbud eller nyeste.' );
+	playform_vary_default_texts(); // efter rettelserne ovenfor
 	foreach ( [ 'playform_front_popular', 'playform_front_deals', 'playform_front_new', 'playform_price_ranges', 'playform_front_cat_lobebaand', 'playform_front_cat_spinningcykel', 'playform_front_cat_romaskine', 'playform_front_cat_power-rack', 'playform_front_cat_massagepistol' ] as $t ) {
 		delete_transient( $t );
 	}
@@ -393,10 +394,28 @@ function playform_setup_site(): void {
 }
 
 function playform_default_text( string $which ): string {
+	$name  = playform_site( 'name' );
+	$niche = playform_site( 'niche' );
 	if ( $which === 'butikker' ) {
-		return '<p>Fitbase samler fitnessudstyr fra flere danske webshops ét sted. Vi henter produkter, priser og lagerstatus direkte fra butikkerne to gange i døgnet. Når du klikker på "Gå til butik", sendes du videre til butikken, hvor du handler som normalt.</p><h2>Butikker på Fitbase</h2>';
+		return '<p>' . "Hos $name finder du $niche fra en række danske webshops samlet på én side. To gange i døgnet henter vi produkter, priser og lagerstatus direkte hos butikkerne. Et klik på \"Gå til butik\" fører dig over til butikken, og dér gennemfører du købet på normal vis." . "</p><h2>Butikker på $name</h2>";
 	}
-	return '<p>Fitbase er gratis at bruge. Når du klikker videre til en butik og handler, får vi en lille provision fra butikken. Det koster ikke dig noget ekstra. Vi fremhæver især større træningsmaskiner, og vores standardsortering viser dyrere produkter først. Du kan altid sortere efter pris, tilbud eller nyeste.</p><p>Som tilbud viser vi kun butikkernes egne tilbud, og kun i højst 14 dage. Vi viser ikke butikkernes egne førpriser. En overstreget førpris viser vi kun, når vi selv har fulgt prisen hos butikken i de 30 dage før tilbuddet, og den er den laveste pris i perioden.</p>';
+	return '<p>' . "Det er gratis at bruge $name. Køber du noget, efter at du har klikket videre til en butik, giver butikken os en lille provision. Du betaler ikke ekstra for det. Vi fremhæver især større træningsmaskiner, og vores standardsortering viser dyrere produkter først. Sorteringen kan du altid selv skifte til pris, tilbud eller nyeste." . '</p><p>' . "Tilbud er hos os kun butikkernes egne, og de vises i højst 14 dage. Kender vi butikkens pris fra de 30 dage op til tilbuddet, bruger vi den laveste pris fra perioden som førpris. Ellers ser du butikkens egen førpris, og så står der tydeligt, at den er butikkens. Den endelige pris er altid den, butikken viser, når du betaler." . '</p>';
+}
+
+/**
+ * Teksterne på "Vores butikker" og "Sådan tjener vi penge" var ens på alle sites (dublet-indhold på tværs af domæner).
+ * Skifter de gamle standardafsnit ud med dette sites egen formulering – kun hvor afsnittet står uændret
+ * (playform_update_text), så redaktørens rettelser vinder. Kan køres igen sikkert.
+ */
+function playform_vary_default_texts(): void {
+	$name  = playform_site( 'name' );
+	$niche = playform_site( 'niche' );
+	if ( '' === $niche ) {
+		return;
+	}
+	playform_update_text( 'vores-butikker', "$name samler $niche fra flere danske webshops ét sted. Vi henter produkter, priser og lagerstatus direkte fra butikkerne to gange i døgnet. Når du klikker på \"Gå til butik\", sendes du videre til butikken, hvor du handler som normalt.", "Hos $name finder du $niche fra en række danske webshops samlet på én side. To gange i døgnet henter vi produkter, priser og lagerstatus direkte hos butikkerne. Et klik på \"Gå til butik\" fører dig over til butikken, og dér gennemfører du købet på normal vis." );
+	playform_update_text( 'saadan-tjener-vi-penge', "$name er gratis at bruge. Når du klikker videre til en butik og handler, får vi en lille provision fra butikken. Det koster ikke dig noget ekstra. Vi fremhæver især større træningsmaskiner, og vores standardsortering viser dyrere produkter først. Du kan altid sortere efter pris, tilbud eller nyeste.", "Det er gratis at bruge $name. Køber du noget, efter at du har klikket videre til en butik, giver butikken os en lille provision. Du betaler ikke ekstra for det. Vi fremhæver især større træningsmaskiner, og vores standardsortering viser dyrere produkter først. Sorteringen kan du altid selv skifte til pris, tilbud eller nyeste." );
+	playform_update_text( 'saadan-tjener-vi-penge', "Som tilbud viser vi kun butikkernes egne tilbud, og kun i højst 14 dage. Har vi selv fulgt prisen hos butikken i de 30 dage før tilbuddet, viser vi den laveste pris i perioden som førpris. Ellers viser vi butikkens egen førpris, tydeligt mærket som butikkens. Tjek altid den endelige pris hos butikken.", "Tilbud er hos os kun butikkernes egne, og de vises i højst 14 dage. Kender vi butikkens pris fra de 30 dage op til tilbuddet, bruger vi den laveste pris fra perioden som førpris. Ellers ser du butikkens egen førpris, og så står der tydeligt, at den er butikkens. Den endelige pris er altid den, butikken viser, når du betaler." );
 }
 
 /** Korte introtekster til underkategorierne. De finjusteres efter søgeordsanalysen. */
