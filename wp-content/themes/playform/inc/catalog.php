@@ -330,7 +330,26 @@ function playform_catalog_state(): array {
 	foreach ( $matching as $id ) {
 		$pct[ $id ] = [ (int) ! empty( $meta[ $id ]['_pf_in_stock'] ), (int) ( $meta[ $id ]['_pct'] ?? 0 ) ];
 	}
-	$state = [ 'ids' => $matching, 'facets' => $facets, 'tags' => $tags, 'total' => count( $matching ), 'q' => $q, 'pct' => $pct ];
+	// "Mest populære": vi har ingen salgstal, så vi vægter det, almindelige købere typisk vælger: på lager,
+	// en pris tæt på det typiske i kategorien (ikke de dyreste specialmaskiner), flere butikker og tilbud.
+	$prices = [];
+	foreach ( $matching as $id ) {
+		if ( ! empty( $meta[ $id ]['_pf_in_stock'] ) && (float) ( $meta[ $id ]['_price'] ?? 0 ) > 0 ) {
+			$prices[] = (float) $meta[ $id ]['_price'];
+		}
+	}
+	sort( $prices );
+	$median = $prices ? $prices[ intdiv( count( $prices ), 2 ) ] : 0.0;
+	$pop    = [];
+	foreach ( $matching as $id ) {
+		$m     = $meta[ $id ];
+		$price = (float) ( $m['_price'] ?? 0 );
+		$score = $price > 0 && $median > 0 ? -abs( log( $price / ( $median * 1.3 ) ) ) : -5.0; // lidt over medianen er typisk "den gode model"
+		$score += 0.35 * max( 0, substr_count( (string) ( $m['_pf_shop_list'] ?? '' ), '|' ) - 2 ); // sælges af flere butikker
+		$score += ! empty( $m['_pct'] ) ? 0.3 : 0.0; // på tilbud
+		$pop[ $id ] = [ (int) ! empty( $m['_pf_in_stock'] ), $score ];
+	}
+	$state = [ 'ids' => $matching, 'facets' => $facets, 'tags' => $tags, 'total' => count( $matching ), 'q' => $q, 'pct' => $pct, 'pop' => $pop ];
 	return $state;
 }
 
@@ -371,9 +390,13 @@ add_action(
 				$q->set( 'orderby', 'post__in' );
 				break;
 			default:
-				// "Mest populære": på lager først, derefter produkter med billede og højest pris (de vigtigste maskiner).
-				$q->set( 'meta_query', [ 'stock' => [ 'key' => '_pf_in_stock', 'type' => 'NUMERIC' ], 'price' => [ 'key' => '_price', 'type' => 'DECIMAL(12,2)' ] ] );
-				$q->set( 'orderby', [ 'stock' => 'DESC', 'menu_order' => 'ASC', 'price' => 'DESC' ] );
+				// "Mest populære": se 'pop' i playform_catalog_state() – på lager, typisk pris, flere butikker, tilbud.
+				$ids = $state['ids'];
+				$pop = $state['pop'] ?? [];
+				usort( $ids, static fn( $a, $b ) => ( $pop[ $b ] ?? [ 0, -9 ] ) <=> ( $pop[ $a ] ?? [ 0, -9 ] ) ?: $a <=> $b );
+				$q->set( 'post__in', $ids ?: [ 0 ] );
+				$q->set( 'meta_query', [] );
+				$q->set( 'orderby', 'post__in' );
 		}
 	},
 	20
