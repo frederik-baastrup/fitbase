@@ -75,3 +75,5 @@ Designet ligger som et Claude-artefakt (Playform: forside, kategoriside, produkt
 ## Shops
 
 Apuls.dk, Fitnessshoppen.dk, Træningspartner, Den Intelligente Krop (kun træning, yoga, pilates, massage) og OptimaSport.dk (kun restitution). Cykelexperten.dk kun dame- og herrecykler (`category_map` i `Config::shops()`, størrelsesvarianter samles med `group_variants`) til købsguiderne om citybikes; gruppen Cykler (`/cykler/`) er ikke i hovedmenuen. Cykelpartner har ingen hele cykler og er ikke med. Padelshoppen og Watery er fravalgt (ikke fitness).
+
+**SEO i købsguides (ejerens ønske 5. nov. 2026):** folk søger "bedste <søgeord>" og "<søgeord> test". `playform_guide_keyword()` (`keyword` i artikelfilen, ellers titlen før kolon) giver titlen "Bedste <søgeord>: …", sidetitlen "Bedste <søgeord> <år> → Se vores top N", "bedste <søgeord>" i kort-fortalt og sammenligningen, og nederst afsnittet "<Søgeord> test – er det her en test?" (`playform_guide_test_note()`), der ærligt siger, at det ikke er en test. Kun dér må ordet "test" stå; aldrig "testvinder", "bedst i test" som påstand eller lignende.
