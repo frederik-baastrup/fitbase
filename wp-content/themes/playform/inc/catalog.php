@@ -177,7 +177,7 @@ function playform_catalog_state(): array {
 	$cache_key = '';
 	if ( empty( $args['s'] ) ) {
 		$last      = (array) get_option( 'playform_feeds_last_run', [] );
-		$cache_key = 'pf_catmeta_' . md5( $cat . '|' . (int) $tilbud . '|' . ( $last['finished'] ?? '' ) . '|' . PLAYFORM_THEME_VERSION );
+		$cache_key = 'pf_catmeta2_' . md5( $cat . '|' . (int) $tilbud . '|' . ( $last['finished'] ?? '' ) . '|' . PLAYFORM_THEME_VERSION );
 		$cached    = get_transient( $cache_key );
 		if ( is_array( $cached ) ) {
 			$meta = $cached;
@@ -198,7 +198,7 @@ function playform_catalog_state(): array {
 		$brands = [];
 		foreach ( $meta as $m ) {
 			$raw = trim( (string) ( $m['_pf_brand'] ?? '' ) );
-			$key = sanitize_title( $raw );
+			$key = $m['_bk'] ?? sanitize_title( $raw );
 			if ( $key === '' ) {
 				continue;
 			}
@@ -213,9 +213,10 @@ function playform_catalog_state(): array {
 			if ( $label === mb_strtolower( $label ) ) {
 				$label = mb_convert_case( $label, MB_CASE_TITLE ); // rent småt i feedet → stort begyndelsesbogstav
 			}
-			$opts[ $key ] = [ $label, static fn( array $m ) => sanitize_title( (string) ( $m['_pf_brand'] ?? '' ) ) === $key ];
+			$opts[ $key ] = [ $label, static fn( array $m ) => ( $m['_bk'] ?? '' ) === $key ];
 		}
 		$groups['maerke']['options'] = $opts;
+		$groups['maerke']['bucket']  = static fn( array $m ): array => [ $m['_bk'] ?? '' ];
 	}
 
 	// Kategori: de rigtige kategorier (ikke de virtuelle grupper), i menuens rækkefølge.
@@ -231,6 +232,7 @@ function playform_catalog_state(): array {
 			}
 		}
 		$groups['kat']['options'] = $opts;
+		$groups['kat']['bucket']  = static fn( array $m ): array => $m['_cats'] ?? [];
 	}
 
 	$passes = static function ( array $m, ?string $skip ) use ( $groups, $active ): bool {
@@ -277,14 +279,28 @@ function playform_catalog_state(): array {
 				$base[] = $m;
 			}
 		}
+		// Mærke og kategori: tæl i én gennemgang (hundredvis af valg × tusindvis af produkter var langsomt).
+		$counts = null;
+		if ( isset( $def['bucket'] ) ) {
+			$counts = [];
+			foreach ( $base as $m ) {
+				foreach ( $def['bucket']( $m ) as $k ) {
+					$counts[ $k ] = ( $counts[ $k ] ?? 0 ) + 1;
+				}
+			}
+		}
 		foreach ( $def['options'] as $key => [ $label, $test ] ) {
 			if ( $key === 'tilbud' && playform_is_tilbud_page() ) {
 				continue;
 			}
 			$n = 0;
-			foreach ( $base as $m ) {
-				if ( $test( $m ) ) {
-					$n++;
+			if ( null !== $counts ) {
+				$n = $counts[ $key ] ?? 0;
+			} else {
+				foreach ( $base as $m ) {
+					if ( $test( $m ) ) {
+						$n++;
+					}
 				}
 			}
 			$checked = in_array( $key, $active[ $g ] ?? [], true );
@@ -471,6 +487,7 @@ function playform_catalog_meta( array $ids, string $cat ): array {
 		if ( ! $cat ) {
 			$m['_cats'] = array_keys( $cats_of[ $id ] ?? [] );
 		}
+		$m['_bk']    = sanitize_title( trim( (string) ( $m['_pf_brand'] ?? '' ) ) ); // mærkenøgle – beregnes én gang, ikke pr. filtervalg
 		$meta[ $id ] = $m;
 	}
 	return $meta;
