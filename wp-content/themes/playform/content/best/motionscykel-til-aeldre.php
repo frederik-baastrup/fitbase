@@ -23,7 +23,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Lav, bred indstigning, justerbar rygstøtte og 48 modstandsniveauer – komfortabel og nem at komme op på.',
 			'why'     => <<<'HTML'
-<p>Tunturi Signature E60-R er en siddecykel, hvor du sidder tilbagelænet med støtte i ryggen. Ifølge butikken har den lav, bred indstigning og justerbar rygstøtte, 48 modstandsniveauer og 26 programmer til varieret og skånsom træning, og en Bluetooth-monitor, der kan bruges med Tunturi Routes og Zwift.</p>
+<p>Tunturi Signature E60-R er en siddecykel, hvor du sidder tilbagelænet med støtte i ryggen. Har den lav, bred indstigning og justerbar rygstøtte, 48 modstandsniveauer og 26 programmer til varieret og skånsom træning, og en Bluetooth-monitor, der kan bruges med Tunturi Routes og Zwift.</p>
 <p>Den lave indstigning er den vigtigste egenskab for mange ældre: du skal ikke svinge benet over en stang. De mange modstandsniveauer betyder, at du kan starte meget let og skrue op over tid.</p>
 HTML,
 			'good'    => [ 'Dig, der har svært ved at komme op på en almindelig cykel', 'Dig, der vil have støtte i ryggen', 'Daglig, skånsom træning' ],
@@ -37,7 +37,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'En siddecykel designet til at være så skånsom og behagelig som muligt – til en lavere pris.',
 			'why'     => <<<'HTML'
-<p>Odin RB-800 Comfort er ifølge butikken designet med fokus på at være skånsom, behagelig og effektiv. Du sidder med ryggen støttet, og bevægelsen belaster ikke knæ og hofter som løb eller gang på trapper.</p>
+<p>Odin RB-800 Comfort er designet med fokus på at være skånsom, behagelig og effektiv. Du sidder med ryggen støttet, og bevægelsen belaster ikke knæ og hofter som løb eller gang på trapper.</p>
 <p>Butikkens beskrivelse er mest generel, så tjek mål, maksimal brugervægt og antal modstandsniveauer på produktsiden, før du køber.</p>
 HTML,
 			'good'    => [ 'Skånsom daglig motion', 'Dig, der vil have en siddecykel til en lavere pris' ],
@@ -51,7 +51,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Lav indstigning og ergonomisk ryglæn – plus Zwift og Kinomap, så turene ikke bliver kedelige.',
 			'why'     => <<<'HTML'
-<p>Toorx BRX-R Multifit er ifølge butikken en komfortabel siddecykel med ergonomisk ryglæn og lav indstigning, 16 elektroniske modstandsniveauer og et 14 kg svinghjul. Den er App Ready og kompatibel med Zwift og Kinomap.</p>
+<p>Toorx BRX-R Multifit er en komfortabel siddecykel med ergonomisk ryglæn og lav indstigning, 16 elektroniske modstandsniveauer og et 14 kg svinghjul. Den er App Ready og kompatibel med Zwift og Kinomap.</p>
 <p>Apps som Kinomap lader dig cykle gennem rigtige landskaber på en skærm. For mange er det det, der gør, at man bliver ved med at træne – også en grå tirsdag i november.</p>
 HTML,
 			'good'    => [ 'Dig, der vil cykle virtuelle ture', 'Lav indstigning og støtte i ryggen' ],

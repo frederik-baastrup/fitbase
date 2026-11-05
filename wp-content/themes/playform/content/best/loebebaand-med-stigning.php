@@ -26,7 +26,7 @@ HTML,
 			],
 			'verdict' => 'Stor løbeflade på 56 x 152 cm, 22 km/t og 15 stigningsniveauer – et løbebånd til seriøs løbetræning.',
 			'why'     => <<<'HTML'
-<p>Sole F85 er et af de mest anmeldte løbebånd til hjemmet i sin klasse, blandt andet hos Garage Gym Reviews og BarBend. Butikken oplyser en tophastighed på 22 km/t, 15 stigningsniveauer og en stor løbeflade på 56 x 152 cm, og den er Zwift-kompatibel.</p>
+<p>Sole F85 er et af de mest anmeldte løbebånd til hjemmet i sin klasse, blandt andet hos Garage Gym Reviews og BarBend. Tophastigheden er 22 km/t, der er 15 stigningsniveauer og en stor løbeflade på 56 x 152 cm, og den er Zwift-kompatibel.</p>
 <p>Den store løbeflade er værd at hæfte sig ved: jo hurtigere du løber, og jo højere du er, jo mere plads har du brug for. Anmeldelserne er af den amerikanske udgave; tjek de europæiske specifikationer hos butikken.</p>
 HTML,
 			'good'    => [ 'Løbere, der træner hurtigt og ofte', 'Høje løbere, der har brug for en lang løbeflade', 'Dig, der vil træne med Zwift' ],
@@ -57,7 +57,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => '20 elektroniske stigningsniveauer og op til 20 km/t med børsteløs motor – til under 8.000 kr.',
 			'why'     => <<<'HTML'
-<p>Reebok ERS 520T giver dig elektronisk stigning til en pris, hvor mange løbebånd kun har manuel stigning eller slet ingen. Ifølge butikken har den en børsteløs motor, hastigheder fra 1 til 20 km/t og 20 elektroniske stigningsniveauer, så du kan skifte mellem gang, løb og bakker.</p>
+<p>Reebok ERS 520T giver dig elektronisk stigning til en pris, hvor mange løbebånd kun har manuel stigning eller slet ingen. Har den en børsteløs motor, hastigheder fra 1 til 20 km/t og 20 elektroniske stigningsniveauer, så du kan skifte mellem gang, løb og bakker.</p>
 <p>Elektronisk stigning betyder, at du kan ændre hældningen fra konsollen undervejs – nødvendigt, hvis du vil lave bakkeintervaller eller følge programmer.</p>
 HTML,
 			'good'    => [ 'Dig, der vil have elektronisk stigning til en fornuftig pris', 'Gang og løb i moderat tempo' ],

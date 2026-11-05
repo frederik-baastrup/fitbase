@@ -22,7 +22,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Rund havetrampolin på 366 cm inkl. sikkerhedsnet til en lav pris.',
 			'why'     => <<<'HTML'
-<p>Odin Trampolin ø366 cm er ifølge butikken en trampolin til både børn og voksne, udført i robuste materialer og leveret med sikkerhedsnet. Med en diameter på 366 cm har den plads til legen i en almindelig have.</p>
+<p>Odin Trampolin ø366 cm er en trampolin til både børn og voksne, udført i robuste materialer og leveret med sikkerhedsnet. Med en diameter på 366 cm har den plads til legen i en almindelig have.</p>
 <p>Det er den billigste af vores tre valg og et godt sted at starte, hvis du vil have en komplet trampolin med net uden at bruge mange penge.</p>
 HTML,
 			'good'    => [ 'Familier, der vil have en komplet trampolin med net til en lav pris', 'Haver med almindelig plads' ],
@@ -35,7 +35,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Større udgave med 427 cm i diameter og sikkerhedsnet.',
 			'why'     => <<<'HTML'
-<p>Odin Trampolin ø427 cm er den største af Odins runde trampoliner hos butikken. Ifølge butikken er den udført i robuste materialer til både børn og voksne og leveres med sikkerhedsnet.</p>
+<p>Odin Trampolin ø427 cm er den største af Odins runde trampoliner hos butikken. Er den udført i robuste materialer til både børn og voksne og leveres med sikkerhedsnet.</p>
 <p>Den ekstra størrelse giver mere hoppeflade, så flere kan hoppe uden at komme i vejen for hinanden. Tjek, at haven har plads til både trampolinen og den frie zone rundt om.</p>
 HTML,
 			'good'    => [ 'Dig, der vil have mere hoppeflade til flere børn', 'Større haver' ],
@@ -48,7 +48,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Trampolin på 4,3 m med Premium hoppedug og 96 fjedre.',
 			'why'     => <<<'HTML'
-<p>Jumpmaster Premium 4,3 m har ifølge butikken Premium hoppedug og 96 fjedre og er beskrevet som en stabil konstruktion til både børn og voksne. Den har en højere pris end Odin-modellerne.</p>
+<p>Jumpmaster Premium 4,3 m har Premium hoppedug og 96 fjedre og er beskrevet som en stabil konstruktion til både børn og voksne. Den har en højere pris end Odin-modellerne.</p>
 <p>Det er et valg for dig, der vil have en mere solid trampolin og er villig til at give mere for den. Se i butikken, hvad der følger med.</p>
 HTML,
 			'good'    => [ 'Dig, der vil have en mere solid og dyrere trampolin', 'Hyppig brug af både børn og voksne' ],

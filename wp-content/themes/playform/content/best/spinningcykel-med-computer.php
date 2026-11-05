@@ -25,7 +25,7 @@ HTML,
 			],
 			'verdict' => 'Professionel spinningcykel med wattmåling, 24 modstandsniveauer og Bluetooth – kendt fra træningscentre.',
 			'why'     => <<<'HTML'
-<p>Keiser M3i er en af de mest kendte spinningcykler i træningscentre og er anmeldt grundigt af blandt andre Garage Gym Reviews. Butikken beskriver den som en spinningcykel til virksomhed og træningscenter med wattmåling, 24 modstandsniveauer, Bluetooth og understøttelse af træningsapps.</p>
+<p>Keiser M3i er en af de mest kendte spinningcykler i træningscentre og er anmeldt grundigt af blandt andre Garage Gym Reviews. Den er en spinningcykel til virksomhed og træningscenter med wattmåling, 24 modstandsniveauer, Bluetooth og understøttelse af træningsapps.</p>
 <p>Wattmåling er det bedste mål for, hvor hårdt du arbejder, og det gør det muligt at træne præcist efter programmer. Prisen er høj, men den er bygget til mange års hård brug.</p>
 HTML,
 			'good'    => [ 'Dig, der træner hårdt og ofte', 'Dig, der vil træne efter watt', 'Familier, hvor flere skal bruge cyklen' ],
@@ -39,7 +39,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => '14 kg svinghjul, 32 elektroniske modstandsniveauer, 12 programmer og Bluetooth – til under 8.000 kr.',
 			'why'     => <<<'HTML'
-<p>Odin S1200 giver dig meget computer for pengene. Ifølge butikken har den et 14 kg svinghjul, 32 elektroniske modstandsniveauer, 12 træningsprogrammer og Bluetooth-forbindelse.</p>
+<p>Odin S1200 giver dig meget computer for pengene. Har den et 14 kg svinghjul, 32 elektroniske modstandsniveauer, 12 træningsprogrammer og Bluetooth-forbindelse.</p>
 <p>Elektronisk modstand betyder, at programmer og apps kan styre modstanden for dig – praktisk til intervaller, hvor du ikke vil dreje på et håndtag midt i et sprint.</p>
 HTML,
 			'good'    => [ 'Dig, der vil træne efter programmer eller apps', 'Mellemklasse-budget' ],
@@ -53,7 +53,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => '24 kg svinghjul, 32 magnetiske niveauer og farve-LCD med app-kompatibilitet og pulsbælte.',
 			'why'     => <<<'HTML'
-<p>Toorx SRX 500 har ifølge butikken et 24 kg svinghjul for en glat og lydsvag pedalfornemmelse, magnetisk bremsesystem med 32 modstandsniveauer, ergonomisk sæde og et justerbart styr med fin justering. Konsollen er en multifarvet LCD med app-kompatibilitet, og der følger et pulsbælte med.</p>
+<p>Toorx SRX 500 har et 24 kg svinghjul for en glat og lydsvag pedalfornemmelse, magnetisk bremsesystem med 32 modstandsniveauer, ergonomisk sæde og et justerbart styr med fin justering. Konsollen er en multifarvet LCD med app-kompatibilitet, og der følger et pulsbælte med.</p>
 <p>Et tungt svinghjul giver typisk et mere jævnt og "rigtigt" cykelfølelse, og pulsbæltet gør pulsmålingen langt mere præcis end håndsensorer.</p>
 HTML,
 			'good'    => [ 'Dig, der vil have et jævnt, tungt træk', 'Dig, der vil træne efter puls' ],

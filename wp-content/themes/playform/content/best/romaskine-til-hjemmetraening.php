@@ -23,8 +23,8 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Solid luftromaskine med 10 modstandsniveauer, intervaltræning og app-understøttelse – bygget til både hjem og virksomhed.',
 			'why'     => <<<'HTML'
-<p>Premium Row 90 beskrives af butikken som en solid romaskine til hjemmetræning og virksomhed. Den har luftmodstand, som stiger, jo hårdere du trækker, og som mange oplever som den mest "rigtige" følelse af at ro. Oven i det har den 10 modstandsniveauer, så du kan justere, hvor tungt hvert tag føles.</p>
-<p>Butikken fremhæver også intervaltræning og understøttelse af Kinomap og D-Fit, så du kan træne med programmer eller ro virtuelle ruter. Husk, at luftmodstand larmer mere end magnet – bor du i lejlighed, så overvej det.</p>
+<p>Premium Row 90 er en solid romaskine til hjemmetræning og virksomhed. Den har luftmodstand, som stiger, jo hårdere du trækker, og som mange oplever som den mest "rigtige" følelse af at ro. Oven i det har den 10 modstandsniveauer, så du kan justere, hvor tungt hvert tag føles.</p>
+<p>Den understøtter intervaltræning og apps som Kinomap og D-Fit, så du kan træne med programmer eller ro virtuelle ruter. Husk, at luftmodstand larmer mere end magnet – bor du i lejlighed, så overvej det.</p>
 HTML,
 			'good'    => [ 'Dig, der vil have en romaskine, der kan tåle meget brug', 'Dig, der kan lide intervaller og høj intensitet', 'Dig, der vil træne med app' ],
 			'less'    => [ 'Dig, der bor tæt på naboer – luftmodstand suser' ],
@@ -37,7 +37,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Kompakt romaskine med Kinomap til en lav pris – til dig, der vil i gang uden at bruge mange penge.',
 			'why'     => <<<'HTML'
-<p>Odin R650 er ifølge butikken til dig, der vil have en kompakt romaskine til hjemmet og en god pris, men som stadig vil have funktioner som Kinomap. Computeren beskrives som simpel og overskuelig.</p>
+<p>Odin R650 er til dig, der vil have en kompakt romaskine til hjemmet og en god pris, men som stadig vil have funktioner som Kinomap. Computeren beskrives som simpel og overskuelig.</p>
 <p>Det er en god kombination for begynderen: lav pris, lidt plads og mulighed for at gøre træningen sjovere med virtuelle ruter, når motivationen daler.</p>
 HTML,
 			'good'    => [ 'Begyndere', 'Dig, der vil træne med Kinomap uden at betale for en dyr maskine', 'Små rum' ],
@@ -51,7 +51,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => '32 modstandsniveauer og Bluetooth – og den laver selv sin strøm, så den kan stå, hvor der ikke er en stikkontakt.',
 			'why'     => <<<'HTML'
-<p>Odin R670 er en kompakt og moderne romaskine med 32 modstandsniveauer og Bluetooth, ifølge butikken. Det særlige er det selvgenererende strømsystem: maskinen laver selv strøm, mens du ror, så den ikke skal tilsluttes en stikkontakt.</p>
+<p>Odin R670 er en kompakt og moderne romaskine med 32 modstandsniveauer og Bluetooth. Det særlige er det selvgenererende strømsystem: maskinen laver selv strøm, mens du ror, så den ikke skal tilsluttes en stikkontakt.</p>
 <p>Det gør den nem at placere – i kælderen, i et hjørne af stuen eller hvor det nu passer – og du slipper for en ledning hen over gulvet.</p>
 HTML,
 			'good'    => [ 'Dig, der vil kunne placere romaskinen frit', 'Dig, der vil have mange modstandsniveauer at arbejde med' ],

@@ -22,7 +22,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Nedgravet rektangulær trampolin på 4,57 x 3,05 m med 84 fjedre – uden net.',
 			'why'     => <<<'HTML'
-<p>Jumpmaster Premium Rektangulær Inground Sport Line 4,57 x 3,05 m er ifølge butikken en nedgravet rektangulær trampolin uden net med 84 fjedre og Premium hoppedug, der giver en præcis og responsiv hoppeeffekt.</p>
+<p>Jumpmaster Premium Rektangulær Inground Sport Line 4,57 x 3,05 m er en nedgravet rektangulær trampolin uden net med 84 fjedre og Premium hoppedug, der giver en præcis og responsiv hoppeeffekt.</p>
 <p>Den er den billigste af vores firkantede valg. Bemærk, at den leveres uden net. Tjek lagerstatus hos butikken.</p>
 HTML,
 			'good'    => [ 'Dig, der vil have en nedgravet rektangulær trampolin til en lavere pris', 'Øvede hoppere, der ikke kræver net' ],
@@ -35,7 +35,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Nedgravet rektangulær trampolin med 84 fjedre og Pro sikkerhedsnet.',
 			'why'     => <<<'HTML'
-<p>Jumpmaster Premium Rektangulær Inground 4,57 x 3,05 m er ifølge butikken en nedgravet rektangulær trampolin med Premium hoppedug, 84 fjedre og Pro sikkerhedsnet. Butikken fremhæver et præcist hop og solid kvalitet.</p>
+<p>Jumpmaster Premium Rektangulær Inground 4,57 x 3,05 m er en nedgravet rektangulær trampolin med Premium hoppedug, 84 fjedre og Pro sikkerhedsnet. Den giver et præcist hop og føles solid.</p>
 <p>Det er en dyr model, men den kommer med net. Tjek lagerstatus hos butikken.</p>
 HTML,
 			'good'    => [ 'Dig, der vil have en rektangulær trampolin i niveau med plænen og med net', 'Familier med børn i flere aldre' ],
@@ -48,7 +48,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Rektangulær trampolin med 84 fjedre og Premium hoppedug til opstilling over jorden.',
 			'why'     => <<<'HTML'
-<p>Jumpmaster Premium Rektangulær 4,57 x 3,05 m er ifølge butikken en stor rektangulær trampolin med 84 fjedre og Premium hoppedug, der giver kontrolleret hop, høj stabilitet og sikker hopning.</p>
+<p>Jumpmaster Premium Rektangulær 4,57 x 3,05 m er en stor rektangulær trampolin med 84 fjedre og Premium hoppedug, der giver kontrolleret hop, høj stabilitet og sikker hopning.</p>
 <p>Den står over jorden, så du undgår at skulle grave. Tjek lagerstatus hos butikken.</p>
 HTML,
 			'good'    => [ 'Dig, der vil have en rektangulær trampolin uden at grave et hul', 'Dig, der træner spring og vil have en lang hoppezone' ],

@@ -23,7 +23,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Selvdrevet, buet lamelbåndsløbebånd med manuel modstand og app – bygget til intervaller, HYROX og funktionel fitness.',
 			'why'     => <<<'HTML'
-<p>Trion XCT 2.0 er et curved løbebånd: løbefladen er buet og består af lameller, og du driver det selv. Butikken beskriver det som selvdrevet med manuel modstand, app-tilslutning og en naturlig løbefornemmelse, udviklet til intervaltræning, HYROX og funktionel fitness.</p>
+<p>Trion XCT 2.0 er et curved løbebånd: løbefladen er buet og består af lameller, og du driver det selv. Det er selvdrevet med manuel modstand, app-tilslutning og en naturlig løbefornemmelse, udviklet til intervaltræning, HYROX og funktionel fitness.</p>
 <p>På et buet løbebånd bestemmer din position farten: træder du frem mod toppen af buen, accelererer båndet; træder du tilbage, sænker det farten. Det gør det perfekt til sprint og intervaller, men det kræver, at du vænner dig til det. Prisen er høj, fordi det er bygget til hård brug.</p>
 HTML,
 			'good'    => [ 'Sprint og intervaller', 'HYROX- og crossfittræning', 'Dig, der vil træne uden strøm' ],
@@ -37,7 +37,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Manuelt løbebånd med magnetisk modstand i 8 niveauer, 180 kg brugervægt og foldbart stel – det billigere alternativ.',
 			'why'     => <<<'HTML'
-<p>Toorx Power Mag er et manuelt løbebånd uden motor: du skubber båndet rundt med dine skridt. Ifølge butikken har det magnetisk modstand i 8 niveauer og et 20 kg dobbelt svinghjul, en stødabsorberende løbeflade på 125 x 46 cm og en maksimal brugervægt på 180 kg. Det kan foldes og flyttes på transporthjul.</p>
+<p>Toorx Power Mag er et manuelt løbebånd uden motor: du skubber båndet rundt med dine skridt. Har det magnetisk modstand i 8 niveauer og et 20 kg dobbelt svinghjul, en stødabsorberende løbeflade på 125 x 46 cm og en maksimal brugervægt på 180 kg. Det kan foldes og flyttes på transporthjul.</p>
 <p>Det er en enklere og billigere konstruktion end det buede løbebånd og fungerer bedst til rask gang og jævnt løb. Modellen er ikke altid på lager. Er den udsolgt, viser vi et alternativ ved produktet.</p>
 HTML,
 			'good'    => [ 'Gang med høj intensitet', 'Dig, der vil have et løbebånd uden strøm til en lavere pris' ],

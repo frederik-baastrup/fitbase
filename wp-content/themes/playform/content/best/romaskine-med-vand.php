@@ -23,8 +23,8 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Den mest gennemførte vandromaskine i udvalget: træramme, 10 modstandsniveauer og en Bluetooth-skærm, der hjælper med teknikken.',
 			'why'     => <<<'HTML'
-<p>Fluid Rower er First Degree Fitness' serie af vandromaskiner, og Viking 3 XL er en af modellerne i træ. Ifølge butikken er rammen lavet af asketræ i valnødfinish, og det er netop den slags romaskine, mange gerne vil have stående fremme i stuen frem for gemt væk.</p>
-<p>Det, der adskiller den fra mange andre vandromaskiner, er de 10 justerbare modstandsniveauer. På en klassisk vandromaskine ændrer du typisk tyngden ved at hælde mere eller mindre vand i tanken. Her kan du skrue op og ned i trin. Skærmen har Bluetooth og en såkaldt Power Graph, der viser kraften i hvert tag – nyttigt, hvis du vil arbejde med en jævn og effektiv rotag. Butikken fremhæver også et komfortabelt sæde og et ergonomisk håndtag.</p>
+<p>Fluid Rower er First Degree Fitness' serie af vandromaskiner, og Viking 3 XL er en af modellerne i træ. Er rammen lavet af asketræ i valnødfinish, og det er netop den slags romaskine, mange gerne vil have stående fremme i stuen frem for gemt væk.</p>
+<p>Det, der adskiller den fra mange andre vandromaskiner, er de 10 justerbare modstandsniveauer. På en klassisk vandromaskine ændrer du typisk tyngden ved at hælde mere eller mindre vand i tanken. Her kan du skrue op og ned i trin. Skærmen har Bluetooth og en såkaldt Power Graph, der viser kraften i hvert tag – nyttigt, hvis du vil arbejde med en jævn og effektiv rotag. Sædet er komfortabelt, og håndtaget ergonomisk.</p>
 HTML,
 			'good'    => [ 'Dig, der vil have en romaskine, der også ser godt ud i stuen', 'Dig, der vil følge din teknik og kraft på skærmen', 'Dig, der vil kunne justere modstanden i trin' ],
 			'less'    => [ 'Dig med et stramt budget – den hører til i den dyre ende', 'Dig, der bare vil ro og er ligeglad med skærm og data' ],
@@ -37,7 +37,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'En af de billigste vandromaskiner hos de danske butikker – et godt sted at starte, hvis du vil prøve vandmodstand uden at bruge en formue.',
 			'why'     => <<<'HTML'
-<p>R1000 er Odins billigste vandromaskine hos de danske butikker. Butikken beskriver den som en brugervenlig romaskine til den private bruger med et glidende træk, der giver fornemmelsen af at sidde ude på vandet.</p>
+<p>R1000 er Odins billigste vandromaskine hos de danske butikker. Den er en brugervenlig romaskine til den private bruger med et glidende træk, der giver fornemmelsen af at sidde ude på vandet.</p>
 <p>Den er med, fordi den gør vandmodstand tilgængelig til en pris, hvor mange ellers ender med en magnetisk romaskine. Butikkens produktbeskrivelse er kort, så tjek maksimal brugervægt og mål på produktsiden, før du køber – især hvis du er høj eller vejer meget.</p>
 HTML,
 			'good'    => [ 'Begyndere, der vil prøve en vandromaskine', 'Dig, der vil holde prisen nede' ],
@@ -51,7 +51,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Foldbar vandromaskine i bøgetræ med både vand- og magnetmodstand – til dig, der skal kunne rydde gulvet efter træning.',
 			'why'     => <<<'HTML'
-<p>En romaskine fylder typisk omkring to meter i længden, og det er ofte dét, der får folk til at tøve. Top Sport WP5000 er bygget til at kunne foldes og gemmes væk, ifølge butikken med et pladsbesparende design og nem opbevaring.</p>
+<p>En romaskine fylder typisk omkring to meter i længden, og det er ofte dét, der får folk til at tøve. Top Sport WP5000 er bygget til at kunne foldes og gemmes væk med et pladsbesparende design og nem opbevaring.</p>
 <p>Den kombinerer vandmodstand med magnetmodstand (hybrid), så du både får lyden og fornemmelsen af vand og mulighed for at justere modstanden mere præcist. Rammen er i bøgetræ, så den ser stadig pæn ud, når den står fremme.</p>
 HTML,
 			'good'    => [ 'Dig, der bor småt og skal kunne gemme romaskinen væk', 'Dig, der vil have både vandfølelse og justerbar modstand' ],

@@ -23,7 +23,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Klassisk citybike med 7 gear og det praktiske udstyr, du skal bruge til daglig pendling.',
 			'why'     => <<<'HTML'
-<p>Centurion Le Mans er ifølge butikken en klassisk citybike, der er designet og bygget til dig, der pendler, og pakket med de praktiske egenskaber, en citybike skal have. Med 7 gear har du nok til både bakker og modvind i byen.</p>
+<p>Centurion Le Mans er en klassisk citybike, der er designet og bygget til dig, der pendler, og pakket med de praktiske egenskaber, en citybike skal have. Med 7 gear har du nok til både bakker og modvind i byen.</p>
 <p>Centurion er et af de mest udbredte mærker i danske cykelbutikker, så det er nemt at få service og reservedele.</p>
 HTML,
 			'good'    => [ 'Daglig pendling', 'Dig, der vil have en klassisk citybike' ],
@@ -37,7 +37,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Pålidelig citybike med 7 indvendige Shimano-gear – til dig, der bare vil have en cykel, der virker.',
 			'why'     => <<<'HTML'
-<p>Centurion Basic er ifølge butikken en klassisk citybike, der gør hverdagen enkel og pålidelig, til dig, der vil have en cykel, som bare fungerer dag efter dag. Den har 7 indvendige Shimano-gear.</p>
+<p>Centurion Basic er en klassisk citybike, der gør hverdagen enkel og pålidelig, til dig, der vil have en cykel, som bare fungerer dag efter dag. Den har 7 indvendige Shimano-gear.</p>
 <p>Indvendige gear (navgear) sidder beskyttet inde i baghjulets nav. Det gør dem mindre følsomme over for regn og snavs end udvendige gear, og du kan skifte gear, mens du holder stille.</p>
 HTML,
 			'good'    => [ 'Lidt vedligeholdelse', 'Kørsel året rundt' ],
@@ -54,7 +54,7 @@ HTML,
 			],
 			'verdict' => 'Sportslig citybike med aluminiumsstel, skivebremser og 18 gear – til dig, der vil hurtigere frem.',
 			'why'     => <<<'HTML'
-<p>Specialized Sirrus X 3.0 er en sportslig hybrid mellem citybike og racer. Ifølge butikken er det 2023-modellen med aluminiumsstel, skivebremser fra Tektro og 18 udvendige gear. Modellen er anmeldt af blandt andre BikeRadar og road.cc.</p>
+<p>Specialized Sirrus X 3.0 er en sportslig hybrid mellem citybike og racer. Er det 2023-modellen med aluminiumsstel, skivebremser fra Tektro og 18 udvendige gear. Modellen er anmeldt af blandt andre BikeRadar og road.cc.</p>
 <p>Skivebremser bremser sikkert også i regn, og de mange gear gør den god til længere ture og bakker. Til gengæld kræver udvendige gear lidt mere pleje, og der følger ikke nødvendigvis skærme og bagagebærer med – tjek udstyret hos butikken.</p>
 HTML,
 			'good'    => [ 'Lang pendling og weekendture', 'Dig, der vil køre hurtigt' ],

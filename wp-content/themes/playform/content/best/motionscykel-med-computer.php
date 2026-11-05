@@ -23,7 +23,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => '32 elektroniske modstandsniveauer, 16 kg svinghjul og programmer efter puls (HRC) og watt – med app og trådløs pulsmåling.',
 			'why'     => <<<'HTML'
-<p>Toorx BRX 300 er en ergometercykel, hvor computeren er i centrum. Ifølge butikken har den 32 elektroniske modstandsniveauer og et 16 kg svinghjul, måleprogrammer som HRC (pulsstyret) og watt, app-integration og trådløs pulsmåling. Den har komfortable justeringsmuligheder og er let at flytte.</p>
+<p>Toorx BRX 300 er en ergometercykel, hvor computeren er i centrum. Har den 32 elektroniske modstandsniveauer og et 16 kg svinghjul, måleprogrammer som HRC (pulsstyret) og watt, app-integration og trådløs pulsmåling. Den har komfortable justeringsmuligheder og er let at flytte.</p>
 <p>Med watt-programmer holder cyklen en bestemt belastning, uanset hvor hurtigt du træder – det er den mest præcise måde at træne kondition på.</p>
 HTML,
 			'good'    => [ 'Dig, der vil træne efter puls eller watt', 'Målrettet konditionstræning' ],
@@ -37,8 +37,8 @@ HTML,
 			'reviews' => [],
 			'verdict' => '17 programmer inkl. pulsstyring, 24 modstandsniveauer og LCD med wattindikator – plus holder til telefon eller tablet.',
 			'why'     => <<<'HTML'
-<p>Top Sport AL 2 giver dig mange programmer til prisen. Ifølge butikken har den et 9 kg svinghjul og 24 modstandsniveauer, 17 programmer inklusive pulsstyring, et LCD-display med wattindikator og enhedsholder samt justerbar sadel og styr og transporthjul.</p>
-<p>Butikken nævner ikke app-forbindelse, men computeren alene giver masser af variation.</p>
+<p>Top Sport AL 2 giver dig mange programmer til prisen. Har den et 9 kg svinghjul og 24 modstandsniveauer, 17 programmer inklusive pulsstyring, et LCD-display med wattindikator og enhedsholder samt justerbar sadel og styr og transporthjul.</p>
+<p>Computeren alene giver masser af variation.</p>
 HTML,
 			'good'    => [ 'Dig, der vil have programmer uden app', 'Pulsstyret træning' ],
 			'less'    => [ 'Dig, der vil træne med Zwift eller Kinomap' ],
@@ -51,7 +51,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => '32 modstandsniveauer, 14 træningsprogrammer og understøttelse af iConsole+ og Kinomap – til under 4.000 kr.',
 			'why'     => <<<'HTML'
-<p>Abilica WinMag Cruise BT er den billigste af de tre. Butikken beskriver den som en motionscykel til hjemmetræning med 32 modstandsniveauer, 14 træningsprogrammer, justerbar siddestilling og understøttelse af iConsole+ og Kinomap.</p>
+<p>Abilica WinMag Cruise BT er den billigste af de tre. Den er en motionscykel til hjemmetræning med 32 modstandsniveauer, 14 træningsprogrammer, justerbar siddestilling og understøttelse af iConsole+ og Kinomap.</p>
 <p>Det er mange niveauer og programmer for prisen, og app-understøttelsen giver mulighed for mere end computeren alene.</p>
 HTML,
 			'good'    => [ 'Lavere budget', 'Dig, der vil have både programmer og app' ],

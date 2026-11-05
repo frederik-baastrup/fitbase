@@ -23,7 +23,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Foldbar romaskine med 16 modstandsniveauer, pulsstyret træning og indbygget pulsmåler.',
 			'why'     => <<<'HTML'
-<p>Toorx RWX 700 kombinerer et pladsbesparende, foldbart design med mange muligheder i træningen. Ifølge butikken har den 16 justerbare modstandsniveauer, en avanceret LCD-skærm med pulsstyret træning (HRC) og en indbygget pulsmåler.</p>
+<p>Toorx RWX 700 kombinerer et pladsbesparende, foldbart design med mange muligheder i træningen. Har den 16 justerbare modstandsniveauer, en avanceret LCD-skærm med pulsstyret træning (HRC) og en indbygget pulsmåler.</p>
 <p>Pulsstyret træning betyder, at maskinen justerer modstanden efter din puls, så du holder dig i den intensitet, du har valgt. Det er praktisk, hvis du vil træne kondition målrettet uden selv at skulle styre det hele undervejs.</p>
 HTML,
 			'good'    => [ 'Dig, der vil træne efter puls', 'Dig, der vil have mange modstandsniveauer i en foldbar maskine' ],
@@ -37,7 +37,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Foldbar med transporthjul og 8 modstandsniveauer – en enkel og billig vej til romaskine i en lille bolig.',
 			'why'     => <<<'HTML'
-<p>Tunturi er et af de gamle mærker inden for træningsudstyr til hjemmet, og Cardio Fit R30 er en enkel model til en lav pris. Butikken nævner 8 justerbare modstandsniveauer, et pladsbesparende foldbart design med transporthjul samt ergonomisk sæde og skridsikre pedaler.</p>
+<p>Tunturi er et af de gamle mærker inden for træningsudstyr til hjemmet, og Cardio Fit R30 er en enkel model til en lav pris. Den har 8 justerbare modstandsniveauer, et pladsbesparende foldbart design med transporthjul samt ergonomisk sæde og skridsikre pedaler.</p>
 <p>Transporthjulene er vigtigere, end man tror: en romaskine, der er tung at flytte, ender med at blive stående fremme. Her folder og triller du den væk.</p>
 HTML,
 			'good'    => [ 'Dig, der skal flytte og gemme romaskinen efter hver træning', 'Begyndere og let til moderat brug' ],
@@ -51,7 +51,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Foldbar romaskine med både vand- og magnetmodstand og Kinomap – lyden af vand uden at give afkald på pladsen.',
 			'why'     => <<<'HTML'
-<p>De fleste vandromaskiner kan ikke foldes. Top Sport Colorado kombinerer ifølge butikken vand- og magnetisk modstand med en foldbar konstruktion, så du får den naturlige følelse og lyd af vand og samtidig kan rydde gulvet efter træning.</p>
+<p>De fleste vandromaskiner kan ikke foldes. Top Sport Colorado kombinerer vand- og magnetisk modstand med en foldbar konstruktion, så du får den naturlige følelse og lyd af vand og samtidig kan rydde gulvet efter træning.</p>
 <p>Den er Kinomap-kompatibel og har en Smart Control-computer, så du også kan ro virtuelle ruter.</p>
 HTML,
 			'good'    => [ 'Dig, der gerne vil have vandmodstand, men ikke har plads til en fast maskine', 'Dig, der vil træne med Kinomap' ],

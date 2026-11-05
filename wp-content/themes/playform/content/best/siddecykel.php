@@ -23,7 +23,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Stabil pedaltræner med aftagelig skærm og Bluetooth – lille nok til at gemme væk, god nok til daglig brug.',
 			'why'     => <<<'HTML'
-<p>Tunturi Cardio Fit M45 er en pedaltræner, der ifølge butikken står stabilt med brede stabilisatorer og skridsikre fødder – vigtigt, når den skal stå på et glat gulv foran en stol. Skærmen kan tages af, og den har Bluetooth med integration til Tunturi Routes.</p>
+<p>Tunturi Cardio Fit M45 er en pedaltræner, der står stabilt med brede stabilisatorer og skridsikre fødder – vigtigt, når den skal stå på et glat gulv foran en stol. Skærmen kan tages af, og den har Bluetooth med integration til Tunturi Routes.</p>
 <p>Den er let og kompakt, så den er nem at flytte og opbevare. Det gør den oplagt til dig, der vil bruge den foran tv'et eller under skrivebordet og stille den væk bagefter.</p>
 HTML,
 			'good'    => [ 'Daglig bevægelse foran tv eller computer', 'Dig, der vil kunne følge træningen på skærm eller app' ],
@@ -37,7 +37,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Let siddecykel uden modstand, der kan bruges til både ben og arme – til helt skånsom bevægelse.',
 			'why'     => <<<'HTML'
-<p>Everfit Welly E er en siddecykel uden modstand, som ifølge butikken er lavet til genoptræning og skånsom bevægelse. Den kan bruges på gulvet til benene eller på bordet til armene, og den vejer kun 6 kg.</p>
+<p>Everfit Welly E er en siddecykel uden modstand, som er lavet til genoptræning og skånsom bevægelse. Den kan bruges på gulvet til benene eller på bordet til armene, og den vejer kun 6 kg.</p>
 <p>Uden modstand er den ikke til konditionstræning, men til at holde led og muskler i gang – for eksempel efter en operation eller når man ikke kan klare almindelig træning. Spørg gerne din fysioterapeut, om den passer til dit forløb.</p>
 HTML,
 			'good'    => [ 'Genoptræning og meget skånsom bevægelse', 'Træning af både ben og arme' ],
@@ -51,7 +51,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Foldbar siddecykel med ryglæn og 14 magnetiske modstandsniveauer – mere cykel, men stadig til små hjem.',
 			'why'     => <<<'HTML'
-<p>Vil du have en rigtig motionscykel, men sidde godt med støtte i ryggen, er Top Sport S-Bike VeloFit et godt kompromis. Ifølge butikken er den en komfortabel siddecykel med ryglæn og ergonomisk sæde, 14 modstandsniveauer og støjsvag magnetisk modstand – og den kan foldes.</p>
+<p>Vil du have en rigtig motionscykel, men sidde godt med støtte i ryggen, er Top Sport S-Bike VeloFit et godt kompromis. Er den en komfortabel siddecykel med ryglæn og ergonomisk sæde, 14 modstandsniveauer og støjsvag magnetisk modstand – og den kan foldes.</p>
 <p>Den fylder mere end en pedaltræner, men mindre end de fleste motionscykler, og den giver mulighed for egentlig konditionstræning.</p>
 HTML,
 			'good'    => [ 'Dig, der vil have støtte i ryggen', 'Små hjem, hvor cyklen skal kunne foldes væk', 'Let konditionstræning' ],

@@ -22,7 +22,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Stor nedgravet trampolin på 4,3 m med 96 fjedre og Premium hoppedug.',
 			'why'     => <<<'HTML'
-<p>Jumpmaster Premium Inground 4,3 m er ifølge butikken en stor nedgravet trampolin med 96 fjedre og Premium hoppedug. Butikken beskriver den som en stabil og familievenlig løsning med høj hoppeeffekt.</p>
+<p>Jumpmaster Premium Inground 4,3 m er en stor nedgravet trampolin med 96 fjedre og Premium hoppedug. Den er en stabil og familievenlig løsning med høj hoppeeffekt.</p>
 <p>4,3 m giver god plads, men kræver også et større hul. Mål haven op, og tjek, hvor dybt der skal graves, før du bestiller.</p>
 HTML,
 			'good'    => [ 'Familier med flere børn', 'Dig, der vil have god plads og en stabil konstruktion' ],
@@ -35,7 +35,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Nedgravet trampolin på 3,65 m med 72 fjedre og Premium hoppedug.',
 			'why'     => <<<'HTML'
-<p>Jumpmaster Premium Inground 3,65 m er ifølge butikken en nedgravet trampolin med Premium hoppedug og 72 fjedre, beskrevet som stabil og med et diskret design til haven. Den er den billigste af vores nedgravede valg.</p>
+<p>Jumpmaster Premium Inground 3,65 m er en nedgravet trampolin med Premium hoppedug og 72 fjedre, beskrevet som stabil og med et diskret design til haven. Den er den billigste af vores nedgravede valg.</p>
 <p>Den mindre størrelse kræver et mindre hul og passer til haver med begrænset plads.</p>
 HTML,
 			'good'    => [ 'Mindre haver', 'Dig, der vil have en nedgravet trampolin til en lavere pris' ],
@@ -48,7 +48,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Nedgravet familietrampolin på 4,3 m med justerbar Flexi-affjedring.',
 			'why'     => <<<'HTML'
-<p>Flexi Inground Sport Line 4,3 m er ifølge butikken en nedgravet familietrampolin med justerbar affjedring. Flexi-systemet tilpasses vægten, så hoppet er komfortabelt for både børn og voksne.</p>
+<p>Flexi Inground Sport Line 4,3 m er en nedgravet familietrampolin med justerbar affjedring. Flexi-systemet tilpasses vægten, så hoppet er komfortabelt for både børn og voksne.</p>
 <p>Det gør den interessant, hvis børn og voksne skal bruge samme trampolin. Tjek lagerstatus hos butikken, da modellen kan være udsolgt.</p>
 HTML,
 			'good'    => [ 'Familier, hvor både børn og voksne hopper', 'Dig, der vil have justerbar affjedring' ],

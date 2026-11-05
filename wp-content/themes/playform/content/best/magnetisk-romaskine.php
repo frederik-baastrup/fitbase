@@ -23,7 +23,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Stor 15,6" farveskærm, elektronisk styret magnetmodstand og en lang aluminiumsskinne – meget romaskine for pengene.',
 			'why'     => <<<'HTML'
-<p>Odin R920 Horisont er den mest veludstyrede magnetiske romaskine i mellemklassen hos vores butikker. Ifølge butikken har den en 15,6" farveskærm, der samler dine træningsdata foran dig, og modstanden styres elektronisk, så du kan skifte niveau uden at røre et håndtag.</p>
+<p>Odin R920 Horisont er den mest veludstyrede magnetiske romaskine i mellemklassen hos vores butikker. Har den en 15,6" farveskærm, der samler dine træningsdata foran dig, og modstanden styres elektronisk, så du kan skifte niveau uden at røre et håndtag.</p>
 <p>Den lange skinne i aluminium giver sædet en jævn bevægelse, og det er netop skinnen, der afgør, om høje personer kan strække benene helt ud. Er du over gennemsnitshøjde, er det en af de første ting, du skal kigge efter – og her er den fremhævet som en styrke.</p>
 HTML,
 			'good'    => [ 'Dig, der vil have en stor skærm med overblik over træningen', 'Dig, der vil skifte modstand hurtigt under intervaller', 'Høje brugere, der har brug for en lang skinne' ],
@@ -37,7 +37,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Kompakt magnetisk romaskine med et 7 kg svinghjul til under 3.000 kr – et fornuftigt sted at starte.',
 			'why'     => <<<'HTML'
-<p>Odin R600 er lavet til dig, der vil træne effektivt hjemme uden at have en stor maskine stående. Butikken oplyser, at den har et magnetisk bremsesystem med et svinghjul på 7 kg, som giver en god modstand og et flydende træk.</p>
+<p>Odin R600 er lavet til dig, der vil træne effektivt hjemme uden at have en stor maskine stående. Den har et magnetisk bremsesystem med et svinghjul på 7 kg, som giver en god modstand og et flydende træk.</p>
 <p>Til prisen er det en enkel romaskine, der gør det, den skal: giver dig helkropstræning og kondition på lidt plads. Vil du have app, stor skærm eller mange programmer, skal du et trin op i pris.</p>
 HTML,
 			'good'    => [ 'Begyndere og dig, der træner et par gange om ugen', 'Dig, der vil holde prisen nede', 'Små rum' ],
@@ -51,7 +51,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Støjsvag romaskine med magnetisk modstand – til dig, der træner tidligt, sent eller med naboer tæt på.',
 			'why'     => <<<'HTML'
-<p>Abilica WinRower 2.0 beskrives af butikken som en støjsvag romaskine med god magnetisk modstand. Netop støjen er den største fordel ved magnetisk modstand: der er ingen vifte, der suser, og intet vand, der skvulper – kun lyden af sædet, der kører frem og tilbage.</p>
+<p>Abilica WinRower 2.0 er en støjsvag romaskine med god magnetisk modstand. Netop støjen er den største fordel ved magnetisk modstand: der er ingen vifte, der suser, og intet vand, der skvulper – kun lyden af sædet, der kører frem og tilbage.</p>
 <p>Butikkens beskrivelse er kort, så tjek mål, maksimal brugervægt og skinnelængde på produktsiden, før du køber. Bor du i lejlighed, så læg også en gummimåtte under, så bump og vibrationer ikke går videre i gulvet.</p>
 HTML,
 			'good'    => [ 'Dig, der bor i lejlighed eller træner, mens andre sover', 'Dig, der vil have en enkel maskine uden vedligeholdelse' ],

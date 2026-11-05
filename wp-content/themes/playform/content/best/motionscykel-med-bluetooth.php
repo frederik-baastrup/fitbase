@@ -23,7 +23,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => '48 modstandsniveauer, 26 programmer og en Bluetooth-skærm med Zwift og Tunturi Routes – plus lav indstigning.',
 			'why'     => <<<'HTML'
-<p>Tunturi Signature E60 er en alsidig motionscykel, der passer til hele familien. Ifølge butikken har den 48 modstandsniveauer og 26 programmer, en Bluetooth-skærm med integration til Tunturi Routes og Zwift, en ekstra stor Comfort+-sadel, et justerbart Multigrip+-styr samt lav indstigning og vægtede pedaler.</p>
+<p>Tunturi Signature E60 er en alsidig motionscykel, der passer til hele familien. Har den 48 modstandsniveauer og 26 programmer, en Bluetooth-skærm med integration til Tunturi Routes og Zwift, en ekstra stor Comfort+-sadel, et justerbart Multigrip+-styr samt lav indstigning og vægtede pedaler.</p>
 <p>Den lave indstigning og de mange niveauer gør den nem at komme i gang på, mens Zwift-integrationen giver motivation, når du vil træne mere målrettet.</p>
 HTML,
 			'good'    => [ 'Familier, hvor flere skal bruge cyklen', 'Dig, der vil træne med Zwift', 'Nem op- og nedstigning' ],
@@ -37,7 +37,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Kompakt motionscykel med 16 magnetiske modstandsniveauer og app-forbindelse til Zwift og Kinomap.',
 			'why'     => <<<'HTML'
-<p>Toorx BRX 90 EVO er den billigere vej til app-træning. Butikken beskriver den med 16 niveauer justerbar magnetisk modstand, APP Ready 3.0 med Zwift- og Kinomap-kompatibilitet, ergonomisk sæde og styrjustering samt et kompakt design med nem adgang.</p>
+<p>Toorx BRX 90 EVO er den billigere vej til app-træning. Den har 16 niveauer justerbar magnetisk modstand, APP Ready 3.0 med Zwift- og Kinomap-kompatibilitet, ergonomisk sæde og styrjustering samt et kompakt design med nem adgang.</p>
 <p>Den har færre niveauer og programmer end de dyrere modeller, men hvis det vigtigste er at kunne koble cyklen til en app, får du det her for en lavere pris.</p>
 HTML,
 			'good'    => [ 'Dig, der vil i gang med Zwift eller Kinomap', 'Mindre hjem' ],
@@ -51,7 +51,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Kraftig EMS-modstand op til 450 watt, 48 niveauer og kompatibilitet med Zwift, Kinomap og Tunturi Routes.',
 			'why'     => <<<'HTML'
-<p>Tunturi Platinum UB30 er til dig, der træner meget og vil have mere modstand at arbejde med. Ifølge butikken har den kraftig EMS-modstand med op til 450 watt belastning, 48 modstandsniveauer og 26 træningsprogrammer, og den er kompatibel med Zwift, Kinomap og Tunturi Routes.</p>
+<p>Tunturi Platinum UB30 er til dig, der træner meget og vil have mere modstand at arbejde med. Har den kraftig EMS-modstand med op til 450 watt belastning, 48 modstandsniveauer og 26 træningsprogrammer, og den er kompatibel med Zwift, Kinomap og Tunturi Routes.</p>
 <p>Prisen er markant højere end de andre, så den giver mest mening, hvis cyklen er din primære konditionsmaskine.</p>
 HTML,
 			'good'    => [ 'Dig, der træner hårdt og ofte', 'Træning efter watt og programmer' ],

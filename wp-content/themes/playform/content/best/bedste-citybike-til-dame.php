@@ -23,7 +23,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Klassisk citybike med 7 gear og det praktiske udstyr, du skal bruge til daglig pendling.',
 			'why'     => <<<'HTML'
-<p>Centurion Le Mans er ifølge butikken en klassisk citybike, der er designet og bygget til dig, der pendler, og pakket med de praktiske egenskaber, en citybike skal have. Med 7 gear har du nok til både bakker og modvind i byen.</p>
+<p>Centurion Le Mans er en klassisk citybike, der er designet og bygget til dig, der pendler, og pakket med de praktiske egenskaber, en citybike skal have. Med 7 gear har du nok til både bakker og modvind i byen.</p>
 <p>Centurion er et af de mest udbredte mærker i danske cykelbutikker, så det er nemt at få service og reservedele.</p>
 HTML,
 			'good'    => [ 'Daglig pendling', 'Dig, der vil have en klassisk citybike' ],
@@ -37,7 +37,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Driftssikker citybike med 7 indvendige Shimano-gear – uden unødige detaljer.',
 			'why'     => <<<'HTML'
-<p>Centurion Basic er ifølge butikken en klassisk citybike skabt til hverdagen, til dig, der vil have en driftssikker cykel uden unødige detaljer. Den har 7 indvendige Shimano-gear.</p>
+<p>Centurion Basic er en klassisk citybike skabt til hverdagen, til dig, der vil have en driftssikker cykel uden unødige detaljer. Den har 7 indvendige Shimano-gear.</p>
 <p>Indvendige gear (navgear) sidder beskyttet inde i baghjulets nav. Det gør dem mindre følsomme over for regn og snavs end udvendige gear, og du kan skifte gear, mens du holder stille – fx ved et lyskryds.</p>
 HTML,
 			'good'    => [ 'Dig, der vil holde prisen nede', 'Lidt vedligeholdelse' ],
@@ -51,7 +51,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Moderne retrocykel med aluminiumsstel og kædeskærm i cyklens farve.',
 			'why'     => <<<'HTML'
-<p>Norden Ellen er ifølge butikken Nordens moderne retrocykel, der forener et nostalgisk design med et moderne look. Den har et aluminiumsstel og en kædeskærm i cyklens lakering, og den fås i mange farver.</p>
+<p>Norden Ellen er Nordens moderne retrocykel, der forener et nostalgisk design med et moderne look. Den har et aluminiumsstel og en kædeskærm i cyklens lakering, og den fås i mange farver.</p>
 <p>Et aluminiumsstel er lettere end et klassisk stålstel, hvilket mærkes, når cyklen skal bæres op ad trapper eller ind i en kælder.</p>
 HTML,
 			'good'    => [ 'Dig, der vil have en cykel med stil', 'Mange farvevalg' ],

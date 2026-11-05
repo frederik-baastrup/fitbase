@@ -23,7 +23,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Foldbart gåbånd på kun 18,8 kg med 1–8 km/t og manuel hældning – let at flytte, nok til rask gang og let jogging.',
 			'why'     => <<<'HTML'
-<p>Camino Premium er et kompakt gåbånd, der ifølge butikken kører fra 1 til 8 km/t, har 6 programmer og en manuel hældning på 8,5–11 %. Det er foldbart og vejer kun 18,8 kg, så det er nemt at flytte og gemme væk.</p>
+<p>Camino Premium er et kompakt gåbånd, der kører fra 1 til 8 km/t, har 6 programmer og en manuel hældning på 8,5–11 %. Det er foldbart og vejer kun 18,8 kg, så det er nemt at flytte og gemme væk.</p>
 <p>Hældningen gør gangen hårdere uden højere fart – en stor fordel på et lille bånd, hvor du ikke kan løbe stærkt.</p>
 HTML,
 			'good'    => [ 'Gang hjemme og under skrivebordet', 'Dig, der skal kunne flytte båndet nemt' ],
@@ -37,7 +37,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Slankt, foldbart løbebånd med op til 14 km/t og støddæmpning – lille, men et rigtigt løbebånd.',
 			'why'     => <<<'HTML'
-<p>Skal du både gå og løbe, er Everfit TFK-355 Slim et godt kompromis. Ifølge butikken har det et slimline, foldbart design, en kraftig DC-motor med op til 14 km/t, 12 programmer og stødabsorbering med 12 elastomerer.</p>
+<p>Skal du både gå og løbe, er Everfit TFK-355 Slim et godt kompromis. Har det et slimline, foldbart design, en kraftig DC-motor med op til 14 km/t, 12 programmer og stødabsorbering med 12 elastomerer.</p>
 <p>Det er stadig et kompakt løbebånd, så det passer bedst til jogging og moderat løb – men det kan meget mere end et fladt gåbånd.</p>
 HTML,
 			'good'    => [ 'Gang og jogging', 'Små boliger, hvor båndet skal foldes væk' ],
@@ -51,7 +51,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Gåbånd med elektronisk hældning, 100 x 40 cm gangflade og app – til effektiv gangtræning.',
 			'why'     => <<<'HTML'
-<p>ASG Hillwalker 600 er lavet til gang med hældning. Ifølge butikken har den elektronisk hældning i niveau 0–6, en gangflade på 100 x 40 cm, 6 programmer og manuel træning, og den er Bluetooth App Ready til blandt andre FIIT Home, Kinomap og Zwift.</p>
+<p>ASG Hillwalker 600 er lavet til gang med hældning. Har den elektronisk hældning i niveau 0–6, en gangflade på 100 x 40 cm, 6 programmer og manuel træning, og den er Bluetooth App Ready til blandt andre FIIT Home, Kinomap og Zwift.</p>
 <p>Gang med hældning er en af de mest effektive og skånsomme måder at træne kondition på, og her kan du ændre hældningen undervejs.</p>
 HTML,
 			'good'    => [ 'Gang op ad "bakke" hjemme', 'Dig, der vil træne med app' ],

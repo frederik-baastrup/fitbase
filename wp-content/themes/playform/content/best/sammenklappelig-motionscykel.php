@@ -23,7 +23,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Foldbar motionscykel med ryglæn, magnetisk modstand i 8 niveauer og transporthjul.',
 			'why'     => <<<'HTML'
-<p>Toorx BRX-Compact Multi Fit samler det, en sammenklappelig motionscykel skal kunne. Ifølge butikken har den magnetisk bremsesystem med 8 modstandsniveauer, et komfortabelt sæde med ryglæn og justeringsmuligheder, et LCD-display med de vigtigste træningsdata – og den kan foldes og flyttes på transporthjul.</p>
+<p>Toorx BRX-Compact Multi Fit samler det, en sammenklappelig motionscykel skal kunne. Har den magnetisk bremsesystem med 8 modstandsniveauer, et komfortabelt sæde med ryglæn og justeringsmuligheder, et LCD-display med de vigtigste træningsdata – og den kan foldes og flyttes på transporthjul.</p>
 <p>Ryglænet gør en stor forskel for komforten, hvis du cykler længere ture eller har ondt i ryggen.</p>
 HTML,
 			'good'    => [ 'Små hjem', 'Dig, der vil have støtte i ryggen', 'Let og moderat konditionstræning' ],
@@ -37,7 +37,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Klassisk X-bike med ryglæn, 8 magnetiske niveauer og transporthjul – til en lav pris.',
 			'why'     => <<<'HTML'
-<p>Tunturi B25 X-Bike er bygget efter samme opskrift: ifølge butikken har den et ergonomisk sæde med ryglæn, foldbart design med transporthjul og 8 magnetiske modstandsniveauer med et LCD-display, der viser de relevante træningsdata.</p>
+<p>Tunturi B25 X-Bike er bygget efter samme opskrift: har den et ergonomisk sæde med ryglæn, foldbart design med transporthjul og 8 magnetiske modstandsniveauer med et LCD-display, der viser de relevante træningsdata.</p>
 <p>Den er et godt valg, hvis du vil have et kendt mærke til en lav pris og primært skal bruge cyklen til motion et par gange om ugen.</p>
 HTML,
 			'good'    => [ 'Dig, der vil holde prisen nede', 'Små hjem og let motion' ],
@@ -51,7 +51,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Pladsbesparende foldbar motionscykel med 8 modstandsniveauer til under 1.000 kr.',
 			'why'     => <<<'HTML'
-<p>Odin B100 er den billigste vej til en foldbar motionscykel. Butikken beskriver den som pladsbesparende og brugervenlig med 8 modstandsniveauer, som du let indstiller.</p>
+<p>Odin B100 er den billigste vej til en foldbar motionscykel. Den er pladsbesparende og brugervenlig med 8 modstandsniveauer, som du let indstiller.</p>
 <p>Den passer til dig, der vil prøve at cykle hjemme uden at bruge mange penge. Bruger du den meget, eller vejer du meget, er det værd at vælge en mere solid model.</p>
 HTML,
 			'good'    => [ 'Lavt budget', 'Let motion og nybegyndere' ],

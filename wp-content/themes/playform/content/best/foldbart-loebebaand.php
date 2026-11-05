@@ -26,7 +26,7 @@ HTML,
 			],
 			'verdict' => 'Et af de mest anmeldte foldbare løbebånd: 3 HK motor, 20 km/t, 15 % stigning og Bluetooth.',
 			'why'     => <<<'HTML'
-<p>Sole F63 er et af de løbebånd, der oftest dukker op i udenlandske anmeldelser af løbebånd til hjemmet – også af uafhængige testsites som Garage Gym Reviews. Butikken oplyser en 3 HK motor, op til 20 km/t, 15 % stigning og Bluetooth, og at båndet er kompakt og foldbart.</p>
+<p>Sole F63 er et af de løbebånd, der oftest dukker op i udenlandske anmeldelser af løbebånd til hjemmet – også af uafhængige testsites som Garage Gym Reviews. Med en 3 HK motor, op til 20 km/t, 15 % stigning og Bluetooth er der kræfter nok, og båndet er kompakt og foldbart.</p>
 <p>Det er altså et løbebånd, der kan bruges til rigtig løbetræning og ikke kun gang, og som stadig kan klappes sammen. Anmeldelserne er af den amerikanske udgave; detaljer kan afvige en smule fra den europæiske, så tjek specifikationerne hos butikken.</p>
 HTML,
 			'good'    => [ 'Dig, der løber og ikke kun går', 'Dig, der vil have stigning til bakketræning', 'Dig, der vil have et løbebånd med anmeldelser at læne sig op ad' ],
@@ -40,7 +40,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Kompakt, nemt at folde og med 19 programmer, stigning og Bluetooth – til under 7.000 kr.',
 			'why'     => <<<'HTML'
-<p>Tunturi Cardio Fit T25 er et kompakt foldbart løbebånd, der ifølge butikken er let at folde sammen. Det har 19 programmer, 3 stigningsniveauer og Bluetooth med app-kompatibilitet.</p>
+<p>Tunturi Cardio Fit T25 er et kompakt foldbart løbebånd, der er let at folde sammen. Det har 19 programmer, 3 stigningsniveauer og Bluetooth med app-kompatibilitet.</p>
 <p>Det er et godt bud til dig, der mest vil gå og løbe roligt, og som har brug for, at løbebåndet hurtigt kan komme af vejen. Til hård intervaltræning og høje hastigheder bør du kigge i en højere prisklasse.</p>
 HTML,
 			'good'    => [ 'Gang og let løb', 'Dig, der folder løbebåndet sammen efter hver tur', 'Dig, der vil holde prisen nede' ],
@@ -54,7 +54,7 @@ HTML,
 			'reviews' => [],
 			'verdict' => 'Kun 10 cm tykt og op til 10 km/t – et gå- og løbebånd, der kan gemmes under sengen eller sofaen.',
 			'why'     => <<<'HTML'
-<p>Toorx Street Compact er for dig, hvor pladsen er det vigtigste. Ifølge butikken er det kun 10 cm tykt og fylder 0,07 m², det går op til 10 km/t, styres med fjernbetjening og har støddæmpning med 4 elastomer-cushions, et LED-display og 12 programmer.</p>
+<p>Toorx Street Compact er for dig, hvor pladsen er det vigtigste. Er det kun 10 cm tykt og fylder 0,07 m², det går op til 10 km/t, styres med fjernbetjening og har støddæmpning med 4 elastomer-cushions, et LED-display og 12 programmer.</p>
 <p>Det er et gå- og løbebånd til rask gang og let jogging – ikke til løbetræning i højt tempo. Til gengæld kan det gemmes væk på steder, hvor et almindeligt løbebånd aldrig ville kunne være.</p>
 HTML,
 			'good'    => [ 'Gang, også mens du arbejder', 'Meget små boliger', 'Dig, der vil kunne gemme løbebåndet helt væk' ],
