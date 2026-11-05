@@ -1368,3 +1368,8 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 .review-card__body span { font-size: 14px; color: #BDBDB6; text-decoration: underline; text-underline-offset: 3px; }
 .review-card__go { flex: 0 0 auto; color: #fff; opacity: .7; }
 @media (max-width: 640px) { .review-card { padding: 16px; gap: 12px; } .review-card__icon { width: 36px; height: 36px; } .review-card__body b { font-size: 15.5px; } .review-card__go { display: none; } }
+
+/* Sådan fungerer … (inc/how.php) */
+.how .lead { font-size: 17px; line-height: 1.7; color: var(--ink); }
+.how h2 { margin-top: 36px; }
+.how .note { font-size: 13px; color: var(--ink-3, var(--ink-2)); }
