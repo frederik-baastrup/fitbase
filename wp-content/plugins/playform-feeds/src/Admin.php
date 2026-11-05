@@ -15,6 +15,7 @@ final class Admin {
 		add_action( 'admin_menu', [ self::class, 'menu' ] );
 		add_action( 'admin_post_playform_run_import', [ self::class, 'queue_import' ] );
 		add_action( 'admin_post_playform_save_ai', [ self::class, 'save_ai' ] );
+		add_action( 'admin_post_playform_ai_test', [ self::class, 'ai_test' ] );
 		add_action( 'admin_post_playform_clear_cache', [ self::class, 'clear_cache' ] );
 		add_action( 'wp_ajax_playform_import_step', [ self::class, 'ajax_step' ] );
 	}
@@ -175,6 +176,17 @@ final class Admin {
 		];
 	}
 
+	public static function ai_test(): void {
+		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+			wp_die( 'Ingen adgang' );
+		}
+		check_admin_referer( 'playform_ai_test' );
+		@set_time_limit( 300 ); // phpcs:ignore
+		Cron::write_texts( 3 );
+		wp_safe_redirect( admin_url( 'tools.php?page=playform-feeds' ) );
+		exit;
+	}
+
 	public static function save_ai(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_die( 'Ingen adgang' );
@@ -286,7 +298,13 @@ final class Admin {
 			}
 			echo '</tbody></table>';
 		}
-		echo '<h2>AI</h2><form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '">';
+		$st = (array) get_option( 'playform_ai_status', [] );
+		echo '<h2>AI</h2>';
+		echo '<p><strong>Produkttekster:</strong> ' . ( $st ? esc_html( sprintf( 'Seneste kørsel %s: %d skrevet', $st['time'] ?? '', (int) ( $st['done'] ?? 0 ) ) ) . ( ! empty( $st['error'] ) ? ' – <span style="color:#b32d2e">fejl: ' . esc_html( $st['error'] ) . '</span>' : '' ) : 'har ikke kørt endnu (kører efter hver fuld import).' ) . '</p>';
+		echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" style="margin-bottom:12px">';
+		wp_nonce_field( 'playform_ai_test' );
+		echo '<input type="hidden" name="action" value="playform_ai_test"><button class="button">Skriv 3 tekster nu</button> <span class="description">Test af nøgle og kredit – tager ca. et minut.</span></form>';
+		echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '">';
 		wp_nonce_field( 'playform_save_ai' );
 		echo '<input type="hidden" name="action" value="playform_save_ai"><table class="form-table"><tr><th><label for="api_key">Claude API-nøgle</label></th><td>';
 		if ( defined( 'PLAYFORM_ANTHROPIC_API_KEY' ) ) {

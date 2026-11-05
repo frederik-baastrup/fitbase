@@ -54,19 +54,34 @@ final class Cron {
 			error_log( 'Fitbase linktjek: ' . $e->getMessage() ); // phpcs:ignore
 		}
 		if ( ! Ai::enabled() ) {
+			update_option( 'playform_ai_status', [ 'time' => current_time( 'mysql' ), 'done' => 0, 'error' => 'Der er ingen API-nøgle.' ], false );
 			return 0;
 		}
-		AiClassifier::run( 400 );
+		$error = '';
+		try {
+			AiClassifier::run( 400 );
+		} catch ( \Throwable $e ) {
+			$error = 'Sortering: ' . $e->getMessage(); // stop ikke teksterne, fordi sorteringen fejler
+		}
 		$n    = (int) get_option( 'playform_ai_texts_per_run', 100 );
-		$done = 0;
-		foreach ( $n > 0 ? AiWriter::queue( $n ) : [] as $id ) {
+		$done = self::write_texts( $n, $error );
+		return $done;
+	}
+
+	/** Skriver op til $n nye tekster og gemmer status (vises under Værktøjer → Playform Feeds). */
+	public static function write_texts( int $n, string $error = '' ): int {
+		$done  = 0;
+		$queue = $n > 0 ? AiWriter::queue( $n ) : [];
+		foreach ( $queue as $id ) {
 			try {
 				AiWriter::generate( (int) $id );
 				++$done;
 			} catch ( \Throwable $e ) {
-				break; // fx manglende kredit eller dagens loft – prøv igen næste gang
+				$error = $e->getMessage(); // fx manglende kredit eller dagens loft – prøv igen næste gang
+				break;
 			}
 		}
+		update_option( 'playform_ai_status', [ 'time' => current_time( 'mysql' ), 'done' => $done, 'queued' => count( $queue ), 'error' => $error ], false );
 		return $done;
 	}
 }
