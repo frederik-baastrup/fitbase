@@ -9,7 +9,7 @@ return [
 	'black-friday' => <<<'HTML'
 <h2>Black Friday på fitnessudstyr – sådan finder du de gode tilbud</h2>
 <p>Black Friday er blevet til Black Month. Mange danske webshops sætter allerede i starten af november priserne ned på fitnessudstyr, og tilbuddene fortsætter hen over Black Friday, Black Weekend og Cyber Monday. Samtidig er det lige før nytårsforsætterne, så det er et oplagt tidspunkt at få hjemmetræningen på plads.</p>
-<p>Vi samler tilbuddene ét sted. Vi henter priser og lagerstatus fra danske webshops to gange i døgnet, og her på siden ser du de varer, butikkerne selv har sat på tilbud. Du handler direkte hos butikken, når du har fundet det, du skal bruge.</p>
+<p>Vi samler tilbuddene ét sted. Vi henter priser og lagerstatus fra de danske webshops, vi samarbejder med, to gange i døgnet, og her på siden ser du de varer, butikkerne selv har sat på tilbud. Du handler direkte hos butikken, når du har fundet det, du skal bruge.</p>
 
 <h3>Black Friday-tilbud på løbebånd</h3>
 <p>{cat:lobebaand|Løbebånd} er blandt de mest søgte varer op til Black Friday. Her finder du tilbud på {cat:foldbart-lobebaand|foldbare løbebånd}, der kan stilles væk efter brug, {cat:gaabaand|gåbånd} til hjemmekontoret, {cat:lobebaand-med-incline|løbebånd med incline}, {cat:manuelt-lobebaand|manuelle løbebånd} og {cat:lobebaand-til-tunge-brugere|løbebånd til tunge brugere}.</p>
