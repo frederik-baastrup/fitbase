@@ -49,11 +49,6 @@ function playform_icon( string $name, int $size = 20, float $stroke = 1.6 ): str
 		'clock'       => '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
 		'calendar'    => '<rect x="4" y="5.5" width="16" height="14" rx="2"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/>',
 		'product'     => '<rect x="4" y="15" width="15" height="3" rx="1.5"/><path d="M15 15l2-8h3"/><path d="M16 11h3"/>',
-		'bottle'      => '<path d="M10 3h4v2.5l1.5 2V20a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V7.5L10 5.5z"/><path d="M8.5 11h7M8.5 16h7"/>',
-		'dumbbell'    => '<path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/>',
-		'roller'      => '<rect x="3" y="9" width="18" height="6.5" rx="3.25"/><ellipse cx="6.25" cy="12.25" rx="1.2" ry="3.25"/><path d="M10 11v2.5M13.5 11v2.5M17 11v2.5"/>',
-		'treadmill'   => '<path d="M3 18h15l3-2"/><path d="M5 18v2M17 18v2"/><path d="M16 17.5L18.5 6H21"/><circle cx="10" cy="5" r="1.6"/><path d="M8.5 15l1.5-4-2-1.5 2-2.5 2.5 2 2 .5M10 11l2 2v2"/>',
-		'yoga'        => '<circle cx="12" cy="5" r="1.8"/><path d="M12 8.5v6M6 11l6 1.5 6-1.5"/><path d="M6 19c2-2 4-3 6-4.5 2 1.5 4 2.5 6 4.5"/><path d="M4 21h16"/>',
 	];
 	return sprintf(
 		'<svg width="%1$d" height="%1$d" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="%2$s" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">%3$s</svg>',
