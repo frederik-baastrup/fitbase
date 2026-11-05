@@ -5,7 +5,7 @@
 		<div class="foot">
 			<div class="foot__about">
 				<img src="<?php echo esc_url( playform_asset( 'logo-white.svg' ) ); ?>" alt="Fitbase" width="146" height="26">
-				<p>Vi samler fitnessudstyr fra danske webshops ét sted, så du nemt kan finde rundt i hele udvalget.</p>
+				<p>Fitnessudstyr fra danske webshops, samlet på én side – så du hurtigt får overblik, før du køber.</p>
 				<span>kontakt@fitbase.dk</span>
 			</div>
 			<div class="foot__col">
@@ -38,7 +38,7 @@
 			</div>
 		</div>
 		<div class="foot__bottom">
-			<span>fitbase.dk indeholder annoncer. Når du klikker videre og handler hos en af vores partnere, kan vi modtage en provision. Det koster ikke dig noget ekstra. Priser og lagerstatus kan have ændret sig siden seneste opdatering.</span>
+			<span>fitbase.dk indeholder annoncer. Handler du hos en af vores partnere efter at have klikket videre herfra, kan vi få en provision – uden at det koster dig ekstra. Priser og lager kan være ændret, siden vi sidst opdaterede.</span>
 			<span>© <?php echo esc_html( wp_date( 'Y' ) ); ?> fitbase.dk · Mondae · CVR 37208329 · <button type="button" class="foot__link" data-cc-open>Cookie-indstillinger</button></span>
 		</div>
 	</div>

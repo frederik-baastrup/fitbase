@@ -46,14 +46,14 @@ if ( $campaign ) {
 } elseif ( $offers ) {
 	$title = $is_cat ? 'Tilbud på ' . mb_strtolower( $label ) : 'Tilbud';
 	$intro = sprintf(
-		'Her er %s, som butikkerne selv har sat på tilbud lige nu. Vi viser kun tilbud, der højst er %d dage gamle, og prisen er butikkens egen – tjek altid den endelige pris hos butikken.',
+		'Butikkerne har selv sat %s på tilbud lige nu – og det er dem, du finder her. Et tilbud kommer kun med, når det er højst %d dage gammelt, og prisen er butikkens egen, så tjek altid den endelige pris, inden du slår til.',
 		$is_cat ? mb_strtolower( $label ) : 'fitnessudstyr',
 		class_exists( '\Playform\Feeds\Sales' ) ? \Playform\Feeds\Sales::DAYS : 14
 	);
 } elseif ( $is_cat ) {
 	$title = $term->name;
 	$intro = $term->description ?: sprintf(
-		'Se %s fra flere danske webshops samlet ét sted. Priser og lagerstatus opdateres to gange i døgnet, og du handler direkte hos butikken.',
+		'Find %s fra en række danske webshops på én side. Pris og lager hentes to gange om dagen, og selve købet foregår hos butikken.',
 		mb_strtolower( $label )
 	);
 } elseif ( $search !== '' ) {
@@ -167,7 +167,7 @@ global $wp_query;
 		</aside>
 
 		<div class="results">
-			<p class="adline"><b>Annonce</b><span>Siden indeholder reklamelinks. Vi får provision, hvis du handler hos en butik via dem. <a href="<?php echo esc_url( home_url( '/saadan-tjener-vi-penge/' ) ); ?>">Sådan tjener vi penge</a></span></p>
+			<p class="adline"><b>Annonce</b><span>Siden indeholder reklamelinks. Handler du hos en butik via et af dem, får vi provision. <a href="<?php echo esc_url( home_url( '/saadan-tjener-vi-penge/' ) ); ?>">Sådan tjener vi penge</a></span></p>
 
 			<div class="results__bar">
 				<button type="button" class="filterbtn" data-filter-btn aria-expanded="false"><?php echo playform_icon( 'filter', 16, 1.8 ); // phpcs:ignore ?>Filtrer<?php $n_act = count( array_filter( $state['tags'], static fn( $t ) => ! str_starts_with( $t['label'], '"' ) ) ); echo $n_act ? '<span class="filterbtn__n">' . (int) $n_act . '</span>' : ''; ?></button>
@@ -239,19 +239,19 @@ global $wp_query;
 				<div class="empty">
 					<?php if ( $offers && ! $state['tags'] ) : ?>
 						<b>Ingen tilbud<?php echo $is_cat ? ' på ' . esc_html( mb_strtolower( $label ) ) : ''; ?> lige nu</b>
-						<span>Vi viser kun tilbud, som butikkerne selv har markeret, og som højst er <?php echo (int) ( class_exists( '\Playform\Feeds\Sales' ) ? \Playform\Feeds\Sales::DAYS : 14 ); ?> dage gamle. Kig forbi igen – priserne opdateres to gange i døgnet.</span>
+						<span>Her kommer kun tilbud med, som butikken selv har markeret, og som er højst <?php echo (int) ( class_exists( '\Playform\Feeds\Sales' ) ? \Playform\Feeds\Sales::DAYS : 14 ); ?> dage gamle. Prøv igen senere – vi henter nye priser to gange om dagen.</span>
 						<?php if ( $is_cat ) : ?><a class="btn" href="<?php echo esc_url( get_term_link( $term ) ); ?>">Se alle <?php echo esc_html( mb_strtolower( $label ) ); ?></a><?php endif; ?>
 					<?php elseif ( in_array( 'tilbud', playform_active_filters()['egenskab'] ?? [], true ) ) : ?>
 						<b>Ingen tilbud matcher dine filtre</b>
-						<span>Vi viser kun tilbud, som butikkerne selv har markeret, og som højst er 14 dage gamle. Prøv at fjerne et filter.</span>
+						<span>Kun tilbud, som butikken selv har markeret inden for de seneste 14 dage, kommer med. Prøv at fjerne et filter.</span>
 						<a class="btn" href="<?php echo esc_url( playform_reset_url() ); ?>">Nulstil filtre</a>
 					<?php elseif ( playform_active_filters() ) : ?>
 						<b>Ingen produkter matcher dine filtre</b>
-						<span>Prøv at fjerne et eller flere filtre.</span>
+						<span>Prøv at slå et eller flere filtre fra.</span>
 						<a class="btn" href="<?php echo esc_url( playform_reset_url() ); ?>">Nulstil filtre</a>
 					<?php else : ?>
 						<b>Ingen produkter i kategorien lige nu</b>
-						<span>Butikkerne har ikke varer på lager her i øjeblikket. Udvalget opdateres to gange i døgnet – kig forbi igen.</span>
+						<span>Lige nu har butikkerne ingen varer på lager i denne kategori. Vi opdaterer udvalget to gange om dagen, så prøv igen senere.</span>
 						<a class="btn" href="<?php echo esc_url( home_url( '/' ) ); ?>">Til forsiden</a>
 					<?php endif; ?>
 				</div>

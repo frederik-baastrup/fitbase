@@ -71,7 +71,7 @@ $featured = $paged === 1 && $posts ? array_shift( $posts ) : null;
 		</div>
 	<?php endif; ?>
 	<?php if ( ! $featured && ! $posts ) : ?>
-		<p class="muted">Der er ingen guides her endnu.</p>
+		<p class="muted">Her er ingen guides endnu.</p>
 	<?php endif; ?>
 	<?php the_posts_pagination( [ 'prev_text' => '‹', 'next_text' => '›' ] ); ?>
 </section>

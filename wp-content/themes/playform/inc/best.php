@@ -87,18 +87,18 @@ add_shortcode(
 		$picks = (array) get_post_meta( get_the_ID(), '_pf_picks', true );
 		$with  = count( array_filter( $picks, static fn( $p ) => ! empty( $p['reviews'] ) ) );
 		if ( $picks && $with === count( $picks ) ) {
-			$how = 'Vi har ikke selv testet produkterne. Vores valg bygger på uafhængige anmeldelser fra andre medier – dem linker vi til ved hvert produkt – og på specifikationer, pris og garanti fra butikkerne.';
+			$how = 'Produkterne har vi ikke selv testet. Valgene bygger på uafhængige anmeldelser fra andre medier, som vi linker til ved hvert produkt, samt på specifikationer, pris og garanti fra butikkerne.';
 			$sel = 'anmeldelser og produktdata';
 		} elseif ( $with > 0 ) {
-			$how = 'Vi har ikke selv testet produkterne. Ved de produkter, der er anmeldt af uafhængige medier, linker vi til anmeldelserne. De øvrige er vores egen vurdering ud fra specifikationer, pris og garanti fra butikkerne – det står ved produktet.';
+			$how = 'Produkterne har vi ikke selv testet. Hvor et produkt er anmeldt af et uafhængigt medie, linker vi til anmeldelsen. Resten er vores egen vurdering ud fra specifikationer, pris og garanti fra butikkerne – og det står ved produktet.';
 			$sel = 'anmeldelser og produktdata';
 		} else {
-			$how = 'Vi har ikke selv testet produkterne. Valgene er vores egen vurdering ud fra specifikationer, materialer, pris og garanti fra butikkerne.';
+			$how = 'Produkterne har vi ikke selv testet. Valgene er vores egen vurdering af specifikationer, materialer, pris og garanti ud fra butikkernes oplysninger.';
 			$sel = 'produktdata';
 		}
 		return '<aside class="method"><span class="method__title">' . playform_icon( 'check', 16, 1.6 ) . 'Sådan har vi valgt</span>'
 			. '<p>' . $how . '</p>'
-			. '<p>Priser og lagerstatus opdateres to gange i døgnet. Vi får provision, hvis du køber via vores links, men valgene er truffet ud fra ' . $sel . ', ikke ud fra provision. <a href="' . $money . '">Sådan tjener vi penge</a>.</p></aside>';
+			. '<p>Pris og lager hentes to gange i døgnet. Køber du via vores links, får vi provision – men valgene bygger på ' . $sel . ', ikke på provision. <a href="' . $money . '">Sådan tjener vi penge</a>.</p></aside>';
 	}
 );
 
@@ -121,7 +121,7 @@ add_shortcode(
 		}
 		$n = count( playform_picks() );
 		$kw = (string) get_post_meta( get_the_ID(), '_pf_keyword', true );
-		$t  = ( $n === 3 ? 'Vores top 3' : 'Vores valg' ) . ( $kw ? ': bedste ' . $kw . ' kort fortalt' : ' kort fortalt' );
+		$t  = ( $n === 3 ? 'Vores top 3' : 'Vores valg' ) . ( $kw ? ': bedste ' . $kw . ' i korte træk' : ' i korte træk' );
 		return $out ? '<div class="tldr"><span class="tldr__title">' . esc_html( $t ) . '</span>' . $out . '</div>' : '';
 	}
 );
@@ -142,14 +142,14 @@ add_shortcode(
 			if ( $alts ) {
 				$a        = playform_card_data( $alts[0] );
 				$ao       = playform_pick_offer( $alts[0]->get_id() );
-				$alt_html = '<div class="pick-alt"><span class="pick-alt__label">' . ( $p ? 'Ikke på lager lige nu' : 'Ikke længere i butikkerne' ) . ' – et alternativ i samme prisklasse:</span>'
+				$alt_html = '<div class="pick-alt"><span class="pick-alt__label">' . ( $p ? 'Udsolgt lige nu' : 'Ikke længere i butikkerne' ) . ' – her er et alternativ i samme prisklasse:</span>'
 					. '<a class="pick-alt__item" href="' . esc_url( $a['url'] ) . '">' . ( $a['image'] ? '<img src="' . esc_url( $a['image'] ) . '" alt="" loading="lazy">' : '' )
 					. '<span><b>' . esc_html( $a['name'] ) . '</b><small>' . esc_html( playform_kr( $a['price'] ) . ' · Hos ' . $a['shop'] ) . '</small></span></a>'
-					. ( $ao ? '<a class="pick-alt__cta" href="' . esc_url( playform_aff_url( $ao['url'], get_post_field( 'post_name', $alts[0]->get_id() ), get_post_field( 'post_name', get_the_ID() ) . '-alternativ' ) ) . '" rel="sponsored nofollow noopener" referrerpolicy="strict-origin-when-cross-origin" target="_blank">Se pris</a><span class="adnote pick-alt__ad"><b>Annonce</b>Provision ved køb</span>' : '' ) . '</div>';
+					. ( $ao ? '<a class="pick-alt__cta" href="' . esc_url( playform_aff_url( $ao['url'], get_post_field( 'post_name', $alts[0]->get_id() ), get_post_field( 'post_name', get_the_ID() ) . '-alternativ' ) ) . '" rel="sponsored nofollow noopener" referrerpolicy="strict-origin-when-cross-origin" target="_blank">Se pris</a><span class="adnote pick-alt__ad"><b>Annonce</b>Vi får provision ved køb</span>' : '' ) . '</div>';
 			}
 		}
 		if ( ! $p ) {
-			return '<div class="pick pick--gone"><p>Produktet findes ikke længere hos vores butikker.</p>' . $alt_html . '</div>';
+			return '<div class="pick pick--gone"><p>Produktet føres ikke længere af vores butikker.</p>' . $alt_html . '</div>';
 		}
 		$id    = $p->get_id();
 		$d     = playform_card_data( $p );
@@ -176,7 +176,7 @@ add_shortcode(
 						?>
 					</span>
 				<?php else : ?>
-					<span class="pick__basis">Vores vurdering ud fra specifikationer, pris og garanti</span>
+					<span class="pick__basis">Vores vurdering – bygget på specifikationer, pris og garanti</span>
 				<?php endif; ?>
 				<?php if ( $facts ) : ?>
 					<ul class="pick__facts"><?php foreach ( $facts as $f ) : ?><li><?php echo esc_html( $f ); ?></li><?php endforeach; ?></ul>
@@ -188,12 +188,12 @@ add_shortcode(
 							<?php if ( $d['was'] > $d['price'] ) : ?><s title="<?php echo 'shop' === ( $d['was_src'] ?? '' ) ? 'Butikkens førpris' : 'Laveste pris de 30 dage før tilbuddet'; ?>"><?php echo esc_html( playform_kr( $d['was'] ) ); ?></s><?php endif; ?>
 							<small><?php echo esc_html( $d['sale'] ? 'Tilbud hos ' . $d['shop'] : ( $d['shops'] > 1 ? 'Billigst hos ' . $d['shop'] . ' · ' . $d['shops'] . ' butikker' : 'Hos ' . $d['shop'] ) ); ?></small>
 						<?php else : ?>
-							<b class="pick__out">Ikke på lager lige nu</b>
+							<b class="pick__out">Udsolgt lige nu</b>
 						<?php endif; ?>
 					</div>
 					<?php if ( $offer ) : ?>
 						<a class="btn-shop pick__cta" href="<?php echo esc_url( playform_aff_url( $offer['url'], get_post_field( 'post_name', $p->get_id() ), get_post_field( 'post_name', get_the_ID() ) ) ); ?>" rel="sponsored nofollow noopener" referrerpolicy="strict-origin-when-cross-origin" target="_blank">Se pris hos <?php echo esc_html( $offer['shop'] ); ?> <?php echo playform_icon( 'external', 16 ); // phpcs:ignore ?></a>
-						<span class="adnote pick__adnote"><b>Annonce</b>Vi får provision ved køb via knappen.</span>
+						<span class="adnote pick__adnote"><b>Annonce</b>Køber du via knappen, får vi provision.</span>
 					<?php else : ?>
 						<a class="pick__more" href="<?php echo esc_url( $d['url'] ); ?>">Se produktet</a>
 					<?php endif; ?>
@@ -221,7 +221,7 @@ add_shortcode(
 				. ( $d['in_stock'] ? esc_html( playform_kr( $d['price'] ) ) : 'Ikke på lager' ) . '</td><td>' . esc_html( implode( ' · ', playform_pick_facts( $p->get_id() ) ) ?: '–' ) . '</td><td>'
 				. ( empty( $pick['reviews'] ) ? 'Vores vurdering' : 'Anmeldt' ) . '</td></tr>';
 		}
-		return $rows ? '<table><thead><tr><th>Model</th><th>Bedst til</th><th>Pris lige nu</th><th>Fakta</th><th>Grundlag</th></tr></thead><tbody>' . $rows . '</tbody></table>' : '';
+		return $rows ? '<table><thead><tr><th>Model</th><th>Bedst til</th><th>Pris nu</th><th>Fakta</th><th>Grundlag</th></tr></thead><tbody>' . $rows . '</tbody></table>' : '';
 	}
 );
 
@@ -273,13 +273,13 @@ add_shortcode(
 		$label = $term instanceof WP_Term ? mb_strtolower( playform_cat_label( $term ) ) : '';
 		if ( count( $sale ) >= min( 4, $n ) ) {
 			$title = $label ? 'Tilbud på ' . $label . ' lige nu' : 'Tilbud lige nu';
-			$note  = 'Butikkernes egne tilbud, højst ' . ( class_exists( '\\Playform\\Feeds\\Sales' ) ? \Playform\Feeds\Sales::DAYS : 14 ) . ' dage gamle – ikke en del af vores anbefaling. Tjek altid den endelige pris hos butikken.';
+			$note  = 'Tilbud, som butikken selv har markeret – højst ' . ( class_exists( '\\Playform\\Feeds\\Sales' ) ? \Playform\Feeds\Sales::DAYS : 14 ) . ' dage gamle og ikke en del af vores anbefaling. Den endelige pris tjekker du altid hos butikken.';
 		} elseif ( $sale ) {
 			$title = 'Tilbud og populære modeller';
-			$note  = 'Butikkernes egne tilbud først, derefter et skiftende udvalg af modeller på lager – ikke en del af vores anbefaling.';
+			$note  = 'Først butikkernes egne tilbud, så et skiftende udvalg af modeller på lager. Ingen af dem er en del af vores anbefaling.';
 		} else {
 			$title = 'Flere populære modeller';
-			$note  = 'Et skiftende udvalg af modeller på lager hos vores butikker – ikke en del af vores anbefaling.';
+			$note  = 'Et udvalg af modeller på lager hos vores butikker, som skifter løbende. De er ikke en del af vores anbefaling.';
 		}
 		ob_start();
 		echo '<h2>' . esc_html( $title ) . '</h2><p class="more-note">' . esc_html( $note ) . '</p><div class="grid grid--4 guide-products">';
@@ -530,13 +530,13 @@ function playform_guide_test_note( array $a ): string {
 		$rev = $rev || ! empty( $pk['reviews'] );
 	}
 	$h  = '<h2>' . esc_html( mb_strtoupper( mb_substr( playform_guide_keyword( $a ), 0, 1 ) ) . mb_substr( playform_guide_keyword( $a ), 1 ) ) . " test – er det her en test?</h2>\n";
-	$h .= '<p>Mange søger efter en <b>' . $kw . ' test</b> eller "bedste ' . $kw . ' i test", når de skal vælge. Det her er ikke en ' . $kw . ' test – vi har ikke selv testet produkterne. '
-		. 'Til gengæld har vi gjort forarbejdet for dig: Vores bud på bedste ' . $kw . ' bygger på butikkernes produktdata, priser og lagerstatus'
-		. ( $rev ? ' og på uafhængige anmeldelser og tests fra andre medier af præcis de samme modeller' : '' ) . ".</p>\n";
+	$h .= '<p>Når man skal vælge, søger mange på <b>' . $kw . ' test</b> eller "bedste ' . $kw . ' i test". Det her er ikke en ' . $kw . ' test, for vi har ikke selv haft produkterne til test. '
+		. 'Vi har til gengæld gjort benarbejdet: Vores bud på bedste ' . $kw . ' bygger på produktdata, priser og lagerstatus fra butikkerne'
+		. ( $rev ? ' – og på uafhængige anmeldelser og tests af præcis de samme modeller fra andre medier' : '' ) . ".</p>\n";
 	$h .= '<p>' . ( $rev
-		? 'Vil du læse en egentlig ' . $kw . ' test, så følg linkene til anmeldelserne ved de enkelte modeller ovenfor.'
-		: 'Finder du en ' . $kw . ' test fra et uafhængigt medie, er det en god idé at sammenligne den med valgene her. Hvor der findes anmeldelser af præcis samme model, linker vi til dem.' )
-		. ' Priser og lager opdateres to gange i døgnet, så du kan se den aktuelle pris hos de butikker, vi samarbejder med.</p>' . "\n";
+		? 'Vil du læse en rigtig ' . $kw . ' test, så gå til anmeldelserne, som vi linker til ved hver model ovenfor.'
+		: 'Støder du på en ' . $kw . ' test fra et uafhængigt medie, kan det betale sig at holde den op mod valgene her. Findes der anmeldelser af præcis samme model, linker vi til dem.' )
+		. ' Pris og lager hentes to gange i døgnet, så du altid ser den aktuelle pris hos de butikker, vi samarbejder med.</p>' . "\n";
 	return $h;
 }
 
@@ -565,7 +565,7 @@ function playform_best_html( array $a ): string {
 				$h   .= '<a class="review-card" href="' . esc_url( $r[1] ) . '" target="_blank" rel="noopener">'
 					. '<span class="review-card__icon">' . playform_icon( 'check', 20, 2 ) . '</span>'
 					. '<span class="review-card__body"><small>Uafhængig anmeldelse</small><b>Anmeldelse af ' . esc_html( $pk['name'] ) . ' hos ' . esc_html( $r[0] ) . '</b>'
-					. '<span>Læs hele anmeldelsen hos ' . esc_html( $host ) . '</span></span>'
+					. '<span>Læs anmeldelsen i sin helhed hos ' . esc_html( $host ) . '</span></span>'
 					. '<span class="review-card__go">' . playform_icon( 'external', 18 ) . "</span></a>\n";
 			}
 			if ( ! empty( $pk['good'] ) || ! empty( $pk['less'] ) ) {
@@ -574,7 +574,7 @@ function playform_best_html( array $a ): string {
 			}
 		}
 		if ( count( $a['picks'] ) > 1 ) {
-			$h .= '<h2>Bedste ' . esc_html( playform_guide_keyword( $a ) ) . ': sammenligning af ' . ( count( $a['picks'] ) === 3 ? 'vores top 3' : 'vores valg' ) . "</h2>\n[fitbase_tabel]\n";
+			$h .= '<h2>Bedste ' . esc_html( playform_guide_keyword( $a ) ) . ': ' . ( count( $a['picks'] ) === 3 ? 'vores top 3' : 'vores valg' ) . ' sammenlignet' . "</h2>\n[fitbase_tabel]\n";
 		}
 	}
 	if ( ! empty( $a['more_cat'] ) ) {

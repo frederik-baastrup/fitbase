@@ -108,17 +108,17 @@ while ( have_posts() ) :
 								<?php if ( 'shop' === $d['was_src'] ) : ?>
 									<span class="pricebox__ref">Butikkens førpris <s><?php echo esc_html( playform_kr( $d['was'] ) ); ?></s> · oplyst af <?php echo esc_html( $d['shop'] ); ?></span>
 								<?php else : ?>
-									<span class="pricebox__ref">Førpris <s><?php echo esc_html( playform_kr( $d['was'] ) ); ?></s> · laveste pris hos <?php echo esc_html( $d['shop'] ); ?> de 30 dage før tilbuddet</span>
+									<span class="pricebox__ref">Førpris <s><?php echo esc_html( playform_kr( $d['was'] ) ); ?></s> · laveste pris hos <?php echo esc_html( $d['shop'] ); ?> i de 30 dage op til tilbuddet</span>
 								<?php endif; ?>
 							<?php elseif ( $d['drop'] && $d['ref'] ) : ?>
-								<span class="pricebox__ref">Laveste pris de 30 dage før, målt af os: <?php echo esc_html( playform_kr( $d['ref'] ) ); ?></span>
+								<span class="pricebox__ref">Laveste pris i de 30 dage før, målt af os: <?php echo esc_html( playform_kr( $d['ref'] ) ); ?></span>
 							<?php endif; ?>
 						</div>
 						<span class="stock<?php echo $best && $best['in_stock'] ? ' stock--in' : ''; ?>"><span class="stock__dot"></span><?php echo esc_html( $stock_txt ); ?></span>
 					</div>
 					<?php if ( $best ) : ?>
 						<a href="<?php echo esc_url( playform_aff_url( $best['url'], get_post_field( 'post_name', $id ), 'produktside' ) ); ?>" class="btn-shop" rel="sponsored nofollow noopener" referrerpolicy="strict-origin-when-cross-origin" target="_blank">Se pris hos <?php echo esc_html( $best['shop'] ); ?> <?php echo playform_icon( 'external', 18 ); // phpcs:ignore ?></a>
-						<span class="adnote"><b>Annonce</b>Vi får provision, hvis du køber via knappen.</span>
+						<span class="adnote"><b>Annonce</b>Køber du via knappen, får vi provision.</span>
 						<ul class="pricebox__chips">
 							<?php
 							$bits = [];
@@ -142,7 +142,7 @@ while ( have_posts() ) :
 				<?php endif; ?>
 
 				<?php if ( $best ) : ?>
-					<p class="pd__legal">Du sendes videre til <?php echo esc_html( $best['shop'] ); ?>, hvor du gennemfører købet. Prisen er inkl. moms<?php $u = playform_last_update_label(); echo $u ? ' og blev opdateret ' . esc_html( $u ) : ''; ?>.</p>
+					<p class="pd__legal">Knappen sender dig videre til <?php echo esc_html( $best['shop'] ); ?>, hvor selve købet foregår. Prisen er inkl. moms<?php $u = playform_last_update_label(); echo $u ? ' og blev hentet ' . esc_html( $u ) : ''; ?>.</p>
 				<?php endif; ?>
 			</div>
 		</div>
@@ -150,10 +150,10 @@ while ( have_posts() ) :
 
 	<section class="usps" aria-label="Sådan virker Fitbase">
 		<ul class="wrap usps__in">
-			<li><?php echo playform_icon( 'refresh', 18, 1.4 ); // phpcs:ignore ?><span><b>Opdateret 2× dagligt</b>Pris og lager direkte fra butikken</span></li>
-			<li><?php echo playform_icon( 'store', 18, 1.4 ); // phpcs:ignore ?><span><b>Du handler hos butikken</b>Butikkens vilkår for levering og retur</span></li>
-			<li><?php echo playform_icon( 'tag', 18, 1.4 ); // phpcs:ignore ?><span><b>Butikkernes egne tilbud</b>Højst 14 dage gamle</span></li>
-			<li><?php echo playform_icon( 'grid', 18, 1.4 ); // phpcs:ignore ?><span><b>Udstyr fra flere shops</b>Danske webshops samlet ét sted</span></li>
+			<li><?php echo playform_icon( 'refresh', 18, 1.4 ); // phpcs:ignore ?><span><b>Opdateret 2× dagligt</b>Pris og lager hentes hos butikken</span></li>
+			<li><?php echo playform_icon( 'store', 18, 1.4 ); // phpcs:ignore ?><span><b>Du handler hos butikken</b>Levering og retur efter butikkens vilkår</span></li>
+			<li><?php echo playform_icon( 'tag', 18, 1.4 ); // phpcs:ignore ?><span><b>Butikkernes egne tilbud</b>Aldrig over 14 dage gamle</span></li>
+			<li><?php echo playform_icon( 'grid', 18, 1.4 ); // phpcs:ignore ?><span><b>Udstyr fra flere shops</b>Danske webshops på én side</span></li>
 		</ul>
 	</section>
 
@@ -165,7 +165,7 @@ while ( have_posts() ) :
 	?>
 	<div>
 		<h2>Sammenlign priser</h2>
-		<p class="muted"><?php echo (int) $shops_n; ?> butikker sælger dette produkt. Sorteret efter laveste pris.</p>
+		<p class="muted">Produktet sælges af <?php echo (int) $shops_n; ?> butikker – billigste først.</p>
 		<div class="offers">
 			<?php foreach ( $offers as $i => $o ) : ?>
 				<div class="offer<?php echo $i === 0 ? ' offer--best' : ''; ?>">
@@ -192,7 +192,7 @@ while ( have_posts() ) :
 		?>
 		<div>
 			<h2>Prishistorik</h2>
-			<p class="muted">Laveste pris pr. dag, målt af Fitbase</p>
+			<p class="muted">Dagens laveste pris, registreret af Fitbase</p>
 			<?php get_template_part( 'template-parts/price-chart', null, [ 'history' => $history ] ); ?>
 		</div>
 		<?php
@@ -208,7 +208,7 @@ while ( have_posts() ) :
 			the_content();
 		} else {
 			// Butikkens egen tekst vises ikke (duplicate content) – kun vores egne tekster.
-			echo '<p class="muted">Vores beskrivelse af produktet er på vej. Se specifikationerne herunder for de oplysninger, butikken har.</p>';
+			echo '<p class="muted">Vi er ved at skrive vores egen beskrivelse af produktet. Indtil da finder du butikkens oplysninger under Specifikationer.</p>';
 		}
 		$pros = array_filter( (array) get_post_meta( $id, '_pf_pros', true ) );
 		$cons = array_filter( (array) get_post_meta( $id, '_pf_cons', true ) );
@@ -251,7 +251,7 @@ while ( have_posts() ) :
 			}
 			?>
 		</dl>
-		<p class="specs__note">Oplysningerne stammer fra butikkernes produktdata og kan variere.</p>
+		<p class="specs__note">Tallene kommer fra butikkernes egne produktdata og kan afvige.</p>
 	</div>
 	<?php
 	$specs_html = ob_get_clean();
