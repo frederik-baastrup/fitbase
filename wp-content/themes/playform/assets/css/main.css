@@ -180,7 +180,7 @@ html, body { overflow-x: clip; } /* sikkerhedsnet: intet må gøre siden bredere
 	/* Feltet glider blødt ned under logoet (i stedet for at springe frem) */
 	.search { display: flex; height: 0; border-width: 0; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: height .38s cubic-bezier(.32,.72,0,1), border-width .38s cubic-bezier(.32,.72,0,1), opacity .2s ease, transform .38s cubic-bezier(.32,.72,0,1), visibility 0s linear .38s; }
 	/* Lukket søgefelt fylder intet, så logoet står præcis midt i headeren */
-	.site-header__row { transition: row-gap .38s cubic-bezier(.32,.72,0,1); }
+	.site-header__row { transition: row-gap .38s cubic-bezier(.32,.72,0,1), padding-bottom .38s cubic-bezier(.32,.72,0,1); }
 	.site-header:not(.is-search-open) .site-header__row { row-gap: 0; }
 	.site-header.is-search-open .search { height: 44px; border-width: 1px; opacity: 1; visibility: visible; transform: none; transition: height .38s cubic-bezier(.32,.72,0,1), border-width .38s cubic-bezier(.32,.72,0,1), opacity .28s ease .08s, transform .38s cubic-bezier(.32,.72,0,1), visibility 0s; }
 	/* 16 px, så iPhone ikke zoomer ind – men vist en anelse mindre */
@@ -1379,3 +1379,8 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 .how .lead { font-size: 17px; line-height: 1.7; color: var(--ink); }
 .how h2 { margin-top: 36px; }
 .how .note { font-size: 13px; color: var(--ink-3, var(--ink-2)); }
+
+/* Mobil: åbent søgefelt har samme luft under sig som over (til ikonerne) */
+@media (max-width: 1080px) {
+	.site-header.is-search-open .site-header__row { padding-bottom: 13px; }
+}
