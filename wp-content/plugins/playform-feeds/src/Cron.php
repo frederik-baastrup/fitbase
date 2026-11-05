@@ -11,6 +11,7 @@ final class Cron {
 
 	public static function register(): void {
 		add_action( self::HOOK, [ self::class, 'run' ] );
+		ImageCache::register();
 	}
 
 	public static function schedule(): void {

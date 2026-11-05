@@ -51,7 +51,7 @@ $popular = static function ( string $slug ): array {
 <section class="wrap overview<?php echo count( $cards ) === 2 ? ' overview--2' : ''; ?>">
 	<?php foreach ( $cards as $c ) : ?>
 		<div class="cat">
-			<img class="cat__img" src="<?php echo esc_url( playform_category_image( $c['slug'] ) ); ?>" alt="" loading="lazy">
+			<?php $cimg = playform_category_image( $c['slug'] ); ?><img class="cat__img" src="<?php echo esc_url( $cimg ); ?>"<?php echo playform_srcset( $cimg, '(max-width: 760px) 100vw, 33vw' ); // phpcs:ignore ?> alt="" loading="lazy">
 			<span class="cat__shade"></span>
 			<a class="cat__main" href="<?php echo esc_url( $c['url'] ); ?>" aria-label="<?php echo esc_attr( $c['label'] ); ?>"></a>
 			<div class="cat__body">

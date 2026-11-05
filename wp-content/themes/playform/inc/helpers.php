@@ -9,6 +9,21 @@ function playform_asset( string $file ): string {
 	return get_template_directory_uri() . '/assets/img/' . $file;
 }
 
+/**
+ * srcset til temaets store billeder: findes en "-800.jpg"-udgave ved siden af, får mobilen den (ca. 1/3 af filstørrelsen).
+ */
+function playform_srcset( string $url, string $sizes = '(max-width: 760px) 100vw, 50vw' ): string {
+	$base = get_template_directory_uri() . '/assets/img/';
+	if ( ! str_starts_with( $url, $base ) || ! str_ends_with( $url, '.jpg' ) ) {
+		return '';
+	}
+	$small = substr( $url, 0, -4 ) . '-800.jpg';
+	if ( ! is_file( get_template_directory() . '/assets/img/' . substr( $small, strlen( $base ) ) ) ) {
+		return '';
+	}
+	return ' srcset="' . esc_url( $small ) . ' 800w, ' . esc_url( $url ) . ' 1600w" sizes="' . esc_attr( $sizes ) . '"';
+}
+
 function playform_kr( float $amount ): string {
 	return number_format( round( $amount ), 0, ',', '.' ) . ' kr';
 }

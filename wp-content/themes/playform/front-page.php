@@ -117,11 +117,12 @@ $has_deals = count( $deals ) >= 4;
 ?>
 
 <section class="wrap hero-wrap">
+	<h1 class="screen-reader-text"><?php echo esc_html( playform_site( 'name' ) . ' – ' . playform_site( 'niche' ) . ' fra danske webshops samlet ét sted' ); ?></h1>
 	<div class="hero">
 		<?php foreach ( $hero as $i => $h ) : ?>
 			<?php if ( $i === 1 ) : ?><div class="hero__side"><?php endif; ?>
 			<div class="cat<?php echo ! empty( $h['big'] ) ? ' cat--big' : ''; ?><?php echo $h['desk'] ? '' : ' cat--mob'; ?><?php echo $h['mob'] < 0 ? ' cat--desk' : ''; ?>"<?php echo $h['mob'] >= 0 ? ' style="--mob-order:' . (int) $h['mob'] . '"' : ''; ?>>
-				<img class="cat__img" src="<?php echo esc_url( playform_asset( $h['img'] ) ); ?>" alt="" <?php echo $i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'; ?>>
+				<img class="cat__img" src="<?php echo esc_url( playform_asset( $h['img'] ) ); ?>"<?php echo playform_srcset( playform_asset( $h['img'] ), $i === 0 ? '(max-width: 760px) 100vw, 60vw' : '(max-width: 760px) 80vw, 30vw' ); // phpcs:ignore ?> alt="" <?php echo $i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'; ?>>
 				<span class="cat__shade"></span>
 				<a class="cat__main" href="<?php echo esc_url( playform_category_url( $h['slug'], $h['args'] ?? [] ) ); ?>" aria-label="<?php echo esc_attr( $h['title'] ); ?>"></a>
 				<div class="cat__body">

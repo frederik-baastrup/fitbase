@@ -169,54 +169,25 @@ function playform_catalog_state(): array {
 	if ( $q !== '' || $search !== '' ) {
 		$args['s'] = trim( "$search $q" );
 	}
-	$ids = get_posts( $args );
-	update_meta_cache( 'post', $ids );
-	// Kategorier pr. produkt (inkl. overkategorier) til kategorifilteret – én samlet forespørgsel.
-	$cats_of = [];
-	if ( ! $cat && $ids ) {
-		global $wpdb;
-		$slug_chain = [];
-		$by_id      = [];
-		foreach ( get_terms( [ 'taxonomy' => 'product_cat', 'hide_empty' => false ] ) as $t ) {
-			$by_id[ $t->term_id ] = $t;
-		}
-		foreach ( $by_id as $tid => $t ) {
-			$chain = [];
-			for ( $x = $t; $x; $x = $x->parent ? ( $by_id[ $x->parent ] ?? null ) : null ) {
-				$chain[] = $x->slug;
-			}
-			$slug_chain[ $t->term_taxonomy_id ] = $chain;
-		}
-		$rows = $wpdb->get_results( "SELECT object_id, term_taxonomy_id FROM {$wpdb->term_relationships} WHERE object_id IN (" . implode( ',', array_map( 'intval', $ids ) ) . ')' ); // phpcs:ignore
-		foreach ( $rows as $r ) {
-			foreach ( $slug_chain[ $r->term_taxonomy_id ] ?? [] as $sl ) {
-				$cats_of[ (int) $r->object_id ][ $sl ] = true;
-			}
+	$tilbud = playform_is_tilbud_page();
+	if ( $tilbud ) { // tilbudssider: kun produkter, butikken har på tilbud – i stedet for at læse alle produkter
+		$args['meta_query'] = [ [ 'key' => '_pf_shop_sale', 'compare' => 'EXISTS' ] ];
+	}
+	// Data til filtrene ændrer sig kun ved en import, så de gemmes (undtagen ved søgning) indtil næste import.
+	$cache_key = '';
+	if ( empty( $args['s'] ) ) {
+		$last      = (array) get_option( 'playform_feeds_last_run', [] );
+		$cache_key = 'pf_catmeta_' . md5( $cat . '|' . (int) $tilbud . '|' . ( $last['finished'] ?? '' ) . '|' . PLAYFORM_THEME_VERSION );
+		$cached    = get_transient( $cache_key );
+		if ( is_array( $cached ) ) {
+			$meta = $cached;
 		}
 	}
-
-	$meta = [];
-	foreach ( $ids as $id ) {
-		$all = get_post_meta( $id );
-		$m   = [];
-		foreach ( [ '_price', '_pf_in_stock', '_pf_drop_percent', '_pf_foldable', '_pf_incline', '_pf_max_speed', '_pf_max_weight', '_pf_weight_kg', '_pf_shop_list', '_pf_shop_sale', '_pf_brand', '_pf_sale_ref', '_pf_sale_list' ] as $k ) {
-			if ( isset( $all[ $k ][0] ) ) {
-				$m[ $k ] = $all[ $k ][0];
-			}
+	if ( ! isset( $meta ) ) {
+		$meta = playform_catalog_meta( get_posts( $args ), $cat );
+		if ( $cache_key ) {
+			set_transient( $cache_key, $meta, 12 * HOUR_IN_SECONDS );
 		}
-		// Rabat som på produktkortet: kontrolleret førpris, ellers butikkens førpris (kun på lager).
-		if ( ! empty( $m['_pf_shop_sale'] ) && ! empty( $m['_pf_in_stock'] ) ) {
-			$was       = (float) ( $m['_pf_sale_ref'] ?? 0 ) ?: (float) ( $m['_pf_sale_list'] ?? 0 );
-			$m['_pct'] = playform_save_pct( (float) ( $m['_price'] ?? 0 ), $was );
-		}
-		// Tilbudssider viser kun produkter, butikken har på tilbud.
-		if ( playform_is_tilbud_page() && empty( $m['_pf_shop_sale'] ) ) {
-			continue;
-		}
-		if ( ! $cat ) {
-			$m['_cats'] = array_keys( $cats_of[ $id ] ?? [] );
-		}
-		$meta[ $id ] = $m;
 	}
 
 	$groups = playform_filter_groups();
@@ -440,4 +411,65 @@ function playform_reset_url(): string {
 	}
 	$search = get_search_query();
 	return $search !== '' ? add_query_arg( [ 's' => $search, 'post_type' => 'product' ], home_url( '/' ) ) : get_permalink( wc_get_page_id( 'shop' ) );
+}
+
+/**
+ * Metadata til filtrene for en liste af produkter. Henter kun de felter, filtrene bruger, i få samlede
+ * forespørgsler (get_post_meta pr. produkt indlæste ALLE felter inkl. lange beskrivelser – langsomt på
+ * kategorier med tusindvis af produkter).
+ */
+function playform_catalog_meta( array $ids, string $cat ): array {
+	global $wpdb;
+	$keys = [ '_price', '_pf_in_stock', '_pf_drop_percent', '_pf_foldable', '_pf_incline', '_pf_max_speed', '_pf_max_weight', '_pf_weight_kg', '_pf_shop_list', '_pf_shop_sale', '_pf_brand', '_pf_sale_ref', '_pf_sale_list' ];
+	$ids  = array_map( 'intval', $ids );
+	$raw  = array_fill_keys( $ids, [] );
+	$in_k = "'" . implode( "','", array_map( 'esc_sql', $keys ) ) . "'";
+	foreach ( array_chunk( $ids, 2000 ) as $chunk ) {
+		$rows = $wpdb->get_results( "SELECT post_id, meta_key, meta_value FROM {$wpdb->postmeta} WHERE meta_key IN ($in_k) AND post_id IN (" . implode( ',', $chunk ) . ')', ARRAY_A ); // phpcs:ignore
+		foreach ( $rows as $r ) {
+			$raw[ (int) $r['post_id'] ][ $r['meta_key'] ] ??= $r['meta_value'];
+		}
+	}
+	// Kategorier pr. produkt (inkl. overkategorier) til kategorifilteret – kun på sider på tværs af kategorier.
+	$cats_of = [];
+	if ( ! $cat && $ids ) {
+		$slug_chain = [];
+		$by_id      = [];
+		foreach ( get_terms( [ 'taxonomy' => 'product_cat', 'hide_empty' => false ] ) as $t ) {
+			$by_id[ $t->term_id ] = $t;
+		}
+		foreach ( $by_id as $t ) {
+			$chain = [];
+			for ( $x = $t; $x; $x = $x->parent ? ( $by_id[ $x->parent ] ?? null ) : null ) {
+				$chain[] = $x->slug;
+			}
+			$slug_chain[ $t->term_taxonomy_id ] = $chain;
+		}
+		foreach ( array_chunk( $ids, 2000 ) as $chunk ) {
+			$rows = $wpdb->get_results( "SELECT object_id, term_taxonomy_id FROM {$wpdb->term_relationships} WHERE object_id IN (" . implode( ',', $chunk ) . ')' ); // phpcs:ignore
+			foreach ( $rows as $r ) {
+				foreach ( $slug_chain[ $r->term_taxonomy_id ] ?? [] as $sl ) {
+					$cats_of[ (int) $r->object_id ][ $sl ] = true;
+				}
+			}
+		}
+	}
+	$tilbud = playform_is_tilbud_page();
+	$meta   = [];
+	foreach ( $raw as $id => $m ) {
+		// Rabat som på produktkortet: kontrolleret førpris, ellers butikkens førpris (kun på lager).
+		if ( ! empty( $m['_pf_shop_sale'] ) && ! empty( $m['_pf_in_stock'] ) ) {
+			$was       = (float) ( $m['_pf_sale_ref'] ?? 0 ) ?: (float) ( $m['_pf_sale_list'] ?? 0 );
+			$m['_pct'] = playform_save_pct( (float) ( $m['_price'] ?? 0 ), $was );
+		}
+		// Tilbudssider viser kun produkter, butikken har på tilbud.
+		if ( $tilbud && empty( $m['_pf_shop_sale'] ) ) {
+			continue;
+		}
+		if ( ! $cat ) {
+			$m['_cats'] = array_keys( $cats_of[ $id ] ?? [] );
+		}
+		$meta[ $id ] = $m;
+	}
+	return $meta;
 }
