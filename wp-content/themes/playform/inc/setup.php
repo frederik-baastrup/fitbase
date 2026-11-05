@@ -170,6 +170,14 @@ function playform_run_upgrades(): void {
 	playform_rebrand();
 	playform_fix_author_name();
 	playform_seed_best();
+	// Er sorteringsreglerne (Config.php) ændret, sorteres alle tilbud og underkategorier igen i baggrunden.
+	if ( class_exists( '\\Playform\\Feeds\\Importer' ) && method_exists( '\\Playform\\Feeds\\Importer', 'reclassify' ) ) {
+		$hash = (string) md5_file( WP_PLUGIN_DIR . '/playform-feeds/src/Config.php' );
+		if ( ( get_option( 'playform_config_hash' ) !== $hash || get_option( 'playform_resub_v' ) !== '1' ) && ! wp_next_scheduled( 'playform_reclassify' ) ) {
+			update_option( 'playform_resub_v', '1', false );
+			wp_schedule_single_event( time() + 60, 'playform_reclassify' );
+		}
+	}
 	if ( function_exists( 'playform_best_check' ) && ! get_option( 'playform_best_checked' ) ) {
 		playform_best_check( false ); // første rapport med det samme
 	}
@@ -907,3 +915,13 @@ function playform_fix_brand_case(): void {
 	}
 	update_option( 'playform_brand_case_v', '1', false );
 }
+
+add_action(
+	'playform_reclassify',
+	static function () {
+		@set_time_limit( 0 ); // phpcs:ignore
+		$res = \Playform\Feeds\Importer::reclassify();
+		update_option( 'playform_config_hash', (string) md5_file( WP_PLUGIN_DIR . '/playform-feeds/src/Config.php' ), false );
+		update_option( 'playform_reclassify_last', [ 'time' => current_time( 'mysql' ) ] + $res, false );
+	}
+);

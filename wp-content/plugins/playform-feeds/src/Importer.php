@@ -298,4 +298,79 @@ final class Importer {
 			( $this->log )( $msg );
 		}
 	}
+
+	/**
+	 * Kører sorteringsreglerne igen på alle tilbud (efter ændringer i Config). Bruges af `wp playform reclassify`
+	 * og automatisk efter en udrulning, hvor Config.php er ændret (se temaets playform_run_upgrades()).
+	 *
+	 * @return array{changed:int,moves:array<string,int>}
+	 */
+	public static function reclassify(): array {
+		global $wpdb;
+		$t       = Offers::table();
+		$rows    = $wpdb->get_results( "SELECT id, product_id, shop, name, brand, shop_category, price, category FROM $t", ARRAY_A );
+		$changed = [];
+		$moves   = [];
+		foreach ( $rows as $r ) {
+			$offer = [ 'shop' => (string) $r['shop'], 'name' => (string) $r['name'], 'brand' => (string) $r['brand'], 'shop_category' => (string) $r['shop_category'], 'price' => (float) $r['price'] ];
+			$cat   = Classifier::classify( $offer );
+			if ( $cat === $r['category'] ) {
+				continue;
+			}
+			$moves[ $r['category'] . ' → ' . $cat ] = ( $moves[ $r['category'] . ' → ' . $cat ] ?? 0 ) + 1;
+			if ( $cat === 'exclude' ) {
+				$wpdb->update( $t, [ 'category' => 'exclude', 'active' => 0 ], [ 'id' => $r['id'] ] );
+			} else {
+				$wpdb->update( $t, [ 'category' => $cat ], [ 'id' => $r['id'] ] );
+			}
+			$changed[ (int) $r['product_id'] ] = true;
+		}
+		$today = current_time( 'Y-m-d' );
+		foreach ( array_keys( $changed ) as $n => $id ) {
+			ProductSync::refresh( $id, $today );
+			if ( ! Offers::for_product( $id ) ) {
+				wp_update_post( [ 'ID' => $id, 'post_status' => 'draft' ] );
+			}
+			if ( $n % 500 === 0 ) {
+				wp_cache_flush();
+			}
+		}
+		arsort( $moves );
+		// Underkategorierne (nye eller ændrede regler i Config::subcategories()) sættes igen på ALLE produkter – også dem,
+		// hvis hovedkategori ikke flyttede sig. Før blev nye underkategorier stående tomme, indtil et produkt blev opdateret.
+		$resubbed = self::resubcategorize( array_keys( $changed ) );
+		return [ 'changed' => count( $changed ), 'moves' => $moves, 'subcategories' => $resubbed ];
+	}
+
+	/** Regner underkategorier om for alle udgivne produkter (undtagen $skip, der lige er opdateret). Returnerer antal ændrede. */
+	public static function resubcategorize( array $skip = [] ): int {
+		global $wpdb;
+		Subcategories::install(); // nye underkategorier oprettes som termer først
+		$ids   = array_map( 'intval', $wpdb->get_col( "SELECT ID FROM {$wpdb->posts} WHERE post_type = 'product' AND post_status IN ('publish','draft')" ) );
+		$skip  = array_flip( $skip );
+		$count = 0;
+		foreach ( $ids as $n => $id ) {
+			if ( isset( $skip[ $id ] ) ) {
+				continue;
+			}
+			$locks = (array) get_post_meta( $id, ProductSync::META_LOCKS, true );
+			$cat   = (string) get_post_meta( $id, ProductSync::META_CATEGORY, true );
+			if ( ! empty( $locks['category'] ) || $cat === '' || $cat === Config::uncategorized_slug() ) {
+				continue;
+			}
+			$subs = Subcategories::match( $cat, get_the_title( $id ), (array) get_post_meta( $id, ProductSync::META_ATTR, true ), (string) get_post_meta( $id, ProductSync::META_FEED_DESC, true ) );
+			$want = Subcategories::term_ids( $cat, $subs );
+			$have = array_map( 'intval', (array) wp_get_object_terms( $id, 'product_cat', [ 'fields' => 'ids' ] ) );
+			sort( $want );
+			sort( $have );
+			if ( $want !== $have ) {
+				wp_set_object_terms( $id, $want, 'product_cat' );
+				++$count;
+			}
+			if ( $n % 500 === 0 ) {
+				wp_cache_flush();
+			}
+		}
+		return $count;
+	}
 }
