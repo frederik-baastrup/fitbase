@@ -786,9 +786,7 @@ add_action(
  * hvis side hos butikken ofte er væk. De skjules (kladde). Får de et billede, viser importen dem igen.
  */
 function playform_hide_imageless_products(): void {
-	if ( get_option( 'playform_imageless_hidden' ) ) {
-		return;
-	}
+	// Kører ved hver udrulning: produkter uden billede må ikke stå offentligt (projektregel 4).
 	global $wpdb;
 	$ids = $wpdb->get_col(
 		"SELECT p.ID FROM {$wpdb->posts} p
