@@ -1384,3 +1384,8 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 @media (max-width: 1080px) {
 	.site-header.is-search-open .site-header__row { padding-bottom: 13px; }
 }
+
+/* Ikoner foran hovedmenuens punkter (som Outdoorland) */
+.mm__ico { display: inline-flex; margin-right: 7px; transition: transform .25s ease; }
+.mm__item:hover .mm__ico { transform: translateY(-1px); }
+@media (max-width: 1360px) { .mm__ico { display: none; } }

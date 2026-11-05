@@ -160,6 +160,11 @@ function playform_menu_spec(): array {
 	];
 }
 
+/** Ikoner foran hovedmenuens punkter (desktop), slug => ikon i playform_icon(). */
+function playform_menu_icons(): array {
+	return [ 'traeningsmaskiner' => 'treadmill', 'styrketraening' => 'dumbbell', 'yoga-pilates' => 'yoga', 'restitution' => 'roller', 'tilbehor' => 'bottle' ];
+}
+
 /** Visningsnavne fra menuen (fx "Romaskiner" for kategorien "Romaskine"), slug => navn. */
 function playform_menu_labels(): array {
 	// Kategorierne hedder ental (som folk søger), men i menu, faner og "Tilbud på …" læser flertal bedst.
