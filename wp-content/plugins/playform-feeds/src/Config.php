@@ -32,6 +32,14 @@ final class Config {
 			'traeningspartner'      => [ 'name' => 'Træningspartner',       'url' => "$base&bannerid=67325&feedid=1378" ],
 			'den-intelligente-krop' => [ 'name' => 'Den Intelligente Krop', 'url' => "$base&bannerid=38097&feedid=400" ],
 			'optimasport'           => [ 'name' => 'OptimaSport.dk',        'url' => "$base&bannerid=83091&feedid=2014" ],
+			// Tilføjet 5. nov. 2026 (godkendte programmer; testet mod kategorierne – tøj, kosttilskud m.m. holdes ude af reglerne).
+			'ascendic'              => [ 'name' => 'Ascendic.dk',           'url' => "$base&bannerid=94094&feedid=2506" ],
+			'billig-fitness'        => [ 'name' => 'Billig-fitness.dk',     'url' => "$base&bannerid=90815&feedid=2352" ],
+			'fitnessfree'           => [ 'name' => 'FITNESSFREE.DK',        'url' => "$base&bannerid=118836&feedid=4509" ],
+			'fitnessgruppen'        => [ 'name' => 'Fitnessgruppen.dk',     'url' => "$base&bannerid=106349&feedid=3301" ],
+			'kinetik'               => [ 'name' => 'KINETIK',               'url' => "$base&bannerid=107033&feedid=3362" ],
+			'workwalk'              => [ 'name' => 'WorkWalk.dk',           'url' => "$base&bannerid=111924&feedid=3772" ],
+			'mysports'              => [ 'name' => 'MySports',              'url' => "$base&bannerid=112544&feedid=3845" ],
 			// Kun dame- og herrecykler (til købsguiderne om citybikes). Hver størrelse er en række i feedet,
 			// så rækker med samme navn samles til ét produkt ('group_variants').
 			'cykelexperten'         => [
@@ -141,6 +149,7 @@ final class Config {
 	public static function exclude(): array {
 		return [
 			'gavekort',
+			'produktgaranti|udvidet garanti|garantiforlængelse',
 			// Trampoliner er med, men ikke tilbehøret (stige, cover, elastik, forankring, sikring m.m.).
 			'\\b(stige|cover|elastik|forankring\\w*|stormsikring|basketkurv|opbevaringslommer|rutchebane|fjedre?|kantbeklædning|betræk|net)\\b[^,]{0,40}trampolin|trampolin[^,]{0,25}\\b(stormsikring|basketkurv|opbevaringslommer|rutchebane|stige|cover)\\b|tilbehør til trampolin',
 			'konnector|connector kit|\\bkit for\\b|spare ?part|replacement part|\\bsn ?[<>]',
