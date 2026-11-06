@@ -97,7 +97,7 @@ add_shortcode(
 			$sel = 'produktdata';
 		}
 		return '<aside class="method"><span class="method__title">' . playform_icon( 'check', 16, 1.6 ) . 'Sådan har vi valgt</span>'
-			. '<p>' . $how . '</p>'
+			. '<p>' . $how . ' <a href="' . esc_url( playform_method_url() ) . '">Sådan vælger vi produkter</a>.</p>'
 			. '<p>Pris og lager hentes to gange i døgnet. Køber du via vores links, får vi provision – men valgene bygger på ' . $sel . ', ikke på provision. <a href="' . $money . '">Sådan tjener vi penge</a>.</p></aside>';
 	}
 );
