@@ -117,7 +117,7 @@ function playform_campaign_bar_text( string $slug, ?DateTimeImmutable $day = nul
 		$bf   = playform_black_friday( (int) $day->format( 'Y' ) );
 		$days = (int) $day->diff( $bf )->format( '%r%a' );
 		if ( $days > 7 ) {
-			return [ 'Tjuvstart på Black Friday', 'Se, hvad butikkerne har sat ned på træningsudstyr' ]; // ejerens valg 6. nov. 2026 (forslag 3)
+			return [ 'Kæmpe besparelser til Black Month', 'Se de vilde tilbud hos butikkerne her!' ]; // ejerens tekst 4. nov. 2026
 		}
 		if ( $days > 1 ) {
 			return [ "Black Friday om $days dage", [ 'Flere butikker er allerede i gang – kig tidligt', $pitch[1] ] ];
