@@ -130,6 +130,12 @@ add_action(
 			$desc  = $p ? sprintf( '%s%s%s. Se pris, lagerstatus og prishistorik på Fitbase.', $p->get_name(), $price > 0 ? ' til ' . playform_kr( $price ) : '', $shop ? ' hos ' . $shop : '' ) : '';
 		} elseif ( is_singular( 'post' ) ) {
 			$desc = (string) get_the_excerpt();
+			// Reklame skal kunne ses allerede i Googles søgeresultat (Forbrugerombudsmandens sag mod Obsidian Media).
+			if ( playform_post_ad_label( get_the_ID() ) ) {
+				$tail = ' (Indeholder reklamelinks · ikke afprøvet af os)';
+				$desc = trim( preg_replace( '/\s+/', ' ', wp_strip_all_tags( $desc ) ) );
+				$desc = ( mb_strlen( $desc ) + mb_strlen( $tail ) > 160 ? rtrim( mb_substr( $desc, 0, 157 - mb_strlen( $tail ) ), " ,.;:–-" ) . '…' : $desc ) . $tail;
+			}
 		} elseif ( is_home() ) {
 			$desc = 'Købsguides, træningsråd og forklaringer om ' . playform_site( 'niche' ) . ', så du kan vælge det udstyr, der passer til din træning.';
 		} elseif ( is_category() ) {
