@@ -87,16 +87,16 @@ add_shortcode(
 		$picks = (array) get_post_meta( get_the_ID(), '_pf_picks', true );
 		$with  = count( array_filter( $picks, static fn( $p ) => ! empty( $p['reviews'] ) ) );
 		if ( $picks && $with === count( $picks ) ) {
-			$how = 'Produkterne har vi ikke selv testet. Valgene bygger på uafhængige anmeldelser fra andre medier, som vi linker til ved hvert produkt, samt på specifikationer, pris og garanti fra butikkerne.';
+			$how = 'Valgene bygger på uafhængige anmeldelser fra andre medier, som vi linker til ved hvert produkt, samt på specifikationer, pris og garanti fra butikkerne.';
 			$sel = 'anmeldelser og produktdata';
 		} elseif ( $with > 0 ) {
-			$how = 'Produkterne har vi ikke selv testet. Hvor et produkt er anmeldt af et uafhængigt medie, linker vi til anmeldelsen. Resten er vores egen vurdering ud fra specifikationer, pris og garanti fra butikkerne – og det står ved produktet.';
+			$how = 'Hvor et produkt er anmeldt af et uafhængigt medie, linker vi til anmeldelsen. Resten er vores egen vurdering ud fra specifikationer, pris og garanti fra butikkerne – og det står ved produktet.';
 			$sel = 'anmeldelser og produktdata';
 		} else {
-			$how = 'Produkterne har vi ikke selv testet. Valgene er vores egen vurdering af specifikationer, materialer, pris og garanti ud fra butikkernes oplysninger.';
+			$how = 'Valgene er vores egen vurdering af specifikationer, materialer, pris og garanti ud fra butikkernes oplysninger.';
 			$sel = 'produktdata';
 		}
-		return '<aside class="method"><span class="method__title">' . playform_icon( 'check', 16, 1.6 ) . 'Sådan har vi valgt</span>'
+		return '<aside class="method"><span class="method__kicker">Sådan har vi valgt</span><strong class="method__title">Vi har ikke selv testet udstyret</strong>'
 			. '<p>' . $how . ' <a href="' . esc_url( playform_method_url() ) . '">Sådan vælger vi produkter</a>.</p>'
 			. '<p>Pris og lager hentes to gange i døgnet. Køber du via vores links, får vi provision – men valgene bygger på ' . $sel . ', ikke på provision. <a href="' . $money . '">Sådan tjener vi penge</a>.</p></aside>';
 	}
