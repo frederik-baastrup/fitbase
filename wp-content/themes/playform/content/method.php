@@ -32,6 +32,9 @@ return [
 <h2>Det tæller ikke</h2>
 <p>Hvor meget provision vi får, hvilken butik der sælger, og om nogen gerne vil betale for en plads. Placeringer kan ikke købes. Læs mere om, <a href="/saadan-tjener-vi-penge/">hvordan Fitbase tjener penge</a>.</p>
 
+<h2>AI i vores arbejde</h2>
+<p>Guiderne og produktbeskrivelserne er udarbejdet med AI. Den sorterer i butikkernes data, finder uafhængige anmeldelser af den samme model og skriver teksten. Den får kun lov at bruge det, butikkerne og anmeldelserne oplyser, og et automatisk tjek afviser tekster med tal, der ikke findes i butikkens data. Ansvarlig redaktør er Frederik Baastrup, som retter fejl, når vi får besked om dem.</p>
+
 <h2>Grænsen for vores vurdering</h2>
 <p>Tal på papiret fortæller ikke, hvordan en maskine føles at træne på, hvor meget den støjer, eller hvordan den holder efter et par hundrede timer. Læs gerne anmeldelser fra andre brugere, før du beslutter dig, og tjek altid pris og levering hos butikken.</p>
 
