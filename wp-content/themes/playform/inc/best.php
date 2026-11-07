@@ -182,7 +182,7 @@ add_shortcode(
 						?>
 					</span>
 				<?php else : ?>
-					<span class="pick__basis">Vores vurdering – bygget på specifikationer, pris og garanti</span>
+					<span class="pick__basis">Vores vurdering – bygget på specifikationer, pris og garanti, ikke på egen test</span>
 				<?php endif; ?>
 				<?php if ( $facts ) : ?>
 					<ul class="pick__facts"><?php foreach ( $facts as $f ) : ?><li><?php echo esc_html( $f ); ?></li><?php endforeach; ?></ul>
