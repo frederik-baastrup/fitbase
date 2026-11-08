@@ -30,18 +30,18 @@ HTML,
 			'less'    => [ 'Dig, der bor tæt på naboer – luftmodstand suser' ],
 		],
 		[
-			'ean'     => '5714237003844',
-			'slug'    => 'odin-r650-romaskine-m-kinomap',
-			'name'    => 'Odin R650',
-			'role'    => 'Bedst til prisen',
+			'ean'     => '8717842025734',
+			'price'   => 3799,
+			'name'    => 'Tunturi Cardio Fit R30',
+			'role'    => 'Bedst til lidt plads',
 			'reviews' => [],
-			'verdict' => 'Kompakt romaskine med Kinomap til en lav pris – til dig, der vil i gang uden at bruge mange penge.',
+			'verdict' => 'Foldbar romaskine med 8 modstandsniveauer og transporthjul – ror i stuen og stil den væk bagefter.',
 			'why'     => <<<'HTML'
-<p>Odin R650 er til dig, der vil have en kompakt romaskine til hjemmet og en god pris, men som stadig vil have funktioner som Kinomap. Computeren beskrives som simpel og overskuelig.</p>
-<p>Det er en god kombination for begynderen: lav pris, lidt plads og mulighed for at gøre træningen sjovere med virtuelle ruter, når motivationen daler.</p>
+<p>Tunturi Cardio Fit R30 er romaskinen til hjemmet, hvor stuen også skal kunne bruges til andet. Den kan foldes sammen, og med transporthjulene ruller du den hurtigt ind i et hjørne eller et skab, når du er færdig.</p>
+<p>Med 8 justerbare modstandsniveauer kan du starte roligt og skrue op, efterhånden som formen bliver bedre. Sædet er ergonomisk formet, og pedalerne er skridsikre, så du sidder godt og holder fødderne på plads gennem hele turen.</p>
 HTML,
-			'good'    => [ 'Begyndere', 'Dig, der vil træne med Kinomap uden at betale for en dyr maskine', 'Små rum' ],
-			'less'    => [ 'Dig, der træner meget hårdt og vil have et kraftigere stel' ],
+			'good'    => [ 'Lejligheder og små stuer', 'Begyndere, der vil i gang' ],
+			'less'    => [ 'Dig, der vil have vandmodstand' ],
 		],
 		[
 			'ean'     => '5714237018756',
