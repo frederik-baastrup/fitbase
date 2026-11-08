@@ -19,7 +19,7 @@ final class Config {
 			'cvr'     => '37208329',
 			'address' => 'Rønnevej 19 B, kl., 5270 Odense N',
 			'owner'   => 'Frederik Baastrup',
-			'accent'  => '#23D200',
+			'accent'  => '#FF5A1F',
 		];
 	}
 

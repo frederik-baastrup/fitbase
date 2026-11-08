@@ -70,7 +70,7 @@ Matomo via WordPress-pluginnet "Matomo Analytics" (kører på egen server, ingen
 
 ## Design
 
-Designet ligger som et Claude-artefakt (Playform: forside, kategoriside, produktside). Stil: hvid baggrund, sort tekst, BDO Grotesk, afrundede hjørner (14–18 px), accentfarve #23D200 (fra logoet) brugt sparsomt, tynde linjeikoner (stroke 1.4), tynde streger med lav opacity.
+Designet ligger som et Claude-artefakt (Playform: forside, kategoriside, produktside). Stil: hvid baggrund, sort tekst, BDO Grotesk, afrundede hjørner (14–18 px), accentfarve orange #FF5A1F (ejerens valg 8. nov. 2026; før grøn #23D200) brugt sparsomt med sort tekst, tynde linjeikoner (stroke 1.4), tynde streger med lav opacity.
 
 ## Shops
 

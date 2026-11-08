@@ -9,7 +9,7 @@
 	--soft: #F4F4F1;
 	--img: #F1F1EE;
 	--tile: #EDECE8;
-	--accent: #23D200;
+	--accent: #FF5A1F;
 	--sale: #B42318;
 	--ok: #1E9E4A;
 	--warn: #D97706;
@@ -623,7 +623,7 @@ a.usp__item:hover b { text-decoration: underline; text-underline-offset: 3px; }
 
 /* Artikelheader: lille kicker, forfatter og fakta på én fin linje */
 .kicker { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px 5px 10px; border: 1px solid var(--line-2); border-radius: 999px; font-size: 11.5px; font-weight: 600; letter-spacing: .6px; text-transform: uppercase; color: var(--ink); }
-.kicker i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(35,210,0,.15); }
+.kicker i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(255,90,31,.15); }
 .guide__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; width: 100%; max-width: 860px; margin-top: 8px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted-2); }
 .guide__author { display: inline-flex; align-items: center; gap: 12px; }
 .guide__author > span { display: flex; flex-direction: column; gap: 2px; line-height: 1.2; }
@@ -653,7 +653,7 @@ a.usp__item:hover b { text-decoration: underline; text-underline-offset: 3px; }
 /* Viden & guides: fremhævet guide + gitter */
 .guides-index { padding-top: 48px; }
 .kicker--sm { padding: 4px 10px 3px 8px; font-size: 10.5px; }
-.kicker--sm i { width: 5px; height: 5px; box-shadow: 0 0 0 2px rgba(35,210,0,.15); }
+.kicker--sm i { width: 5px; height: 5px; box-shadow: 0 0 0 2px rgba(255,90,31,.15); }
 .gcard { display: flex; flex-direction: column; gap: 16px; }
 .gcard__img { display: block; aspect-ratio: 3 / 2; border-radius: var(--r-l); overflow: hidden; background: var(--tile); }
 .gcard__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
@@ -812,7 +812,7 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 .guide__head .crumbs { margin-bottom: 4px; }
 .byline__txt b span { font-weight: 400; color: var(--muted-2); }
 .guide__cat { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--ink); }
-.guide__cat i { width: 6px; height: 6px; margin: 0 2px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(35,210,0,.15); }
+.guide__cat i { width: 6px; height: 6px; margin: 0 2px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(255,90,31,.15); }
 .guide__cat:hover { text-decoration: underline; text-underline-offset: 3px; }
 @media (min-width: 1081px) {
 	.guide__head { max-width: 1080px; }
@@ -1121,9 +1121,9 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 @media (min-width: 761px) { .rel__col { flex-wrap: nowrap; flex-wrap: wrap; } .rel__h { flex: 0 0 auto; min-width: 96px; } .rel__grid { gap: 10px; } .rel__col { gap: 8px; } .rel__h { margin-right: 4px; } }
 @media (max-width: 760px) { .rel { margin: 24px 0 44px; padding-top: 18px; } .rel__title { font-size: 16px; margin-bottom: 12px; } .rel__col a { padding: 5px 11px; font-size: 13px; } }
 
-/* Købsknappen i accentfarven (#23D200 fra logoet): den vigtigste handling skal skille sig ud fra resten af siden */
-.btn-shop { background: #23D200; color: #0B0B0A; border: 0; box-shadow: 0 1px 0 rgba(0,0,0,.06), 0 6px 16px rgba(35,210,0,.22); }
-.btn-shop:hover, .btn-shop:focus-visible { background: #1EBD00; color: #0B0B0A; }
+/* Købsknappen i accentfarven (#FF5A1F fra logoet): den vigtigste handling skal skille sig ud fra resten af siden */
+.btn-shop { background: #FF5A1F; color: #0B0B0A; border: 0; box-shadow: 0 1px 0 rgba(0,0,0,.06), 0 6px 16px rgba(255,90,31,.22); }
+.btn-shop:hover, .btn-shop:focus-visible { background: #EC4A10; color: #0B0B0A; }
 .btn-shop svg { color: inherit; }
 
 /* Artikelhoved: kompakt og i samme skriftstørrelse */
@@ -1194,7 +1194,7 @@ ul.guide__facts { display: inline-flex; flex-wrap: wrap; align-items: center; ma
 
 /* Annonceoplysningen skal altid være synlig: først i rækken på mobil */
 @media (max-width: 760px) {
-	.guide__head .guide__chips .guide__trust { order: -1; background: #EAF9E4; }
+	.guide__head .guide__chips .guide__trust { order: -1; background: #FFEDE5; }
 	.guide__head .guide__chips .guide__trust svg { color: var(--ink); }
 }
 
