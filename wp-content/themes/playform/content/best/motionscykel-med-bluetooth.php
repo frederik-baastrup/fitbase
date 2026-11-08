@@ -7,12 +7,12 @@ defined( 'ABSPATH' ) || exit;
 
 return [
 	'slug'     => 'motionscykel-med-bluetooth',
-	'title'    => 'Motionscykel med Bluetooth: Vores bud på de 3 bedste',
-	'excerpt'  => 'Med Bluetooth kan din motionscykel tale sammen med apps som Zwift og Kinomap. Her er vores bud på de 3 bedste – og hvad du skal tjekke, før du køber.',
+	'title'    => 'Motionscykel med Bluetooth: Vores bud på de 5 bedste',
+	'excerpt'  => 'Med Bluetooth kan din motionscykel tale sammen med apps som Zwift og Kinomap. Her er vores bud på de 5 bedste – og hvad du skal tjekke, før du køber.',
 	'more_cat' => 'kondicykel',
 	'intro'    => <<<'HTML'
 <p>En motionscykel med Bluetooth kan sende dine træningsdata til en app på telefonen eller tabletten. Det åbner for virtuelle ture gennem rigtige landskaber, træningsprogrammer og overblik over din fremgang – og for mange er det netop det, der gør, at cyklen bliver brugt, også når det første år er gået.</p>
-<p>Herunder er vores bud på de 3 bedste motionscykler med Bluetooth hos danske butikker lige nu. Nederst finder du en købsguide til, hvad Bluetooth kan, og hvad du skal tjekke.</p>
+<p>Herunder er vores bud på de 5 bedste motionscykler med Bluetooth hos de butikker, vi samarbejder med, lige nu. Nederst finder du en købsguide til, hvad Bluetooth kan, og hvad du skal tjekke.</p>
 HTML,
 	'picks'    => [
 		[
@@ -56,6 +56,36 @@ HTML,
 HTML,
 			'good'    => [ 'Dig, der træner hårdt og ofte', 'Træning efter watt og programmer' ],
 			'less'    => [ 'Dig med et begrænset budget' ],
+		],
+		[
+			'ean'     => '5704796046321',
+			'price'   => 2499,
+			'name'    => 'ASG Velofit 400',
+			'role'    => 'Billigst med Bluetooth',
+			'reviews' => [],
+			'verdict' => 'Enkel motionscykel med Bluetooth og Kinomap, 8 magnetiske niveauer, et svinghjul på 8 kg og plads til 150 kg.',
+			'why'     => <<<'HTML'
+<p>ASG Velofit 400 er den lette vej ind i app-træning. Har du lyst til at prøve virtuelle ture uden at investere i en dyr cykel, får du her Bluetooth og Kinomap til en lav pris.</p>
+<p>Svinghjulet vejer 8 kg og giver et jævnt træk i pedalerne, og med 8 magnetiske modstandsniveauer kan du skrue op, når formen bliver bedre. Både styr og sadel kan justeres, så den kan deles af flere i familien.</p>
+<p>Den maksimale brugervægt er 150 kg, så den er også et bud til dig, der har brug for en cykel med lidt ekstra bæreevne. Sæt telefonen eller tabletten op, start Kinomap, og cykl gennem landskaber, du ellers kun ser på billeder.</p>
+HTML,
+			'good'    => [ 'Dig, der vil prøve app-træning', 'Familier, der deler cyklen', 'Brugere op til 150 kg' ],
+			'less'    => [ 'Dig, der vil have mange modstandsniveauer' ],
+		],
+		[
+			'ean'     => '4044163020075',
+			'price'   => 5999,
+			'name'    => 'Top Sport AX4000 Ergometercykel',
+			'role'    => 'Bedst til watt-træning',
+			'reviews' => [],
+			'verdict' => 'Ergometercykel med computerstyret modstand op til 350 W, 21 programmer og Bluetooth til Kinomap.',
+			'why'     => <<<'HTML'
+<p>Top Sport AX4000 er til dig, der vil træne målrettet. Som ergometercykel styrer computeren modstanden, op til 350 W, så du kan træne efter watt i stedet for bare at gætte på, hvor hårdt du arbejder.</p>
+<p>Du får 21 programmer, heriblandt watt- og pulsstyret træning. Vælger du et wattprogram, holder cyklen belastningen, uanset om du træder hurtigt eller langsomt. Med pulsprogrammet tilpasser den sig din puls, så du bliver i den zone, du har valgt.</p>
+<p>Via Bluetooth kan du forbinde cyklen til Kinomap, og der er en holder til tabletten. Den er bygget med fokus på komfort, kan justeres fleksibelt og er støjsvag – rart, hvis den skal stå i stuen.</p>
+HTML,
+			'good'    => [ 'Træning efter watt og puls', 'Dig, der vil følge din fremgang', 'Støjsvag træning i stuen' ],
+			'less'    => [ 'Dig, der bare vil have en simpel cykel' ],
 		],
 	],
 	'guide'    => <<<'HTML'

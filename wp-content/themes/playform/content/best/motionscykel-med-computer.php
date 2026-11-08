@@ -7,12 +7,12 @@ defined( 'ABSPATH' ) || exit;
 
 return [
 	'slug'     => 'motionscykel-med-computer',
-	'title'    => 'Motionscykel med computer: Vores bud på de 3 bedste',
-	'excerpt'  => 'En god træningscomputer gør motionscyklen langt mere motiverende. Her er vores bud på de 3 bedste motionscykler med computer – og hvad den skal kunne.',
+	'title'    => 'Motionscykel med computer: Vores bud på de 5 bedste',
+	'excerpt'  => 'En god træningscomputer gør motionscyklen langt mere motiverende. Her er vores bud på de 5 bedste motionscykler med computer – og hvad den skal kunne.',
 	'more_cat' => 'kondicykel',
 	'intro'    => <<<'HTML'
 <p>Næsten alle motionscykler har et display, men der er stor forskel på, hvad det kan. En enkel skærm viser tid og distance. En rigtig træningscomputer har programmer, pulsstyret træning og måling af watt – så du kan følge din fremgang og træne mere målrettet.</p>
-<p>Herunder er vores bud på de 3 bedste motionscykler med computer hos danske butikker lige nu. Nederst finder du en købsguide til, hvad computeren bør kunne.</p>
+<p>Herunder er vores bud på de 5 bedste motionscykler med computer hos de butikker, vi samarbejder med, lige nu. Nederst finder du en købsguide til, hvad computeren bør kunne.</p>
 HTML,
 	'picks'    => [
 		[
@@ -56,6 +56,36 @@ HTML,
 HTML,
 			'good'    => [ 'Lavere budget', 'Dig, der vil have både programmer og app' ],
 			'less'    => [ 'Dig, der vil træne efter watt' ],
+		],
+		[
+			'ean'     => '8717842036686',
+			'price'   => 5999,
+			'name'    => 'Tunturi Signature E40',
+			'role'    => 'Bedst til Zwift og apps',
+			'reviews' => [],
+			'verdict' => 'Motionscykel med Bluetooth AI-display, 25 programmer og 32 modstandsniveauer – og Zwift og Tunturi Routes indbygget.',
+			'why'     => <<<'HTML'
+<p>Tunturi Signature E40 er til dig, der vil have en computer, der gør mere end at tælle minutter. Det Bluetooth-forbundne AI-display har 25 programmer og samarbejder med Tunturi Routes og Zwift, så du kan cykle virtuelle ruter i stedet for at kigge ind i væggen.</p>
+<p>Med 32 modstandsniveauer er der masser at gå op ad, og det gør cyklen lige så velegnet til den rolige motionist som til den, der vil presse sig selv. De vægtbalancerede pedaler vender sig rigtigt, så foden finder dem hurtigt.</p>
+<p>Den lave indstigning gør det nemt at komme op og ned. Det er en fordel, hvis flere i husstanden skal bruge cyklen, eller hvis knæ og hofter ikke er helt så smidige.</p>
+HTML,
+			'good'    => [ 'Dig, der vil træne med Zwift', 'Alle niveauer, fra begynder til øvet', 'Nem indstigning' ],
+			'less'    => [ 'Dig, der vil have den billigste løsning' ],
+		],
+		[
+			'ean'     => '5714237003714',
+			'price'   => 1999,
+			'name'    => 'Odin B200 Sunfitter',
+			'role'    => 'Foldbar med computer',
+			'reviews' => [],
+			'verdict' => 'Foldbar motionscykel med 8 modstandsniveauer og en computer, der viser tid, distance, hastighed og puls.',
+			'why'     => <<<'HTML'
+<p>Odin B200 Sunfitter er til dig, der vil have en computer til at følge træningen, men også har brug for at kunne gemme cyklen væk. Den er foldbar og kan stilles til side, når den ikke er i brug.</p>
+<p>Computeren viser tid, distance, hastighed og puls, og med scan-funktionen skifter den automatisk mellem tallene. Så kan du holde øje med det hele uden at trykke på knapper midt i træningen.</p>
+<p>Modstanden justerer du manuelt i 8 niveauer. Vil du bare cykle og se, hvor langt og hvor hurtigt du kommer, får du det, du skal bruge, uden at betale for funktioner, du ikke bruger.</p>
+HTML,
+			'good'    => [ 'Små boliger', 'Dig, der vil se tid, distance og puls' ],
+			'less'    => [ 'Dig, der vil have elektronisk styret modstand' ],
 		],
 	],
 	'guide'    => <<<'HTML'

@@ -7,12 +7,12 @@ defined( 'ABSPATH' ) || exit;
 
 return [
 	'slug'     => 'romaskine-med-vand',
-	'title'    => 'Romaskine med vand: Vores bud på de 3 bedste',
-	'excerpt'  => 'Vandromaskiner giver den mest naturlige rofølelse. Her er vores bud på de 3 bedste fra danske butikker – og en købsguide til, hvad du skal kigge efter.',
+	'title'    => 'Romaskine med vand: Vores bud på de 5 bedste',
+	'excerpt'  => 'Vandromaskiner giver den mest naturlige rofølelse. Her er vores bud på de 5 bedste fra de butikker, vi samarbejder med – og en købsguide til, hvad du skal kigge efter.',
 	'more_cat' => 'romaskine-vand',
 	'intro'    => <<<'HTML'
 <p>En romaskine med vand er det tætteste, du kommer på at ro på åbent vand uden at forlade stuen. Modstanden kommer fra et skovlhjul, der drejer rundt i en tank med vand, og lyden af vandet er for mange halvdelen af oplevelsen. Samtidig træner du det meste af kroppen på én gang: ben, ryg, arme og kondition.</p>
-<p>Herunder er vores bud på de 3 bedste romaskiner med vand, som du kan købe hos danske butikker lige nu – én til dig, der vil have det bedste, én til dig, der vil holde budgettet, og én til dig med lidt plads. Nederst finder du en købsguide til alt det, der er værd at vide, før du køber.</p>
+<p>Herunder er vores bud på de 5 bedste romaskiner med vand, som du kan købe hos de butikker, vi samarbejder med, lige nu – én til dig, der vil have det bedste, én til dig, der vil holde budgettet, én til dig med lidt plads, én kompakt med app og én i asketræ til stuen. Nederst finder du en købsguide til alt det, der er værd at vide, før du køber.</p>
 HTML,
 	'picks'    => [
 		[
@@ -56,6 +56,36 @@ HTML,
 HTML,
 			'good'    => [ 'Dig, der bor småt og skal kunne gemme romaskinen væk', 'Dig, der vil have både vandfølelse og justerbar modstand' ],
 			'less'    => [ 'Dig, der vil have en ren vandromaskine uden magnet' ],
+		],
+		[
+			'ean'     => '5704796045614',
+			'price'   => 2499,
+			'name'    => 'ASG Flowrow Aqua',
+			'role'    => 'Kompakt med app',
+			'reviews' => [],
+			'verdict' => 'Vandromaskine med 14 liters tank, Bluetooth og Kinomap på en kort skinne på 90 cm.',
+			'why'     => <<<'HTML'
+<p>ASG Flowrow Aqua giver dig ægte vandmodstand i et lille format. Tanken rummer 14 liter vand, og når skovlene skubber vandet rundt, får du den flydende rofølelse og den rolige lyd, der gør vandromaskiner så populære.</p>
+<p>Skinnen er 90 cm lang, så maskinen fylder mindre end mange andre vandromaskiner. Til gengæld passer den bedst til dig, der ikke er alt for høj. Den maksimale brugervægt er 120 kg.</p>
+<p>Med Bluetooth kan du koble den til Kinomap og ro på virtuelle ruter. Det er en nem måde at få variation i træningen og holde ved, også når nyhedens interesse har lagt sig.</p>
+HTML,
+			'good'    => [ 'Dig, der vil prøve vandmodstand', 'Mindre boliger', 'Træning med Kinomap' ],
+			'less'    => [ 'Høje personer – skinnen er kort', 'Brugere over 120 kg' ],
+		],
+		[
+			'ean'     => '8029975809540',
+			'price'   => 8999,
+			'name'    => 'Toorx Rower Craft',
+			'role'    => 'Flot i asketræ',
+			'reviews' => [],
+			'verdict' => 'Vandromaskine i asketræ med glidende sæde, Kinomap og indbygget pulsmodtager – flot nok til at stå fremme i stuen.',
+			'why'     => <<<'HTML'
+<p>Toorx Rower Craft er til dig, der vil have en romaskine, du ikke behøver at gemme væk. Rammen er i asketræ, og den passer ind i stuen som et møbel frem for et stykke træningsudstyr.</p>
+<p>Vandmodstanden og det glidende sæde giver en realistisk rofølelse, hvor modstanden følger dit tempo. Vil du have mere at kigge på end væggen, kan du bruge Kinomap og ro virtuelle ruter over hele verden.</p>
+<p>Maskinen har en indbygget pulsmodtager, der virker med både Bluetooth- og 5,3 kHz-brystbælter. Så kan du se pulsen undervejs og træne i den rigtige zone.</p>
+HTML,
+			'good'    => [ 'Dig, der vil have en romaskine i træ', 'Træning efter puls', 'Træning med Kinomap' ],
+			'less'    => [ 'Dig, der skal gemme maskinen væk efter brug' ],
 		],
 	],
 	'guide'    => <<<'HTML'

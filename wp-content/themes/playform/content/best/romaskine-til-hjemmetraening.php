@@ -7,12 +7,12 @@ defined( 'ABSPATH' ) || exit;
 
 return [
 	'slug'     => 'romaskine-til-hjemmetraening',
-	'title'    => 'Romaskine til hjemmetræning: Vores bud på de 3 bedste',
-	'excerpt'  => 'En romaskine giver helkropstræning og kondition på få kvadratmeter. Her er vores bud på de 3 bedste romaskiner til hjemmet – og hvordan du vælger.',
+	'title'    => 'Romaskine til hjemmetræning: Vores bud på de 5 bedste',
+	'excerpt'  => 'En romaskine giver helkropstræning og kondition på få kvadratmeter. Her er vores bud på de 5 bedste romaskiner til hjemmet – og hvordan du vælger.',
 	'more_cat' => 'romaskine-til-hjemmetraening',
 	'intro'    => <<<'HTML'
 <p>Få maskiner giver så meget træning for pladsen som en romaskine. Du bruger ben, ryg, arme og core i samme bevægelse, du får pulsen op, og belastningen på knæ og led er lav, fordi du sidder ned. Derfor er romaskinen et af de mest populære valg til hjemmetræning.</p>
-<p>Herunder er vores bud på de 3 bedste romaskiner til hjemmet hos danske butikker lige nu – én til dig, der vil have det hele, én til en skarp pris og én, der ikke skal i stikkontakten. Nederst finder du en købsguide.</p>
+<p>Herunder er vores bud på de 5 bedste romaskiner til hjemmet hos de butikker, vi samarbejder med, lige nu – én til dig, der vil have det hele, én til en skarp pris, én, der ikke skal i stikkontakten, én med ekstra lang skinne og én enkel magnetisk model. Nederst finder du en købsguide.</p>
 HTML,
 	'picks'    => [
 		[
@@ -56,6 +56,36 @@ HTML,
 HTML,
 			'good'    => [ 'Dig, der vil kunne placere romaskinen frit', 'Dig, der vil have mange modstandsniveauer at arbejde med' ],
 			'less'    => [ 'Dig, der vil have den naturlige følelse af vand eller luft' ],
+		],
+		[
+			'ean'     => '5704796046291',
+			'price'   => 4999,
+			'name'    => 'ASG Flow Rowing',
+			'role'    => 'Lang skinne til høje',
+			'reviews' => [],
+			'verdict' => 'Magnetisk romaskine med en 182 cm lang skinne, 8 programmer og Bluetooth til Kinomap.',
+			'why'     => <<<'HTML'
+<p>ASG Flow Rowing er til dig, der er høj og har oplevet, at romaskinen slipper op for skinne, før benene er strakt. Her er skinnen 182 cm lang, så der er plads til et fuldt tag – også for lange ben.</p>
+<p>Modstanden er magnetisk og justeres i 8 niveauer, og svinghjulet på 3,5 kg giver et roligt og jævnt træk. Med 8 træningsprogrammer behøver du ikke selv at planlægge hver tur.</p>
+<p>Maskinen har Bluetooth og virker med Kinomap, så du kan ro virtuelle ruter. Det giver variation og hjælper dig med at holde fast i træningen.</p>
+HTML,
+			'good'    => [ 'Høje personer', 'Dig, der vil have færdige programmer', 'Træning med Kinomap' ],
+			'less'    => [ 'Små rum – den lange skinne fylder' ],
+		],
+		[
+			'ean'     => '5701000379862',
+			'price'   => 2998,
+			'name'    => 'Titan Life Rower R36',
+			'role'    => 'Enkel magnetisk model',
+			'reviews' => [],
+			'verdict' => 'Kompakt romaskine med magnetisk modstand – til dig, der vil i gang med hjemmetræning uden at bruge meget plads.',
+			'why'     => <<<'HTML'
+<p>Titan Life Rower R36 er til dig, der vil have en romaskine i hjemmet uden at den tager over. Designet er kompakt, så den er nemmere at finde plads til end de store maskiner.</p>
+<p>Modstanden er magnetisk. Det betyder, at maskinen kører stille, at der ikke er noget at vedligeholde, og at du nemt skruer op og ned for modstanden. Funktionerne er enkle og brugervenlige, så du hurtigt kommer i gang.</p>
+<p>Den er et godt bud, hvis du vil have effektiv og alsidig træning af hele kroppen – ben, ryg og arme – og samtidig holde budgettet. Er du i tvivl om, hvorvidt romaskinen bliver brugt, er det en fornuftig måde at komme i gang på.</p>
+HTML,
+			'good'    => [ 'Begyndere', 'Dig, der vil have en stille maskine' ],
+			'less'    => [ 'Dig, der vil have lyden og følelsen af vand' ],
 		],
 	],
 	'guide'    => <<<'HTML'

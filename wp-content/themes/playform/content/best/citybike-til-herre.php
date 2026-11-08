@@ -7,12 +7,12 @@ defined( 'ABSPATH' ) || exit;
 
 return [
 	'slug'     => 'citybike-til-herre',
-	'title'    => 'Bedste citybike til herre: Vores bud på de 3 bedste',
-	'excerpt'  => 'En god citybike til herre skal være robust, komfortabel og klar til hverdagen. Her er vores bud på de 3 bedste – og hvad du skal kigge efter.',
+	'title'    => 'Bedste citybike til herre: Vores bud på de 5 bedste',
+	'excerpt'  => 'En god citybike til herre skal være robust, komfortabel og klar til hverdagen. Her er vores bud på de 5 bedste – og hvad du skal kigge efter.',
 	'more_cat' => 'herrecykler',
 	'intro'    => <<<'HTML'
 <p>En citybike er cyklen, du bruger hver dag: til arbejde, i byen og til indkøb – året rundt. Den skal være robust, komfortabel at sidde på og kræve så lidt vedligeholdelse som muligt. Vil du hurtigere frem, findes der også sportslige citybikes med lettere stel og flere gear.</p>
-<p>Herunder er vores bud på de 3 bedste citybikes til herre hos danske butikker lige nu. Den ene er anmeldt af uafhængige medier – links står ved produktet. Nederst finder du en købsguide.</p>
+<p>Herunder er vores bud på de 5 bedste citybikes til herre hos de butikker, vi samarbejder med, lige nu. Den ene er anmeldt af uafhængige medier – links står ved produktet. Nederst finder du en købsguide.</p>
 HTML,
 	'picks'    => [
 		[
@@ -59,6 +59,36 @@ HTML,
 HTML,
 			'good'    => [ 'Lang pendling og weekendture', 'Dig, der vil køre hurtigt' ],
 			'less'    => [ 'Dig, der vil have en fuldt udstyret, vedligeholdelsesfri citybike' ],
+		],
+		[
+			'ean'     => '5712701007640',
+			'price'   => 4860,
+			'name'    => 'Winther Black Winther 5 Herre 7g',
+			'role'    => 'Klassisk fuldt udstyret',
+			'reviews' => [],
+			'verdict' => 'Helsort, klassisk herrecykel med aluminiumsstel, 7 indvendige gear, gelsadel og masser af udstyr.',
+			'why'     => <<<'HTML'
+<p>Black Winther 5 er til dig, der vil have en komplet hverdagscykel i et tidløst look. Den er helsort fra stel til detaljer og kommer med masser af udstyr, så den er klar til arbejdsturen, indkøbene og byen.</p>
+<p>Komforten er i fokus: gelsadlen er blød at sidde på, håndtagene er ergonomisk formede, og frempinden kan justeres, så du kan indstille styret til en afslappet siddestilling. Det er rart, når cyklen bruges hver dag.</p>
+<p>Stellet er i aluminium, og de 7 indvendige gear sidder beskyttet i navet, hvor regn og snavs ikke slider på dem. Du bremser med fodbremse og fælgbremse – enkelt og nemt at vedligeholde.</p>
+HTML,
+			'good'    => [ 'Daglig pendling', 'Dig, der vil sidde komfortabelt', 'Dig, der kan lide et helsort look' ],
+			'less'    => [ 'Dig, der vil have skivebremser' ],
+		],
+		[
+			'ean'     => '8713568459549',
+			'price'   => 5348,
+			'name'    => 'Batavus Fonk 7 Herre',
+			'role'    => 'Bedst til bykørsel',
+			'reviews' => [],
+			'verdict' => 'Let bycykel med 7 indvendige gear, navdynamo og Aerline-lys med standlys – og skjult kabelføring.',
+			'why'     => <<<'HTML'
+<p>Batavus Fonk 7 er til dig, der vil suse let og smidigt gennem byen. Stellet er let, så cyklen er nem at manøvrere rundt om hjørner og at løfte op i cykelstativet.</p>
+<p>Lyset er gennemtænkt. Aerline-lygten sidder højt på styret, så du bliver set i trafikken, og den drives af en navdynamo, så du aldrig skal skifte batterier. Standlysfunktionen holder lyset tændt, mens du venter ved lyskrydset. Kablerne er ført inde i stellet, så de ikke hænger fast i cykelstativer.</p>
+<p>De 7 indvendige gear klarer både flad vej og bakker. Bagagebæreren har MIK-system, så du hurtigt kan klikke tasker og kurve på, og der kan monteres en frontkurv. Den sorte, blanke finish giver et stramt og moderne udtryk.</p>
+HTML,
+			'good'    => [ 'Bykørsel og pendling', 'Dig, der vil slippe for batterier i lygterne', 'Dig, der bruger cykeltasker' ],
+			'less'    => [ 'Lange ture på landevejen' ],
 		],
 	],
 	'guide'    => <<<'HTML'

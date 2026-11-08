@@ -7,12 +7,12 @@ defined( 'ABSPATH' ) || exit;
 
 return [
 	'slug'     => 'sammenklappelig-motionscykel',
-	'title'    => 'Sammenklappelig motionscykel: Vores bud på de 3 bedste',
-	'excerpt'  => 'En sammenklappelig motionscykel giver kondition hjemme og kan foldes væk bagefter. Her er vores bud på de 3 bedste til dig med sparsom plads.',
+	'title'    => 'Sammenklappelig motionscykel: Vores bud på de 5 bedste',
+	'excerpt'  => 'En sammenklappelig motionscykel giver kondition hjemme og kan foldes væk bagefter. Her er vores bud på de 5 bedste til dig med sparsom plads.',
 	'more_cat' => 'motionscykler',
 	'intro'    => <<<'HTML'
 <p>En sammenklappelig motionscykel – ofte kaldet en X-bike – er lavet til dig, der vil træne kondition hjemme, men ikke har plads til, at cyklen står fremme. Efter træningen folder du den sammen og triller den ind i et hjørne eller et skab.</p>
-<p>Herunder er vores bud på de 3 bedste sammenklappelige motionscykler hos danske butikker lige nu. De er alle billige, men der er forskel på komfort og funktioner. Nederst finder du en købsguide.</p>
+<p>Herunder er vores bud på de 5 bedste sammenklappelige motionscykler hos de butikker, vi samarbejder med, lige nu. De er alle billige, men der er forskel på komfort og funktioner. Nederst finder du en købsguide.</p>
 HTML,
 	'picks'    => [
 		[
@@ -56,6 +56,36 @@ HTML,
 HTML,
 			'good'    => [ 'Lavt budget', 'Let motion og nybegyndere' ],
 			'less'    => [ 'Daglig, hård træning', 'Dig, der vil have ryglæn' ],
+		],
+		[
+			'ean'     => '5714237003714',
+			'price'   => 1999,
+			'name'    => 'Odin B200 Sunfitter',
+			'role'    => 'Foldbar med fuld computer',
+			'reviews' => [],
+			'verdict' => 'Sammenklappelig motionscykel, hvor computeren holder styr på tid, distance, hastighed og puls – og 8 niveauer modstand.',
+			'why'     => <<<'HTML'
+<p>Odin B200 Sunfitter er til dig, der gerne vil kunne se, hvad du præsterer, selv om cyklen skal foldes sammen bagefter. Den klapper sammen, så den let kan gemmes væk, når træningen er overstået.</p>
+<p>Displayet giver dig de vigtigste tal: tid, distance, hastighed og puls. Scan-funktionen viser dem på skift, så du ikke skal fumle med knapper, mens du træder. Det gør det nemt at sætte sig små mål, fx at cykle lidt længere end sidst.</p>
+<p>Modstanden stilles manuelt i 8 niveauer – enkelt og ligetil. Den er en god cykel til dig, der vil holde konditionen ved lige hjemme.</p>
+HTML,
+			'good'    => [ 'Dig, der vil følge din puls og distance', 'Små boliger' ],
+			'less'    => [ 'Dig, der vil styre modstanden elektronisk' ],
+		],
+		[
+			'ean'     => '8029975970134',
+			'price'   => 2499,
+			'name'    => 'Toorx BRX Compact',
+			'role'    => 'Stille magnetisk modstand',
+			'reviews' => [],
+			'verdict' => 'Foldbar motionscykel med støjsvag magnetisk modstand i 8 trin, LCD-display og transporthjul.',
+			'why'     => <<<'HTML'
+<p>Toorx BRX Compact er til dig, der vil cykle uden at forstyrre resten af husstanden. Modstanden er magnetisk og støjsvag, så du kan træne, mens andre ser tv eller sover. Du skruer op og ned i 8 trin.</p>
+<p>LCD-displayet er overskueligt og viser de træningsdata, du har brug for, uden at gøre det kompliceret. Det er nemt at gå til, også hvis du ikke har haft en motionscykel før.</p>
+<p>Når du er færdig, klapper du cyklen sammen og triller den væk på transporthjulene. Den er dermed et godt bud til lejligheden eller soveværelset, hvor cyklen ikke skal stå fremme.</p>
+HTML,
+			'good'    => [ 'Stille træning', 'Lejligheder', 'Dig, der flytter cyklen efter brug' ],
+			'less'    => [ 'Dig, der vil have avancerede træningsdata' ],
 		],
 	],
 	'guide'    => <<<'HTML'

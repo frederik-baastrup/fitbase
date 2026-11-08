@@ -7,12 +7,12 @@ defined( 'ABSPATH' ) || exit;
 
 return [
 	'slug'     => 'foldbar-romaskine',
-	'title'    => 'Foldbar romaskine: Vores bud på de 3 bedste',
-	'excerpt'  => 'En foldbar romaskine giver dig helkropstræning uden at optage gulvet hele dagen. Her er vores bud på de 3 bedste – og hvad du skal tjekke før køb.',
+	'title'    => 'Foldbar romaskine: Vores bud på de 5 bedste',
+	'excerpt'  => 'En foldbar romaskine giver dig helkropstræning uden at optage gulvet hele dagen. Her er vores bud på de 5 bedste – og hvad du skal tjekke før køb.',
 	'more_cat' => 'romaskine',
 	'intro'    => <<<'HTML'
 <p>Det største problem ved en romaskine er sjældent prisen – det er de cirka to meter gulv, den optager. En foldbar romaskine løser det: du folder skinnen op efter træningen og triller maskinen ind i et hjørne eller et skab.</p>
-<p>Herunder er vores bud på de 3 bedste foldbare romaskiner hos danske butikker lige nu – og en købsguide til, hvad du skal kigge efter, så du ikke ender med en maskine, der er besværlig at folde eller vakler under træning.</p>
+<p>Herunder er vores bud på de 5 bedste foldbare romaskiner hos de butikker, vi samarbejder med, lige nu – og en købsguide til, hvad du skal kigge efter, så du ikke ender med en maskine, der er besværlig at folde eller vakler under træning.</p>
 HTML,
 	'picks'    => [
 		[
@@ -56,6 +56,36 @@ HTML,
 HTML,
 			'good'    => [ 'Dig, der gerne vil have vandmodstand, men ikke har plads til en fast maskine', 'Dig, der vil træne med Kinomap' ],
 			'less'    => [ 'Dig, der vil have den billigste løsning' ],
+		],
+		[
+			'ean'     => '4044163017587',
+			'price'   => 3299,
+			'name'    => 'Top Sport Cambridge',
+			'role'    => 'Enkel begyndermodel',
+			'reviews' => [],
+			'verdict' => 'Foldbar romaskine med 4 modstandsniveauer, glidelejet sæde og et overskueligt LCD-display – en enkel start på rotræning.',
+			'why'     => <<<'HTML'
+<p>Top Sport Cambridge er til dig, der gerne vil i gang med at ro derhjemme, men ikke vil have en stor maskine stående fremme. Den klapper sammen efter træningen, så gulvet er frit igen, når du er færdig.</p>
+<p>Du vælger mellem 4 modstandsniveauer. Det er få, men nok til at komme i gang og skrue lidt op, efterhånden som formen bliver bedre. Sædet kører på glidelejede ruller, så bevægelsen føles jævn, og det er komfortabelt at sidde på, også på de lidt længere ture.</p>
+<p>Det overskuelige LCD-display viser dine træningsdata, så du kan holde øje med, hvordan det går fra gang til gang. Er du ny med romaskine og vil holde det enkelt, er den et nemt sted at starte.</p>
+HTML,
+			'good'    => [ 'Begyndere', 'Dig, der vil have en enkel maskine uden mange knapper' ],
+			'less'    => [ 'Dig, der vil have mange modstandsniveauer' ],
+		],
+		[
+			'ean'     => '5704796045461',
+			'price'   => 5999,
+			'name'    => 'ASG Pace',
+			'role'    => 'Billigere med vand og app',
+			'reviews' => [],
+			'verdict' => 'Vandromaskine med op til 14 liter vand, Bluetooth og Kinomap – og den kan foldes og trilles væk på transporthjul.',
+			'why'     => <<<'HTML'
+<p>ASG Pace er til dig, der drømmer om lyden og følelsen af vand, men ikke har plads til en vandromaskine, der står fremme hele tiden. Den kan foldes, og med transporthjulene triller du den nemt ind i et hjørne efter træningen. Den er et billigere bud på vand i en foldbar maskine end Top Sport Colorado.</p>
+<p>Tanken rummer op til 14 liter vand. Modstanden følger dit tempo: jo hårdere du trækker, jo tungere føles vandet – præcis som i en rigtig båd.</p>
+<p>Med Bluetooth kan du koble maskinen til Kinomap og ro virtuelle ruter rundt i verden. Det giver variation og gør det lettere at holde motivationen oppe uge efter uge.</p>
+HTML,
+			'good'    => [ 'Dig, der vil have vandmodstand i en foldbar maskine', 'Dig, der vil træne med Kinomap' ],
+			'less'    => [ 'Dig, der vil have den mest stille romaskine' ],
 		],
 	],
 	'guide'    => <<<'HTML'

@@ -7,12 +7,12 @@ defined( 'ABSPATH' ) || exit;
 
 return [
 	'slug'     => 'motionscykel-til-aeldre',
-	'title'    => 'Motionscykel til ældre: Vores bud på de 3 bedste',
-	'excerpt'  => 'En motionscykel til ældre skal være nem at komme op på, stabil og skånsom. Her er vores bud på de 3 bedste – og hvad du skal være opmærksom på.',
+	'title'    => 'Motionscykel til ældre: Vores bud på de 5 bedste',
+	'excerpt'  => 'En motionscykel til ældre skal være nem at komme op på, stabil og skånsom. Her er vores bud på de 5 bedste – og hvad du skal være opmærksom på.',
 	'more_cat' => 'liggecykel',
 	'intro'    => <<<'HTML'
 <p>Cykling er en af de mest skånsomme måder at holde kondition, muskler og led i gang på – også med alderen. En motionscykel til ældre skal dog opfylde nogle andre krav end en spinningcykel: den skal være nem at komme op på, sidde godt, stå stabilt og have en modstand, der kan starte meget let.</p>
-<p>Herunder er vores bud på de 3 bedste motionscykler til ældre hos danske butikker lige nu – alle med ryglæn og lav indstigning. Nederst finder du en købsguide.</p>
+<p>Herunder er vores bud på de 5 bedste motionscykler til ældre hos de butikker, vi samarbejder med, lige nu – siddecykler med ryglæn og en motionscykel med lav indstigning. Nederst finder du en købsguide.</p>
 HTML,
 	'picks'    => [
 		[
@@ -56,6 +56,36 @@ HTML,
 HTML,
 			'good'    => [ 'Dig, der vil cykle virtuelle ture', 'Lav indstigning og støtte i ryggen' ],
 			'less'    => [ 'Dig, der ikke vil bruge tablet eller app' ],
+		],
+		[
+			'ean'     => '4044163025605',
+			'price'   => 2499,
+			'name'    => 'Top Sport S-Bike VeloFit',
+			'role'    => 'Foldbar med ryglæn',
+			'reviews' => [],
+			'verdict' => 'Foldbar siddecykel med ryglæn, ergonomisk sæde og 14 niveauer støjsvag magnetisk modstand.',
+			'why'     => <<<'HTML'
+<p>Top Sport S-Bike VeloFit er til dig, der vil have tryg og behagelig motion i en siddecykel, men ikke har plads til en stor maskine. Du sidder i et ergonomisk sæde med ryglæn, så ryggen bliver støttet, og du kan koncentrere dig om at træde.</p>
+<p>Modstanden er magnetisk og støjsvag og kan justeres i 14 niveauer. Du kan altså starte meget let og skrue gradvist op, efterhånden som benene bliver stærkere – uden at cyklen larmer, mens radioen eller fjernsynet kører.</p>
+<p>Når træningen er slut, folder du cyklen sammen. Det gør den oplagt til mindre boliger, hvor der ikke er plads til, at en motionscykel står fremme hele dagen.</p>
+HTML,
+			'good'    => [ 'Dig, der vil sidde med støtte i ryggen', 'Små hjem', 'Stille træning' ],
+			'less'    => [ 'Dig, der helst vil sidde oprejst som på en almindelig cykel' ],
+		],
+		[
+			'ean'     => '7051943000223',
+			'price'   => 3499,
+			'name'    => 'Abilica Stream UB VIII',
+			'role'    => 'Lav indstigning',
+			'reviews' => [],
+			'verdict' => 'Motionscykel med lav indstigning, 32 niveauer elektronisk magnetmodstand og watt- og pulsprogrammer.',
+			'why'     => <<<'HTML'
+<p>Abilica Stream UB VIII er til dig, der foretrækker at sidde oprejst som på en almindelig cykel, men gerne vil have det nemt med at komme op og ned. Den lave indstigning betyder, at du ikke skal svinge benet højt over stellet.</p>
+<p>Modstanden er elektronisk og kan stilles i 32 niveauer, og svinghjulet på 9 kg giver et jævnt tråd. Den letlæselige computer har 12 ruteprofiler i tre sværhedsgrader, og watt- og pulsprogrammerne regulerer selv modstanden, så du holder et roligt og sikkert niveau. Pulsen måles med håndsensorer eller et 5,3 kHz-bælte, som købes separat.</p>
+<p>Sadlen passer til en indvendig benlængde på 73–104 cm, og cyklen tager brugere op til 120 kg. Via Bluetooth og iConsole+ kan du følge træningen på mobil eller tablet.</p>
+HTML,
+			'good'    => [ 'Nem op- og nedstigning', 'Træning efter puls', 'Dig, der vil følge træningen på tablet' ],
+			'less'    => [ 'Dig, der har brug for ryglæn' ],
 		],
 	],
 	'guide'    => <<<'HTML'

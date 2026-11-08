@@ -7,12 +7,12 @@ defined( 'ABSPATH' ) || exit;
 
 return [
 	'slug'     => 'loebebaand-med-stigning',
-	'title'    => 'Løbebånd med stigning: Vores bud på de 3 bedste',
-	'excerpt'  => 'Stigning gør løbebåndet hårdere uden højere fart – og skåner leddene. Her er vores bud på de 3 bedste løbebånd med stigning og hvad du skal kigge efter.',
+	'title'    => 'Løbebånd med stigning: Vores bud på de 5 bedste',
+	'excerpt'  => 'Stigning gør løbebåndet hårdere uden højere fart – og skåner leddene. Her er vores bud på de 5 bedste løbebånd med stigning og hvad du skal kigge efter.',
 	'more_cat' => 'lobebaand-med-incline',
 	'intro'    => <<<'HTML'
 <p>Stigning – også kaldet incline – er en af de bedste funktioner på et løbebånd. Når båndet hælder, bliver hvert skridt hårdere, pulsen stiger, og du træner baglår og baller mere, uden at du behøver at løbe hurtigere. Det gør stigning populært både til bakkeløb og til hurtig gang, der føles som en tur op ad bakke.</p>
-<p>Herunder er vores bud på de 3 bedste løbebånd med stigning hos danske butikker lige nu. To af dem er grundigt anmeldt af uafhængige medier – links står ved produkterne. Nederst finder du en købsguide.</p>
+<p>Herunder er vores bud på de 5 bedste løbebånd med stigning hos de butikker, vi samarbejder med, lige nu. To af dem er grundigt anmeldt af uafhængige medier – links står ved produkterne. Nederst finder du en købsguide.</p>
 HTML,
 	'picks'    => [
 		[
@@ -62,6 +62,36 @@ HTML,
 HTML,
 			'good'    => [ 'Dig, der vil have elektronisk stigning til en fornuftig pris', 'Gang og løb i moderat tempo' ],
 			'less'    => [ 'Dig, der løber meget hurtigt og langt – kig mod en større løbeflade' ],
+		],
+		[
+			'ean'     => '5704796045607',
+			'price'   => 12999,
+			'name'    => 'ASG Momentum Runner 600',
+			'role'    => 'Automatisk stigning til 15 %',
+			'reviews' => [],
+			'verdict' => 'Løbebånd med automatisk stigning op til 15 %, 2,5 HK motor og en løbeflade på 130 x 46 cm med 6 støddæmpere.',
+			'why'     => <<<'HTML'
+<p>ASG Momentum Runner 600 er til dig, der vil kunne skrue godt op for bakkerne. Stigningen går automatisk helt op til 15 %, så du kan forvandle en rask gåtur til en rigtig bjergtur – eller lægge hårde bakkeintervaller ind i løbetræningen.</p>
+<p>Motoren på 2,5 HK giver op til 18 km/t. Løbefladen er 130 x 46 cm, og 6 støddæmpere tager noget af stødet fra hvert skridt, så knæ og ankler skånes.</p>
+<p>Der er 12 træningsprogrammer at vælge imellem, og med Bluetooth kan du forbinde båndet til Kinomap og Zwift. Så er der altid en ny rute at give sig i kast med.</p>
+HTML,
+			'good'    => [ 'Bakketræning og hurtig gang', 'Dig, der vil træne med Zwift eller Kinomap' ],
+			'less'    => [ 'Meget høje løbere, der vil have den længste løbeflade' ],
+		],
+		[
+			'ean'     => '8029975999630',
+			'price'   => 9999,
+			'name'    => 'Everfit TFK 655 Slim',
+			'role'    => 'Foldbar med elektronisk stigning',
+			'reviews' => [],
+			'verdict' => 'Slankt, foldbart løbebånd med elektronisk stigning op til 12 % i 12 niveauer og hastighed op til 18 km/t.',
+			'why'     => <<<'HTML'
+<p>Everfit TFK 655 Slim er til dig, der vil have elektronisk stigning, men også skal kunne folde båndet væk efter træningen. Det slanke design gør det nemmere at finde plads i en almindelig bolig.</p>
+<p>Stigningen går op til 12 %, fordelt på 12 niveauer, og du skifter med et tryk undervejs. Hastigheden går op til 18 km/t og kan finjusteres, så du rammer præcis det tempo, du vil holde.</p>
+<p>Der er 12 programmer og pulsstyret træning (HRC), og båndet kan også måle din fedtprocent. Med Bluetooth og App Ready 3.0 kan du træne med apps som Zwift, så turen på båndet bliver mere varieret.</p>
+HTML,
+			'good'    => [ 'Dig, der vil have stigning i et foldbart bånd', 'Træning efter puls' ],
+			'less'    => [ 'Dig, der vil have de stejleste bakker' ],
 		],
 	],
 	'guide'    => <<<'HTML'

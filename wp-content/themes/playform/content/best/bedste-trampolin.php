@@ -12,7 +12,7 @@ return [
 	'more_cat' => 'trampoliner',
 	'intro'    => <<<'HTML'
 <p>En trampolin i haven giver timevis af leg og bevægelse – for børn og for voksne. Men der er stor forskel på kvaliteten, og en trampolin skal holde til mange års vind og vejr. Den bedste trampolin er derfor ikke nødvendigvis den største eller den dyreste, men den, der passer til din have, dine børn og den måde, I vil bruge den på.</p>
-<p>Herunder er vores bud på de 3 bedste havetrampoliner hos danske butikker lige nu. Nederst finder du en købsguide til størrelse, sikkerhed og vedligehold.</p>
+<p>Herunder er vores bud på de 4 bedste havetrampoliner hos de butikker, vi samarbejder med, lige nu. Nederst finder du en købsguide til størrelse, sikkerhed og vedligehold.</p>
 HTML,
 	'picks'    => [
 		[
@@ -23,7 +23,7 @@ HTML,
 			'verdict' => 'Rund havetrampolin på 366 cm inkl. sikkerhedsnet til en lav pris.',
 			'why'     => <<<'HTML'
 <p>Odin Trampolin ø366 cm er en trampolin til både børn og voksne, udført i robuste materialer og leveret med sikkerhedsnet. Med en diameter på 366 cm har den plads til legen i en almindelig have.</p>
-<p>Det er den billigste af vores tre valg og et godt sted at starte, hvis du vil have en komplet trampolin med net uden at bruge mange penge.</p>
+<p>Det er den billigste af vores trampoliner på ben og et godt sted at starte, hvis du vil have en komplet trampolin med net uden at bruge mange penge.</p>
 HTML,
 			'good'    => [ 'Familier, der vil have en komplet trampolin med net til en lav pris', 'Haver med almindelig plads' ],
 			'less'    => [ 'Dig, der vil have en nedgravet trampolin eller en meget stor flade' ],
@@ -53,6 +53,21 @@ HTML,
 HTML,
 			'good'    => [ 'Dig, der vil have en mere solid og dyrere trampolin', 'Hyppig brug af både børn og voksne' ],
 			'less'    => [ 'Dig, der kun leder efter den billigste løsning' ],
+		],
+		[
+			'ean'     => '7051944186704',
+			'price'   => 2800,
+			'name'    => 'Jumpmaster Premium Inground 3,65 m',
+			'role'    => 'Bedst nedgravet',
+			'reviews' => [],
+			'verdict' => 'Nedgravet trampolin på 3,65 m med Premium hoppedug, 72 fjedre, sikkerhedsnet og livstidsgaranti på rammen.',
+			'why'     => <<<'HTML'
+<p>Jumpmaster Premium Inground er til familien, der vil have trampolinen til at gå i ét med græsplænen. Den graves ned, så hoppefladen ligger lavt. Børnene kan gå direkte på uden stige, faldhøjden bliver mindre, og haven ser mere ryddelig ud.</p>
+<p>Hoppedugen lukker mere luft igennem end en almindelig dug, og sammen med 72 bløde, galvaniserede fjedre giver det et højt og jævnt hop – også for de mindste. Diameteren på 3,65 m giver god plads til leg og passer i de fleste haver.</p>
+<p>Sikkerhedsnettet er finmasket, UV- og rivebestandigt og holdes stramt af en stålring i toppen. Kantpolstringen er 36 cm bred, rammen er i galvaniseret stål, og maks. brugervægt er 130 kg. Hullet skal være 325 cm i diameter og 70 cm dybt på midten.</p>
+HTML,
+			'good'    => [ 'Familier med små børn', 'Dig, der vil have en diskret trampolin i haven' ],
+			'less'    => [ 'Dig, der ikke vil grave et hul i haven' ],
 		],
 	],
 	'guide'    => <<<'HTML'

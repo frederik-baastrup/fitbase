@@ -7,12 +7,12 @@ defined( 'ABSPATH' ) || exit;
 
 return [
 	'slug'     => 'lille-loebebaand',
-	'title'    => 'Lille løbebånd: Vores bud på de 3 bedste kompakte modeller',
-	'excerpt'  => 'Et lille løbebånd eller gåbånd giver dig daglig bevægelse uden at fylde stuen. Her er vores bud på de 3 bedste kompakte modeller – og hvad de kan.',
+	'title'    => 'Lille løbebånd: Vores bud på de 4 bedste kompakte modeller',
+	'excerpt'  => 'Et lille løbebånd eller gåbånd giver dig daglig bevægelse uden at fylde stuen. Her er vores bud på de 4 bedste kompakte modeller – og hvad de kan.',
 	'more_cat' => 'gaabaand',
 	'intro'    => <<<'HTML'
 <p>Et lille løbebånd er for dig, der vil have mere bevægelse i hverdagen, men ikke har plads til et stort løbebånd. Mange af de kompakte modeller er egentlig gåbånd – flade bånd uden høje håndtag, som kan skubbes ind under sofaen eller skrivebordet – mens andre er slanke løbebånd, der kan foldes.</p>
-<p>Herunder er vores bud på de 3 bedste små løbebånd og gåbånd hos danske butikker lige nu – og en guide til, hvad du kan forvente af dem.</p>
+<p>Herunder er vores bud på de 4 bedste små løbebånd og gåbånd hos de butikker, vi samarbejder med, lige nu – og en guide til, hvad du kan forvente af dem.</p>
 HTML,
 	'picks'    => [
 		[
@@ -56,6 +56,21 @@ HTML,
 HTML,
 			'good'    => [ 'Gang op ad "bakke" hjemme', 'Dig, der vil træne med app' ],
 			'less'    => [ 'Løb' ],
+		],
+		[
+			'ean'     => '5714237003585',
+			'price'   => 3999,
+			'name'    => 'Odin T600 v2',
+			'role'    => 'Billig gå- og løbekombi',
+			'reviews' => [],
+			'verdict' => 'Kompakt bånd, der både kan bruges til gang og løb – lavet til hjemmet, kontoret og lejligheden.',
+			'why'     => <<<'HTML'
+<p>Odin T600 v2 er til dig, der vil i gang med at gå eller løbe hjemme, men ikke ved, hvilken af delene det ender med. Det er både gåbånd og løbebånd, så du kan starte med rolige gåture og tage de første løbeskridt, når du er klar.</p>
+<p>Designet er kompakt, så det passer ind i en lejlighed eller på kontoret, hvor der ikke er plads til et stort løbebånd. Det er netop lavet til dig, der vil starte med gå- eller løbetræning uden at ofre et helt værelse.</p>
+<p>Det er Odins 2027-model, og den er tænkt som en praktisk løsning til hverdagen: en gåtur under et online-møde, en kort løbetur før aftensmaden. Er du ny og vil prøve kræfter med begge dele, er det et ligetil sted at starte.</p>
+HTML,
+			'good'    => [ 'Begyndere', 'Både gang og løb', 'Lejlighed og kontor' ],
+			'less'    => [ 'Erfarne løbere, der træner langt og hurtigt' ],
 		],
 	],
 	'guide'    => <<<'HTML'

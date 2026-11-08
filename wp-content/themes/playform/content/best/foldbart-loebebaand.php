@@ -7,12 +7,12 @@ defined( 'ABSPATH' ) || exit;
 
 return [
 	'slug'     => 'foldbart-loebebaand',
-	'title'    => 'Foldbart løbebånd: Vores bud på de 3 bedste',
-	'excerpt'  => 'Et foldbart løbebånd giver dig løbetræning hjemme uden at miste gulvpladsen. Her er vores bud på de 3 bedste – og hvad du skal tjekke før køb.',
+	'title'    => 'Foldbart løbebånd: Vores bud på de 5 bedste',
+	'excerpt'  => 'Et foldbart løbebånd giver dig løbetræning hjemme uden at miste gulvpladsen. Her er vores bud på de 5 bedste – og hvad du skal tjekke før køb.',
 	'more_cat' => 'foldbart-lobebaand',
 	'intro'    => <<<'HTML'
 <p>Et løbebånd er en af de mest effektive maskiner til kondition, men det fylder. Et foldbart løbebånd kan klappes op eller lægges sammen efter træningen, så det ikke optager stuen hele dagen.</p>
-<p>Herunder er vores bud på de 3 bedste foldbare – også kaldet sammenklappelige – løbebånd hos danske butikker lige nu. Nederst finder du en købsguide til motor, løbeflade, foldning og pris.</p>
+<p>Herunder er vores bud på de 5 bedste foldbare – også kaldet sammenklappelige – løbebånd hos de butikker, vi samarbejder med, lige nu. Nederst finder du en købsguide til motor, løbeflade, foldning og pris.</p>
 HTML,
 	'picks'    => [
 		[
@@ -59,6 +59,36 @@ HTML,
 HTML,
 			'good'    => [ 'Gang, også mens du arbejder', 'Meget små boliger', 'Dig, der vil kunne gemme løbebåndet helt væk' ],
 			'less'    => [ 'Løb over 10 km/t', 'Dig, der vil have håndtag og stigning' ],
+		],
+		[
+			'ean'     => '8717842032503',
+			'price'   => 23999,
+			'name'    => 'Tunturi T80 Signature',
+			'role'    => 'Bedst til hurtigt løb',
+			'reviews' => [],
+			'verdict' => 'Foldbart løbebånd med 5,5 HK motor, op til 22 km/t, elektronisk hældning og 47 programmer.',
+			'why'     => <<<'HTML'
+<p>Tunturi T80 Signature er til dig, der løber for alvor og ikke vil gå på kompromis, bare fordi båndet skal kunne foldes. Motoren på 5,5 HK trækker op til 22 km/t, så der er god plads til intervaller og hurtige tempoture.</p>
+<p>Den elektroniske hældning gør det let at lægge bakker ind i træningen, og løbefladen er rummelig, så du ikke skal tænke på, hvor du sætter fødderne. Med 47 programmer og Bluetooth til populære træningsapps får du masser af variation.</p>
+<p>Når du er færdig, folder du båndet op. SoftDrop-systemet sørger for, at det sænkes blødt ned igen, når det skal i brug.</p>
+HTML,
+			'good'    => [ 'Løbere, der træner hurtigt og ofte', 'Dig, der vil have stigning og apps', 'Dig, der vil have kræfter og stadig kunne folde båndet' ],
+			'less'    => [ 'Dig med et lille budget' ],
+		],
+		[
+			'ean'     => '0885652026321',
+			'price'   => 9999,
+			'name'    => 'Adidas T-24C',
+			'role'    => 'Ultrakompakt med stigning',
+			'reviews' => [],
+			'verdict' => 'Ultrakompakt foldbart løbebånd med 2 HK motor, 18 km/t og 12 stigningsniveauer – kan stå oprejst eller ligge fladt.',
+			'why'     => <<<'HTML'
+<p>Adidas T-24C er til dig, der vil have stigning og app-træning, men har allermindst plads. Båndet er ultrakompakt og kan opbevares både stående og liggende fladt, alt efter hvor du har plads.</p>
+<p>Motoren på 2 HK giver op til 18 km/t, og med 12 stigningsniveauer kan du gøre gåture og løbeture hårdere uden at skrue op for farten. Det er godt for både konditionen og leddene.</p>
+<p>Båndet virker med Zwift og Kinomap, og du får 60 dages gratis adgang til Kinomap med. Så kan du løbe virtuelle ruter fra første dag og finde ud af, om app-træning er noget for dig.</p>
+HTML,
+			'good'    => [ 'Små lejligheder', 'Gang og løb med stigning', 'Dig, der vil træne med Zwift eller Kinomap' ],
+			'less'    => [ 'Dig, der vil løbe over 18 km/t' ],
 		],
 	],
 	'guide'    => <<<'HTML'

@@ -7,12 +7,12 @@ defined( 'ABSPATH' ) || exit;
 
 return [
 	'slug'     => 'spinningcykel-med-computer',
-	'title'    => 'Spinningcykel med computer: Vores bud på de 3 bedste',
-	'excerpt'  => 'En spinningcykel med computer viser watt, puls og fremgang – og kan styres af apps. Her er vores bud på de 3 bedste og hvad du skal kigge efter.',
+	'title'    => 'Spinningcykel med computer: Vores bud på de 5 bedste',
+	'excerpt'  => 'En spinningcykel med computer viser watt, puls og fremgang – og kan styres af apps. Her er vores bud på de 5 bedste og hvad du skal kigge efter.',
 	'more_cat' => 'spinningcykel',
 	'intro'    => <<<'HTML'
 <p>En spinningcykel er bygget til hård træning: et tungt svinghjul, en sportslig siddestilling og modstand, der kan skrues helt op. Med en computer på styret får du data at træne efter – tid, distance, puls, kadence og på de bedste modeller watt – og ofte mulighed for at koble cyklen til apps som Zwift eller Kinomap.</p>
-<p>Herunder er vores bud på de 3 bedste spinningcykler med computer hos danske butikker lige nu. Den ene er grundigt anmeldt af uafhængige medier – links står ved produktet. Nederst finder du en købsguide.</p>
+<p>Herunder er vores bud på de 5 bedste spinningcykler med computer hos de butikker, vi samarbejder med, lige nu. Den ene er grundigt anmeldt af uafhængige medier – links står ved produktet. Nederst finder du en købsguide.</p>
 HTML,
 	'picks'    => [
 		[
@@ -58,6 +58,36 @@ HTML,
 HTML,
 			'good'    => [ 'Dig, der vil have et jævnt, tungt træk', 'Dig, der vil træne efter puls' ],
 			'less'    => [ 'Dig, der vil have elektronisk styret modstand fra apps' ],
+		],
+		[
+			'ean'     => '5714605000024',
+			'price'   => 8995,
+			'name'    => 'Peak Fitness Racer Pro',
+			'role'    => 'Computer med wattmåling',
+			'reviews' => [],
+			'verdict' => 'Indoor bike med wattmåling, op til 1000 W magnetisk modstand og et 15 kg svinghjul – klar til Zwift, Kinomap og iConsole+.',
+			'why'     => <<<'HTML'
+<p>Peak Fitness Racer Pro er til dig, der vil træne efter tal. Computeren viser watt, puls, kadence, hastighed, distance, tid og kalorier, og via Bluetooth kan du køre med Zwift, Kinomap eller iConsole+ på virtuelle ruter rundt i verden.</p>
+<p>Modstanden er magnetisk og støjsvag med 16 niveauer og op til 1000 W. Svinghjulet på 15 kg og en gearing på 1:9 giver et tråd, der føles som et svinghjul på 25–30 kg. Kombistyret lader dig skifte mellem oprejst og aerostilling, og styr og sadel justeres både op/ned og frem/tilbage. Kombipedalerne passer til almindelige sko og SPD-klamper.</p>
+<p>Cyklen tager brugere op til 150 kg, har transporthjul foran og 2 års garanti. Vil du måle pulsen, skal du bruge et Polar-pulsbælte.</p>
+HTML,
+			'good'    => [ 'Træning efter watt', 'Zwift og Kinomap', 'Dig, der kører med klikpedaler' ],
+			'less'    => [ 'Pulsbælte følger ikke med' ],
+		],
+		[
+			'ean'     => '5714237003776',
+			'price'   => 1899,
+			'name'    => 'Odin S700',
+			'role'    => 'Billigst med computer',
+			'reviews' => [],
+			'verdict' => 'Kraftig og stabil spinningcykel med et 13 kg svinghjul og en brugervenlig computer – til en lav pris.',
+			'why'     => <<<'HTML'
+<p>Odin S700 er til dig, der vil prøve spinning derhjemme uden at bruge mange penge. Den er bygget til den private bruger, der gerne vil have en cykel, der kan give masser af udfordring, når der skal trædes igennem.</p>
+<p>Svinghjulet vejer 13 kg og giver et glidende tråd, så bevægelsen føles rund og jævn. Stellet er kraftigt og stabilt, så du kan give den gas uden at tænke over det.</p>
+<p>Den brugervenlige computer holder styr på træningen, uden at du skal bruge tid på at sætte den op. Er du ny med spinning og vil have en simpel cykel at starte på, er den et oplagt bud.</p>
+HTML,
+			'good'    => [ 'Begyndere', 'Lavt budget' ],
+			'less'    => [ 'Dig, der vil have et svinghjul i den tunge klasse' ],
 		],
 	],
 	'guide'    => <<<'HTML'

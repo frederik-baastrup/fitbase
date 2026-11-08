@@ -7,12 +7,12 @@ defined( 'ABSPATH' ) || exit;
 
 return [
 	'slug'     => 'magnetisk-romaskine',
-	'title'    => 'Magnetisk romaskine: Vores bud på de 3 bedste',
-	'excerpt'  => 'En magnetisk romaskine er stille, kompakt og nem at justere. Her er vores bud på de 3 bedste fra danske butikker – og hvad du skal kigge efter.',
+	'title'    => 'Magnetisk romaskine: Vores bud på de 5 bedste',
+	'excerpt'  => 'En magnetisk romaskine er stille, kompakt og nem at justere. Her er vores bud på de 5 bedste fra de butikker, vi samarbejder med – og hvad du skal kigge efter.',
 	'more_cat' => 'romaskine-magnetisk',
 	'intro'    => <<<'HTML'
 <p>En magnetisk romaskine er det sikre valg til hjemmet: den er stille, den kræver ingen vedligeholdelse, og du skruer op og ned for modstanden med et tryk. Modstanden kommer fra magneter, der bremser et svinghjul, så den er den samme, uanset hvor hurtigt du trækker – derfor føles den lidt anderledes end en vand- eller luftromaskine, men den er til gengæld nem at styre præcist.</p>
-<p>Herunder er vores bud på de 3 bedste magnetiske romaskiner hos danske butikker lige nu. Nederst finder du en købsguide til modstand, plads, skærm og pris.</p>
+<p>Herunder er vores bud på de 5 bedste magnetiske romaskiner hos de butikker, vi samarbejder med, lige nu. Nederst finder du en købsguide til modstand, plads, skærm og pris.</p>
 HTML,
 	'picks'    => [
 		[
@@ -56,6 +56,36 @@ HTML,
 HTML,
 			'good'    => [ 'Dig, der bor i lejlighed eller træner, mens andre sover', 'Dig, der vil have en enkel maskine uden vedligeholdelse' ],
 			'less'    => [ 'Dig, der vil have alle specifikationer på plads på forhånd – beskrivelsen er sparsom' ],
+		],
+		[
+			'ean'     => '5704796045645',
+			'price'   => 3999,
+			'name'    => 'ASG Flowrow 200',
+			'role'    => 'Kompakt med 16 niveauer',
+			'reviews' => [],
+			'verdict' => 'Kompakt magnetisk romaskine på kun 18,5 kg med 16 modstandsniveauer og et svinghjul på 2,2 kg.',
+			'why'     => <<<'HTML'
+<p>ASG Flowrow 200 er til dig, der vil have mange modstandsniveauer i en let og kompakt maskine. Den vejer kun 18,5 kg, så den er nem at flytte rundt på og at finde plads til i en mindre bolig.</p>
+<p>Med 16 magnetiske modstandsniveauer kan du finjustere træningen, fra en rolig opvarmning til hårde intervaller. Svinghjulet på 2,2 kg giver et kontrolleret træk, og som på andre magnetiske maskiner er modstanden stille, så du kan ro, mens andre sover eller ser tv.</p>
+<p>Den maksimale brugervægt er 100 kg. Vejer du mere, bør du kigge på en af de kraftigere modeller i guiden.</p>
+HTML,
+			'good'    => [ 'Mindre boliger', 'Dig, der vil finjustere modstanden' ],
+			'less'    => [ 'Brugere over 100 kg' ],
+		],
+		[
+			'ean'     => '4044163024608',
+			'price'   => 3999,
+			'name'    => 'Top Sport RW 1000',
+			'role'    => 'Bedst til app-træning',
+			'reviews' => [],
+			'verdict' => 'Magnetisk romaskine med 8 modstandsniveauer, der kan bruges med Kinomap og Fitshow – og trilles væk på transportruller.',
+			'why'     => <<<'HTML'
+<p>Top Sport RW 1000 er til dig, der bliver motiveret af at se, hvor du er på vej hen. Maskinen virker med apps som Kinomap og Fitshow, så du kan ro virtuelle ruter og følge din fremgang i stedet for at stirre på væggen.</p>
+<p>Du har 8 modstandsniveauer at skrue på – nok til både rolige ture og hårdere pas. Den magnetiske modstand er stille og kræver ingen vedligeholdelse.</p>
+<p>Designet er pladsbesparende, og transportrullerne gør det nemt at trille maskinen til side efter træningen. Den passer derfor godt ind i et hjem, hvor romaskinen ikke skal stå fremme hele tiden.</p>
+HTML,
+			'good'    => [ 'Træning med Kinomap og Fitshow', 'Dig, der flytter maskinen efter brug' ],
+			'less'    => [ 'Dig, der vil have mange modstandsniveauer' ],
 		],
 	],
 	'guide'    => <<<'HTML'

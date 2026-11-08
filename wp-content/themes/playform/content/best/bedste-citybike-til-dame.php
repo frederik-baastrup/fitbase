@@ -7,12 +7,12 @@ defined( 'ABSPATH' ) || exit;
 
 return [
 	'slug'     => 'bedste-citybike-til-dame',
-	'title'    => 'Bedste citybike til dame: Vores bud på de 3 bedste',
-	'excerpt'  => 'En god citybike til dame skal være nem at stige på, komfortabel og klar til hverdagen. Her er vores bud på de 3 bedste – og hvad du skal kigge efter.',
+	'title'    => 'Bedste citybike til dame: Vores bud på de 5 bedste',
+	'excerpt'  => 'En god citybike til dame skal være nem at stige på, komfortabel og klar til hverdagen. Her er vores bud på de 5 bedste – og hvad du skal kigge efter.',
 	'more_cat' => 'damecykler',
 	'intro'    => <<<'HTML'
 <p>En citybike er hverdagens arbejdshest: den skal tage dig til arbejde, i byen og til indkøb i al slags vejr – uden at kræve meget vedligeholdelse. Til dame har de fleste citybikes en lav indstigning, så det er nemt at komme op og ned, også i nederdel eller med fyldt kurv.</p>
-<p>Herunder er vores bud på de 3 bedste citybikes til dame hos danske butikker lige nu – fra den prisvenlige hverdagscykel til den klassiske retromodel. Nederst finder du en købsguide.</p>
+<p>Herunder er vores bud på de 5 bedste citybikes til dame hos de butikker, vi samarbejder med, lige nu – fra den prisvenlige hverdagscykel til den klassiske retromodel. Nederst finder du en købsguide.</p>
 HTML,
 	'picks'    => [
 		[
@@ -56,6 +56,36 @@ HTML,
 HTML,
 			'good'    => [ 'Dig, der vil have en cykel med stil', 'Mange farvevalg' ],
 			'less'    => [ 'Dig, der vil have den billigste løsning' ],
+		],
+		[
+			'ean'     => '5707965336834',
+			'price'   => 4499,
+			'name'    => 'Raleigh Darlington Dame 3g',
+			'role'    => 'Bedst til indkøbsture',
+			'reviews' => [],
+			'verdict' => 'Helfarvet retro-shoppingcykel med 3 indvendige gear, lygter, bagagebærer, lås og skærme monteret fra start.',
+			'why'     => <<<'HTML'
+<p>Raleigh Darlington er cyklen til dig, der vil have en charmerende hverdagscykel, der er klar fra første dag. Den er helfarvet fra top til tå – i den cremefarvede udgave bliver selv turen til bageren lidt mere festlig.</p>
+<p>Udstyret er på plads: for- og baglygte, bagagebærer, lås, skærme og støtteben. Du skal altså ikke købe ekstra eller montere noget, før du kan cykle på arbejde, i byen eller på indkøb med varerne på bagagebæreren.</p>
+<p>De 3 indvendige gear er nemme at bruge og sidder beskyttet mod regn og snavs, og kombinationen af fodbremse og fælgbremse er enkel at vedligeholde. Stellet er i stål, og hjulene er 28".</p>
+HTML,
+			'good'    => [ 'Indkøb og ærinder i byen', 'Dig, der vil have retrostil', 'Dig, der vil have alt udstyret med' ],
+			'less'    => [ 'Bakket terræn – der er kun 3 gear' ],
+		],
+		[
+			'ean'     => '5712701025828',
+			'price'   => 4799,
+			'name'    => 'Raleigh Sprite Alu Dame 7g',
+			'role'    => 'Let aluminiumsstel',
+			'reviews' => [],
+			'verdict' => 'Komfortabel citybike med aluminiumsstel, 7 Shimano Nexus-gear og en vægt på 15,6 kg.',
+			'why'     => <<<'HTML'
+<p>Raleigh Sprite Alu er til dig, der vil have en komfortabel citybike, som ikke er tung at slæbe rundt på. Stellet er i aluminium, og cyklen vejer 15,6 kg. Det mærker du, når den skal op ad kældertrappen eller løftes ind i cykelstativet.</p>
+<p>Geometrien er komfortabel, og de 7 indvendige Shimano Nexus-gear er lette at skifte og kræver kun lidt vedligeholdelse. Bagpå bremser du med fodbremse, og foran er der en V-bremse.</p>
+<p>Cyklen kommer med støtteben, skærme og lås, og den er klar til, at du kan sætte lygter og bagagebærer på. Den matgrå farve giver et enkelt og moderne look.</p>
+HTML,
+			'good'    => [ 'Dig, der vil have en let cykel', 'Byture med lidt bakker', 'Lidt vedligeholdelse' ],
+			'less'    => [ 'Dig, der vil have retrostil' ],
 		],
 	],
 	'guide'    => <<<'HTML'
