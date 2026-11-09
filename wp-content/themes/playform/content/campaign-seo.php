@@ -9,7 +9,7 @@ return [
 	'black-friday' => <<<'HTML'
 <h2>Black Friday på fitnessudstyr – find tilbuddene før nytårsforsættet</h2>
 <p>November er gået fra at handle om én fredag til at være en hel tilbudsmåned. Allerede i ugerne før Black Friday begynder webshops at skære i priserne på træningsudstyr, og det fortsætter gennem Black Weekend og frem til Cyber Monday. Timingen passer godt, hvis januar skal starte med træning derhjemme i stedet for en lang kø i centret.</p>
-<p>Alt her på siden er tilbud, som butikkerne selv har oprettet. Morgen og aften opdaterer vi priser og lagerstatus fra de danske webshops, vi samarbejder med. Finder du en maskine eller et sæt vægte, der passer til dig, klikker du videre og gennemfører købet hos butikken.</p>
+<p>Alt her på siden er tilbud, som butikkerne selv har oprettet. Morgen og aften opdaterer vi priser og lagerstatus fra de butikker, vi samarbejder med. Finder du en maskine eller et sæt vægte, der passer til dig, klikker du videre og gennemfører købet hos butikken.</p>
 
 <h3>Black Friday-tilbud på løbebånd</h3>
 <p>{cat:lobebaand|Løbebånd} er blandt de mest søgte varer op til Black Friday. Her finder du tilbud på {cat:foldbart-lobebaand|foldbare løbebånd}, der kan stilles væk efter brug, {cat:gaabaand|gåbånd} til hjemmekontoret, {cat:lobebaand-med-incline|løbebånd med incline}, {cat:manuelt-lobebaand|manuelle løbebånd} og {cat:lobebaand-til-tunge-brugere|løbebånd til tunge brugere}.</p>
