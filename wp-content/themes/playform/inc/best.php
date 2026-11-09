@@ -110,9 +110,27 @@ add_shortcode(
 	'fitbase_kort',
 	static function (): string {
 		$out = '';
-		foreach ( playform_picks() as $i => $pick ) {
+		$picks = playform_picks();
+		$used  = array_filter( array_map( static fn( $pk ) => ( $x = playform_pick_product( $pk ) ) ? $x->get_id() : 0, $picks ) );
+		foreach ( $picks as $i => $pick ) {
 			$p = playform_pick_product( $pick );
 			if ( ! $p ) {
+				// Valget findes ikke (lige nu) hos butikkerne: overblikket skal stadig have alle numre, så vis det
+				// samme alternativ som valgets kort (fitbase_valg) – ellers modellens navn uden pris.
+				$alts = function_exists( 'playform_pick_alternatives' ) ? playform_pick_alternatives( playform_pick_category( null, get_the_ID() ), (float) ( $pick['price'] ?? 0 ), $used, 1 ) : [];
+				if ( $alts ) {
+					$d    = playform_card_data( $alts[0] );
+					$out .= '<a class="tldr__item" href="#valg-' . ( $i + 1 ) . '">'
+						. '<span class="tldr__n">' . ( $i + 1 ) . '</span>'
+						. ( $d['image'] ? '<img src="' . esc_url( $d['image'] ) . '" alt="" loading="lazy">' : '<span class="tldr__ph"></span>' )
+						. '<span class="tldr__txt"><small>Alternativ til ' . esc_html( (string) ( $pick['name'] ?? '' ) ) . '</small><b>' . esc_html( $d['name'] ) . '</b></span>'
+						. '<span class="tldr__price">' . esc_html( playform_kr( $d['price'] ) ) . '</span></a>';
+				} else {
+					$out .= '<a class="tldr__item" href="#valg-' . ( $i + 1 ) . '">'
+						. '<span class="tldr__n">' . ( $i + 1 ) . '</span><span class="tldr__ph"></span>'
+						. '<span class="tldr__txt"><small>' . esc_html( (string) ( $pick['role'] ?? '' ) ) . '</small><b>' . esc_html( (string) ( $pick['name'] ?? '' ) ) . '</b></span>'
+						. '<span class="tldr__price">Ikke på lager</span></a>';
+				}
 				continue;
 			}
 			$d    = playform_card_data( $p );
@@ -570,7 +588,7 @@ function playform_guide_test_note( array $a ): string {
 		$rev = $rev || ! empty( $pk['reviews'] );
 	}
 	// Overskriften uden ordet "test" (Google viser ofte overskrifter i søgeresultatet – jf. Forbrugerombudsmandens sag mod Obsidian Media).
-	$h  = '<h2>Er udstyret afprøvet af os?</h2>\n';
+	$h  = '<h2>Er udstyret afprøvet af os?</h2>' . "\n";
 	$h .= '<p>Når man skal vælge, søger mange på <b>' . $kw . ' test</b> eller "bedste ' . playform_best_kw( $kw ) . ' i test". Det her er ikke en ' . $kw . ' test, for vi har ikke selv haft produkterne til test. '
 		. 'Vi har til gengæld gjort benarbejdet: Vores bud på bedste ' . playform_best_kw( $kw ) . ' bygger på produktdata, priser og lagerstatus fra butikkerne'
 		. ( $rev ? ' – og på uafhængige anmeldelser og tests af præcis de samme modeller fra andre medier' : '' ) . ".</p>\n";
