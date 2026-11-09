@@ -105,7 +105,7 @@ HTML,
 <h3>Stigning</h3>
 <p>Stigning gør gåture og løb hårdere uden højere tempo og skåner leddene. Er det vigtigt for dig, så se vores bud på <a href="/koebsguide/loebebaand-med-stigning/">løbebånd med stigning</a>.</p>
 <h3>Hvor meget skal du give?</h3>
-<p>Foldbare løbebånd koster fra ca. 4.000 kr. til over 20.000 kr. hos de danske butikker. Under 8.000 kr. er de bedst til gang og let løb; mellem 8.000 og 15.000 kr. får du typisk kraftigere motor og stigning; over det er du i klassen af løbebånd til seriøs løbetræning. Se alle <a href="/traeningsmaskiner/lobebaand/foldbart-lobebaand/">foldbare løbebånd</a> med aktuelle priser.</p>
+<p>Foldbare løbebånd koster fra ca. 4.000 kr. til over 20.000 kr. hos de butikker, vi samarbejder med. Under 8.000 kr. er de bedst til gang og let løb; mellem 8.000 og 15.000 kr. får du typisk kraftigere motor og stigning; over det er du i klassen af løbebånd til seriøs løbetræning. Se alle <a href="/traeningsmaskiner/lobebaand/foldbart-lobebaand/">foldbare løbebånd</a> med aktuelle priser.</p>
 HTML,
 	'faq'      => [
 		[ 'Er et foldbart løbebånd lige så godt som et fast?', 'Til de fleste hjemmeløbere ja. De største faste løbebånd er dog ofte mere stabile ved høj fart og tåler mere brug.' ],

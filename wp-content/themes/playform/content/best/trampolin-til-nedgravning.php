@@ -12,7 +12,7 @@ return [
 	'more_cat' => 'trampoliner',
 	'intro'    => <<<'HTML'
 <p>En trampolin til nedgravning – også kaldet inground-trampolin – står i niveau med græsplænen. Den er nemmere at komme op på for små børn, ser pænere ud i haven og tager mindre af udsigten. Til gengæld kræver den et hul og lidt planlægning.</p>
-<p>Herunder er vores bud på de 3 bedste nedgravede trampoliner hos danske butikker lige nu. Nederst får du det, du skal vide om at vælge og grave en trampolin ned.</p>
+<p>Herunder er vores bud på de 3 bedste nedgravede trampoliner hos de butikker, vi samarbejder med, lige nu. Nederst får du det, du skal vide om at vælge og grave en trampolin ned.</p>
 HTML,
 	'picks'    => [
 		[

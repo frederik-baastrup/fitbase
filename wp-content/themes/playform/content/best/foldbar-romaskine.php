@@ -100,7 +100,7 @@ HTML,
 <h3>Skinne og højde</h3>
 <p>Foldbare romaskiner er nogle gange lidt kortere end faste modeller. Er du høj, så tjek, at skinnen er lang nok til, at du kan strække benene helt.</p>
 <h3>Hvor meget skal du give?</h3>
-<p>Foldbare romaskiner koster fra ca. 2.000 kr. og op til omkring 10.000 kr. hos de danske butikker. Under 4.000 kr. får du en enkel maskine til let brug; mellem 4.000 og 10.000 kr. får du flere niveauer, bedre skærm og et mere stabilt stel. Se alle <a href="/traeningsmaskiner/romaskiner-crosstrainere/romaskine/">romaskiner</a> med aktuelle priser, og brug filteret "Foldbar".</p>
+<p>Foldbare romaskiner koster fra ca. 2.000 kr. og op til omkring 10.000 kr. hos de butikker, vi samarbejder med. Under 4.000 kr. får du en enkel maskine til let brug; mellem 4.000 og 10.000 kr. får du flere niveauer, bedre skærm og et mere stabilt stel. Se alle <a href="/traeningsmaskiner/romaskiner-crosstrainere/romaskine/">romaskiner</a> med aktuelle priser, og brug filteret "Foldbar".</p>
 HTML,
 	'faq'      => [
 		[ 'Er en foldbar romaskine lige så god som en fast?', 'En god foldbar romaskine kan sagtens bruges til almindelig hjemmetræning. Til meget hård og hyppig træning er en fast model ofte lidt mere stabil.' ],

@@ -35,9 +35,9 @@ HTML,
 			'name'    => 'Odin R1000',
 			'role'    => 'Bedst til prisen',
 			'reviews' => [],
-			'verdict' => 'En af de billigste vandromaskiner hos de danske butikker – et godt sted at starte, hvis du vil prøve vandmodstand uden at bruge en formue.',
+			'verdict' => 'En af de billigste vandromaskiner hos de butikker, vi samarbejder med – et godt sted at starte, hvis du vil prøve vandmodstand uden at bruge en formue.',
 			'why'     => <<<'HTML'
-<p>R1000 er Odins billigste vandromaskine hos de danske butikker. Den er en brugervenlig romaskine til den private bruger med et glidende træk, der giver fornemmelsen af at sidde ude på vandet.</p>
+<p>R1000 er Odins billigste vandromaskine hos de butikker, vi samarbejder med. Den er en brugervenlig romaskine til den private bruger med et glidende træk, der giver fornemmelsen af at sidde ude på vandet.</p>
 <p>Den er med, fordi den gør vandmodstand tilgængelig til en pris, hvor mange ellers ender med en magnetisk romaskine. Butikkens produktbeskrivelse er kort, så tjek maksimal brugervægt og mål på produktsiden, før du køber – især hvis du er høj eller vejer meget.</p>
 HTML,
 			'good'    => [ 'Begyndere, der vil prøve en vandromaskine', 'Dig, der vil holde prisen nede' ],
@@ -104,7 +104,7 @@ HTML,
 <h3>Vedligeholdelse</h3>
 <p>Vandet i tanken skal holdes rent. Det gøres typisk med en rensetablet et par gange om året – følg producentens anvisning. Sørg også for at romaskinen står væk fra direkte sollys, så der ikke dannes alger.</p>
 <h3>Hvor meget skal du give?</h3>
-<p>Hos de danske butikker koster de fleste vandromaskiner mellem ca. 3.000 og 20.000 kr. I den billige ende får du en enkel maskine, der gør det, den skal. I mellemklassen får du typisk bedre skærm, mere justerbar modstand og et kraftigere stel. I toppen betaler du for træ af høj kvalitet, finish og ekstra funktioner. Se alle <a href="/traeningsmaskiner/romaskiner-crosstrainere/romaskine/romaskine-vand/">romaskiner med vand</a> med aktuelle priser – eller sammenlign med <a href="/traeningsmaskiner/romaskiner-crosstrainere/romaskine/romaskine-magnetisk/">magnetiske romaskiner</a>, som ofte er billigere og mere stille.</p>
+<p>Hos de butikker, vi samarbejder med, koster de fleste vandromaskiner mellem ca. 3.000 og 20.000 kr. I den billige ende får du en enkel maskine, der gør det, den skal. I mellemklassen får du typisk bedre skærm, mere justerbar modstand og et kraftigere stel. I toppen betaler du for træ af høj kvalitet, finish og ekstra funktioner. Se alle <a href="/traeningsmaskiner/romaskiner-crosstrainere/romaskine/romaskine-vand/">romaskiner med vand</a> med aktuelle priser – eller sammenlign med <a href="/traeningsmaskiner/romaskiner-crosstrainere/romaskine/romaskine-magnetisk/">magnetiske romaskiner</a>, som ofte er billigere og mere stille.</p>
 HTML,
 	'faq'      => [
 		[ 'Er en romaskine med vand bedre end en magnetisk?', 'Ikke nødvendigvis – den føles mere naturlig, fordi modstanden følger dit tempo, mens en magnetisk romaskine er mere stille og ofte billigere. Det handler om, hvad du foretrækker.' ],

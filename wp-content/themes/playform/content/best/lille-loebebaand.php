@@ -85,7 +85,7 @@ HTML,
 <h3>Hældning</h3>
 <p>Hældning gør gangen markant hårdere uden højere fart. På et lille bånd er det en af de bedste måder at få mere ud af træningen.</p>
 <h3>Hvor meget skal du give?</h3>
-<p>Gåbånd koster fra under 2.000 kr. hos de danske butikker; med hældning, app eller foldning typisk 4.000–8.000 kr. Slanke løbebånd ligger fra ca. 7.000 kr. Se alle <a href="/traeningsmaskiner/lobebaand/gaabaand/">gåbånd</a> og <a href="/traeningsmaskiner/lobebaand/foldbart-lobebaand/">foldbare løbebånd</a> med aktuelle priser.</p>
+<p>Gåbånd koster fra under 2.000 kr. hos de butikker, vi samarbejder med; med hældning, app eller foldning typisk 4.000–8.000 kr. Slanke løbebånd ligger fra ca. 7.000 kr. Se alle <a href="/traeningsmaskiner/lobebaand/gaabaand/">gåbånd</a> og <a href="/traeningsmaskiner/lobebaand/foldbart-lobebaand/">foldbare løbebånd</a> med aktuelle priser.</p>
 HTML,
 	'faq'      => [
 		[ 'Kan man løbe på et gåbånd?', 'De fleste gåbånd kører kun op til 6–8 km/t og er ikke bygget til løb. Vil du jogge, så vælg et kompakt løbebånd.' ],

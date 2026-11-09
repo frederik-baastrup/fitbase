@@ -102,7 +102,7 @@ HTML,
 <h3>Skærm og app</h3>
 <p>En enkel skærm med tid, distance, tempo og tag i minuttet er nok for mange. Vil du træne efter programmer eller ro virtuelle ruter, så kig efter Bluetooth og kompatibilitet med apps som Kinomap.</p>
 <h3>Hvor meget skal du give?</h3>
-<p>Hos de danske butikker koster magnetiske romaskiner fra ca. 2.000 kr. op til omkring 13.000 kr. Under 4.000 kr. får du en enkel maskine til let og moderat brug. Mellem 4.000 og 8.000 kr. får du typisk elektronisk modstand, bedre skærm og et mere stabilt stel. Se alle <a href="/traeningsmaskiner/romaskiner-crosstrainere/romaskine/romaskine-magnetisk/">magnetiske romaskiner</a> med aktuelle priser, eller sammenlign med <a href="/traeningsmaskiner/romaskiner-crosstrainere/romaskine/romaskine-vand/">romaskiner med vand</a>.</p>
+<p>Hos de butikker, vi samarbejder med, koster magnetiske romaskiner fra ca. 2.000 kr. op til omkring 13.000 kr. Under 4.000 kr. får du en enkel maskine til let og moderat brug. Mellem 4.000 og 8.000 kr. får du typisk elektronisk modstand, bedre skærm og et mere stabilt stel. Se alle <a href="/traeningsmaskiner/romaskiner-crosstrainere/romaskine/romaskine-magnetisk/">magnetiske romaskiner</a> med aktuelle priser, eller sammenlign med <a href="/traeningsmaskiner/romaskiner-crosstrainere/romaskine/romaskine-vand/">romaskiner med vand</a>.</p>
 HTML,
 	'faq'      => [
 		[ 'Er en magnetisk romaskine god?', 'Ja, især til hjemmet. Den er stille, kræver ingen vedligeholdelse og er nem at justere. Den føles dog ikke helt så naturlig som en vand- eller luftromaskine.' ],

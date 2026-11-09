@@ -102,7 +102,7 @@ HTML,
 <h3>Skærm og motivation</h3>
 <p>En romaskine er effektiv, men kan blive ensformig. Programmer, intervaller og apps som Kinomap gør det nemmere at holde fast i træningen. Er det vigtigt for dig, så kig efter Bluetooth.</p>
 <h3>Hvor meget skal du give?</h3>
-<p>Hos de danske butikker får du en romaskine til hjemmet fra ca. 2.000 kr. Mellem 3.000 og 6.000 kr. får du de fleste af de funktioner, en almindelig motionist har brug for. Over det betaler du for kraftigere stel, bedre skærm og mere naturlig modstand. Se alle <a href="/traeningsmaskiner/romaskiner-crosstrainere/romaskine/romaskine-til-hjemmetraening/">romaskiner til hjemmetræning</a> med aktuelle priser.</p>
+<p>Hos de butikker, vi samarbejder med, får du en romaskine til hjemmet fra ca. 2.000 kr. Mellem 3.000 og 6.000 kr. får du de fleste af de funktioner, en almindelig motionist har brug for. Over det betaler du for kraftigere stel, bedre skærm og mere naturlig modstand. Se alle <a href="/traeningsmaskiner/romaskiner-crosstrainere/romaskine/romaskine-til-hjemmetraening/">romaskiner til hjemmetræning</a> med aktuelle priser.</p>
 HTML,
 	'faq'      => [
 		[ 'Er en romaskine god til at tabe sig?', 'En romaskine forbrænder mange kalorier, fordi den bruger store muskelgrupper. Vægttab handler dog mest om den samlede kost og aktivitet – romaskinen er et effektivt redskab, ikke en genvej.' ],

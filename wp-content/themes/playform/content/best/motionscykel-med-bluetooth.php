@@ -100,7 +100,7 @@ HTML,
 <h3>Holder til tablet</h3>
 <p>Skal du bruge apps, er en solid holder til telefon eller tablet en stor fordel. Den er ikke altid med, så tjek produktbeskrivelsen.</p>
 <h3>Hvor meget skal du give?</h3>
-<p>Motionscykler med Bluetooth koster fra ca. 4.000 kr. hos de danske butikker. Mellem 7.000 og 10.000 kr. får du typisk flere niveauer, bedre komfort og elektronisk modstand. Se alle <a href="/traeningsmaskiner/motionscykler/kondicykel/">kondicykler</a> med aktuelle priser, eller se vores bud på <a href="/koebsguide/motionscykel-med-computer/">den bedste motionscykel med computer</a>.</p>
+<p>Motionscykler med Bluetooth koster fra ca. 4.000 kr. hos de butikker, vi samarbejder med. Mellem 7.000 og 10.000 kr. får du typisk flere niveauer, bedre komfort og elektronisk modstand. Se alle <a href="/traeningsmaskiner/motionscykler/kondicykel/">kondicykler</a> med aktuelle priser, eller se vores bud på <a href="/koebsguide/motionscykel-med-computer/">den bedste motionscykel med computer</a>.</p>
 HTML,
 	'faq'      => [
 		[ 'Hvad kan en motionscykel med Bluetooth?', 'Den kan sende træningsdata som hastighed, kadence og puls til en app på telefon eller tablet, og på nogle modeller kan appen også styre modstanden.' ],

@@ -12,7 +12,7 @@ return [
 	'more_cat' => 'motionscykler',
 	'intro'    => <<<'HTML'
 <p>En siddecykel – også kaldet mini motionscykel eller pedaltræner – er en lille cykel uden sadel, som du bruger, mens du sidder på en stol eller i sofaen. Den fylder næsten ingenting, kan stå under et bord og bruges til ben og ofte også arme. Derfor er den populær til genoptræning, til ældre og til dig, der vil have lidt mere bevægelse i en stillesiddende hverdag.</p>
-<p>Herunder er vores bud på de 3 bedste siddecykler hos danske butikker lige nu, fra den enkle pedaltræner til en foldbar siddecykel med ryglæn. Nederst finder du en kort købsguide.</p>
+<p>Herunder er vores bud på de 3 bedste siddecykler hos de butikker, vi samarbejder med, lige nu, fra den enkle pedaltræner til en foldbar siddecykel med ryglæn. Nederst finder du en kort købsguide.</p>
 HTML,
 	'picks'    => [
 		[
@@ -70,7 +70,7 @@ HTML,
 <h3>Arme og ben</h3>
 <p>Mange pedaltrænere kan stilles på et bord og bruges til armene. Det er en fordel ved genoptræning og for dig, der vil holde overkroppen i gang.</p>
 <h3>Hvor meget skal du give?</h3>
-<p>Enkle pedaltrænere koster fra under 1.000 kr. hos de danske butikker. Med skærm eller Bluetooth ligger de typisk mellem 1.000 og 2.000 kr. En siddecykel med ryglæn koster fra ca. 2.500 kr. Se alle <a href="/traeningsmaskiner/motionscykler/">motionscykler</a> med aktuelle priser.</p>
+<p>Enkle pedaltrænere koster fra under 1.000 kr. hos de butikker, vi samarbejder med. Med skærm eller Bluetooth ligger de typisk mellem 1.000 og 2.000 kr. En siddecykel med ryglæn koster fra ca. 2.500 kr. Se alle <a href="/traeningsmaskiner/motionscykler/">motionscykler</a> med aktuelle priser.</p>
 HTML,
 	'faq'      => [
 		[ 'Hvad er en siddecykel?', 'Ordet bruges både om små pedaltrænere, som du bruger fra en stol, og om motionscykler med lavt sæde og ryglæn. Fælles for dem er, at du sidder ned med støtte, mens du træner.' ],

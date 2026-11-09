@@ -102,7 +102,7 @@ HTML,
 <h3>Ergometercykel eller motionscykel?</h3>
 <p>En ergometercykel er en motionscykel, der kan styre belastningen i watt. Det er den rigtige type, hvis du vil teste og følge din kondition.</p>
 <h3>Hvor meget skal du give?</h3>
-<p>Motionscykler med programmer og elektronisk modstand koster typisk fra ca. 4.000 kr. hos de danske butikker; ergometercykler med watt-programmer ligger typisk fra 6.000 kr. Se alle <a href="/traeningsmaskiner/motionscykler/kondicykel/">kondicykler</a> med aktuelle priser, eller se vores bud på <a href="/koebsguide/motionscykel-med-bluetooth/">den bedste motionscykel med Bluetooth</a>.</p>
+<p>Motionscykler med programmer og elektronisk modstand koster typisk fra ca. 4.000 kr. hos de butikker, vi samarbejder med; ergometercykler med watt-programmer ligger typisk fra 6.000 kr. Se alle <a href="/traeningsmaskiner/motionscykler/kondicykel/">kondicykler</a> med aktuelle priser, eller se vores bud på <a href="/koebsguide/motionscykel-med-bluetooth/">den bedste motionscykel med Bluetooth</a>.</p>
 HTML,
 	'faq'      => [
 		[ 'Hvad er en ergometercykel?', 'En motionscykel, der kan styre belastningen i watt, så du kan træne efter en fast belastning og følge din kondition præcist.' ],

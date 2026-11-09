@@ -104,7 +104,7 @@ HTML,
 <h3>Pedaler</h3>
 <p>Mange spinningcykler har kombipedaler med stropper på den ene side og klik (SPD) på den anden. Kliksko giver et bedre greb og en mere effektiv pedalering.</p>
 <h3>Hvor meget skal du give?</h3>
-<p>Spinningcykler med computer koster fra ca. 4.000 kr. hos de danske butikker. Mellem 6.000 og 12.000 kr. får du typisk tungere svinghjul og elektronisk modstand; over 20.000 kr. er du i klassen af cykler til træningscentre. Se alle <a href="/traeningsmaskiner/motionscykler/spinningcykel/">spinningcykler</a> med aktuelle priser, eller læs vores guide <a href="/viden/spinningcykel-kondicykel-eller-airbike/">Spinningcykel, kondicykel eller airbike</a>.</p>
+<p>Spinningcykler med computer koster fra ca. 4.000 kr. hos de butikker, vi samarbejder med. Mellem 6.000 og 12.000 kr. får du typisk tungere svinghjul og elektronisk modstand; over 20.000 kr. er du i klassen af cykler til træningscentre. Se alle <a href="/traeningsmaskiner/motionscykler/spinningcykel/">spinningcykler</a> med aktuelle priser, eller læs vores guide <a href="/viden/spinningcykel-kondicykel-eller-airbike/">Spinningcykel, kondicykel eller airbike</a>.</p>
 HTML,
 	'faq'      => [
 		[ 'Hvad er forskellen på en spinningcykel og en motionscykel?', 'En spinningcykel har et tungere svinghjul, en mere sportslig siddestilling og er bygget til hård træning, også stående. En motionscykel er mere komfortabel og bedst til rolig og moderat træning.' ],

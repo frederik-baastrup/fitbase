@@ -12,7 +12,7 @@ return [
 	'more_cat' => 'lobebaand',
 	'intro'    => <<<'HTML'
 <p>På et løbebånd uden motor er det dig, der driver båndet. Det findes i to helt forskellige udgaver: de buede <strong>curved løbebånd</strong>, som du kender fra crossfit- og HYROX-centre, og enkle <strong>manuelle løbebånd</strong> med magnetisk bremse. Fælles for dem er, at tempoet følger dig – løber du hurtigere, kører båndet hurtigere – og at de ikke skal i stikkontakten for at køre.</p>
-<p>Der er kun få løbebånd uden motor hos de danske butikker, så her er vores to bud – og en guide til, om et løbebånd uden motor overhovedet er det rigtige for dig.</p>
+<p>Der er kun få løbebånd uden motor hos de butikker, vi samarbejder med, så her er vores to bud – og en guide til, om et løbebånd uden motor overhovedet er det rigtige for dig.</p>
 HTML,
 	'picks'    => [
 		[

@@ -12,7 +12,7 @@ return [
 	'more_cat' => 'trampoliner',
 	'intro'    => <<<'HTML'
 <p>De fleste havetrampoliner er runde, men firkantede og rektangulære trampoliner er blevet populære – især i haver med begrænset plads. Formen har betydning for både pladsen, hoppet og sikkerheden.</p>
-<p>Herunder er vores bud på de 3 firkantede (rektangulære) trampoliner hos danske butikker. Modellerne er dyrere og kan være udsolgt, så tjek lagerstatus hos butikken. Nederst får du fordele, ulemper og det, du skal tjekke.</p>
+<p>Herunder er vores bud på de 3 firkantede (rektangulære) trampoliner hos de butikker, vi samarbejder med. Modellerne er dyrere og kan være udsolgt, så tjek lagerstatus hos butikken. Nederst får du fordele, ulemper og det, du skal tjekke.</p>
 HTML,
 	'picks'    => [
 		[
