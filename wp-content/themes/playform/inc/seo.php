@@ -117,7 +117,7 @@ add_action(
 			$desc = playform_campaign_page_text( playform_current_campaign() )['intro'];
 		} elseif ( playform_is_tilbud_page() ) {
 			$t    = get_queried_object();
-			$desc = sprintf( '%s på tilbud lige nu hos danske webshops. Her står butikkernes egne tilbud samlet, og du køber direkte i webshoppen.', playform_ucfirst( $t instanceof WP_Term ? mb_strtolower( playform_cat_label( $t ) ) : 'fitnessudstyr' ) );
+			$desc = sprintf( '%s på tilbud lige nu hos de butikker, vi samarbejder med. Her står butikkernes egne tilbud samlet, og du køber direkte i webshoppen.', playform_ucfirst( $t instanceof WP_Term ? mb_strtolower( playform_cat_label( $t ) ) : 'fitnessudstyr' ) );
 		} elseif ( is_tax( 'product_cat' ) ) {
 			$desc = wp_strip_all_tags( term_description() ) ?: sprintf( 'Se %s fra de butikker, vi samarbejder med, samlet ét sted på %s. Sammenlign priser, se butikkernes tilbud og find den rigtige model.', mb_strtolower( playform_cat_label( get_queried_object() ) ), playform_site( 'name' ) );
 		} elseif ( is_post_type_archive( 'product' ) ) {

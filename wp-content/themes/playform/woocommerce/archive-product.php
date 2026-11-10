@@ -53,7 +53,7 @@ if ( $campaign ) {
 } elseif ( $is_cat ) {
 	$title = $term->name;
 	$intro = $term->description ?: sprintf(
-		'Find %s fra en række danske webshops på én side. Pris og lager hentes to gange om dagen, og selve købet foregår hos butikken.',
+		'Find %s fra de butikker, vi samarbejder med, på én side. Pris og lager hentes to gange om dagen, og selve købet foregår hos butikken.',
 		mb_strtolower( $label )
 	);
 } elseif ( $search !== '' ) {

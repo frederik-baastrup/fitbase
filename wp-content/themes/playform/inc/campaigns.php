@@ -112,7 +112,7 @@ function playform_campaign_url( string $slug ): string {
 function playform_campaign_bar_text( string $slug, ?DateTimeImmutable $day = null ): array {
 	$day   = $day ?: playform_campaign_today();
 	$niche = playform_site( 'niche' );
-	$pitch = [ "Tilbud på $niche hos danske webshops – se dem her", 'Friske tilbud – højst 14 dage gamle' ];
+	$pitch = [ "Tilbud på $niche fra vores butikker – se dem her", 'Friske tilbud – højst 14 dage gamle' ];
 	if ( $slug === 'black-friday' ) {
 		$bf   = playform_black_friday( (int) $day->format( 'Y' ) );
 		$days = (int) $day->diff( $bf )->format( '%r%a' );
