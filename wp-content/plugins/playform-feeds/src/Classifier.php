@@ -24,7 +24,29 @@ final class Classifier {
 		// Butikker med fast kategori-oversættelse (fx cykelbutikker): kun de nævnte butikskategorier kommer med.
 		$map = Config::shops()[ $offer['shop'] ]['category_map'] ?? null;
 		if ( is_array( $map ) ) {
-			return $map[ $cat ] ?? 'exclude';
+			$mapped = $map[ $cat ] ?? 'exclude';
+			// '?': butikskategorien er med, men kun vores egne regler (inkl. udelukkelser) afgør placeringen.
+			// '?:<regex>': som '?', men navnet skal også matche regex (fx kun træningselastikker fra en bred kategori).
+			// (Samme logik som i Outdoorlands Classifier.)
+			if ( is_string( $mapped ) && str_starts_with( $mapped, '?:' ) ) {
+				if ( ! self::m( substr( $mapped, 2 ), $name ) ) {
+					return 'exclude';
+				}
+				$mapped = '?';
+			}
+			if ( '?' === $mapped ) {
+				foreach ( Config::exclude() as $pattern ) {
+					if ( self::m( $pattern, $name ) ) {
+						return 'exclude';
+					}
+				}
+				$found = self::first_match( $match_name );
+				if ( $found && in_array( $found, self::MACHINE, true ) && self::m( self::ACCESSORY, $name ) ) {
+					$found = 'tilbehor';
+				}
+				return $found ?: 'exclude';
+			}
+			return $mapped;
 		}
 		foreach ( Config::exclude() as $pattern ) {
 			if ( self::m( $pattern, $name ) || self::m( $pattern, $cat ) ) {

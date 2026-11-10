@@ -26,6 +26,8 @@ final class Config {
 	/** Partner-ads feeds. Kan overstyres med option 'playform_shops'. */
 	public static function shops(): array {
 		$base     = 'https://www.partner-ads.com/dk/feed_udlaes.php?partnerid=14854';
+		// Fysio-shop.dk: navne, der er træningsudstyr, i butikkens brede kategorier.
+		$fysio_training = '?:^(?!.*tape).*(blackroll|miniband|powerband|loop ?band|super ?band|træningselastik|gymnastikbold|pilates|myball|os roller|foam ?roller)';
 		$defaults = [
 			'apuls'                 => [ 'name' => 'Apuls.dk',              'url' => "$base&bannerid=46187&feedid=637" ],
 			'fitnessshoppen'        => [ 'name' => 'Fitnessshoppen.dk',     'url' => "$base&bannerid=74933&feedid=1680" ],
@@ -40,6 +42,41 @@ final class Config {
 			'kinetik'               => [ 'name' => 'KINETIK',               'url' => "$base&bannerid=107033&feedid=3362" ],
 			'workwalk'              => [ 'name' => 'WorkWalk.dk',           'url' => "$base&bannerid=111924&feedid=3772" ],
 			'mysports'              => [ 'name' => 'MySports',              'url' => "$base&bannerid=112544&feedid=3845" ],
+			// Tilføjet 10. nov. 2026. Brede butikker: kun de nævnte butikskategorier kommer med, og vores regler afgør placeringen
+			// ('?' = kun vores regler; '?:<regex>' = navnet skal også matche). Alt andet (tøj, outdoor, bandager …) holdes ude.
+			// JT Sport er mest outdoor/tøj – kun træningsudstyr og massage.
+			'jt-sport'              => [
+				'name'         => 'JT Sport',
+				'url'          => "$base&bannerid=117077&feedid=4333",
+				'category_map' => [
+					'fitness & general exercise equipment'   => '?',
+					'weight lifting belts'                   => '?',
+					'weight lifting gloves & hand supports'  => '?',
+					'massage balls'                          => '?',
+					'massage rollers'                        => '?',
+					'manual massage tools'                   => '?',
+					''                                       => '?',
+				],
+			],
+			// Fysio-shop.dk: kun træning og restitution (foamrollere, elastikker, bolde) – ikke medicinsk udstyr, bandager, tape eller indlæg.
+			'fysio-shop'            => [
+				'name'         => 'Fysio-shop.dk',
+				'url'          => "$base&bannerid=117222&feedid=4359",
+				'category_map' => [
+					'sportsartikler > fitness og almindeligt træningsudstyr > foamroller'                   => '?',
+					'sportsartikler > fitness og almindeligt træningsudstyr > træningselastikker og bånd'   => '?',
+					'sportsartikler > fitness og almindeligt træningsudstyr > træningsbolde'                => '?',
+					'sportsartikler > fitness og almindeligt træningsudstyr > motionsapparater til hænderne' => '?',
+					'sporting goods > fitness & general exercise equipment > yoga & pilates > yoga & pilates balls' => '?',
+					// Brede kategorier: kun navne, der tydeligt er træningsudstyr (aldrig tape).
+					'sportsartikler'                                                => $fysio_training,
+					'sundhed og skønhed'                                            => $fysio_training,
+					'sundhed og skønhed > sundhedspleje > udstyr til fysisk terapi' => $fysio_training,
+					''                                                              => $fysio_training,
+				],
+			],
+			// GoPad (tilføjet 10. nov. 2026): sælger gåbånd (butikskategori "gåbånd") – vores regler placerer dem under Løbebånd.
+			'gopad'                 => [ 'name' => 'GoPad', 'url' => "$base&bannerid=117030&feedid=4326" ],
 			// Kun dame- og herrecykler (til købsguiderne om citybikes). Hver størrelse er en række i feedet,
 			// så rækker med samme navn samles til ét produkt ('group_variants').
 			'cykelexperten'         => [
@@ -66,10 +103,10 @@ final class Config {
 			'vaegte-kettlebells' => [ 'name' => 'Vægte & kettlebells', 'match' => 'bodypump|ez ?curl|curl ?bar|weight ?bar|vægtstænger|kettlebell|håndvægt|dumbbell|vægtskive|bumper|vægtstang|barbell|vægtstativ|stativ til håndvægt|curlstang|olympisk stang|vægtvest|ankelvægt' ],
 			'styrke-baenke'      => [ 'name' => 'Bænke & racks', 'match' => 'multi træningsmaskine|træningsmaskine|stack|lat[- ]?attachment|træningsbænk|vægtbænk|\bbænk\b|\bbench\b|\brack\b|racks|power ?cage|squat|smith|multigym|home ?gym|styrkemaskine|kabeltræk|lat ?pull|leg ?press|benpres|pulley|keiser|plate loaded|pull[- ]?up|dip ?station|chin[- ]?up|vægtstak' ],
 			'yoga-pilates'       => [ 'name' => 'Yoga & pilates', 'match' => 'yoga|pilates|reformer|meditation' ],
-			'restitution'        => [ 'name' => 'Restitution', 'match' => 'sauna|jacknobber|ekoroll|rygstrækker|backflex|massage|foam ?roller|foamroller|recovery|kuldeterapi|varmeterapi|isbad|ice ?bath|triggerpunkt|massagepistol' ],
+			'restitution'        => [ 'name' => 'Restitution', 'match' => 'sauna|jacknobber|blackroll ?ball|fascia ?ball|os roller|ekoroll|rygstrækker|backflex|massage|foam ?roller|foamroller|recovery|kuldeterapi|varmeterapi|isbad|ice ?bath|triggerpunkt|massagepistol' ],
 			'damecykler'         => [ 'name' => 'Damecykler', 'match' => 'damecykel|damecykler' ],
 			'herrecykler'        => [ 'name' => 'Herrecykler', 'match' => 'herrecykel|herrecykler' ],
-			'tilbehor'           => [ 'name' => 'Tilbehør', 'match' => 'fitnessbold|træningsbold|\\bbold\\b|grips|løftekæde|hammer|wallbar|ribbe|slyngetræner|push-?up|parallettes|stepbænk|vægtvest|weight ?vest|power ?bags?|timer|pegboard|hand ?grip|flexbar|hand ?wraps|håndbind|\\bmma\\b|boksehjelm|benskinne|shin ?guard|skridtbeskytter|tandbeskytter|løftebælte|træningsbælte|fjederlås|\\bgreb\\b|attachment|hoppetræning|vibrationstræner|chalk|magnesia|kinesio|sportstape|\\btape\\b|boksehandske|boksesæk|boksebold|boksning|sandsæk|træningsmåtte|gulvmåtte|underlag|gulv\b|måtte|elastik|træningsbånd|loop ?band|modstandsbånd|sjippetov|springreb|ab ?wheel|mavehjul|medicinbold|slam ?ball|wall ?ball|gymball|balancebold|balance|stepbræt|træningshandske|løftestropper|vægtløfterbælte|greb og håndtag|håndtag|kalk|sandbag|battle ?rope|plyo|agility|træningsudstyr|core|boldtræning|suspension|trx|ringe|vægtløftning' ],
+			'tilbehor'           => [ 'name' => 'Tilbehør', 'match' => 'fitnessbold|træningsbold|gymnastikbold|myball|super ?band|mini ?band|power ?band|\\bbold\\b|grips|løftekæde|hammer|wallbar|ribbe|slyngetræner|push-?up|parallettes|stepbænk|vægtvest|weight ?vest|power ?bags?|timer|pegboard|hand ?grip|flexbar|hand ?wraps|håndbind|\\bmma\\b|boksehjelm|benskinne|shin ?guard|skridtbeskytter|tandbeskytter|løftebælte|træningsbælte|fjederlås|\\bgreb\\b|attachment|hoppetræning|vibrationstræner|chalk|magnesia|kinesio|sportstape|\\btape\\b|boksehandske|boksesæk|boksebold|boksning|sandsæk|træningsmåtte|gulvmåtte|underlag|gulv\b|måtte|elastik|træningsbånd|loop ?band|modstandsbånd|sjippetov|springreb|ab ?wheel|mavehjul|medicinbold|slam ?ball|wall ?ball|gymball|balancebold|balance|stepbræt|træningshandske|løftestropper|vægtløfterbælte|greb og håndtag|håndtag|kalk|sandbag|battle ?rope|plyo|agility|træningsudstyr|core|boldtræning|suspension|trx|ringe|vægtløftning' ],
 		];
 	}
 
@@ -84,7 +121,7 @@ final class Config {
 		return [
 			'lobebaand' => [
 				'foldbart-lobebaand'          => [ 'name' => 'Foldbart løbebånd', 'match' => 'foldbar|sammenklappelig|folding', 'attr' => [ 'foldable' => true ] ],
-				'gaabaand'                    => [ 'name' => 'Gåbånd', 'match' => 'gåbånd|walking ?pad|gå/løbebånd|walkingpad' ],
+				'gaabaand'                    => [ 'name' => 'Gåbånd', 'match' => 'gåbånd|walking ?pad|gå/løbebånd|walkingpad|\bgopad\b|urbanwalk' ],
 				'lobebaand-med-incline'       => [ 'name' => 'Løbebånd med incline', 'attr' => [ 'incline' => true ] ],
 				'manuelt-lobebaand'           => [ 'name' => 'Manuelt løbebånd', 'match' => 'manuel|curve|curved|uden strøm|non-?motor' ],
 				'lobebaand-til-tunge-brugere' => [ 'name' => 'Løbebånd til tunge brugere', 'attr' => [ 'max_weight' => [ 150, null ] ] ],
