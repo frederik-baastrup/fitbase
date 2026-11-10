@@ -1,80 +1,127 @@
 <?php
 /**
  * Overført fra det gamle fitbase.dk (/siddecykel/ – og /mini-motionscykel/, der nu viderestiller hertil).
- * Fakta om produkterne kommer kun fra butikkernes produktdata. Ingen påstand om egne test.
+ * Omskrevet 10. nov. 2026 efter ejerens søgeintention: en siddecykel er en pedaltræner/minicykel uden sadel,
+ * som man træder i fra sofaen eller en stol – ikke en liggecykel med sæde og ryglæn.
+ * Fakta om produkterne kommer kun fra butikkernes produktdata. Vi har ikke selv afprøvet produkterne.
  */
 defined( 'ABSPATH' ) || exit;
 
 return [
 	'slug'     => 'siddecykel',
-	'title'    => 'Siddecykel: Vores bud på de 3 bedste til træning fra stolen',
-	'excerpt'  => 'En siddecykel eller pedaltræner giver bevægelse fra sofaen, stolen eller skrivebordet. Her er vores bud på de 3 bedste – og hvem de passer til.',
-	'more_cat' => 'motionscykler',
+	'keyword'  => 'siddecykel',
+	'title'    => 'Siddecykel: Vores bud på de 5 bedste til sofaen og stolen',
+	'excerpt'  => 'En siddecykel er en lille pedaltræner, du træder i fra sofaen, stolen eller kontorstolen. Her er vores bud på de 5 bedste – og hvad du skal kigge efter.',
+	'more_cat' => 'siddecykel',
 	'intro'    => <<<'HTML'
-<p>En siddecykel – også kaldet mini motionscykel eller pedaltræner – er en lille cykel uden sadel, som du bruger, mens du sidder på en stol eller i sofaen. Den fylder næsten ingenting, kan stå under et bord og bruges til ben og ofte også arme. Derfor er den populær til genoptræning, til ældre og til dig, der vil have lidt mere bevægelse i en stillesiddende hverdag.</p>
-<p>Herunder er vores bud på de 3 bedste siddecykler hos de butikker, vi samarbejder med, lige nu, fra den enkle pedaltræner til en foldbar siddecykel med ryglæn. Nederst finder du en kort købsguide.</p>
+<p>Du sidder alligevel i sofaen. Eller ved skrivebordet. Så hvorfor ikke lade benene arbejde imens? En siddecykel er en lille pedaltræner uden sadel. Du stiller den på gulvet foran dig, sætter dig godt til rette og træder løs – mens du ser serier, læser mails eller taler i telefon.</p>
+<p>Den fylder næsten ingenting, og når du er færdig, ryger den ind under bordet eller i skabet. Mange modeller kan også stå på bordet, så du kan træne armene.</p>
+<p>Herunder er vores bud på de 5 bedste siddecykler fra de butikker, vi samarbejder med. Der er en til den lille pris, en til kontoret, en uden modstand til skånsom bevægelse og en med app og Bluetooth. Nederst finder du en købsguide.</p>
 HTML,
 	'picks'    => [
 		[
 			'ean'     => '8717842036716',
-			'slug'    => 'tunturi-cardio-fit-m45-pedaltraener',
+			'price'   => 1799,
 			'name'    => 'Tunturi Cardio Fit M45',
 			'role'    => 'Bedst samlet',
 			'reviews' => [],
-			'verdict' => 'Stabil pedaltræner med aftagelig skærm og Bluetooth – lille nok til at gemme væk, god nok til daglig brug.',
+			'verdict' => 'Stabil pedaltræner med brede stabilisatorer, aftagelig skærm og Bluetooth – lille nok til at gemme væk.',
 			'why'     => <<<'HTML'
-<p>Tunturi Cardio Fit M45 er en pedaltræner, der står stabilt med brede stabilisatorer og skridsikre fødder – vigtigt, når den skal stå på et glat gulv foran en stol. Skærmen kan tages af, og den har Bluetooth med integration til Tunturi Routes.</p>
-<p>Den er let og kompakt, så den er nem at flytte og opbevare. Det gør den oplagt til dig, der vil bruge den foran tv'et eller under skrivebordet og stille den væk bagefter.</p>
+<p>Tunturi Cardio Fit M45 er til dig, der vil have en siddecykel, der står fast. Den har brede stabilisatorer og skridsikre fødder. Det betyder meget, når den står på et glat gulv foran sofaen, og du træder til.</p>
+<p>Skærmen kan tages af, og med Bluetooth kan du koble den til Tunturi Routes. Så kan du følge med i din træning og få lidt mere motivation til at holde gang i pedalerne, dag efter dag.</p>
+<p>Den er let og kompakt. Du flytter den nemt fra stuen til kontoret og stiller den væk, når du er færdig. Vil du have én siddecykel, der kan lidt af det hele, er det her et godt sted at starte.</p>
 HTML,
-			'good'    => [ 'Daglig bevægelse foran tv eller computer', 'Dig, der vil kunne følge træningen på skærm eller app' ],
+			'good'    => [ 'Daglig bevægelse foran tv eller computer', 'Dig, der vil følge træningen i en app', 'Glatte gulve, hvor den skal stå fast' ],
 			'less'    => [ 'Dig, der vil have hård konditionstræning – vælg en almindelig motionscykel' ],
 		],
 		[
+			'ean'     => '8717842029558',
+			'price'   => 999,
+			'name'    => 'Tunturi Cardio Fit M35',
+			'role'    => 'Bedst til prisen',
+			'reviews' => [],
+			'verdict' => 'Kompakt pedaltræner med magnetisk modstand til både arme og ben – og den kører på batteri.',
+			'why'     => <<<'HTML'
+<p>Tunturi Cardio Fit M35 giver dig magnetisk modstand uden at give mange penge. Magnetisk modstand giver en jævn og behagelig bevægelse. Det er rart, når du træder i lang tid ad gangen foran tv'et.</p>
+<p>Du kan bruge den til både benene og armene. Stil den på gulvet foran sofaen, eller sæt den på bordet og tag en tur med armene i stedet. Så får du mere ud af den samme lille maskine.</p>
+<p>Den er kompakt og batteridrevet. Du skal altså ikke lede efter en stikkontakt, men kan stille den lige der, hvor du sidder. Er du ny med en siddecykel og vil have modstand at skrue på, er den et oplagt valg.</p>
+HTML,
+			'good'    => [ 'Dig, der vil have modstand uden at give meget', 'Træning af både arme og ben', 'Steder uden stikkontakt i nærheden' ],
+			'less'    => [ 'Hård konditionstræning – det er en lille pedaltræner, ikke en motionscykel' ],
+		],
+		[
+			'ean'     => '8717842031612',
+			'price'   => 1599,
+			'name'    => 'Tunturi Cardio Fit D10',
+			'role'    => 'Bedst under skrivebordet',
+			'reviews' => [],
+			'verdict' => 'Kompakt pedaltræner til kontoret og hjemmet med justerbar modstand og indbygget display.',
+			'why'     => <<<'HTML'
+<p>Tunturi Cardio Fit D10 er bygget til at stå under skrivebordet. Den er kompakt og lavet til både kontor og hjem, så den passer ind ved hjemmearbejdspladsen eller på kontoret.</p>
+<p>Modstanden kan justeres til let og moderat træning. Det er netop det, du har brug for, når du arbejder samtidig. Benene skal være i gang, men du skal stadig kunne koncentrere dig om skærmen og tastaturet.</p>
+<p>Det indbyggede display giver dig overblik over din aktivitet. Så kan du se, hvad dagens møder og mails egentlig blev til i pedaltråd. Sidder du meget stille i arbejdstiden, er den en nem måde at få mere bevægelse ind i hverdagen.</p>
+HTML,
+			'good'    => [ 'Hjemmearbejdsplads og kontor', 'Let bevægelse, mens du arbejder', 'Dig, der vil se din aktivitet på et display' ],
+			'less'    => [ 'Hård konditionstræning – modstanden er lavet til let og moderat træning' ],
+		],
+		[
 			'ean'     => '8029975970059',
-			'slug'    => 'everfit-welly-e-siddecykel',
+			'price'   => 1299,
 			'name'    => 'Everfit Welly E',
 			'role'    => 'Bedst til genoptræning',
 			'reviews' => [],
-			'verdict' => 'Let siddecykel uden modstand, der kan bruges til både ben og arme – til helt skånsom bevægelse.',
+			'verdict' => 'Let siddecykel uden modstand til helt skånsom bevægelse af både ben og arme.',
 			'why'     => <<<'HTML'
-<p>Everfit Welly E er en siddecykel uden modstand, som er lavet til genoptræning og skånsom bevægelse. Den kan bruges på gulvet til benene eller på bordet til armene, og den vejer kun 6 kg.</p>
-<p>Uden modstand er den ikke til konditionstræning, men til at holde led og muskler i gang – for eksempel efter en operation eller når man ikke kan klare almindelig træning. Spørg gerne din fysioterapeut, om den passer til dit forløb.</p>
+<p>Everfit Welly E er lavet til skånsom bevægelse og genoptræning. Den har ingen modstand. Det handler altså ikke om at blive forpustet, men om at holde led og muskler i gang i et roligt tempo.</p>
+<p>Du kan bruge den på gulvet til benene eller sætte den på bordet og træne armene. Den vejer kun 6 kg og er kompakt, så den er nem at flytte og finde plads til, uanset hvor i hjemmet du sidder.</p>
+<p>Er du i et genoptræningsforløb, så spørg din læge eller fysioterapeut, om en siddecykel uden modstand passer til dig. Får du grønt lys, er det en enkel måde at få daglig bevægelse fra stolen.</p>
 HTML,
-			'good'    => [ 'Genoptræning og meget skånsom bevægelse', 'Træning af både ben og arme' ],
+			'good'    => [ 'Genoptræning og meget skånsom bevægelse', 'Træning af både ben og arme', 'Dig, der vil have en let model at flytte' ],
 			'less'    => [ 'Dig, der vil træne kondition og styrke – den har ingen modstand' ],
 		],
 		[
-			'ean'     => '4044163025605',
-			'slug'    => 'top-sport-s-bike-velofit-siddecykel',
-			'name'    => 'Top Sport S-Bike VeloFit',
-			'role'    => 'Bedst med ryglæn',
+			'ean'     => '5701000201378',
+			'price'   => 453,
+			'name'    => 'Titan Life Circulation Trainer',
+			'role'    => 'Billigste til sofaen',
 			'reviews' => [],
-			'verdict' => 'Foldbar siddecykel med ryglæn og 14 magnetiske modstandsniveauer – mere cykel, men stadig til små hjem.',
+			'verdict' => 'Enkel siddecykel til sofaen eller skrivebordet, som du kan træde i med fødderne eller dreje med hænderne.',
 			'why'     => <<<'HTML'
-<p>Vil du have en rigtig motionscykel, men sidde godt med støtte i ryggen, er Top Sport S-Bike VeloFit et godt kompromis. Er den en komfortabel siddecykel med ryglæn og ergonomisk sæde, 14 modstandsniveauer og støjsvag magnetisk modstand – og den kan foldes.</p>
-<p>Den fylder mere end en pedaltræner, men mindre end de fleste motionscykler, og den giver mulighed for egentlig konditionstræning.</p>
+<p>Titan Life Circulation Trainer er den nemme vej ind, hvis du bare vil i gang. Den er lavet til brug i hjemmet, og du kan træne mens du sidder i sofaen eller under skrivebordet på arbejdet.</p>
+<p>Du kan bruge den med fødderne eller med hænderne. Stil den på gulvet, når benene skal arbejde, eller placer den foran dig på bordet, når armene skal have en tur.</p>
+<p>Den er det billigste bud på listen og et godt sted at starte. Så finder du ud af, om en siddecykel bliver en fast del af din hverdag, før du giver mere for en model med skærm eller app.</p>
 HTML,
-			'good'    => [ 'Dig, der vil have støtte i ryggen', 'Små hjem, hvor cyklen skal kunne foldes væk', 'Let konditionstræning' ],
-			'less'    => [ 'Dig, der vil have en lille pedaltræner til under bordet' ],
+			'good'    => [ 'Dig, der vil prøve en siddecykel for få penge', 'Bevægelse fra sofaen eller kontorstolen' ],
+			'less'    => [ 'Dig, der vil koble træningen til en app – se Tunturi Cardio Fit M45' ],
 		],
 	],
 	'guide'    => <<<'HTML'
 <h2>Sådan vælger du den rigtige siddecykel</h2>
-<p>"Siddecykel" bruges om flere slags udstyr. Start med at finde ud af, hvilken type du har brug for.</p>
-<h3>Pedaltræner, siddecykel eller liggecykel?</h3>
-<p>En <strong>pedaltræner</strong> er bare pedaler på et lille stativ, som du bruger fra en stol. En <strong>siddecykel med ryglæn</strong> er en lav motionscykel, hvor du sidder i et sæde med støtte i ryggen. En <strong>liggecykel</strong> er en større maskine, hvor du sidder tilbagelænet med benene foran dig. Er det til ældre eller genoptræning, så se også vores bud på <a href="/koebsguide/motionscykel-til-aeldre/">den bedste motionscykel til ældre</a>.</p>
-<h3>Modstand eller ej?</h3>
-<p>Uden modstand er cyklen til skånsom bevægelse og genoptræning. Med magnetisk modstand kan du skrue op, efterhånden som du bliver stærkere – og bruge den til egentlig kondition.</p>
+<p>En siddecykel er en lille pedaltræner. Den kaldes også minicykel, mini motionscykel eller under-desk bike. Den har ingen sadel. Du sidder i din egen sofa, lænestol eller kontorstol og træder i pedalerne foran dig. Derfor fylder den så lidt – og derfor kan du bruge den, mens du laver noget andet.</p>
+<h3>Siddecykel eller liggecykel?</h3>
+<p>Ordet "siddecykel" bruges af og til om liggecykler: store motionscykler med sæde og ryglæn. Det er en helt anden maskine, som kræver plads og er lavet til egentlig konditionstræning. Er det sådan en, du leder efter, så se vores udvalg af <a href="/traeningsmaskiner/motionscykler/liggecykel/">liggecykler</a>. Er det til ældre, kan du også kigge på vores bud på <a href="/koebsguide/motionscykel-til-aeldre/">den bedste motionscykel til ældre</a>.</p>
+<h2>Manuel modstand eller ingen modstand?</h2>
+<p>De fleste siddecykler har en <strong>modstandsknap</strong>. Skru ned, og du træder let og roligt. Skru op, og benene skal arbejde mere. Magnetisk modstand giver en jævn bevægelse og er et godt valg, hvis du vil kunne skrue op med tiden.</p>
+<p>Andre modeller har <strong>ingen modstand</strong>. De er lavet til helt skånsom bevægelse, for eksempel i et genoptræningsforløb. Her handler det om at holde led og muskler i gang, ikke om at blive forpustet. Skal du bruge siddecyklen til genoptræning, så tal med din læge eller fysioterapeut om, hvilken type der passer til dig.</p>
+<h2>Det skal du kigge efter</h2>
 <h3>Stabilitet</h3>
-<p>En pedaltræner skal stå helt fast, ellers glider den væk fra stolen. Kig efter brede fødder med skridsikre gummiknopper – og læg eventuelt en måtte under.</p>
+<p>En siddecykel står løst på gulvet. Står den ikke fast, glider den væk fra dig, så snart du træder til. Kig efter brede fødder eller stabilisatorer med skridsikkert gummi. Står den på et glat trægulv, kan en måtte under gøre en stor forskel.</p>
+<h3>Højde og plads</h3>
+<p>Tænk over, hvor du skal sidde. Foran en lav sofa sidder du dybt, og knæene kommer højt op. Under et skrivebord skal der være plads til, at knæene ikke rammer bordpladen, når pedalerne er i toppen. Mål gerne afstanden fra gulv til bordplade, før du vælger.</p>
+<h3>Støj</h3>
+<p>Skal du bruge den foran tv'et eller på et kontor med kolleger, er en rolig gang vigtig. Magnetisk modstand er generelt mere afdæmpet end modstand med friktion.</p>
+<h3>Display og app</h3>
+<p>Et lille display viser typisk tid, omdrejninger og kalorier. Det er rart, hvis du vil kunne se, at du gør fremskridt. Nogle modeller har Bluetooth og kan kobles til en app, så du kan følge træningen over tid.</p>
 <h3>Arme og ben</h3>
-<p>Mange pedaltrænere kan stilles på et bord og bruges til armene. Det er en fordel ved genoptræning og for dig, der vil holde overkroppen i gang.</p>
-<h3>Hvor meget skal du give?</h3>
-<p>Enkle pedaltrænere koster fra under 1.000 kr. hos de butikker, vi samarbejder med. Med skærm eller Bluetooth ligger de typisk mellem 1.000 og 2.000 kr. En siddecykel med ryglæn koster fra ca. 2.500 kr. Se alle <a href="/traeningsmaskiner/motionscykler/">motionscykler</a> med aktuelle priser.</p>
+<p>Mange siddecykler kan stå på et bord, så du kan dreje pedalerne med hænderne. Det er en fordel, hvis du vil holde overkroppen i gang – eller hvis benene skal have en pause.</p>
+<h2>Sådan får du mest ud af din siddecykel</h2>
+<p>Stil den et sted, hvor du alligevel sidder hver dag. Så bliver den brugt. Start roligt, og skru langsomt op for modstanden. Træd hellere lidt hver dag end meget én gang om ugen. Og sid godt: fødderne skal ramme pedalerne, uden at du skal strække benene helt ud. Se alle <a href="/traeningsmaskiner/motionscykler/">motionscykler</a> med aktuelle priser.</p>
 HTML,
 	'faq'      => [
-		[ 'Hvad er en siddecykel?', 'Ordet bruges både om små pedaltrænere, som du bruger fra en stol, og om motionscykler med lavt sæde og ryglæn. Fælles for dem er, at du sidder ned med støtte, mens du træner.' ],
-		[ 'Kan man tabe sig på en pedaltræner?', 'En pedaltræner giver mere bevægelse i hverdagen, men intensiteten er lav. Til egentlig konditionstræning er en almindelig motionscykel bedre.' ],
-		[ 'Er en siddecykel god til ældre?', 'Ja, den er skånsom for led og ryg og nem at komme i gang med. Ved sygdom eller genoptræning så spørg gerne din læge eller fysioterapeut først.' ],
+		[ 'Hvad er en siddecykel?', 'En siddecykel er en lille pedaltræner uden sadel. Du stiller den på gulvet foran dig og træder i pedalerne, mens du sidder i sofaen, en lænestol eller på kontorstolen. Mange kan også stå på et bord, så du kan træne armene.' ],
+		[ 'Kan man bruge en siddecykel under skrivebordet?', 'Ja, mange er lavet til det. Tjek, at der er plads til knæene under bordpladen, når pedalerne er i toppen, og vælg en model med let modstand, så du kan koncentrere dig om arbejdet samtidig.' ],
+		[ 'Er en siddecykel det samme som en liggecykel?', 'Nej. En liggecykel er en stor motionscykel med sæde og ryglæn. En siddecykel er en lille pedaltræner uden sæde, som du bruger fra din egen stol eller sofa.' ],
+		[ 'Er en siddecykel god til genoptræning?', 'Den bruges ofte til skånsom bevægelse, og nogle modeller har slet ingen modstand. Ved sygdom, en operation eller et genoptræningsforløb bør du altid spørge din læge eller fysioterapeut, før du går i gang.' ],
+		[ 'Kan man få kondition af en siddecykel?', 'En siddecykel giver mere bevægelse i hverdagen, men intensiteten er lav. Vil du træne hård kondition, er en almindelig motionscykel eller spinningcykel et bedre valg.' ],
 	],
 ];

@@ -92,7 +92,9 @@ final class Config {
 			'motionscykler' => [
 				'spinningcykel' => [ 'name' => 'Spinningcykel', 'match' => 'spinning|spin ?bike|indoor ?cycl|indendørscykel' ],
 				'kondicykel'    => [ 'name' => 'Kondicykel', 'match' => 'motionscykel|kondicykel|ergometer|exercise ?bike|upright' ],
-				'liggecykel'    => [ 'name' => 'Liggecykel', 'match' => 'liggecykel|recumbent|siddecykel' ],
+				'liggecykel'    => [ 'name' => 'Liggecykel', 'match' => 'liggecykel|recumbent|ryglæn', 'not' => 'pedaltræner|minicykel|mini ?bike|cardio ?fit|circulation|welly' ],
+				// Siddecykel = pedaltræner uden sadel, man bruger fra sofaen eller stolen (ejeren 10. nov. 2026) – ikke en liggecykel.
+				'siddecykel'    => [ 'name' => 'Siddecykel', 'match' => 'siddecykel|pedaltræner|pedal ?trainer|minicykel|mini ?bike|mini-?motionscykel|under ?desk|cardio ?fit [md]\\d|circulation ?trainer|welly', 'not' => 'ryglæn|recumbent|liggecykel' ],
 				'airbike'       => [ 'name' => 'Airbike', 'match' => 'air ?bike|assault|fan ?bike|echo bike' ],
 			],
 			'romaskiner-crosstrainere' => [

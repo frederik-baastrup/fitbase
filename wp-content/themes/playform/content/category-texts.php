@@ -62,6 +62,9 @@ return [
 			[ 'Larmer en kondicykel?', 'De fleste kondicykler med magnetisk modstand er stille og velegnede til lejligheder.' ],
 		],
 	],
+	'siddecykel' => [
+		'intro' => 'Siddecykler og pedaltrænere, du stiller på gulvet og træder i fra sofaen, stolen eller skrivebordet. Se modellerne fra de butikker, vi samarbejder med.',
+	],
 	'liggecykel' => [
 		'seo' => '<h2>Liggecykel – skånsom træning med ryglæn</h2><p>På en liggecykel sidder du tilbagelænet med ryglæn og benene strakt fremad. Stillingen aflaster ryg, nakke og led, og derfor er den populær hos begyndere, ældre og dig, der foretrækker en behagelig siddestilling. Her finder du liggecykler fra de butikker, vi samarbejder med.</p><h3>Fordele ved en liggecykel</h3><p>Ryglænet giver støtte, og den lave indstigning gør det let at sætte sig op og stå af igen. Du kan træne længe uden at blive øm i sædet, og mange oplever stillingen som mere stabil end på en almindelig motionscykel.</p><h3>Hvad skal du kigge efter?</h3><p>Tjek, at sædet kan justeres, så du når pedalerne med let bøjede knæ. Se på den maksimale brugervægt, modstandsniveauerne og displayet. Liggecykler er længere end andre motionscykler, så mål pladsen op, før du bestiller.</p>',
 		'faq' => [

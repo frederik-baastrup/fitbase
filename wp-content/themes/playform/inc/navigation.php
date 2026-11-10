@@ -177,6 +177,7 @@ function playform_menu_labels(): array {
 		'spinningcykel'    => 'Spinningcykler',
 		'kondicykel'       => 'Kondicykler',
 		'liggecykel'       => 'Liggecykler',
+		'siddecykel'       => 'Siddecykler',
 		'airbike'          => 'Airbikes',
 	];
 	foreach ( playform_menu_spec() as [ $slug, $cats ] ) {
