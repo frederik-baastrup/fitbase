@@ -85,7 +85,7 @@ HTML,
 <li>Læg en måtte under, især hvis du bor i lejlighed.</li>
 <li>Tjek den maksimale brugervægt og den støj, producenten oplyser.</li>
 </ul>
-<p>Se alle <a href="/traeningsmaskiner/lobebaand/gaabaand/">gåbånd</a> fra flere danske webshops.</p>
+<p>Se alle <a href="/traeningsmaskiner/lobebaand/gaabaand/">gåbånd</a> fra de butikker, vi samarbejder med.</p>
 HTML,
 	],
 	[
@@ -150,7 +150,7 @@ HTML,
 <li><strong>Har du ondt i ryggen?</strong> Overvej en liggecykel.</li>
 </ul>
 <p>Uanset typen er det en god idé at tjekke den maksimale brugervægt, hvordan modstanden justeres, og om sadel og styr kan indstilles, så de passer til din højde.</p>
-<p>Se alle <a href="/traeningsmaskiner/motionscykler/">motionscykler</a> fra flere danske webshops.</p>
+<p>Se alle <a href="/traeningsmaskiner/motionscykler/">motionscykler</a> fra de butikker, vi samarbejder med.</p>
 HTML,
 	],
 ];

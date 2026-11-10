@@ -18,7 +18,7 @@ function playform_legal_privacy(): string {
 <p>Fitbase (fitbase.dk) drives af Mondae, Rønnevej 19 B, kl., 5270 Odense N, CVR 37208329. Du kan altid kontakte os på <a href="mailto:kontakt@fitbase.dk">kontakt@fitbase.dk</a>.</p>
 
 <h2>Hvad Fitbase er</h2>
-<p>Fitbase samler fitnessudstyr fra flere danske webshops ét sted. Du kan ikke købe noget direkte hos os. Når du klikker på "Gå til butik", sendes du videre til butikken, og det er butikken, der behandler dit køb og dine oplysninger i forbindelse med det.</p>
+<p>Fitbase samler fitnessudstyr fra de butikker, vi samarbejder med, ét sted. Du kan ikke købe noget direkte hos os. Når du klikker på "Gå til butik", sendes du videre til butikken, og det er butikken, der behandler dit køb og dine oplysninger i forbindelse med det.</p>
 
 <h2>Hvilke oplysninger vi behandler</h2>
 <h3>Når du besøger siden</h3>

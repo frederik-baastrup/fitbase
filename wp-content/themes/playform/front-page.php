@@ -117,7 +117,7 @@ $has_deals = count( $deals ) >= 4;
 ?>
 
 <section class="wrap hero-wrap">
-	<h1 class="screen-reader-text"><?php echo esc_html( playform_site( 'name' ) . ' – ' . playform_site( 'niche' ) . ' fra danske webshops samlet ét sted' ); ?></h1>
+	<h1 class="screen-reader-text"><?php echo esc_html( playform_site( 'name' ) . ' – ' . playform_site( 'niche' ) . ' fra de butikker, vi samarbejder med, samlet ét sted' ); ?></h1>
 	<div class="hero">
 		<?php foreach ( $hero as $i => $h ) : ?>
 			<?php if ( $i === 1 ) : ?><div class="hero__side"><?php endif; ?>
