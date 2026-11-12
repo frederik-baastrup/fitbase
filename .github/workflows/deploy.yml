@@ -3,7 +3,14 @@ name: Udrul til SiteGround
 on:
   push:
     branches: [main]
+    # Ændringer, der ikke påvirker sitet, udrulles ikke (sparer Actions-minutter).
+    paths-ignore: ['CLAUDE.md', '**.md', 'dev/**']
   workflow_dispatch:
+
+# Mange push i træk: kun én udrulning ad gangen, og ventende udrulninger erstattes af den nyeste (sparer minutter).
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
 
 # Sitet ligger i mappen fitbase.dk/public_html på FTP-kontoen (indtil 2. nov. 2026: frederikb7.sg-host.com).
 # Skiftes hoveddomænet igen, omdøber SiteGround mappen – ret så SITE_DIR her.
