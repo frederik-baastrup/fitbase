@@ -202,8 +202,28 @@ function playform_author_profile(): void {
 			update_user_meta( $u->ID, 'description', 'Frederik Baastrup har stiftet Fitbase og er sidens redaktør. Han driver til daglig Mondae og arbejder med webdesign og digitale løsninger. På Fitbase samler han træningsudstyr fra de butikker, vi samarbejder med og skriver købsguides, der hjælper dig med at sammenligne pris, specifikationer og tilbud. Han er åben om, hvordan produkterne udvælges, og hvordan siden tjener penge.' );
 		}
 		if ( '' === (string) get_user_meta( $u->ID, 'pf_photo', true ) ) {
-			update_user_meta( $u->ID, 'pf_photo', playform_asset( 'authors/frederik-baastrup.jpg' ) );
+			update_user_meta( $u->ID, 'pf_photo', playform_asset( 'authors/frederik-baastrup-2.jpg' ) );
 		}
 	}
 	update_option( 'playform_author_profile', 2, false );
 }
+
+/** Nyt profilbillede (12. nov. 2026): skift standardbilledet ud, men lad et billede, ejeren selv har sat ind, være. */
+add_action(
+	'init',
+	static function (): void {
+		if ( get_option( 'playform_author_photo_v' ) === '2' ) {
+			return;
+		}
+		foreach ( get_users( [ 'meta_key' => 'pf_photo', 'fields' => 'ID' ] ) as $id ) {
+			$photo = (string) get_user_meta( $id, 'pf_photo', true );
+			if ( str_ends_with( $photo, 'authors/frederik-baastrup.jpg' ) ) {
+				update_user_meta( $id, 'pf_photo', playform_asset( 'authors/frederik-baastrup-2.jpg' ) );
+			}
+		}
+		update_option( 'playform_author_photo_v', '2', false );
+		if ( function_exists( 'sg_cachepress_purge_cache' ) ) {
+			sg_cachepress_purge_cache(); // billedet står på alle artikler og guides
+		}
+	}
+);
