@@ -73,18 +73,19 @@ HTML,
 			'less'    => [ 'Dig, der vil styre modstanden elektronisk' ],
 		],
 		[
-			'ean'     => '8029975970134',
-			'price'   => 2499,
-			'name'    => 'Toorx BRX Compact',
-			'role'    => 'Stille magnetisk modstand',
+			'ean'     => '8717842028902',
+			'slug'    => 'tunturi-cardio-fit-b20-foldbar-motionscykel',
+			'price'   => 2199,
+			'name'    => 'Tunturi Cardio Fit B20',
+			'role'    => 'Kompakt til små hjem',
 			'reviews' => [],
-			'verdict' => 'Foldbar motionscykel med støjsvag magnetisk modstand i 8 trin, LCD-display og transporthjul.',
+			'verdict' => 'Kompakt, foldbar motionscykel med 8 manuelle modstandsniveauer, batteridrevet display og tabletholder.',
 			'why'     => <<<'HTML'
-<p>Toorx BRX Compact er til dig, der vil cykle uden at forstyrre resten af husstanden. Modstanden er magnetisk og støjsvag, så du kan træne, mens andre ser tv eller sover. Du skruer op og ned i 8 trin.</p>
-<p>LCD-displayet er overskueligt og viser de træningsdata, du har brug for, uden at gøre det kompliceret. Det er nemt at gå til, også hvis du ikke har haft en motionscykel før.</p>
-<p>Når du er færdig, klapper du cyklen sammen og triller den væk på transporthjulene. Den er dermed et godt bud til lejligheden eller soveværelset, hvor cyklen ikke skal stå fremme.</p>
+<p>Tunturi Cardio Fit B20 er en kompakt og foldbar motionscykel, lavet til små hjem. Når du er færdig, folder du den sammen, så den ikke skal stå fremme i stuen eller soveværelset.</p>
+<p>Du justerer modstanden manuelt i 8 niveauer, så den kan bruges af både begyndere og dig, der har trænet lidt. Displayet kører på batteri, så du ikke er afhængig af en stikkontakt, når du vælger, hvor cyklen skal stå.</p>
+<p>Der er også en tabletholder, så du kan se en serie eller følge et træningsprogram, mens du cykler. Det er en enkel cykel uden mange finesser – til gengæld er den nem at gå til.</p>
 HTML,
-			'good'    => [ 'Stille træning', 'Lejligheder', 'Dig, der flytter cyklen efter brug' ],
+			'good'    => [ 'Små boliger', 'Dig, der vil se serier eller video, mens du cykler', 'Steder uden stikkontakt i nærheden' ],
 			'less'    => [ 'Dig, der vil have avancerede træningsdata' ],
 		],
 	],

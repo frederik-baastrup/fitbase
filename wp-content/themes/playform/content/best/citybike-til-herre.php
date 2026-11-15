@@ -76,18 +76,19 @@ HTML,
 			'less'    => [ 'Dig, der vil have skivebremser' ],
 		],
 		[
-			'ean'     => '8713568459549',
-			'price'   => 5348,
-			'name'    => 'Batavus Fonk 7 Herre',
+			'ean'     => '5711278051001',
+			'slug'    => 'norden-thor-army-7g-herre-green-matt',
+			'price'   => 7499,
+			'name'    => 'Norden Thor Army 7g Herre',
 			'role'    => 'Bedst til bykørsel',
 			'reviews' => [],
-			'verdict' => 'Let bycykel med 7 indvendige gear, navdynamo og Aerline-lys med standlys – og skjult kabelføring.',
+			'verdict' => 'Sporty herrecykel med 7 gear og frontlad – lavet til daglig transport, også når du har oppakning med.',
 			'why'     => <<<'HTML'
-<p>Batavus Fonk 7 er til dig, der vil suse let og smidigt gennem byen. Stellet er let, så cyklen er nem at manøvrere rundt om hjørner og at løfte op i cykelstativet.</p>
-<p>Lyset er gennemtænkt. Aerline-lygten sidder højt på styret, så du bliver set i trafikken, og den drives af en navdynamo, så du aldrig skal skifte batterier. Standlysfunktionen holder lyset tændt, mens du venter ved lyskrydset. Kablerne er ført inde i stellet, så de ikke hænger fast i cykelstativer.</p>
-<p>De 7 indvendige gear klarer både flad vej og bakker. Bagagebæreren har MIK-system, så du hurtigt kan klikke tasker og kurve på, og der kan monteres en frontkurv. Den sorte, blanke finish giver et stramt og moderne udtryk.</p>
+<p>Norden Thor er til dig, der vil have en pålidelig cykel til daglig transport i byen. Designet er stilfuldt og sporty, og den matgrønne Army-farve skiller sig ud fra de klassiske sorte bycykler.</p>
+<p>Det praktiske er frontladet. Her kan du have tasken, indkøbene eller sportstøjet med uden at skulle have en rygsæk på. Det gør cyklen alsidig, hvad enten du skal på arbejde, i byen eller en tur i weekenden.</p>
+<p>Med 7 gear har du nok at skifte mellem til almindelig bykørsel med lidt bakker. Tjek gear- og bremsetype samt lygter i butikkens produktbeskrivelse, så du ved, hvad der er monteret.</p>
 HTML,
-			'good'    => [ 'Bykørsel og pendling', 'Dig, der vil slippe for batterier i lygterne', 'Dig, der bruger cykeltasker' ],
+			'good'    => [ 'Bykørsel og pendling', 'Dig, der vil have oppakning med foran' ],
 			'less'    => [ 'Lange ture på landevejen' ],
 		],
 	],

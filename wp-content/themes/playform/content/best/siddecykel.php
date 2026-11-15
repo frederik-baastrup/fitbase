@@ -80,18 +80,19 @@ HTML,
 			'less'    => [ 'Dig, der vil træne kondition og styrke – den har ingen modstand' ],
 		],
 		[
-			'ean'     => '5701000201378',
-			'price'   => 453,
-			'name'    => 'Titan Life Circulation Trainer',
+			'ean'     => '8717842036723',
+			'slug'    => 'tunturi-mini-bike-pro-pedaltraener-inkl-display',
+			'price'   => 399,
+			'name'    => 'Tunturi Mini Bike Pro',
 			'role'    => 'Billigste til sofaen',
 			'reviews' => [],
-			'verdict' => 'Enkel siddecykel til sofaen eller skrivebordet, som du kan træde i med fødderne eller dreje med hænderne.',
+			'verdict' => 'Kompakt og pladsbesparende pedaltræner til både arme og ben – med LCD-display, der viser dine træningsdata.',
 			'why'     => <<<'HTML'
-<p>Titan Life Circulation Trainer er den nemme vej ind, hvis du bare vil i gang. Den er lavet til brug i hjemmet, og du kan træne mens du sidder i sofaen eller under skrivebordet på arbejdet.</p>
-<p>Du kan bruge den med fødderne eller med hænderne. Stil den på gulvet, når benene skal arbejde, eller placer den foran dig på bordet, når armene skal have en tur.</p>
-<p>Den er det billigste bud på listen og et godt sted at starte. Så finder du ud af, om en siddecykel bliver en fast del af din hverdag, før du giver mere for en model med skærm eller app.</p>
+<p>Tunturi Mini Bike Pro er den nemme vej ind, hvis du bare vil i gang. Den er kompakt og pladsbesparende, så du kan stille den foran sofaen eller under skrivebordet og gemme den væk bagefter.</p>
+<p>Du kan bruge den til både arm- og bentræning. Stil den på gulvet, når benene skal arbejde, eller placer den foran dig på bordet, når armene skal have en tur. Et LCD-display viser dine træningsdata.</p>
+<p>Den er et af de billigste bud på listen og et godt sted at starte. Så finder du ud af, om en siddecykel bliver en fast del af din hverdag, før du giver mere for en model med app.</p>
 HTML,
-			'good'    => [ 'Dig, der vil prøve en siddecykel for få penge', 'Bevægelse fra sofaen eller kontorstolen' ],
+			'good'    => [ 'Dig, der vil prøve en siddecykel for få penge', 'Bevægelse fra sofaen eller kontorstolen', 'Træning af både arme og ben' ],
 			'less'    => [ 'Dig, der vil koble træningen til en app – se Tunturi Cardio Fit M45' ],
 		],
 	],

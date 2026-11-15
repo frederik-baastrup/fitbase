@@ -21,7 +21,7 @@ HTML,
 			'name'    => 'Sole F63',
 			'role'    => 'Bedst samlet',
 			'reviews' => [
-				[ 'Garage Gym Reviews', 'https://www.garagegymreviews.com/sole-f63-treadmill-review' ],
+				[ 'Garage Gym Reviews', 'https://www.garagegymreviews.com/equipment/sole-f63' ],
 				[ 'Treadmill Review Guru', 'https://www.treadmillreviewguru.com/sole-f63-treadmill-review/' ],
 			],
 			'verdict' => 'Et af de mest anmeldte foldbare løbebånd: 3 HK motor, 20 km/t, 15 % stigning og Bluetooth.',

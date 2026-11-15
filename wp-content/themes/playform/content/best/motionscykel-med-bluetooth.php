@@ -44,17 +44,17 @@ HTML,
 			'less'    => [ 'Dig, der vil have mange indbyggede programmer' ],
 		],
 		[
-			'ean'     => '8717842036303',
-			'slug'    => 'tunturi-platinum-ub30-motionscykel',
-			'name'    => 'Tunturi Platinum UB30',
+			'ean'     => '8717842036297',
+			'slug'    => 'tunturi-platinum-ub20-motionscykel',
+			'name'    => 'Tunturi Platinum UB20',
 			'role'    => 'Bedst til seriøs træning',
 			'reviews' => [],
-			'verdict' => 'Kraftig EMS-modstand op til 450 watt, 48 niveauer og kompatibilitet med Zwift, Kinomap og Tunturi Routes.',
+			'verdict' => '48 modstandsniveauer, Bluetooth-monitor med app og pulszoner og lav indstigning – bygget til både hjem og kommerciel brug.',
 			'why'     => <<<'HTML'
-<p>Tunturi Platinum UB30 er til dig, der træner meget og vil have mere modstand at arbejde med. Har den kraftig EMS-modstand med op til 450 watt belastning, 48 modstandsniveauer og 26 træningsprogrammer, og den er kompatibel med Zwift, Kinomap og Tunturi Routes.</p>
-<p>Prisen er markant højere end de andre, så den giver mest mening, hvis cyklen er din primære konditionsmaskine.</p>
+<p>Tunturi Platinum UB20 er til dig, der træner meget og vil have mange trin at arbejde med. Den har 48 modstandsniveauer med jævne overgange og en Bluetooth AI-monitor med app-integration og farvekodede pulszoner, så du kan se, hvor hårdt du arbejder.</p>
+<p>Butikken beskriver den som professionel kvalitet til både hjem og kommerciel brug, og den lave indstigning gør det nemt at komme op og ned. Prisen er markant højere end de andre, så den giver mest mening, hvis cyklen er din primære konditionsmaskine.</p>
 HTML,
-			'good'    => [ 'Dig, der træner hårdt og ofte', 'Træning efter watt og programmer' ],
+			'good'    => [ 'Dig, der træner hårdt og ofte', 'Træning efter pulszoner i en app' ],
 			'less'    => [ 'Dig med et begrænset budget' ],
 		],
 		[

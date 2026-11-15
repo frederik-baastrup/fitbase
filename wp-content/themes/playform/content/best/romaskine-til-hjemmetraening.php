@@ -73,18 +73,19 @@ HTML,
 			'less'    => [ 'Små rum – den lange skinne fylder' ],
 		],
 		[
-			'ean'     => '5701000379862',
-			'price'   => 2998,
-			'name'    => 'Titan Life Rower R36',
+			'ean'     => '5714237003820',
+			'slug'    => 'odin-r600-romaskine',
+			'price'   => 2799,
+			'name'    => 'Odin R600',
 			'role'    => 'Enkel magnetisk model',
 			'reviews' => [],
-			'verdict' => 'Kompakt romaskine med magnetisk modstand – til dig, der vil i gang med hjemmetræning uden at bruge meget plads.',
+			'verdict' => 'Romaskine med magnetisk bremse og 7 kg svinghjul – til dig, der vil træne hjemme uden en enormt stor maskine.',
 			'why'     => <<<'HTML'
-<p>Titan Life Rower R36 er til dig, der vil have en romaskine i hjemmet uden at den tager over. Designet er kompakt, så den er nemmere at finde plads til end de store maskiner.</p>
-<p>Modstanden er magnetisk. Det betyder, at maskinen kører stille, at der ikke er noget at vedligeholde, og at du nemt skruer op og ned for modstanden. Funktionerne er enkle og brugervenlige, så du hurtigt kommer i gang.</p>
-<p>Den er et godt bud, hvis du vil have effektiv og alsidig træning af hele kroppen – ben, ryg og arme – og samtidig holde budgettet. Er du i tvivl om, hvorvidt romaskinen bliver brugt, er det en fornuftig måde at komme i gang på.</p>
+<p>Odin R600 er lavet til dig, der vil have effektiv træning i hjemmet uden at have en enormt stor maskine stående. Den er et af de billigste bud på listen.</p>
+<p>Modstanden er magnetisk med et svinghjul på 7 kg. Magnetisk modstand kører generelt stille, kræver ikke vedligeholdelse som vand, og du skruer nemt op og ned. Det gør den til et fornuftigt valg, hvis du bor i lejlighed eller træner, mens andre sover.</p>
+<p>Er du i tvivl om, hvorvidt romaskinen bliver brugt, er en enkel magnetisk model en fornuftig måde at komme i gang på. Tjek skinnens længde i butikkens produktbeskrivelse, hvis du er høj.</p>
 HTML,
-			'good'    => [ 'Begyndere', 'Dig, der vil have en stille maskine' ],
+			'good'    => [ 'Begyndere', 'Dig, der vil have en stille maskine til en lav pris' ],
 			'less'    => [ 'Dig, der vil have lyden og følelsen af vand' ],
 		],
 	],

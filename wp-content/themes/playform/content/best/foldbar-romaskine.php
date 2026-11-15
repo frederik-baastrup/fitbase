@@ -16,17 +16,17 @@ return [
 HTML,
 	'picks'    => [
 		[
-			'ean'     => '8029975995151',
-			'slug'    => 'toorx-rwx-700-romaskine',
-			'name'    => 'Toorx RWX 700',
+			'ean'     => '8717842036655',
+			'slug'    => 'tunturi-fitrow-80i-air-romaskine',
+			'name'    => 'Tunturi FitRow 80i AIR',
 			'role'    => 'Bedst samlet',
 			'reviews' => [],
-			'verdict' => 'Foldbar romaskine med 16 modstandsniveauer, pulsstyret træning og indbygget pulsmåler.',
+			'verdict' => 'Pladsbesparende romaskine med 10 modstandsniveauer, transporthjul, baggrundsbelyst display og app.',
 			'why'     => <<<'HTML'
-<p>Toorx RWX 700 kombinerer et pladsbesparende, foldbart design med mange muligheder i træningen. Har den 16 justerbare modstandsniveauer, en avanceret LCD-skærm med pulsstyret træning (HRC) og en indbygget pulsmåler.</p>
-<p>Pulsstyret træning betyder, at maskinen justerer modstanden efter din puls, så du holder dig i den intensitet, du har valgt. Det er praktisk, hvis du vil træne kondition målrettet uden selv at skulle styre det hele undervejs.</p>
+<p>Tunturi FitRow 80i AIR er en romaskine med 10 justerbare modstandsniveauer, så du kan tilpasse træningen, efterhånden som du bliver stærkere. Butikken beskriver den som et pladsbesparende snap-fit design med transporthjul.</p>
+<p>Den har et baggrundsbelyst display og kan bruges med Tunturi Routes-appen, hvis du vil følge din træning. Tjek i butikkens produktbeskrivelse, præcis hvordan den pakkes sammen, og hvor meget plads den kræver, når den står væk.</p>
 HTML,
-			'good'    => [ 'Dig, der vil træne efter puls', 'Dig, der vil have mange modstandsniveauer i en foldbar maskine' ],
+			'good'    => [ 'Dig, der vil kunne skrue gradvist op for modstanden', 'Dig, der vil følge træningen i en app' ],
 			'less'    => [ 'Dig, der vil have den naturlige følelse af vand' ],
 		],
 		[

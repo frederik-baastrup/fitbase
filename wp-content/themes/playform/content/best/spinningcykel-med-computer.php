@@ -60,19 +60,20 @@ HTML,
 			'less'    => [ 'Dig, der vil have elektronisk styret modstand fra apps' ],
 		],
 		[
-			'ean'     => '5714605000024',
-			'price'   => 8995,
-			'name'    => 'Peak Fitness Racer Pro',
+			'ean'     => '8029975805979',
+			'slug'    => 'toorx-srx-evolve-spinningcykel',
+			'price'   => 7999,
+			'name'    => 'Toorx SRX Evolve',
 			'role'    => 'Computer med wattmåling',
 			'reviews' => [],
-			'verdict' => 'Indoor bike med wattmåling, op til 1000 W magnetisk modstand og et 15 kg svinghjul – klar til Zwift, Kinomap og iConsole+.',
+			'verdict' => 'Spinningcykel med wattmåling, 24 elektroniske modstandsniveauer og et 22 kg svinghjul – klar til Zwift og Kinomap.',
 			'why'     => <<<'HTML'
-<p>Peak Fitness Racer Pro er til dig, der vil træne efter tal. Computeren viser watt, puls, kadence, hastighed, distance, tid og kalorier, og via Bluetooth kan du køre med Zwift, Kinomap eller iConsole+ på virtuelle ruter rundt i verden.</p>
-<p>Modstanden er magnetisk og støjsvag med 16 niveauer og op til 1000 W. Svinghjulet på 15 kg og en gearing på 1:9 giver et tråd, der føles som et svinghjul på 25–30 kg. Kombistyret lader dig skifte mellem oprejst og aerostilling, og styr og sadel justeres både op/ned og frem/tilbage. Kombipedalerne passer til almindelige sko og SPD-klamper.</p>
-<p>Cyklen tager brugere op til 150 kg, har transporthjul foran og 2 års garanti. Vil du måle pulsen, skal du bruge et Polar-pulsbælte.</p>
+<p>Toorx SRX Evolve er til dig, der vil træne efter tal. Den har wattmåling og er App Ready 3.0 med iConsole+, og den er kompatibel med Zwift og Kinomap, så du kan køre virtuelle ture og følge din udvikling.</p>
+<p>Modstanden styres elektronisk i 24 niveauer, og svinghjulet på 22 kg er afbalanceret. Et tungt svinghjul giver generelt et jævnere tråd, der minder mere om at køre på landevejen.</p>
+<p>Et pulsbælte følger med, så du kan træne efter både watt og puls fra første dag. Tjek maksimal brugervægt og pedaltype i butikkens produktbeskrivelse, før du køber.</p>
 HTML,
-			'good'    => [ 'Træning efter watt', 'Zwift og Kinomap', 'Dig, der kører med klikpedaler' ],
-			'less'    => [ 'Pulsbælte følger ikke med' ],
+			'good'    => [ 'Træning efter watt', 'Zwift og Kinomap', 'Dig, der vil træne efter puls fra start' ],
+			'less'    => [ 'Dig, der bare vil cykle uden skærm og apps' ],
 		],
 		[
 			'ean'     => '5714237003776',
