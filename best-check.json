@@ -1,0 +1,930 @@
+{
+    "checked": "2026-11-14 05:31:01",
+    "site": "https:\/\/fitbase.dk\/",
+    "articles": [
+        {
+            "slug": "foldbar-romaskine",
+            "title": "Bedste foldbare romaskine: Vores bud på de 5 bedste",
+            "url": "https:\/\/fitbase.dk\/koebsguide\/foldbar-romaskine\/",
+            "issues": [
+                {
+                    "type": "product",
+                    "nr": 1,
+                    "role": "Bedst samlet",
+                    "name": "Toorx RWX 700",
+                    "message": "Toorx RWX 700 er ikke på lager",
+                    "alternatives": [
+                        {
+                            "ean": "7051943747265",
+                            "slug": "premium-row-90-romaskine",
+                            "name": "Premium Row 90 Romaskine",
+                            "brand": "Abilica",
+                            "price": 8999,
+                            "shop": "traeningspartner",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Solid romaskine til hjemmetræning og virksomhed med luftmodstand, 10 modstandsniveauer, intervaltræning og understøttelse af Kinomap og D-Fit."
+                        },
+                        {
+                            "ean": "8029975809540",
+                            "slug": "toorx-rower-craft-vandromaskine",
+                            "name": "TOORX Rower Craft Vandromaskine",
+                            "brand": "Toorx",
+                            "price": 8999,
+                            "shop": "fitnessshoppen",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "✔ Eksklusiv vandromaskine i asketræ - flot nok til stuen✔ Realistisk rofølelse med vandmodstand og glidende sæde✔ Kompatibel med Kinomap - ro virtuelle ruter over hele verden✔ Indbygget pulsmåler til Bluetooth og 5.3 kHz brystbælter"
+                        },
+                        {
+                            "ean": "8029975805290",
+                            "slug": "toorx-rower-sea-70-romaskine",
+                            "name": "Toorx Rower Sea 70 Romaskine",
+                            "brand": "Toorx",
+                            "price": 8999,
+                            "shop": "fitnessshoppen",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "✔ Realistisk vandmodstand med 6 justerbare niveauer✔ Kan opbevares lodret og fylder minimalt efter brug✔ Trådløs pulsmodtager og holder til smartphone eller tablet"
+                        },
+                        {
+                            "ean": "8717842036655",
+                            "slug": "tunturi-fitrow-80i-air-romaskine",
+                            "name": "Tunturi FitRow 80i AIR Romaskine",
+                            "brand": "Tunturi",
+                            "price": 8499,
+                            "shop": "fitnessshoppen",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "✓ 10 justerbare modstandsniveauer for personlig træning✓ Pladsbesparende snap-fit design med transporthjul✓ Baggrundsbelyst display og Tunturi Routes app"
+                        },
+                        {
+                            "ean": "8029975809656",
+                            "slug": "toorx-skx-air-5000-skiergometer",
+                            "name": "Toorx SKX AIR 5000 Skiergometer",
+                            "brand": "Toorx",
+                            "price": 9999,
+                            "shop": "fitnessshoppen",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Dyneema Kabelsystem"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "foldbart-loebebaand",
+            "title": "Bedste foldbare løbebånd: Vores bud på de 5 bedste",
+            "url": "https:\/\/fitbase.dk\/koebsguide\/foldbart-loebebaand\/",
+            "issues": [
+                {
+                    "type": "review",
+                    "nr": 1,
+                    "message": "Anmeldelseslink (Garage Gym Reviews) findes ikke længere (404): https:\/\/www.garagegymreviews.com\/sole-f63-treadmill-review"
+                }
+            ]
+        },
+        {
+            "slug": "loebebaand-med-stigning",
+            "title": "Bedste løbebånd med stigning: Vores bud på de 5 bedste",
+            "url": "https:\/\/fitbase.dk\/koebsguide\/loebebaand-med-stigning\/",
+            "issues": [
+                {
+                    "type": "review",
+                    "nr": 1,
+                    "message": "Anmeldelseslink (Garage Gym Reviews) findes ikke længere (404): https:\/\/www.garagegymreviews.com\/sole-f85-review"
+                },
+                {
+                    "type": "review",
+                    "nr": 2,
+                    "message": "Anmeldelseslink (Garage Gym Reviews) findes ikke længere (404): https:\/\/www.garagegymreviews.com\/nordictrack-x24-treadmill-review"
+                }
+            ]
+        },
+        {
+            "slug": "loebebaand-uden-motor",
+            "title": "Bedste løbebånd uden motor: Vores bud – curved og manuelle løbebånd",
+            "url": "https:\/\/fitbase.dk\/koebsguide\/loebebaand-uden-motor\/",
+            "issues": [
+                {
+                    "type": "product",
+                    "nr": 2,
+                    "role": "Manuelt løbebånd",
+                    "name": "Toorx Power Mag",
+                    "message": "Toorx Power Mag er ikke på lager",
+                    "alternatives": [
+                        {
+                            "ean": "8029975809724",
+                            "slug": "toorx-traveller-loebebaand",
+                            "name": "Toorx Traveller Løbebånd",
+                            "brand": "Toorx",
+                            "price": 14999,
+                            "shop": "fitnessshoppen",
+                            "attributes": {
+                                "foldable": true,
+                                "max_speed": 18,
+                                "0": ""
+                            },
+                            "description": "✓ Kraftfuld 2,5\/3,5 HP motor med 18 km\/t topfart✓ APP Ready 3.0 med Zwift og Kinomap kompatibilitet✓ Pladsbesparende foldbart design✓ Skånsom stødabsorbering med 8 puder"
+                        },
+                        {
+                            "ean": "8029975999647",
+                            "slug": "everfit-tfk-855-slim-loebebaand",
+                            "name": "EVERFIT TFK 855 Slim Løbebånd",
+                            "brand": "Everfit",
+                            "price": 13999,
+                            "shop": "fitnessshoppen",
+                            "attributes": {
+                                "foldable": true,
+                                "incline": true,
+                                "max_speed": 20,
+                                "0": ""
+                            },
+                            "description": "✔ Hastigheder op til 20 km\/t med 0,1 km\/t præcision✔ 12 % elektronisk stigning med 12 niveauer✔ 8 affjedringszoner og bred 51 × 140 cm løbeflade✔ App Ready 3.0 med Bluetooth og foldbart design"
+                        },
+                        {
+                            "ean": "8029975999852",
+                            "slug": "toorx-mirage-c60-loebebaand-foldbart-sort",
+                            "name": "Toorx Mirage C60 Løbebånd Foldbart (Sort)",
+                            "brand": "Toorx",
+                            "price": 15999,
+                            "shop": "fitnessshoppen",
+                            "attributes": {
+                                "foldable": true,
+                                "incline": true,
+                                "max_speed": 18,
+                                "0": ""
+                            },
+                            "description": "✔ Smalt, elegant sort design - foldbart og pladsbesparende✔ 3 HK motor op til 18 km\/t og 12 % stigning✔ Stor løbeflade med affjedringszoner for komfort"
+                        },
+                        {
+                            "ean": "8029975810409",
+                            "slug": "everfit-tfk-490-loebebaand",
+                            "name": "Everfit TFK 490 Løbebånd",
+                            "brand": "Everfit",
+                            "price": 12999,
+                            "shop": "fitnessshoppen",
+                            "attributes": {
+                                "foldable": true,
+                                "incline": true,
+                                "0": ""
+                            },
+                            "description": "✔ Zwift- og Kinomap-kompatibel for interaktiv træning ✔ 15 elektroniske stigningsniveauer giver varieret løbetræning ✔ Foldbart design med effektiv Soft Tech støddæmpning"
+                        },
+                        {
+                            "ean": "8717842032442",
+                            "slug": "tunturi-signature-t40-foldbart-loebebaand",
+                            "name": "Tunturi Signature T40 Foldbart Løbebånd",
+                            "brand": "Tunturi",
+                            "price": 12999,
+                            "shop": "fitnessshoppen",
+                            "attributes": {
+                                "foldable": true,
+                                "max_speed": 16,
+                                "0": ""
+                            },
+                            "description": "✔ 47 programmer & 16 km\/t - perfekt til alle niveauer✔ Kompatibel med Zwift, Kinomap og Tunturi Routes✔ Diamond anti-slip løbeflade og foldbart premium-design"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "romaskine-til-hjemmetraening",
+            "title": "Bedste romaskine til hjemmetræning: Vores bud på de 5 bedste",
+            "url": "https:\/\/fitbase.dk\/koebsguide\/romaskine-til-hjemmetraening\/",
+            "issues": [
+                {
+                    "type": "product",
+                    "nr": 5,
+                    "role": "Enkel magnetisk model",
+                    "name": "Titan Life Rower R36",
+                    "message": "Titan Life Rower R36 er ikke på lager",
+                    "alternatives": [
+                        {
+                            "ean": "5714237003820",
+                            "slug": "odin-r600-romaskine",
+                            "name": "Odin R600 Romaskine",
+                            "brand": "Odin",
+                            "price": 2799,
+                            "shop": "apuls",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Odin R600 Romaskine som er fremstillet til dig, der vil have en effektiv træning i hjemmet, uden at have en enormt stor maskine stående.Denne romaskine har et magnetisk bremsesystem med et svinghjul på 7kg. Dette vil give dig en god modstand og et flydend"
+                        },
+                        {
+                            "ean": "7051943005945",
+                            "slug": "abilica-winrower-2-0-romaskine",
+                            "name": "Abilica WinRower 2.0 Romaskine",
+                            "brand": "Abilica",
+                            "price": 3499,
+                            "shop": "traeningspartner",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Abilica WinRower 2.0 er en støjsvag romaskine med god magnetisk modstand."
+                        },
+                        {
+                            "ean": "5704796045645",
+                            "slug": "flowrow-200-romaskine",
+                            "name": "Flowrow 200 Romaskine",
+                            "brand": "Active Sports Gear",
+                            "price": 3999,
+                            "shop": "fitnessshoppen",
+                            "attributes": {
+                                "max_weight": 100,
+                                "0": ""
+                            },
+                            "description": "✔ 16 magnetiske modstandsniveauer gør det nemt at tilpasse træningsintensiteten✔ 2,2 kg svinghjul til kontrolleret og effektiv rotræning hjemme✔ Kompakt konstruktion på kun 18,5 kg med maks. brugervægt på 100 kg"
+                        },
+                        {
+                            "ean": "",
+                            "slug": "titan-life-rower-r65",
+                            "name": "TITAN LIFE Rower R65",
+                            "brand": "TITAN LIFE",
+                            "price": 4999,
+                            "shop": "den-intelligente-krop",
+                            "attributes": {
+                                "foldable": true,
+                                "0": ""
+                            },
+                            "description": "TITAN LIFE Rower R65 er en kraftig romaskine med b&aring;de luft og magnetisk modstand.Romaskinen er b&aring;de foldbar og flytbar med sine transporthjul.Luftmodstanden giver dig en bedre oplevelse, og den magnetiske funktion g&oslash;r den ve"
+                        },
+                        {
+                            "ean": "8029975805641",
+                            "slug": "toorx-rwx-200-romaskine",
+                            "name": "Toorx RWX-200 Romaskine",
+                            "brand": "Toorx",
+                            "price": 4999,
+                            "shop": "fitnessshoppen",
+                            "attributes": {
+                                "foldable": true,
+                                "0": ""
+                            },
+                            "description": "✔ Kombineret luft- og magnetmodstand giver en naturlig rooplevelse✔ 12 modstandsniveauer og pulskompatibel LCD-konsol✔ Foldbart design med aluminiumskinne og kuglelejesæde"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "sammenklappelig-motionscykel",
+            "title": "Bedste sammenklappelige motionscykel: Vores bud på de 5 bedste",
+            "url": "https:\/\/fitbase.dk\/koebsguide\/sammenklappelig-motionscykel\/",
+            "issues": [
+                {
+                    "type": "product",
+                    "nr": 5,
+                    "role": "Stille magnetisk modstand",
+                    "name": "Toorx BRX Compact",
+                    "message": "Toorx BRX Compact er ikke på lager",
+                    "alternatives": [
+                        {
+                            "ean": "5704796046321",
+                            "slug": "asg-velofit-400-motionscykel",
+                            "name": "ASG Velofit 400 Motionscykel",
+                            "brand": "Active Sports Gear",
+                            "price": 2499,
+                            "shop": "fitnessshoppen",
+                            "attributes": {
+                                "max_weight": 150,
+                                "0": ""
+                            },
+                            "description": "✔ 8 kg svinghjul og 8 magnetiske modstandsniveauer til varieret træning✔ Maks. brugervægt på 150 kg samt justerbart styr og sadel✔ Bluetooth App Ready - kompatibel med KinomapBliver ikke billigere til Black Week"
+                        },
+                        {
+                            "ean": "8717842025697",
+                            "slug": "tunturi-cardio-fit-b30-motionscykel",
+                            "name": "Tunturi Cardio Fit B30 Motionscykel",
+                            "brand": "Tunturi",
+                            "price": 2399,
+                            "shop": "fitnessshoppen",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "✔ 8 modstandsniveauer for varieret træning✔ Batteridrevet display og kompakt design - brug den hvor som helst✔ Pulsmåling og tabletholder for øget funktionalitet"
+                        },
+                        {
+                            "ean": "5714605002776",
+                            "slug": "peak-fitness-b4-0i-motionscykel",
+                            "name": "Peak Fitness - B4.0i motionscykel",
+                            "brand": "Peak Fitness",
+                            "price": 2795,
+                            "shop": "fitnessgruppen",
+                            "attributes": {
+                                "max_weight": 130,
+                                "0": ""
+                            },
+                            "description": "Her får du en virkelig solid og stabil motionscykel. Grundet dens stærke rammekonstruktion samt lidt lavere højde, kan Peak Fitness B4.0i klare en maks brugervægt på 130 kg. I'et i B4.0i betyder at motioncyklen har en indbygget BT forbindelse. Det g"
+                        },
+                        {
+                            "ean": "8717842028902",
+                            "slug": "tunturi-cardio-fit-b20-foldbar-motionscykel",
+                            "name": "Tunturi Cardio Fit B20 Foldbar Motionscykel",
+                            "brand": "Tunturi",
+                            "price": 2199,
+                            "shop": "fitnessshoppen",
+                            "attributes": {
+                                "foldable": true,
+                                "0": ""
+                            },
+                            "description": "✔ Kompakt og foldbart design - perfekt til små hjem✔ 8 manuelle modstandsniveauer til træning på alle niveauer✔ Batteridrevet display og tabletholder for fleksibel brug"
+                        },
+                        {
+                            "ean": "5714237013850",
+                            "slug": "odin-a800-airbike-motionscykel",
+                            "name": "Odin A800 Airbike Motionscykel",
+                            "brand": "Odin",
+                            "price": 2799,
+                            "shop": "apuls",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Odin A800 Airbike Motionscykel Effektiv helkropstræning med luftmodstandOdin A800 Airbike er den ideelle motionscykel til dig, der ønsker en alsidig og intens træning derhjemme, i fitnesscentret eller på arbejdspladsen. Denne airbike er designet med foku"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "siddecykel",
+            "title": "Bedste siddecykel: Vores bud på de 5 bedste til sofaen og stolen",
+            "url": "https:\/\/fitbase.dk\/koebsguide\/siddecykel\/",
+            "issues": [
+                {
+                    "type": "product",
+                    "nr": 5,
+                    "role": "Billigste til sofaen",
+                    "name": "Titan Life Circulation Trainer",
+                    "message": "Titan Life Circulation Trainer er ikke på lager",
+                    "alternatives": [
+                        {
+                            "ean": "5714237006777",
+                            "slug": "odin-easy-circulation-trainer-motionscykel-siddecykel",
+                            "name": "Odin Easy Circulation Trainer Motionscykel \/ Siddecykel",
+                            "brand": "Odin",
+                            "price": 439,
+                            "shop": "apuls",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Odin Circulation Trainer Motionscykel \/ Siddecykel er et godt og effektivt træningsredskab til den private bruger, der ønsker en let træning. Træningsmaskinen er nem at flytte rundt på og man kan derfor bruge den alle steder i hjemmet.En cirkulationstræne"
+                        },
+                        {
+                            "ean": "8717842036723",
+                            "slug": "tunturi-mini-bike-pro-pedaltraener-inkl-display",
+                            "name": "Tunturi Mini Bike Pro Pedaltræner - Inkl. display",
+                            "brand": "Tunturi",
+                            "price": 399,
+                            "shop": "fitnessshoppen",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "✔ Til både arm og bentræning✔ LCD-display med træningsdata✔ Kompakt og pladsbesparende design"
+                        },
+                        {
+                            "ean": "8717842025673",
+                            "slug": "tunturi-foldbar-mini-pedaltraener",
+                            "name": "Tunturi Foldbar Mini Pedaltræner",
+                            "brand": "Tunturi",
+                            "price": 399,
+                            "shop": "fitnessshoppen",
+                            "attributes": {
+                                "foldable": true,
+                                "0": ""
+                            },
+                            "description": "✔ Foldbart og pladsbesparende design✔ Kan bruges til både arm- og bentræning✔ Indbygget display og stabile fodstropper"
+                        },
+                        {
+                            "ean": "",
+                            "slug": "fitnessgruppen-pedaltraener-med-computer-foldbar",
+                            "name": "Fitnessgruppen - Pedaltræner med computer - Foldbar",
+                            "brand": "Fitnessgruppen",
+                            "price": 395,
+                            "shop": "fitnessgruppen",
+                            "attributes": {
+                                "foldable": true,
+                                "0": ""
+                            },
+                            "description": "Foldbar pedaltræner som kun vejer 2,16 kg, så du kan nemt flytte rundt på den. Hold dine ben i bevægelse mens du arbejder eller ser din yndlingsserie i fjernsynet."
+                        },
+                        {
+                            "ean": "8029975970165",
+                            "slug": "everfit-welly-s-siddecykel",
+                            "name": "Everfit Welly S Siddecykel",
+                            "brand": "Everfit",
+                            "price": 349,
+                            "shop": "fitnessshoppen",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Super kompakt"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "spinningcykel-med-computer",
+            "title": "Bedste spinningcykel med computer: Vores bud på de 5 bedste",
+            "url": "https:\/\/fitbase.dk\/koebsguide\/spinningcykel-med-computer\/",
+            "issues": [
+                {
+                    "type": "product",
+                    "nr": 4,
+                    "role": "Computer med wattmåling",
+                    "name": "Peak Fitness Racer Pro",
+                    "message": "Peak Fitness Racer Pro findes ikke længere hos butikkerne (fitnessgruppen: aktiv, på lager, produkt draft, billede ok)",
+                    "alternatives": [
+                        {
+                            "ean": "7051943747814",
+                            "slug": "premium-racer-90-spinningcykel",
+                            "name": "Premium Racer 90 Spinningcykel",
+                            "brand": "Abilica",
+                            "price": 8999,
+                            "shop": "traeningspartner",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Spinningscykel til hjemmetræning og virksomhed med magnetisk modstand, wattvisning, Bluetooth og understøttelse af Zwift, Kinomap og iConsole+."
+                        },
+                        {
+                            "ean": "",
+                            "slug": "adidas-c-700-spinningcykel",
+                            "name": "Adidas C-700 Spinningcykel",
+                            "brand": "Adidas",
+                            "price": 8999,
+                            "shop": "fitnessshoppen",
+                            "attributes": {
+                                "max_weight": 150,
+                                "0": ""
+                            },
+                            "description": "✔ 32 elektromagnetiske modstandsniveauer og Performance+ svinghjul giver præcis og flydende træning✔ Watt- og RPM-visning, 12 træningsprogrammer og maksimal brugervægt på 150 kg✔ Bluetooth App Ready - kompatibel med Zwift*, Kinomap og adidas Conso"
+                        },
+                        {
+                            "ean": "7051943740822",
+                            "slug": "winracer-spinningcykel",
+                            "name": "WinRacer Spinningcykel",
+                            "brand": "Abilica",
+                            "price": 7999,
+                            "shop": "traeningspartner",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Abilica WinRacer spinningscykel til hjemmetræning med 22 kg svinghjul, trinløs modstand, SPD-kombipedaler og justerbart sæde og styr."
+                        },
+                        {
+                            "ean": "8029975805979",
+                            "slug": "toorx-srx-evolve-spinningcykel",
+                            "name": "Toorx SRX Evolve Spinningcykel",
+                            "brand": "Toorx",
+                            "price": 7999,
+                            "shop": "fitnessshoppen",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "✔ 22 kg afbalanceret svinghjul og 24 elektroniske modstandsniveauer✔ Præcis wattmåling samt kompatibel med Zwift og Kinomap✔ Pulsbælte inkluderet samt App Ready 3.0 med iConsole+"
+                        },
+                        {
+                            "ean": "7051944094481",
+                            "slug": "sp-900-spinningcykel",
+                            "name": "SP 900 Spinningcykel",
+                            "brand": "Abilica",
+                            "price": 6999,
+                            "shop": "traeningspartner",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Abilica SP 900 spinningscykel med 32 modstandsniveauer, automatisk modstandsjustering, Bluetooth FTMS og tilslutning til flere træningsapps."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "firkantet-trampolin",
+            "title": "Bedste firkantede trampolin: Fordele, ulemper og hvad du skal vælge",
+            "url": "https:\/\/fitbase.dk\/koebsguide\/firkantet-trampolin\/",
+            "issues": [
+                {
+                    "type": "product",
+                    "nr": 1,
+                    "role": "Billigste firkantede",
+                    "name": "Jumpmaster Premium Rektangulær Inground Sport Line",
+                    "message": "Jumpmaster Premium Rektangulær Inground Sport Line er ikke på lager",
+                    "alternatives": [
+                        {
+                            "ean": "7051944185714",
+                            "slug": "premium-43-m-trampolin",
+                            "name": "Premium 4,3 m. Trampolin",
+                            "brand": "Jumpmaster",
+                            "price": 4000,
+                            "shop": "traeningspartner",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Trampolin 4,3 m med Premium hoppedug og 96 fjedre. Giver maksimal sprett, stabil konstruktion og tryg brug for børn og voksne."
+                        },
+                        {
+                            "ean": "7051944186735",
+                            "slug": "premium-inground-43-m-trampolin",
+                            "name": "Premium Inground 4,3 m. Trampolin",
+                            "brand": "Jumpmaster",
+                            "price": 4000,
+                            "shop": "traeningspartner",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Stor nedgravet trampolin 4,3 m med 96 fjedre og Premium hoppedug. Høj hoppeeffekt, stabil konstruktion og familievenlig løsning."
+                        },
+                        {
+                            "ean": "5714237011979",
+                            "slug": "odin-trampolin-oe427cm-inkl-sikkerhedsnet",
+                            "name": "Odin Trampolin ø427cm inkl. Sikkerhedsnet",
+                            "brand": "Odin",
+                            "price": 2899,
+                            "shop": "apuls",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Odin Trampolin ø427cm inkl. Sikkerhedsnet Høj kvalitet til sjov og sikker hopningOdin Trampolin ø427cm er den perfekte løsning til aktive børn og voksne, der ønsker at kombinere sjov og motion i haven. Trampolinen er udført i robuste materialer, der sikr"
+                        },
+                        {
+                            "ean": "7051944186704",
+                            "slug": "premium-inground-365-m-trampolin",
+                            "name": "Premium Inground 3,65 m. Trampolin",
+                            "brand": "Jumpmaster",
+                            "price": 2800,
+                            "shop": "traeningspartner",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Nedgravet trampolin 3,65 m med Premium hoppedug og 72 fjedre. Maksimal hoppeeffekt, stabil konstruktion og diskret design til haven. Ideel til hele familien."
+                        },
+                        {
+                            "ean": "5714237011962",
+                            "slug": "odin-trampolin-oe366cm-inkl-sikkerhedsnet",
+                            "name": "Odin Trampolin ø366cm inkl. Sikkerhedsnet",
+                            "brand": "Odin",
+                            "price": 1899,
+                            "shop": "apuls",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Odin Trampolin ø366cm inkl. Sikkerhedsnet Høj kvalitet til sjov og sikker hopningOdin Trampolin ø366cm er den perfekte løsning til aktive børn og voksne, der ønsker at kombinere sjov og motion i haven. Trampolinen er udført i robuste materialer, der sikr"
+                        }
+                    ]
+                },
+                {
+                    "type": "product",
+                    "nr": 2,
+                    "role": "Nedgravet med net",
+                    "name": "Jumpmaster Premium Rektangulær Inground 4,57 x 3,05 m",
+                    "message": "Jumpmaster Premium Rektangulær Inground 4,57 x 3,05 m er ikke på lager",
+                    "alternatives": [
+                        {
+                            "ean": "7051944185714",
+                            "slug": "premium-43-m-trampolin",
+                            "name": "Premium 4,3 m. Trampolin",
+                            "brand": "Jumpmaster",
+                            "price": 4000,
+                            "shop": "traeningspartner",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Trampolin 4,3 m med Premium hoppedug og 96 fjedre. Giver maksimal sprett, stabil konstruktion og tryg brug for børn og voksne."
+                        },
+                        {
+                            "ean": "7051944186735",
+                            "slug": "premium-inground-43-m-trampolin",
+                            "name": "Premium Inground 4,3 m. Trampolin",
+                            "brand": "Jumpmaster",
+                            "price": 4000,
+                            "shop": "traeningspartner",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Stor nedgravet trampolin 4,3 m med 96 fjedre og Premium hoppedug. Høj hoppeeffekt, stabil konstruktion og familievenlig løsning."
+                        },
+                        {
+                            "ean": "5714237011979",
+                            "slug": "odin-trampolin-oe427cm-inkl-sikkerhedsnet",
+                            "name": "Odin Trampolin ø427cm inkl. Sikkerhedsnet",
+                            "brand": "Odin",
+                            "price": 2899,
+                            "shop": "apuls",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Odin Trampolin ø427cm inkl. Sikkerhedsnet Høj kvalitet til sjov og sikker hopningOdin Trampolin ø427cm er den perfekte løsning til aktive børn og voksne, der ønsker at kombinere sjov og motion i haven. Trampolinen er udført i robuste materialer, der sikr"
+                        },
+                        {
+                            "ean": "7051944186704",
+                            "slug": "premium-inground-365-m-trampolin",
+                            "name": "Premium Inground 3,65 m. Trampolin",
+                            "brand": "Jumpmaster",
+                            "price": 2800,
+                            "shop": "traeningspartner",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Nedgravet trampolin 3,65 m med Premium hoppedug og 72 fjedre. Maksimal hoppeeffekt, stabil konstruktion og diskret design til haven. Ideel til hele familien."
+                        },
+                        {
+                            "ean": "5714237011962",
+                            "slug": "odin-trampolin-oe366cm-inkl-sikkerhedsnet",
+                            "name": "Odin Trampolin ø366cm inkl. Sikkerhedsnet",
+                            "brand": "Odin",
+                            "price": 1899,
+                            "shop": "apuls",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Odin Trampolin ø366cm inkl. Sikkerhedsnet Høj kvalitet til sjov og sikker hopningOdin Trampolin ø366cm er den perfekte løsning til aktive børn og voksne, der ønsker at kombinere sjov og motion i haven. Trampolinen er udført i robuste materialer, der sikr"
+                        }
+                    ]
+                },
+                {
+                    "type": "product",
+                    "nr": 3,
+                    "role": "Over jorden",
+                    "name": "Jumpmaster Premium Rektangulær 4,57 x 3,05 m",
+                    "message": "Jumpmaster Premium Rektangulær 4,57 x 3,05 m er ikke på lager",
+                    "alternatives": [
+                        {
+                            "ean": "7051944185714",
+                            "slug": "premium-43-m-trampolin",
+                            "name": "Premium 4,3 m. Trampolin",
+                            "brand": "Jumpmaster",
+                            "price": 4000,
+                            "shop": "traeningspartner",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Trampolin 4,3 m med Premium hoppedug og 96 fjedre. Giver maksimal sprett, stabil konstruktion og tryg brug for børn og voksne."
+                        },
+                        {
+                            "ean": "7051944186735",
+                            "slug": "premium-inground-43-m-trampolin",
+                            "name": "Premium Inground 4,3 m. Trampolin",
+                            "brand": "Jumpmaster",
+                            "price": 4000,
+                            "shop": "traeningspartner",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Stor nedgravet trampolin 4,3 m med 96 fjedre og Premium hoppedug. Høj hoppeeffekt, stabil konstruktion og familievenlig løsning."
+                        },
+                        {
+                            "ean": "5714237011979",
+                            "slug": "odin-trampolin-oe427cm-inkl-sikkerhedsnet",
+                            "name": "Odin Trampolin ø427cm inkl. Sikkerhedsnet",
+                            "brand": "Odin",
+                            "price": 2899,
+                            "shop": "apuls",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Odin Trampolin ø427cm inkl. Sikkerhedsnet Høj kvalitet til sjov og sikker hopningOdin Trampolin ø427cm er den perfekte løsning til aktive børn og voksne, der ønsker at kombinere sjov og motion i haven. Trampolinen er udført i robuste materialer, der sikr"
+                        },
+                        {
+                            "ean": "7051944186704",
+                            "slug": "premium-inground-365-m-trampolin",
+                            "name": "Premium Inground 3,65 m. Trampolin",
+                            "brand": "Jumpmaster",
+                            "price": 2800,
+                            "shop": "traeningspartner",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Nedgravet trampolin 3,65 m med Premium hoppedug og 72 fjedre. Maksimal hoppeeffekt, stabil konstruktion og diskret design til haven. Ideel til hele familien."
+                        },
+                        {
+                            "ean": "5714237011962",
+                            "slug": "odin-trampolin-oe366cm-inkl-sikkerhedsnet",
+                            "name": "Odin Trampolin ø366cm inkl. Sikkerhedsnet",
+                            "brand": "Odin",
+                            "price": 1899,
+                            "shop": "apuls",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Odin Trampolin ø366cm inkl. Sikkerhedsnet Høj kvalitet til sjov og sikker hopningOdin Trampolin ø366cm er den perfekte løsning til aktive børn og voksne, der ønsker at kombinere sjov og motion i haven. Trampolinen er udført i robuste materialer, der sikr"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "motionscykel-med-bluetooth",
+            "title": "Bedste motionscykel med Bluetooth: Vores bud på de 5 bedste",
+            "url": "https:\/\/fitbase.dk\/koebsguide\/motionscykel-med-bluetooth\/",
+            "issues": [
+                {
+                    "type": "product",
+                    "nr": 3,
+                    "role": "Bedst til seriøs træning",
+                    "name": "Tunturi Platinum UB30",
+                    "message": "Tunturi Platinum UB30 er ikke på lager",
+                    "alternatives": [
+                        {
+                            "ean": "8029975809984",
+                            "slug": "toorx-brx-airmag-7000-motionscykel",
+                            "name": "Toorx BRX AIRMAG 7000 Motionscykel",
+                            "brand": "Toorx",
+                            "price": 14999,
+                            "shop": "fitnessshoppen",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "✔ Trinløs intensitet - luft eller luft+magnet i ét system✔ Full-featured display og app-kompatibilitet✔ Ergonomisk komfort og stærkt design"
+                        },
+                        {
+                            "ean": "8717842036297",
+                            "slug": "tunturi-platinum-ub20-motionscykel",
+                            "name": "Tunturi Platinum UB20 Motionscykel",
+                            "brand": "Tunturi",
+                            "price": 13999,
+                            "shop": "fitnessshoppen",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "✔ 48 modstandsniveauer med jævne overgange for skånsom træning✔ Bluetooth AI-monitor med app-integration og farvekodede pulszoner✔ Professionel kvalitet med lav indstigning - perfekt til både hjem og kommercielt brug"
+                        },
+                        {
+                            "ean": "7051944127479",
+                            "slug": "cu800-motionscykel",
+                            "name": "CU800+ Motionscykel",
+                            "brand": "Spirit",
+                            "price": 18999,
+                            "shop": "traeningspartner",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Motionscykel med 40 modstandsniveauer, pulsmåling og Bluetooth. CU800+ giver jævn og stabil træning hjemme, i virksomhed eller træningsrum."
+                        },
+                        {
+                            "ean": "8029975999562",
+                            "slug": "toorx-brx-9500-motionscykel",
+                            "name": "TOORX BRX-9500 Motionscykel",
+                            "brand": "Toorx",
+                            "price": 19999,
+                            "shop": "fitnessshoppen",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "✔ Selvforsynende energikilde - ingen el tilslutning nødvendig✔ 32 digitale modstandsniveauer med professionel resistance✔ LED-konsol med omfattende træningsdata✔ Ergonomisk justering for optimal komfort"
+                        },
+                        {
+                            "ean": "8029975996134",
+                            "slug": "toorx-brx-3000-ergometercykel",
+                            "name": "Toorx BRX 3000 Ergometercykel",
+                            "brand": "Toorx",
+                            "price": 11999,
+                            "shop": "fitnessshoppen",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "✔ 16 kg svinghjul og 32 digitale modstandstrin✔ Bluetooth og app-integration plus trådløs pulsmåling✔ Komfort med justerbart sæde og store pedaler✔ Omfattende programvalg inkl. watt og HRC"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "trampolin-til-nedgravning",
+            "title": "Bedste trampolin til nedgravning: Sådan vælger og graver du den ned",
+            "url": "https:\/\/fitbase.dk\/koebsguide\/trampolin-til-nedgravning\/",
+            "issues": [
+                {
+                    "type": "product",
+                    "nr": 3,
+                    "role": "Justerbar affjedring",
+                    "name": "Flexi Inground Sport Line 4,3 m",
+                    "message": "Flexi Inground Sport Line 4,3 m er ikke på lager",
+                    "alternatives": [
+                        {
+                            "ean": "7051944185714",
+                            "slug": "premium-43-m-trampolin",
+                            "name": "Premium 4,3 m. Trampolin",
+                            "brand": "Jumpmaster",
+                            "price": 4000,
+                            "shop": "traeningspartner",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Trampolin 4,3 m med Premium hoppedug og 96 fjedre. Giver maksimal sprett, stabil konstruktion og tryg brug for børn og voksne."
+                        },
+                        {
+                            "ean": "5714237011979",
+                            "slug": "odin-trampolin-oe427cm-inkl-sikkerhedsnet",
+                            "name": "Odin Trampolin ø427cm inkl. Sikkerhedsnet",
+                            "brand": "Odin",
+                            "price": 2899,
+                            "shop": "apuls",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Odin Trampolin ø427cm inkl. Sikkerhedsnet Høj kvalitet til sjov og sikker hopningOdin Trampolin ø427cm er den perfekte løsning til aktive børn og voksne, der ønsker at kombinere sjov og motion i haven. Trampolinen er udført i robuste materialer, der sikr"
+                        },
+                        {
+                            "ean": "5714237011962",
+                            "slug": "odin-trampolin-oe366cm-inkl-sikkerhedsnet",
+                            "name": "Odin Trampolin ø366cm inkl. Sikkerhedsnet",
+                            "brand": "Odin",
+                            "price": 1899,
+                            "shop": "apuls",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Odin Trampolin ø366cm inkl. Sikkerhedsnet Høj kvalitet til sjov og sikker hopningOdin Trampolin ø366cm er den perfekte løsning til aktive børn og voksne, der ønsker at kombinere sjov og motion i haven. Trampolinen er udført i robuste materialer, der sikr"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "citybike-til-herre",
+            "title": "Bedste citybike til herre: Vores bud på de 5 bedste",
+            "url": "https:\/\/fitbase.dk\/koebsguide\/citybike-til-herre\/",
+            "issues": [
+                {
+                    "type": "product",
+                    "nr": 5,
+                    "role": "Bedst til bykørsel",
+                    "name": "Batavus Fonk 7 Herre",
+                    "message": "Batavus Fonk 7 Herre er ikke på lager",
+                    "alternatives": [
+                        {
+                            "ean": "4712878833517",
+                            "slug": "giant-anytour-cs-3-remtraek",
+                            "name": "Giant AnyTour CS 3 Remtræk",
+                            "brand": "Giant",
+                            "price": 7649,
+                            "shop": "cykelexperten",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Ubekymret pendling i løbet af ugen og en behagelig tur til at slappe af i weekenden. Det er muligt med Anytour CS. Denne lette touringcykel er velegnet til både fladt og kuperet terræn takket være den lette aluminiumsramme (Aluxx). Med de hydrauliske skiv"
+                        },
+                        {
+                            "ean": "5712700022729",
+                            "slug": "nishiki-xc-five-herre-24g-acera-graa",
+                            "name": "Nishiki XC Five Herre 24g Acera - Grå",
+                            "brand": "Nishiki",
+                            "price": 7799,
+                            "shop": "cykelexperten",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Nishiki XC-Five er en allround hybridcykel. Komponenterne er omhyggeligt valgt for at skabe en solid og robust cykel. XC-Six er for eksempel udstyret med en forgaffel, der kan slåes til og fra, så cyklen altid kan indstilles efter cykelturens og terrænets"
+                        },
+                        {
+                            "ean": "5712700024334",
+                            "slug": "nishiki-city-501-18g-herre-blaa",
+                            "name": "Nishiki City 501 18g Herre - Blå",
+                            "brand": "Nishiki",
+                            "price": 7799,
+                            "shop": "cykelexperten",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Nishiki City 501 er en højtudstyret pendlercykel. City 501 er designet og bygget med et centralt fokus på komfort, og består af nøje udvalgte kvalitetskomponenter. Tilsammen sikrer det dig en effektiv cykel, der hverken går på kompromis på udstyr eller de"
+                        },
+                        {
+                            "ean": "5711278051001",
+                            "slug": "norden-thor-army-7g-herre-green-matt",
+                            "name": "Norden Thor Army 7g Herre - Green Matt",
+                            "brand": "Norden",
+                            "price": 7499,
+                            "shop": "cykelexperten",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Stilfuldt og sporty design. Thor herrecykel er perfekt til dig, der ønsker en pålidelig og stilfuld cykel til daglig transport. Frontladet gør Thor til en praktisk og alsidig ledsager. Uanset om du skal have oppakning med, eller blot ønsker at tage en tu"
+                        },
+                        {
+                            "ean": "4054571540911",
+                            "slug": "cube-nulane-pro-fe-fully-equipped-herre-2027-nightnchrome",
+                            "name": "Cube Nulane Pro FE (Fully Equipped) Herre 2027 - Night´n´Chrome",
+                            "brand": "Cube",
+                            "price": 7499,
+                            "shop": "cykelexperten",
+                            "attributes": [
+                                ""
+                            ],
+                            "description": "Nulane Pro FE er Nulane Pro med hele pendlerpakken monteret: skærme, integreret bagagebærer og fast lygtesæt. Carbongaflen og Shimano Cues 1x9 er intakte, så cyklen stadig er sjov at køre, når arbejdstasken er af. Fordele Alt udstyr monteret: Skærme, A"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
