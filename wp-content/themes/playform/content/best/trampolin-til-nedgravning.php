@@ -12,7 +12,7 @@ return [
 	'more_cat' => 'trampoliner',
 	'intro'    => <<<'HTML'
 <p>En trampolin til nedgravning – også kaldet inground-trampolin – står i niveau med græsplænen. Den er nemmere at komme op på for små børn, ser pænere ud i haven og tager mindre af udsigten. Til gengæld kræver den et hul og lidt planlægning.</p>
-<p>Herunder er vores bud på de 3 bedste nedgravede trampoliner hos de butikker, vi samarbejder med, lige nu. Nederst får du det, du skal vide om at vælge og grave en trampolin ned.</p>
+<p>Herunder er vores bud på de 2 bedste nedgravede trampoliner hos de butikker, vi samarbejder med, lige nu. Nederst får du det, du skal vide om at vælge og grave en trampolin ned.</p>
 HTML,
 	'picks'    => [
 		[
@@ -40,19 +40,6 @@ HTML,
 HTML,
 			'good'    => [ 'Mindre haver', 'Dig, der vil have en nedgravet trampolin til en lavere pris' ],
 			'less'    => [ 'Dig, der vil have den størst mulige hoppeflade' ],
-		],
-		[
-			'ean'     => '7051943729599',
-			'name'    => 'Flexi Inground Sport Line 4,3 m',
-			'role'    => 'Justerbar affjedring',
-			'reviews' => [],
-			'verdict' => 'Nedgravet familietrampolin på 4,3 m med justerbar Flexi-affjedring.',
-			'why'     => <<<'HTML'
-<p>Flexi Inground Sport Line 4,3 m er en nedgravet familietrampolin med justerbar affjedring. Flexi-systemet tilpasses vægten, så hoppet er komfortabelt for både børn og voksne.</p>
-<p>Det gør den interessant, hvis børn og voksne skal bruge samme trampolin. Tjek lagerstatus hos butikken, da modellen kan være udsolgt.</p>
-HTML,
-			'good'    => [ 'Familier, hvor både børn og voksne hopper', 'Dig, der vil have justerbar affjedring' ],
-			'less'    => [ 'Dig, der vil have den billigste løsning' ],
 		],
 	],
 	'guide'    => <<<'HTML'

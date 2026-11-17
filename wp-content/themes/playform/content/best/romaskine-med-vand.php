@@ -16,18 +16,18 @@ return [
 HTML,
 	'picks'    => [
 		[
-			'ean'     => '8717842037010',
-			'slug'    => 'fluid-rower-viking-3-xl-vandromaskine',
-			'name'    => 'Fluid Rower Viking 3 XL',
+			'ean'     => '8717842037027',
+			'price'   => 14999,
+			'name'    => 'Fluid Rower Neon Pro XL',
 			'role'    => 'Bedst samlet',
 			'reviews' => [],
-			'verdict' => 'Den mest gennemførte vandromaskine i udvalget: træramme, 10 modstandsniveauer og en Bluetooth-skærm, der hjælper med teknikken.',
+			'verdict' => 'Den mest udstyrede vandromaskine i udvalget: 10 modstandsniveauer, stålstel og en Bluetooth-skærm med Power Graph, der viser kraften i hvert tag.',
 			'why'     => <<<'HTML'
-<p>Fluid Rower er First Degree Fitness' serie af vandromaskiner, og Viking 3 XL er en af modellerne i træ. Er rammen lavet af asketræ i valnødfinish, og det er netop den slags romaskine, mange gerne vil have stående fremme i stuen frem for gemt væk.</p>
-<p>Det, der adskiller den fra mange andre vandromaskiner, er de 10 justerbare modstandsniveauer. På en klassisk vandromaskine ændrer du typisk tyngden ved at hælde mere eller mindre vand i tanken. Her kan du skrue op og ned i trin. Skærmen har Bluetooth og en såkaldt Power Graph, der viser kraften i hvert tag – nyttigt, hvis du vil arbejde med en jævn og effektiv rotag. Sædet er komfortabelt, og håndtaget ergonomisk.</p>
+<p>Neon Pro XL er Fluid Rowers bud på en vandromaskine med stel af stål og et rå, industrielt udtryk. Den passer til dig, der vil have en solid maskine, og som ikke nødvendigvis skal have den til at ligne et møbel.</p>
+<p>Det, der løfter den over mange andre vandromaskiner, er de 10 niveauer for vandmodstand. I stedet for at tømme eller fylde tanken for at gøre roningen tungere kan du skifte niveau i trin. Skærmen har Bluetooth og en Power Graph, så du kan se kraften i hvert tag og arbejde med et jævnere rotag. Håndtaget er ergonomisk formet, og sædet er bygget til komfort på lange ture.</p>
 HTML,
-			'good'    => [ 'Dig, der vil have en romaskine, der også ser godt ud i stuen', 'Dig, der vil følge din teknik og kraft på skærmen', 'Dig, der vil kunne justere modstanden i trin' ],
-			'less'    => [ 'Dig med et stramt budget – den hører til i den dyre ende', 'Dig, der bare vil ro og er ligeglad med skærm og data' ],
+			'good'    => [ 'Dig, der vil kunne justere modstanden i trin', 'Dig, der vil følge din teknik og kraft på skærmen' ],
+			'less'    => [ 'Dig med et stramt budget – den hører til i den dyre ende', 'Dig, der helst vil have en romaskine i træ' ],
 		],
 		[
 			'ean'     => '5714237003875',

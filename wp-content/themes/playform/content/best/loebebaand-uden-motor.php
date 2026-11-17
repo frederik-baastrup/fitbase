@@ -1,7 +1,7 @@
 <?php
 /**
  * Overført fra det gamle fitbase.dk (/loebebaand-uden-motor/ – og /curved-loebebaand/, der nu viderestiller hertil).
- * Kun få løbebånd uden motor hos butikkerne, derfor 2 valg. Fakta kun fra butikkernes data.
+ * Kun få løbebånd uden motor hos butikkerne, derfor kun 1 valg lige nu. Fakta kun fra butikkernes data.
  */
 defined( 'ABSPATH' ) || exit;
 
@@ -12,7 +12,7 @@ return [
 	'more_cat' => 'lobebaand',
 	'intro'    => <<<'HTML'
 <p>På et løbebånd uden motor er det dig, der driver båndet. Det findes i to helt forskellige udgaver: de buede <strong>curved løbebånd</strong>, som du kender fra crossfit- og HYROX-centre, og enkle <strong>manuelle løbebånd</strong> med magnetisk bremse. Fælles for dem er, at tempoet følger dig – løber du hurtigere, kører båndet hurtigere – og at de ikke skal i stikkontakten for at køre.</p>
-<p>Der er kun få løbebånd uden motor hos de butikker, vi samarbejder med, så her er vores to bud – og en guide til, om et løbebånd uden motor overhovedet er det rigtige for dig.</p>
+<p>Der er kun få løbebånd uden motor hos de butikker, vi samarbejder med, så her er vores bud – og en guide til, om et løbebånd uden motor overhovedet er det rigtige for dig.</p>
 HTML,
 	'picks'    => [
 		[
@@ -28,20 +28,6 @@ HTML,
 HTML,
 			'good'    => [ 'Sprint og intervaller', 'HYROX- og crossfittræning', 'Dig, der vil træne uden strøm' ],
 			'less'    => [ 'Rolig gang og lange, jævne ture', 'Dig med et normalt budget' ],
-		],
-		[
-			'ean'     => '8029975998039',
-			'slug'    => 'toorx-power-mag-lobeband-uden-motor',
-			'name'    => 'Toorx Power Mag',
-			'role'    => 'Manuelt løbebånd',
-			'reviews' => [],
-			'verdict' => 'Manuelt løbebånd med magnetisk modstand i 8 niveauer, 180 kg brugervægt og foldbart stel – det billigere alternativ.',
-			'why'     => <<<'HTML'
-<p>Toorx Power Mag er et manuelt løbebånd uden motor: du skubber båndet rundt med dine skridt. Har det magnetisk modstand i 8 niveauer og et 20 kg dobbelt svinghjul, en stødabsorberende løbeflade på 125 x 46 cm og en maksimal brugervægt på 180 kg. Det kan foldes og flyttes på transporthjul.</p>
-<p>Det er en enklere og billigere konstruktion end det buede løbebånd og fungerer bedst til rask gang og jævnt løb. Modellen er ikke altid på lager. Er den udsolgt, viser vi et alternativ ved produktet.</p>
-HTML,
-			'good'    => [ 'Gang med høj intensitet', 'Dig, der vil have et løbebånd uden strøm til en lavere pris' ],
-			'less'    => [ 'Hurtigt løb og sprint – vælg et curved løbebånd' ],
 		],
 	],
 	'guide'    => <<<'HTML'
