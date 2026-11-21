@@ -101,7 +101,7 @@ add_shortcode(
 		}
 		return '<aside class="method"><span class="method__title">' . playform_icon( 'check', 16, 1.6 ) . 'Sådan har vi valgt</span>'
 			. '<p>' . $how . ' Vi bruger kunstig intelligens til at sortere i butikkernes data og formulere teksterne – alle tal kontrolleres mod butikkernes oplysninger.' . ' <a href="' . esc_url( playform_method_url() ) . '">Sådan vælger vi produkter</a>.</p>'
-			. '<p>Pris og lager hentes to gange i døgnet. Køber du via vores links, får vi provision – men valgene bygger på ' . $sel . ', ikke på provision. <a href="' . $money . '">Sådan tjener vi penge</a>.</p></aside>';
+			. '<p>Pris og lager hentes hver dag. Køber du via vores links, får vi provision – men valgene bygger på ' . $sel . ', ikke på provision. <a href="' . $money . '">Sådan tjener vi penge</a>.</p></aside>';
 	}
 );
 
@@ -615,7 +615,7 @@ function playform_guide_test_note( array $a ): string {
 	$h .= '<p>' . ( $rev
 		? 'Vil du læse en rigtig ' . $kw . ' test, så gå til anmeldelserne, som vi linker til ved hver model ovenfor.'
 		: 'Støder du på en ' . $kw . ' test fra et uafhængigt medie, kan det betale sig at holde den op mod valgene her. Findes der anmeldelser af præcis samme model, linker vi til dem.' )
-		. ' Pris og lager hentes to gange i døgnet, så du altid ser den aktuelle pris hos de butikker, vi samarbejder med.</p>' . "\n";
+		. ' Pris og lager hentes hver dag, så du altid ser den aktuelle pris hos de butikker, vi samarbejder med.</p>' . "\n";
 	return $h;
 }
 
