@@ -7,41 +7,27 @@ defined( 'ABSPATH' ) || exit;
 
 return [
 	'slug'     => 'sammenklappelig-motionscykel',
-	'title'    => 'Sammenklappelig motionscykel: Vores bud på de 5 bedste',
-	'excerpt'  => 'En sammenklappelig motionscykel giver kondition hjemme og kan foldes væk bagefter. Her er vores bud på de 5 bedste til dig med sparsom plads.',
+	'title'    => 'Sammenklappelig motionscykel: Vores bud på de 4 bedste',
+	'excerpt'  => 'En sammenklappelig motionscykel giver kondition hjemme og kan foldes væk bagefter. Her er vores bud på de 4 bedste til dig med sparsom plads.',
 	'more_cat' => 'motionscykler',
 	'intro'    => <<<'HTML'
 <p>En sammenklappelig motionscykel – ofte kaldet en X-bike – er lavet til dig, der vil træne kondition hjemme, men ikke har plads til, at cyklen står fremme. Efter træningen folder du den sammen og triller den ind i et hjørne eller et skab.</p>
-<p>Herunder er vores bud på de 5 bedste sammenklappelige motionscykler hos de butikker, vi samarbejder med, lige nu. De er alle billige, men der er forskel på komfort og funktioner. Nederst finder du en købsguide.</p>
+<p>Herunder er vores bud på de 4 bedste sammenklappelige motionscykler hos de butikker, vi samarbejder med, lige nu. De er alle billige, men der er forskel på komfort og funktioner. Nederst finder du en købsguide.</p>
 HTML,
 	'picks'    => [
 		[
-			'ean'     => '8029975970349',
-			'slug'    => 'toorx-brx-compact-multi-fit-motionscykel',
-			'name'    => 'Toorx BRX-Compact Multi Fit',
+			'ean'     => '4044163025605',
+			'price'   => 2499,
+			'name'    => 'Top Sport S-Bike VeloFit',
 			'role'    => 'Bedst samlet',
 			'reviews' => [],
-			'verdict' => 'Foldbar motionscykel med ryglæn, magnetisk modstand i 8 niveauer og transporthjul.',
+			'verdict' => 'Foldbar siddecykel med ryglæn, ergonomisk sæde og 14 niveauer støjsvag magnetisk modstand.',
 			'why'     => <<<'HTML'
-<p>Toorx BRX-Compact Multi Fit samler det, en sammenklappelig motionscykel skal kunne. Har den magnetisk bremsesystem med 8 modstandsniveauer, et komfortabelt sæde med ryglæn og justeringsmuligheder, et LCD-display med de vigtigste træningsdata – og den kan foldes og flyttes på transporthjul.</p>
-<p>Ryglænet gør en stor forskel for komforten, hvis du cykler længere ture eller har ondt i ryggen.</p>
+<p>Top Sport S-Bike VeloFit samler det, en sammenklappelig motionscykel skal kunne. Du sidder i et ergonomisk sæde med ryglæn, modstanden er magnetisk og kører stille, og når du er færdig, kan cyklen foldes sammen og stilles til side.</p>
+<p>Med 14 modstandsniveauer har den flere trin end de fleste foldbare cykler, så der er plads til at skrue op, efterhånden som formen bliver bedre. Ryglænet gør en stor forskel for komforten, hvis du cykler længere ture eller har ondt i ryggen.</p>
 HTML,
-			'good'    => [ 'Små hjem', 'Dig, der vil have støtte i ryggen', 'Let og moderat konditionstræning' ],
+			'good'    => [ 'Små hjem', 'Dig, der vil have støtte i ryggen', 'Stille træning i stuen' ],
 			'less'    => [ 'Hård intervaltræning – vælg en spinningcykel' ],
-		],
-		[
-			'ean'     => '8717842028919',
-			'slug'    => 'tunturi-b25-x-bike-foldbar-motionscykel',
-			'name'    => 'Tunturi B25 X-Bike',
-			'role'    => 'Bedst til prisen',
-			'reviews' => [],
-			'verdict' => 'Klassisk X-bike med ryglæn, 8 magnetiske niveauer og transporthjul – til en lav pris.',
-			'why'     => <<<'HTML'
-<p>Tunturi B25 X-Bike er bygget efter samme opskrift: har den et ergonomisk sæde med ryglæn, foldbart design med transporthjul og 8 magnetiske modstandsniveauer med et LCD-display, der viser de relevante træningsdata.</p>
-<p>Den er et godt valg, hvis du vil have et kendt mærke til en lav pris og primært skal bruge cyklen til motion et par gange om ugen.</p>
-HTML,
-			'good'    => [ 'Dig, der vil holde prisen nede', 'Små hjem og let motion' ],
-			'less'    => [ 'Høje eller tunge brugere – tjek mål og maksimal brugervægt' ],
 		],
 		[
 			'ean'     => '5714237003691',

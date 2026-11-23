@@ -44,17 +44,17 @@ HTML,
 			'less'    => [ 'Dig, der vil have mange indbyggede programmer' ],
 		],
 		[
-			'ean'     => '8717842036297',
-			'slug'    => 'tunturi-platinum-ub20-motionscykel',
-			'name'    => 'Tunturi Platinum UB20',
+			'ean'     => '8717842036549',
+			'price'   => 9999,
+			'name'    => 'Tunturi Signature E80',
 			'role'    => 'Bedst til seriøs træning',
 			'reviews' => [],
-			'verdict' => '48 modstandsniveauer, Bluetooth-monitor med app og pulszoner og lav indstigning – bygget til både hjem og kommerciel brug.',
+			'verdict' => 'Induktionsbremse med 48 modstandsniveauer og et Bluetooth AI-display med farvekoder, apps og holder til tablet.',
 			'why'     => <<<'HTML'
-<p>Tunturi Platinum UB20 er til dig, der træner meget og vil have mange trin at arbejde med. Den har 48 modstandsniveauer med jævne overgange og en Bluetooth AI-monitor med app-integration og farvekodede pulszoner, så du kan se, hvor hårdt du arbejder.</p>
-<p>Butikken beskriver den som professionel kvalitet til både hjem og kommerciel brug, og den lave indstigning gør det nemt at komme op og ned. Prisen er markant højere end de andre, så den giver mest mening, hvis cyklen er din primære konditionsmaskine.</p>
+<p>Tunturi Signature E80 er til dig, der træner meget og vil have mange trin at skrue op og ned i. Modstanden kommer fra en induktionsbremse med 48 niveauer, og den kræver ingen vedligeholdelse, så du kan bruge tiden på at cykle.</p>
+<p>Displayet har Bluetooth og farvekoder, så du hurtigt kan se, hvor hårdt du arbejder, og det kan forbindes med apps. Tabletten har sin egen holder, og sæde og pedaler fra Comfort+-serien gør lange pas mere behagelige. Den ligger i den dyre ende af udvalget, så den giver mest mening, hvis cyklen er din primære konditionsmaskine.</p>
 HTML,
-			'good'    => [ 'Dig, der træner hårdt og ofte', 'Træning efter pulszoner i en app' ],
+			'good'    => [ 'Dig, der træner hårdt og ofte', 'Træning med apps og tablet', 'Lange pas i sadlen' ],
 			'less'    => [ 'Dig med et begrænset budget' ],
 		],
 		[

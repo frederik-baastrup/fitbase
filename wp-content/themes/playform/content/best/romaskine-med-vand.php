@@ -12,7 +12,7 @@ return [
 	'more_cat' => 'romaskine-vand',
 	'intro'    => <<<'HTML'
 <p>En romaskine med vand er det tætteste, du kommer på at ro på åbent vand uden at forlade stuen. Modstanden kommer fra et skovlhjul, der drejer rundt i en tank med vand, og lyden af vandet er for mange halvdelen af oplevelsen. Samtidig træner du det meste af kroppen på én gang: ben, ryg, arme og kondition.</p>
-<p>Herunder er vores bud på de 5 bedste romaskiner med vand, som du kan købe hos de butikker, vi samarbejder med, lige nu – én til dig, der vil have det bedste, én til dig, der vil holde budgettet, én til dig med lidt plads, én kompakt med app og én i asketræ til stuen. Nederst finder du en købsguide til alt det, der er værd at vide, før du køber.</p>
+<p>Herunder er vores bud på de 5 bedste romaskiner med vand, som du kan købe hos de butikker, vi samarbejder med, lige nu – én til dig, der vil have det bedste, én til dig, der vil holde budgettet, én til dig med lidt plads, én billig med app og én i asketræ til stuen. Nederst finder du en købsguide til alt det, der er værd at vide, før du køber.</p>
 HTML,
 	'picks'    => [
 		[
@@ -58,19 +58,18 @@ HTML,
 			'less'    => [ 'Dig, der vil have en ren vandromaskine uden magnet' ],
 		],
 		[
-			'ean'     => '5704796045614',
-			'price'   => 2499,
-			'name'    => 'ASG Flowrow Aqua',
-			'role'    => 'Kompakt med app',
+			'ean'     => '4044163024615',
+			'price'   => 2999,
+			'name'    => 'Top Sport Garda',
+			'role'    => 'Billig med app',
 			'reviews' => [],
-			'verdict' => 'Vandromaskine med 14 liters tank, Bluetooth og Kinomap på en kort skinne på 90 cm.',
+			'verdict' => 'Enkel vandromaskine med skinne i aluminium og Kinomap til virtuelle ruter – til en lav pris.',
 			'why'     => <<<'HTML'
-<p>ASG Flowrow Aqua giver dig ægte vandmodstand i et lille format. Tanken rummer 14 liter vand, og når skovlene skubber vandet rundt, får du den flydende rofølelse og den rolige lyd, der gør vandromaskiner så populære.</p>
-<p>Skinnen er 90 cm lang, så maskinen fylder mindre end mange andre vandromaskiner. Til gengæld passer den bedst til dig, der ikke er alt for høj. Den maksimale brugervægt er 120 kg.</p>
-<p>Med Bluetooth kan du koble den til Kinomap og ro på virtuelle ruter. Det er en nem måde at få variation i træningen og holde ved, også når nyhedens interesse har lagt sig.</p>
+<p>Top Sport Garda er den billige vej til ægte vandmodstand. Skovlene trækker vandet rundt i tanken, så du får den bløde, flydende rofølelse, hvor modstanden følger dit eget tempo.</p>
+<p>Sædet kører på en skinne i aluminium, så bevægelsen er jævn fra tag til tag, og sædet er formet med komforten for øje. Vil du have noget at se på undervejs, kan du bruge Kinomap og ro interaktive ture, som giver variation og gør det lettere at holde fast i træningen.</p>
 HTML,
-			'good'    => [ 'Dig, der vil prøve vandmodstand', 'Mindre boliger', 'Træning med Kinomap' ],
-			'less'    => [ 'Høje personer – skinnen er kort', 'Brugere over 120 kg' ],
+			'good'    => [ 'Dig, der vil prøve vandmodstand', 'Lavt budget', 'Træning med Kinomap' ],
+			'less'    => [ 'Dig, der vil have justerbare modstandsniveauer', 'Dig, der vil have alle mål og specifikationer på plads – tjek produktsiden' ],
 		],
 		[
 			'ean'     => '8029975809540',
